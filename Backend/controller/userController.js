@@ -76,11 +76,11 @@ const resendEmailVerification = async (req, res) => {
       const token = await genToken(user._id, "1d");
       const subject = "New User";
       const link = `http://localhost:5173/verify?token=${token}`;
-      const message = `welcome onboard kindly use this ${link} to verify your account`;
+      const html = await generateDynamicEmail(link);
       const data = {
         email: email,
         subject,
-        message,
+        html,
       };
       sendEmail(data);
       res.status(200).json({
@@ -121,11 +121,11 @@ const signin = async (req, res) => {
       const token = await genToken(user._id, "1d");
       const subject = "verify now";
       const link = `http://localhost:5173/verify?token=${token}`;
-      const message = ` kindly use this ${link} to verify your account`;
+      const html = await generateDynamicEmail(link);
       const data = {
         email: email,
         subject,
-        message,
+        html,
       };
       sendEmail(data);
       res.status(401).json({
@@ -226,7 +226,7 @@ const addProfilePicture = async (req, res) => {
 
       let result = null;
       // Delete the existing image from local upload folder and Cloudinary
-      if (req.files && req.files.profilePicture.mimetype.includes("image")) {
+      if (req.files && req.files.profilePicture?.mimetype?.includes("image")) {
         if (profile.profilePicture) {
           const publicId = profile.profilePicture
             .split("/")
