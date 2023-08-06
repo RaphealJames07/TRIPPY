@@ -6,6 +6,7 @@ const { sendEmail } = require("../middlewares/sendEmail");
 const { genToken, decodeToken } = require("../utilities/jwt");
 const fs = require("fs");
 const { generateDynamicEmail } = require("../utilities/emailTemplate");
+const { generatePasswordEmail } = require("../utilities/forgotPasswordEmail");
 
 const newUser = async (req, res) => {
   try {
@@ -27,7 +28,7 @@ const newUser = async (req, res) => {
       const token = await genToken(user._id, "1d");
       const subject = "New User";
       const link = `http://localhost:5173/verify?token=${token}`;
-      const html = await generateDynamicEmail(link);
+      const html = await generateDynamicEmail(link, user.firstName);
       const data = {
         email: email,
         subject,
@@ -76,7 +77,7 @@ const resendEmailVerification = async (req, res) => {
       const token = await genToken(user._id, "1d");
       const subject = "New User";
       const link = `http://localhost:5173/verify?token=${token}`;
-      const html = await generateDynamicEmail(link);
+      const html = await generateDynamicEmail(link, user.firstName);
       const data = {
         email: email,
         subject,
@@ -121,7 +122,7 @@ const signin = async (req, res) => {
       const token = await genToken(user._id, "1d");
       const subject = "verify now";
       const link = `http://localhost:5173/verify?token=${token}`;
-      const html = await generateDynamicEmail(link);
+      const html = await generateDynamicEmail(link, user.firstName);
       const data = {
         email: email,
         subject,
@@ -296,14 +297,12 @@ const forgotPassword = async (req, res) => {
       const subject = "forgotten password";
       const token = await genToken(user._id, "30m");
       // for better security practice a unique token should be sent to reset password instead of user._id
-      const link = `${req.protocol}://${req.get(
-        "host"
-      )}/trippy/reset-password/${token}`;
-      const message = `click the ${link} to reset your password`;
+      const link = `http://localhost:5173/reset-password?token=${token}`;
+      const html = await generatePasswordEmail(link, user.firstName);
       const data = {
         email: email,
         subject,
-        message,
+        html,
       };
       sendEmail(data);
       res.status(200).json({
