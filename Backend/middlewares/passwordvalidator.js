@@ -1,29 +1,8 @@
 const Joi = require("@hapi/joi");
 
-const validationMiddleware = (req, res, next) => {
+const passwordMiddleware = (req, res, next) => {
   // Define the validation schema using Joi
   const schema = Joi.object({
-    firstName: Joi.string()
-      .regex(/^[A-Za-z]+$/)
-      .required()
-      .messages({
-        "string.base": "Please provide your first name.",
-        "string.empty": "Please provide your first name.",
-        "string.regex.base": "First name should only contain letters.",
-      }),
-    lastName: Joi.string()
-      .regex(/^[A-Za-z]+$/)
-      .required()
-      .messages({
-        "string.base": "Please provide your last name.",
-        "string.empty": "Please provide your last name.",
-        "string.regex.base": "Last name should only contain letters.",
-      }),
-    email: Joi.string().email().required().messages({
-      "string.base": "Please provide your email address.",
-      "string.email": "Please provide a valid email address.",
-      "string.empty": "Please provide your email address.",
-    }),
     password: Joi.string()
       .pattern(new RegExp("^(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}$"))
       .required()
@@ -55,4 +34,4 @@ const validationMiddleware = (req, res, next) => {
   next();
 };
 
-module.exports = { validationMiddleware };
+module.exports = { passwordMiddleware };

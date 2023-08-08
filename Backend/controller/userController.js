@@ -6,6 +6,7 @@ const { sendEmail } = require("../middlewares/sendEmail");
 const { genToken, decodeToken } = require("../utilities/jwt");
 const fs = require("fs");
 const { generateDynamicEmail } = require("../utilities/emailTemplate");
+const { generatePasswordEmail } = require("../utilities/forgotPasswordEmail");
 
 const newUser = async (req, res) => {
   try {
@@ -25,9 +26,9 @@ const newUser = async (req, res) => {
         password: hash,
       });
       const token = await genToken(user._id, "1d");
-      const subject = "New User";
-      const link = `http://localhost:5173/verify?token=${token}`;
-      const html = await generateDynamicEmail(link);
+      const subject = "Verify User";
+      const link = `https://trippy-huas.onrender.com/Verify?token=${token}`;
+      const html = await generateDynamicEmail(link, user.firstName);
       const data = {
         email: email,
         subject,
@@ -75,12 +76,12 @@ const resendEmailVerification = async (req, res) => {
     if (user && !user.isVerified) {
       const token = await genToken(user._id, "1d");
       const subject = "New User";
-      const link = `http://localhost:5173/verify?token=${token}`;
-      const message = `welcome onboard kindly use this ${link} to verify your account`;
+      const link = `https://trippy-huas.onrender.com/Verify?token=${token}`;
+      const html = await generateDynamicEmail(link, user.firstName);
       const data = {
         email: email,
         subject,
-        message,
+        html,
       };
       sendEmail(data);
       res.status(200).json({
@@ -120,12 +121,12 @@ const signin = async (req, res) => {
     } else if (!user.isVerified) {
       const token = await genToken(user._id, "1d");
       const subject = "verify now";
-      const link = `http://localhost:5173/verify?token=${token}`;
-      const message = ` kindly use this ${link} to verify your account`;
+      const link = `https://trippy-huas.onrender.com/verify?token=${token}`;
+      const html = await generateDynamicEmail(link, user.firstName);
       const data = {
         email: email,
         subject,
-        message,
+        html,
       };
       sendEmail(data);
       res.status(401).json({
@@ -194,26 +195,21 @@ const getOne = async (req, res) => {
 
 const updateUserName = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { _id } = req.user;
     const { firstName, lastName } = req.body;
-    const user = await User.findById(userId);
+    const user = await User.findById(_id);
     console.log(req.user._id.toString());
     console.log(user.id);
     if (!user) {
       res.status(404).json({ message: "no user found" });
-    } else if (req.user._id.toString() == userId || req.user.isAdmin) {
-      const updatedUser = await User.findByIdAndUpdate(
-        userId,
-        { firstName, lastName },
-        { new: true }
-      );
-
-      res.status(200).json({ message: "user name updated", updatedUser });
-    } else {
-      res
-        .status(401)
-        .json({ messgae: "you are not authorized to update this user" });
     }
+    const updatedUser = await User.findByIdAndUpdate(
+      _id,
+      { firstName, lastName },
+      { new: true }
+    );
+
+    res.status(200).json({ message: "user name updated", updatedUser });
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -231,7 +227,7 @@ const addProfilePicture = async (req, res) => {
 
       let result = null;
       // Delete the existing image from local upload folder and Cloudinary
-      if (req.files && req.files.profilePicture.mimetype.includes("image")) {
+      if (req.files && req.files.profilePicture?.mimetype?.includes("image")) {
         if (profile.profilePicture) {
           const publicId = profile.profilePicture
             .split("/")
@@ -301,14 +297,12 @@ const forgotPassword = async (req, res) => {
       const subject = "forgotten password";
       const token = await genToken(user._id, "30m");
       // for better security practice a unique token should be sent to reset password instead of user._id
-      const link = `${req.protocol}://${req.get(
-        "host"
-      )}/trippy/reset-password/${token}`;
-      const message = `click the ${link} to reset your password`;
+      const link = `https://trippy-huas.onrender.com/reset-password?token=${token}`;
+      const html = await generatePasswordEmail(link, user.firstName);
       const data = {
         email: email,
         subject,
-        message,
+        html,
       };
       sendEmail(data);
       res.status(200).json({
