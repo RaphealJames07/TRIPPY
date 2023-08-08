@@ -1,0 +1,225 @@
+
+/* TEMPLATE FOR STYLINGS */
+
+/* Media Query Styling For Desktop Device */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.FooterBody{
+  width: 100%;
+  height: 65vh;
+  background-image: url(../../assets/footer_img2.png);
+  /* background: white; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.FooterWrapper{
+  width: 85%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.FooterHeader{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.FooterLogoDiv{
+  width: 33%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FooterLogoImgDiv{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.FooterAddy{
+  width: 100%;
+  height: 30%;
+}
+.FooterAddy p{
+  width: 75%;
+  font-size: 20px;
+  color: white;
+}
+
+.FooterRights{
+  width: 100%;
+  height: 30%;
+}
+.FooterRights p{
+  width: 75%;
+  font-size: 20px;
+  color: white;
+}
+
+.FooterCompanyDiv{
+  width: 33%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.FooterCompanyHeaderText{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+}
+.FooterCompanyHeaderText h2{
+  font-size: 30px;
+  color: #00B4D8;
+}
+
+.FooterCompanyNav{
+  width: 100%;
+  height: 60%;
+}
+.FooterCompanyNav ul{
+  width: 100%;
+  height: 75%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.FooterCompanyNav ul li{
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+}
+.FooterCompanyNav ul li:hover{
+  cursor: pointer;
+  color: #00000059;
+  transition:0.5s ease-out;
+}
+
+.FooterTagsDiv{
+  width: 33%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FooterTagHeaderText{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+}
+.FooterTagHeaderText h2{
+  font-size: 30px;
+  color: #00B4D8;
+}
+
+.TagsSocials{
+  width: 100%;
+  height: 60%;
+  display: flex;
+}
+
+.TagSocialIconDiv{
+  width: 15%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.TagSocialIcon{
+  width: 30px;
+  height: 30px;
+  background: #000;
+}
+
+.TagSocialsText{
+  width: 85%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.FooterDown{
+  width: 100%;
+  height: 10%;
+  /* background: green; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FooterLine{
+  width: 100%;
+  height: 3px;
+  background: #00B4D8;
+  border-radius: 2px;
+}
+
+.FooterCopyRight{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+
+/* End of Media Query Styling For Desktop Device */
+
+/* Media Query Styling for Tablet Device */
+
+@media only screen and (max-width: 1024px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+}
+
+/* End of Media Query Styling for Tablet Device */
+
+/* Media Query Styling for Mobile Device */
+
+@media only screen and (max-width: 414px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+}
+
+/* End of Media Query Styling for Mobile Device */

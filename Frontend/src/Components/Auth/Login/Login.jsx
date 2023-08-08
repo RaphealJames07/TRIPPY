@@ -29,8 +29,10 @@ const Login = () => {
             .post(url, data)
             .then((res) => {
                 console.log(res.data.user);
-                const { email, firstName, lastName, token } = res.data.user
-                Dispatch(trippyUserLogin({ email, firstName, lastName, token }));
+                const { email, firstName, lastName, token } = res.data.user;
+                Dispatch(
+                    trippyUserLogin({ email, firstName, lastName, token })
+                );
                 nav("/Home");
             })
             .catch((err) => {
@@ -46,6 +48,7 @@ const Login = () => {
 
     return (
         <>
+            {/* Elements for Desktop */}
             <div className="LoginBody">
                 <div className="LoginLeft">
                     <img src={LoginImg} alt="" />
@@ -108,6 +111,139 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            {/* End of Elements for Desktop */}
+
+            {/* Elements for Tablet */}
+            <div className="LoginBodyTablet">
+                <div className="LoginLeftTablet">
+                    <div className="LoginRightTablet">
+                        <div className="LoginWrapperTablet">
+                            <h1>Login</h1>
+                            <div className="InputDivsTablet">
+                                <div className="EmailDivTablet">
+                                    <label htmlFor="Email">Email</label>
+                                    <input
+                                        type="email"
+                                        placeholder="Input Your Email"
+                                        value={email}
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
+                                    />
+                                    <p>{message.msg}</p>
+                                </div>
+                                <div className="PasswordDivTablet">
+                                    <label htmlFor="Password">Password</label>
+                                    <input
+                                        type="password"
+                                        placeholder="Input Your Password"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                    />
+                                    <p>{message.msg}</p>
+                                </div>
+                                <p className="ForgetPwdTablet">
+                                    Forgot Password?
+                                </p>
+                                <div className="LoginDivTablet">
+                                    <button onClick={(e) => handleLogin(e)}>
+                                        {loading ? "Loading..." : "Login"}
+                                    </button>
+                                </div>
+                                <p className="DontAccTablet">
+                                    Dont Have an account?{" "}
+                                    <span
+                                        style={{
+                                            color: "purple",
+                                            cursor: "pointer",
+                                        }}
+                                    >
+                                        <Link
+                                            to="/SignUp"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            Sign Up
+                                        </Link>
+                                    </span>
+                                </p>
+                                <div className="ExploreDivTablet">
+                                    <Link to="/Home">
+                                        <button>Explore</button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* End of Elements for Tablet */}
+
+            {/* Elements for Mobile */}
+            <div className="LoginBodyMobile">
+                <div className="LoginLeftMobile">
+                    <img src={LoginImg} alt="" />
+                </div>
+
+                <div className="LoginRightMobile">
+                    <div className="LoginWrapperMobile">
+                        <h1>Login</h1>
+                        <div className="InputDivsMobile">
+                            <div className="EmailDivMobile">
+                                <label htmlFor="Email">Email</label>
+                                <input
+                                    type="email"
+                                    placeholder="Input Your Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                                <p>{message.msg}</p>
+                            </div>
+                            <div className="PasswordDivMobile">
+                                <label htmlFor="Password">Password</label>
+                                <input
+                                    type="password"
+                                    placeholder="Input Your Password"
+                                    value={password}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
+                                />
+                                <p>{message.msg}</p>
+                            </div>
+                            <p className="ForgetPwdMobile">Forgot Password?</p>
+                            <div className="LoginDiv Mobile">
+                                <button onClick={(e) => handleLogin(e)}>
+                                    {loading ? "Loading..." : "Login"}
+                                </button>
+                            </div>
+                            <p className="DontAccMobile">
+                                Dont Have an account?{" "}
+                                <span
+                                    style={{
+                                        color: "purple",
+                                        cursor: "pointer",
+                                    }}
+                                >
+                                    <Link
+                                        to="/SignUp"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        Sign Up
+                                    </Link>
+                                </span>
+                            </p>
+                            <div className="ExploreDivMobile">
+                                <Link to="/Home">
+                                    <button>Explore</button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* End of Elements for Mobile */}
         </>
     );
 };
