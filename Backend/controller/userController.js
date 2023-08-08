@@ -27,7 +27,7 @@ const newUser = async (req, res) => {
       });
       const token = await genToken(user._id, "1d");
       const subject = "Verify User";
-      const link = `https://trippy-huas.onrender.com/verify?token=${token}`;
+      const link = `https://trippy-huas.onrender.com/Verify?token=${token}`;
       const html = await generateDynamicEmail(link, user.firstName);
       const data = {
         email: email,
@@ -76,7 +76,7 @@ const resendEmailVerification = async (req, res) => {
     if (user && !user.isVerified) {
       const token = await genToken(user._id, "1d");
       const subject = "New User";
-      const link = `https://trippy-huas.onrender.com/verify?token=${token}`;
+      const link = `https://trippy-huas.onrender.com/Verify?token=${token}`;
       const html = await generateDynamicEmail(link, user.firstName);
       const data = {
         email: email,
