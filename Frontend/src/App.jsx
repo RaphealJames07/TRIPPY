@@ -41,11 +41,11 @@ const App = () => {
       <div className="MainBody">
         <HashRouter>
           <Routes>
-            <Route path="#/" element={<Intro />} />
-            <Route path="#/Login" element={<Login />} />
-            <Route path="#/Home" element={<Home />} />
-            <Route path="#/SignUp" element={<SignUp />} />
-            <Route path="#/Verify" element={<Verify />} />
+            <Route path="/" element={<Intro />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Home" element={<Home />} />
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/Verify" element={<Verify />} />
           </Routes>
         </HashRouter>
       </div>
