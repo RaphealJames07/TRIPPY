@@ -1,3 +1,25 @@
+// import './Verify.css'
+
+// import {BsInfoCircle} from 'react-icons/bs'
+
+// const Verify = () => {
+//   return (
+//     <>
+//       <div className="VerifyBody">
+//         <div className='VerifyBox'>
+//           <BsInfoCircle style={{width:'100px', height:'70px', color:'white'}}/>
+//           <h3>Dear User, thank you for signing up on Trippy.</h3>
+//           <p>A link was sent to you at the email address provided</p>
+//           <p>Please verify your email address to complete the registration process</p>
+//           <p>Didnt get email? click <span style={{color:'purple', cursor:'pointer'}}>here</span> to resend email</p>
+//         </div>
+//       </div>
+//     </>
+//   )
+// }
+
+// export default Verify
+
 import { useEffect, useState } from "react";
 import "./Verify.css";
 import { BsInfoCircle } from "react-icons/bs";
