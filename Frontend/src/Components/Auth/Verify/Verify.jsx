@@ -42,7 +42,7 @@ const Verify = () => {
 
     const verifyUser = (token) => {
         axios
-            .put(`https://trippyapiv1.onrender.com/trippy/verify/${token}`)
+            .put(`https://trippyapiv1.onrender.com/trippy/Verify/${token}`)
             .then((res) => {
                 console.log(res);
                 setVerificationStatus("user verified");
