@@ -31,7 +31,18 @@ const Hero = () => {
                             </div>
                         </div>
                     </div>
+                    
                 </div>
+                <div className="HeroSearchDivMobile">
+                        <h3>Search For your Trip</h3>
+                        <div className="HeroSearchDivInputsMobile">
+                            <input type="text" placeholder="City"/>
+                            <input type="text" placeholder="Departure"/>
+                            <input type="text" placeholder="Arrival"/>
+                            <input type="text" placeholder="Budget"/>
+                            <button>Search</button>
+                        </div>
+                    </div>
             </div>
         </>
     );
