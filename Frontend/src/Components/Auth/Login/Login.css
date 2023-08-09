@@ -1,3 +1,7 @@
+
+/* TEMPLATE FOR STYLINGS */
+
+/* Media Query Styling For Desktop Device */
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 *{
@@ -10,6 +14,20 @@
   width: 100%;
   height: 100vh;
   display: flex;
+  font-family: 'Kanit', sans-serif;
+}
+
+.LoginBodyTablet{
+  width: 100%;
+  height: 100vh;
+  display: none;
+  font-family: 'Kanit', sans-serif;
+}
+
+.LoginBodyMobile{
+  width: 100%;
+  height: 100vh;
+  display: none;
   font-family: 'Kanit', sans-serif;
 }
 
@@ -140,3 +158,340 @@
 .DontAcc{
   font-size: 20px;
 }
+
+
+
+/* End of Media Query Styling For Desktop Device */
+
+/* Media Query Styling for Tablet Device */
+
+@media only screen and (max-width: 1024px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.LoginBodyTablet{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  font-family: 'Kanit', sans-serif;
+}
+.LoginBody{
+  width: 100%;
+  height: 100vh;
+  display: none;
+  font-family: 'Kanit', sans-serif;
+}
+
+.LoginBodyMobile{
+  width: 100%;
+  height: 100vh;
+  display: none;
+  font-family: 'Kanit', sans-serif;
+}
+
+.LoginLeftTablet{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.LoginLeftTablet img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.LoginRightTablet{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  background-image: url(../../../assets/LoginImg.jpg);
+  align-items: center;
+  background-size: cover;
+}
+
+.LoginWrapperTablet{
+  width: 80%;
+  height: 80%;
+  background: #ffffffc8;
+  border-radius: 10px;
+  border: 5px solid #00B4D8;
+}
+
+.LoginWrapperTablet h1{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+.InputDivsTablet{
+  width: 100%;
+  height: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.EmailDivTablet{
+  width: 90%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  /* background: #000; */
+}
+
+.EmailDivTablet label{
+  font-size: 30px;
+}
+.EmailDivTablet input{
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.PasswordDivTablet{
+  width: 90%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  /* background: #000; */
+}
+
+.PasswordDivTablet label{
+  font-size: 30px;
+}
+.PasswordDivTablet input{
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.ForgetPwdTablet{
+  width: 90%;
+  text-align: end;
+  font-size: 20px;
+}
+
+.LoginDivTablet{
+  width: 90%;
+  height: 12%;
+  /* background: #000; */
+}
+.LoginDivTablet button{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 3px solid #00B4D8;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 700;
+  background-color: #fff;
+}
+
+.ExploreDivTablet{
+  width: 90%;
+  height: 12%;
+  margin-top: 20px;
+}
+
+.ExploreDivTablet button{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 700;
+  background: #00B4D8;
+}
+
+.DontAccTablet{
+  font-size: 20px;
+}
+
+
+
+}
+
+/* End of Media Query Styling for Tablet Device */
+
+/* Media Query Styling for Mobile Device */
+
+@media only screen and (max-width: 414px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .LoginBody.Mobile{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    font-family: 'Kanit', sans-serif;
+  }
+  .LoginBody.Tablet{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    font-family: 'Kanit', sans-serif;
+  }
+  .LoginBody{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    font-family: 'Kanit', sans-serif;
+  }
+  
+  .LoginLeft.Mobile{
+    width: 60%;
+    height: 100%;
+    display: flex;
+  }
+  
+  .LoginLeft.Mobile img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .LoginRight.Mobile{
+    width: 40%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .LoginWrapper.Mobile{
+    width: 80%;
+    height: 80%;
+    background: #00B4D8;
+  }
+  
+  .LoginWrapper.Mobile h1{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    font-weight: 600;
+  }
+  
+  .InputDivs.Mobile{
+    width: 100%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .EmailDiv.Mobile{
+    width: 90%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    /* background: #000; */
+  }
+  
+  .EmailDiv.Mobile label{
+    font-size: 30px;
+  }
+  .EmailDiv.Mobile input{
+    width: 100%;
+    height: 50%;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 10px;
+    font-size: 20px;
+  }
+  
+  .PasswordDiv.Mobile{
+    width: 90%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    /* background: #000; */
+  }
+  
+  .PasswordDiv.Mobile label{
+    font-size: 30px;
+  }
+  .PasswordDiv.Mobile input{
+    width: 100%;
+    height: 50%;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 10px;
+    font-size: 20px;
+  }
+  
+  .ForgetPwd.Mobile{
+    width: 90%;
+    text-align: end;
+    font-size: 20px;
+  }
+  
+  .LoginDiv.Mobile{
+    width: 90%;
+    height: 12%;
+    /* background: #000; */
+  }
+  .LoginDiv.Mobile button{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 700;
+  }
+  
+  .ExploreDiv.Mobile{
+    width: 90%;
+    height: 12%;
+    margin-top: 20px;
+  }
+  
+  .ExploreDiv.Mobile button{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 700;
+    background: none;
+  }
+  
+  .DontAcc.Mobile{
+    font-size: 20px;
+  }
+
+
+}
+
+/* End of Media Query Styling for Mobile Device */

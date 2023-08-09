@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { trippyUserLogOut } from "../Redux/Features";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { HiOutlinePlus } from "react-icons/hi";
 
 const Header = () => {
     const [toggleUser, setToggleUser] = useState(false);
@@ -73,6 +75,15 @@ const Header = () => {
                     )}
                 </div>
             ) : null}
+            <div className="HeaderBodyMobile">
+                <div className="HeaderLogoMobileDiv">
+                    <img src={Logo} alt="" />
+                </div>
+                <div className="HeaderDropBoxMobileDiv">
+                    <GiHamburgerMenu />
+                    <HiOutlinePlus />
+                </div>
+            </div>
         </>
     );
 };
