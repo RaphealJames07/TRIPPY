@@ -9,6 +9,8 @@ const hotelRouter = require("./routers/hotelRouter");
 const flightRouter = require("./routers/flightRouter");
 const carRouter = require("./routers/carRentalRouter");
 const tourRouter = require("./routers/tourRouter");
+const categoryRouter = require("./routers/categoryRouter");
+const bookingRouter = require("./routers/bookingRouter");
 const PORT = process.env.PORT || 5050;
 
 const app = express();
@@ -34,6 +36,8 @@ app.use("/trippy", hotelRouter);
 app.use("/trippy", tourRouter);
 app.use("/trippy", flightRouter);
 app.use("/trippy", carRouter);
+app.use("/trippy", bookingRouter);
+app.use("/trippy", categoryRouter);
 
 app.listen(PORT, () => {
   console.log(`listening to port ${PORT}`);
