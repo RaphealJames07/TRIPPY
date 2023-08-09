@@ -10,13 +10,25 @@ import { HiOutlinePlus } from "react-icons/hi";
 
 const Header = () => {
     const [toggleUser, setToggleUser] = useState(false);
+    const [toggleDropdown, setToggleDropdown] = useState(false);
     const Dispatch = useDispatch();
+
     const user = useSelector((state) => state.Trippy.trippyUser);
     if (user) {
         console.log("User is Available: ", user);
     } else {
         console.log("User is Unavailable");
     }
+
+    const handleDropdown = () => {
+        document.querySelector(".HeaderBodyMobile").classList.remove("active");
+        setToggleDropdown(!toggleDropdown);
+    };
+    const handleRomoveDropdown = () => {
+        document.querySelector(".HeaderBodyMobile").classList.add("active");
+        setToggleDropdown(!toggleDropdown);
+    };
+
     return (
         <>
             <div className="HeaderBody">
@@ -51,11 +63,11 @@ const Header = () => {
             </div>
             {toggleUser ? (
                 <div
-                    className="UserDropDown"
+                    className="UserMobileDropDown"
                     onMouseLeave={() => setToggleUser(!toggleUser)}
                 >
                     {user ? (
-                        <button
+                        <button className="UserMobileDropDownSignoutBtn"
                             onClick={() => {
                                 Dispatch(trippyUserLogOut());
                                 // alert("User LogOut Successfully");
@@ -75,15 +87,46 @@ const Header = () => {
                     )}
                 </div>
             ) : null}
-            <div className="HeaderBodyMobile">
+            <div className="HeaderBodyMobile active">
                 <div className="HeaderLogoMobileDiv">
                     <img src={Logo} alt="" />
                 </div>
                 <div className="HeaderDropBoxMobileDiv">
-                    <GiHamburgerMenu />
-                    <HiOutlinePlus />
+                    <div className="Togglebox">
+                        <GiHamburgerMenu
+                            className="GiHamburgerMenu"
+                            onClick={handleDropdown}
+                        />
+                    </div>
+
+                    <div className="HeaderAccDivMobile">
+                        {user ? (
+                            <div
+                                className="UserCircleMobile"
+                                onClick={() => setToggleUser(!toggleUser)}
+                            ></div>
+                        ) : (
+                            <div
+                                className="NoUserCircleMobile"
+                                onClick={() => setToggleUser(!toggleUser)}
+                            ></div>
+                        )}
+                    </div>
                 </div>
             </div>
+            {toggleDropdown && (
+                <div className="HeaderMobileDropDown">
+                    <HiOutlinePlus
+                        className="HiOutlinePlus"
+                        onClick={handleRomoveDropdown}
+                    />
+
+                    <div>Home</div>
+                    <div>Booking</div>
+                    <div>Explore</div>
+                    <div>About Us</div>
+                </div>
+            )}
         </>
     );
 };

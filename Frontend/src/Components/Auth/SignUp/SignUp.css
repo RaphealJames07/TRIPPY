@@ -348,7 +348,7 @@
 /* End of Media Query Styling for Tablet Device */
 /* Media Query Styling for Tablet Device */
 
-@media only screen and (max-width: 414px){
+@media only screen and (max-width: 428px){
   @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
   *{
@@ -392,7 +392,7 @@
     height: 85%;
     background: #ffffffa3;
     border-radius: 10px;
-    border: 2px solid #00B4D8;
+    border: 1px solid #00B4D8;
   }
   
   .SignUpRightMobile h1{
@@ -402,7 +402,7 @@
     align-items: center;
     justify-content: center;
     font-size: 45px;
-    font-weight: 600;
+    font-weight: 400;
   }
   
   .SignUpDivMobile{
@@ -432,7 +432,9 @@
     height: 100%;
     display: flex;
     align-items: center;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 400;
+
   }
   
   .SignUpNameDivInputMobile{
@@ -447,7 +449,7 @@
     display: flex;
     justify-content: space-between;
     border-radius: 7px;
-    border: 2px solid #00B4D8;
+    border: 1px solid #00B4D8;
     padding-left: 10px;
     outline: #00B4D8;
   }
@@ -465,13 +467,14 @@
     height: 50%;
     display: flex;
     align-items: center;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 400;
   }
   .SignUpEmailDivMobile input{
     width: 100%;
     height: 50%;
     border-radius: 7px;
-    border: 2px solid #00B4D8;
+    border: 1px solid #00B4D8;
     padding-left: 10px;
     outline: #00B4D8;
   }
@@ -485,13 +488,13 @@
     height: 50%;
     display: flex;
     align-items: center;
-    font-size: 20px;
+    font-size: 18px;
   }
   .SignUpPasswordDivMobile input{
     width: 100%;
     height: 50%;
     border-radius: 7px;
-    border: 2px solid #00B4D8;
+    border: 1px solid #00B4D8;
     padding-left: 10px;
     outline: #00B4D8;
   }
@@ -507,7 +510,7 @@
   border: 2px solid #fff;
   cursor: pointer;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 400;
   background: #00B4D8;
   }
 

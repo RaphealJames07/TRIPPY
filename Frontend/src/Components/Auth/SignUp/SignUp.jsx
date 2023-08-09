@@ -364,7 +364,7 @@ const SignUp = () => {
                             <div className="SignUpNameDivInputMobile">
                                 <input
                                     type="text"
-                                    placeholder="Enter your First Name"
+                                    placeholder="Enter Name"
                                     value={firstName}
                                     onChange={(e) =>
                                         setFirstName(e.target.value)
@@ -384,7 +384,7 @@ const SignUp = () => {
                                 ) : null}
                                 <input
                                     type="text"
-                                    placeholder="Enter your Last Name"
+                                    placeholder="Enter Name"
                                     value={lastName}
                                     onChange={(e) =>
                                         setLastName(e.target.value)
@@ -473,7 +473,7 @@ const SignUp = () => {
                                     {loading ? (
                                         <SpinnerDotted size={30} />
                                     ) : (
-                                        "SIGNUP"
+                                        "SignUp"
                                     )}
                                 </button>
                             </div>
