@@ -1,0 +1,284 @@
+// import "./FamousCard.css";
+// // import Beach from "../../assets/beachpics.jpg";
+// import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+// import { useSelector } from "react-redux/es/hooks/useSelector";
+
+// const FamousCard = () => {
+//     const toursApiData = useSelector((state) => state.Trippy.allApiData);
+//     // console.log('All API', toursApiData);
+
+//     const famousPlaces = toursApiData
+//         .filter((e) => e.category === "famous-attractions")
+//         .map((item) => item.places)
+//         .reduce((accumulator, placesArray) => {
+//             return accumulator.concat(placesArray);
+//         }, []);
+
+//     // console.log(famousPlaces);
+
+//     const StarRating = ({ rating }) => {
+//       const filledStars = Array.from({ length: rating }).fill(null);
+//       const emptyStars = Array.from({ length: 5 - rating }).fill(null);
+    
+//       return (
+//         <div className="Rating">
+//           {filledStars.map((_, index) => (
+//             <AiFillStar style={{width:'10%', height:'100%'}} key={`filled-${index}`} />
+//           ))}
+//           {emptyStars.map((_, index) => (
+//             <AiOutlineStar style={{width:'10%', height:'100%'}} key={`empty-${index}`} />
+//           ))}
+//         </div>
+//       );
+//     };
+
+//     return (
+//         <>
+//             {famousPlaces?.map((item) => (
+//                 <div className="section_our_solution" key={item?.id}>
+//                     <div className="row">
+//                         <div className="col-lg-12 col-md-12 col-sm-12">
+//                             <div className="our_solution_category">
+//                                 <div className="solution_cards_box">
+//                                     <div className="solution_card">
+//                                         <div className="hover_color_bubble"></div>
+//                                         <div className="so_top_icon">
+//                                             <img src={item?.images[0]} alt="" />
+//                                         </div>
+//                                         <div className="solu_title">
+//                                             <div>{item?.city} <span className="CountryMove">{item?.country}</span></div>
+//                                         </div>
+//                                         <p className="SmallP">{item?.tourName}</p>
+//                                         <div className="solu_description">
+//                                             <div className="Rating">
+//                                             <StarRating rating={item?.starRating} />
+//                                             </div>
+//                                             <button
+//                                                 className="read_more_btn"
+//                                                 type="button"
+//                                             >
+//                                                 View More
+//                                             </button>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             ))}
+//         </>
+//     );
+// };
+
+// export default FamousCard;
+
+.section_our_solution .row {
+  align-items: center;
+}
+
+.our_solution_category {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.our_solution_category .solution_cards_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.solution_cards_box .solution_card {
+  flex: 0 50%;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(72, 77, 113, 0.2),
+    0 5px 15px 0 rgba(37, 44, 97, 0.15);
+  border-radius: 15px;
+  margin: 8px;
+  padding: 10px 15px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  min-height: 320px;
+  transition: 0.7s;
+}
+
+.solution_cards_box .solution_card:hover {
+  background: #309df0;
+  color: #fff;
+  transform: scale(1.03);
+  z-index: 9;
+}
+
+.solution_cards_box .solution_card:hover::before {
+  background: rgb(85 108 214 / 10%);
+}
+
+.solution_cards_box .solution_card:hover .solu_title h3,
+.solution_cards_box .solution_card:hover .solu_description p {
+  color: #fff;
+}
+
+.solution_cards_box .solution_card:before {
+  content: "";
+  position: absolute;
+  background: rgba(115, 130, 198, 0.304);
+  width: 170px;
+  height: 480px;
+  z-index: -1;
+  transform: rotate(42deg);
+  right: -56px;
+  top: -23px;
+  border-radius: 35px;
+}
+
+.solution_cards_box .solution_card:hover .solu_description button {
+  background: #fff !important;
+  color: #309df0;
+}
+
+.solution_card .so_top_icon {
+}
+
+.solution_card .solu_title div {
+  color: #212121;
+  font-size: 1.3rem;
+  margin-top: 20px;
+  margin-bottom: 13px;
+  text-transform:capitalize;
+
+}
+
+.CountryMove{
+  margin-left: 80px;
+  text-transform:capitalize;
+}
+
+.solu_description{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin-top: 10px;
+  /* background: #000; */
+}
+
+.Rating{
+  width: 50%;
+  height: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background: #000; */
+}
+
+/* .solution_card .solu_description p {
+  font-size: 15px;
+  margin-bottom: 15px;
+} */
+
+.solution_card .solu_description button {
+  border: 0;
+  border-radius: 15px;
+  background: linear-gradient(
+    140deg,
+    #42c3ca 0%,
+    #42c3ca 50%,
+    #42c3cac7 75%
+  ) !important;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 12px 15px;
+}
+
+.our_solution_content div {
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.our_solution_content p {
+}
+
+.hover_color_bubble {
+  position: absolute;
+  background: rgb(54 81 207 / 15%);
+  width: 100rem;
+  height: 100rem;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  top: 16rem;
+  border-radius: 50%;
+  transform: rotate(-36deg);
+  left: -18rem;
+  transition: 0.7s;
+}
+
+.SmallP{
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 300;
+}
+.solution_cards_box .solution_card:hover .hover_color_bubble {
+  top: 0rem;
+}
+
+.solution_cards_box .solution_card .so_top_icon {
+  width: 300px;
+  height: 150px;
+  /* border-radius: 50%; */
+  /* background: #fff; */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.solution_cards_box .solution_card .so_top_icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*start media query*/
+@media screen and (min-width: 320px) {
+  .sol_card_top_3 {
+    position: relative;
+    top: 0;
+  }
+
+  .our_solution_category {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .our_solution_category .solution_cards_box {
+    flex: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .our_solution_category .solution_cards_box {
+    flex: 1;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .sol_card_top_3 {
+    position: relative;
+    top: -3rem;
+  }
+
+  .our_solution_category {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
+nature card css up there
