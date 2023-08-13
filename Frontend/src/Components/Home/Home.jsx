@@ -4,6 +4,10 @@ import Hero from "../Hero/Hero";
 import "./Home.css";
 import Footer from "../Footer/Footer";
 import Continental from "../Continental/Continental";
+import Famous from "../Famous/Famous";
+import Nature from "../Nature/Nature";
+import Special from "../Special/Special";
+import Services from "../Services/Services";
 
 const Home = () => {
     return (
@@ -12,6 +16,10 @@ const Home = () => {
                 <Header />
                 <Hero />
                 <Continental />
+                <Famous />
+                <Nature/>
+                <Special/>
+                <Services/>
                 <Footer />
             </div>
         </>

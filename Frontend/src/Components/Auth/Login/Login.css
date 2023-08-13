@@ -335,7 +335,7 @@
 
 /* Media Query Styling for Mobile Device */
 
-@media only screen and (max-width: 414px){
+@media only screen and (max-width: 428px){
   @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
   *{
@@ -344,63 +344,68 @@
     box-sizing: border-box;
   }
   
-  .LoginBody.Mobile{
+  .LoginBodyTablet{
     width: 100%;
-    height: 100vh;
-    display: flex;
-    font-family: 'Kanit', sans-serif;
-  }
-  .LoginBody.Tablet{
-    width: 100%;
-    height: 100vh;
+    height: 200vh;
     display: none;
     font-family: 'Kanit', sans-serif;
   }
   .LoginBody{
     width: 100%;
-    height: 100vh;
+    height: max-content;
     display: none;
     font-family: 'Kanit', sans-serif;
   }
   
-  .LoginLeft.Mobile{
-    width: 60%;
-    height: 100%;
+  .LoginBodyMobile{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    font-family: 'Kanit', sans-serif;
+  }
+  
+  .LoginLeftMobile{
+    width: 100%;
+    height: 100vh;
     display: flex;
   }
   
-  .LoginLeft.Mobile img{
+  .LoginLeftMobile img{
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
   
-  .LoginRight.Mobile{
-    width: 40%;
+  .LoginRightMobile{
+    width: 100%;
     height: 100%;
     background: #fff;
     display: flex;
     justify-content: center;
+    background-image: url(../../../assets/LoginImg.jpg);
     align-items: center;
+    background-size: cover;
   }
   
-  .LoginWrapper.Mobile{
+  .LoginWrapperMobile{
     width: 80%;
     height: 80%;
-    background: #00B4D8;
+    background: #ffffffc8;
+    border-radius: 10px;
+    border: 1px solid #00B4D8;
   }
   
-  .LoginWrapper.Mobile h1{
+  .LoginWrapperMobile h1{
     width: 100%;
     height: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 45px;
-    font-weight: 600;
+    font-weight: 400;
   }
   
-  .InputDivs.Mobile{
+  .InputDivsMobile{
     width: 100%;
     height: 65%;
     display: flex;
@@ -409,7 +414,7 @@
     justify-content: space-around;
   }
   
-  .EmailDiv.Mobile{
+  .EmailDivMobile{
     width: 90%;
     height: 25%;
     display: flex;
@@ -417,19 +422,19 @@
     /* background: #000; */
   }
   
-  .EmailDiv.Mobile label{
-    font-size: 30px;
+  .EmailDivMobile label{
+    font-size: 24px;
   }
-  .EmailDiv.Mobile input{
+  .EmailDivMobile input{
     width: 100%;
     height: 50%;
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
-    font-size: 20px;
+    font-size: 16px;
   }
   
-  .PasswordDiv.Mobile{
+  .PasswordDivMobile{
     width: 90%;
     height: 25%;
     display: flex;
@@ -437,58 +442,59 @@
     /* background: #000; */
   }
   
-  .PasswordDiv.Mobile label{
-    font-size: 30px;
+  .PasswordDivMobile label{
+    font-size: 24px;
   }
-  .PasswordDiv.Mobile input{
+  .PasswordDivMobile input{
     width: 100%;
     height: 50%;
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
-    font-size: 20px;
+    font-size: 16px;
   }
   
-  .ForgetPwd.Mobile{
+  .ForgetPwdMobile{
     width: 90%;
     text-align: end;
-    font-size: 20px;
+    font-size: 16px;
   }
   
-  .LoginDiv.Mobile{
+  .LoginDivMobile{
     width: 90%;
     height: 12%;
     /* background: #000; */
   }
-  .LoginDiv.Mobile button{
+  .LoginDivMobile button{
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    border: none;
+    border: 2px solid #00B4D8;
     cursor: pointer;
-    font-size: 25px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 400;
+    background-color: #fff;
   }
   
-  .ExploreDiv.Mobile{
+  .ExploreDivMobile{
     width: 90%;
     height: 12%;
     margin-top: 20px;
   }
   
-  .ExploreDiv.Mobile button{
+  .ExploreDivMobile button{
     width: 100%;
     height: 100%;
     border-radius: 10px;
     border: 2px solid #fff;
     cursor: pointer;
-    font-size: 25px;
-    font-weight: 700;
-    background: none;
+    font-size: 22px;
+    font-weight: 400;
+    background: #00B4D8;
   }
   
-  .DontAcc.Mobile{
-    font-size: 20px;
+  .DontAccMobile{
+    font-size: 16px;
   }
 
 
