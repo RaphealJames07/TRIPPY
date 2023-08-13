@@ -72,7 +72,7 @@ const ForgetPassword = () => {
                             </button>
                             <p>
                                 <Link
-                                    to="/ForgetPasswordConfirm"
+                                    to="/Login"
                                     style={{ textDecoration: "none" }}
                                 >
                                     Back to Login
