@@ -10,7 +10,7 @@ const Intro = () => {
                     <h1>Trippy</h1>
                     <h3>Explore the world, get Trippy.</h3>
                     <Link
-                        to="/Login"
+                        to="/Home"
                         style={{ color: "black", textDecoration: "none" }}
                     >
                         <button>Explore</button>

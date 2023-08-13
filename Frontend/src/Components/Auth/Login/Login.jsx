@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { trippyUserLogin } from "../../Redux/Features";
 import axios from "axios";
+import NetworkError from "../../Functions/NetworkError";
 
 const Login = () => {
     const nav = useNavigate();
@@ -13,17 +14,23 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [networkErr, setNetworkErr] = useState(false);
     const [message, setMessage] = useState({
         error: false,
         value: "",
         msg: "",
     });
+    const [inputHasError, setInputHasError] = useState(false);
     const data = { email, password };
     const url = "https://trippyapiv1.onrender.com/trippy/signin";
 
     const handleLogin = (e) => {
         e.preventDefault();
         setLoading(true);
+
+        if (networkErr) {
+            setNetworkErr(false); // Reset networkErr to false
+        }
 
         axios
             .post(url, data)
@@ -36,13 +43,22 @@ const Login = () => {
                 nav("/Home");
             })
             .catch((err) => {
+                setLoading(false);
                 console.log(err);
+                const Neterror = err.message;
+                if (Neterror === "Network Error") {
+                    console.log(Neterror);
+                    setNetworkErr(true);
+                }
+                const badError = err.response.data.message;
+                if (badError === "invalid credentials") {
+                    setInputHasError(true); // Set input error state to true
+                }
                 setMessage({
                     error: true,
                     value: "email",
                     msg: err.response.data.error,
                 });
-                setLoading(false);
             });
     };
 
@@ -80,7 +96,18 @@ const Login = () => {
                                 />
                                 <p>{message.msg}</p>
                             </div>
-                            <p className="ForgetPwd">Forgot Password?</p>
+                            <p className="ForgetPwd">
+                                <Link
+                                    style={{
+                                        textDecoration: "none",
+                                        color: "black",
+                                        cursor: "pointer",
+                                    }}
+                                    to="/ForgetPassword"
+                                >
+                                    Forget Password ?
+                                </Link>
+                            </p>
                             <div className="LoginDiv">
                                 <button onClick={(e) => handleLogin(e)}>
                                     {loading ? "Loading..." : "Login"}
@@ -145,7 +172,16 @@ const Login = () => {
                                     <p>{message.msg}</p>
                                 </div>
                                 <p className="ForgetPwdTablet">
-                                    Forgot Password?
+                                    <Link
+                                        style={{
+                                            textDecoration: "none",
+                                            color: "black",
+                                            cursor: "pointer",
+                                        }}
+                                        to="/ForgetPassword"
+                                    >
+                                        Forget Password ?
+                                    </Link>
                                 </p>
                                 <div className="LoginDivTablet">
                                     <button onClick={(e) => handleLogin(e)}>
@@ -183,6 +219,9 @@ const Login = () => {
             {/* Elements for Mobile */}
             <div className="LoginBodyMobile">
                 <div className="LoginLeftMobile">
+                    <div className="NetworkBox">
+                        {networkErr ? <NetworkError /> : null}
+                    </div>
                     <div className="LoginRightMobile">
                         <div className="LoginWrapperMobile">
                             <h1>Login</h1>
@@ -190,6 +229,11 @@ const Login = () => {
                                 <div className="EmailDivMobile">
                                     <label htmlFor="Email">Email</label>
                                     <input
+                                        style={{
+                                            borderColor: inputHasError
+                                                ? "red"
+                                                : "initial",
+                                        }}
                                         type="email"
                                         placeholder="Input Your Email"
                                         value={email}
@@ -202,6 +246,11 @@ const Login = () => {
                                 <div className="PasswordDivMobile">
                                     <label htmlFor="Password">Password</label>
                                     <input
+                                        style={{
+                                            borderColor: inputHasError
+                                                ? "red"
+                                                : "initial",
+                                        }}
                                         type="password"
                                         placeholder="Input Your Password"
                                         value={password}
@@ -212,7 +261,16 @@ const Login = () => {
                                     <p>{message.msg}</p>
                                 </div>
                                 <p className="ForgetPwdMobile">
-                                    Forgot Password?
+                                    <Link
+                                        style={{
+                                            textDecoration: "none",
+                                            color: "black",
+                                            cursor: "pointer",
+                                        }}
+                                        to="/ForgetPassword"
+                                    >
+                                        Forget Password ?
+                                    </Link>
                                 </p>
                                 <div className="LoginDivMobile">
                                     <button onClick={(e) => handleLogin(e)}>

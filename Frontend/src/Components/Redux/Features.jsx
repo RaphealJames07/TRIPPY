@@ -49,6 +49,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     trippyUser: { token: "", firstName: "", lastName: "", email: "" },
+    allApiData: [],
+    allToursData:[],
 };
 
 const features = createSlice({
@@ -64,9 +66,17 @@ const features = createSlice({
             // state.trippyUser = { id: "", token: "", name: "", email: "" };
             state.trippyUser = null;
         },
+        trippyApiCategories:(state, {payload})=>{
+            state.allApiData = payload;
+            // console.log('All Category Now working', payload)
+        },
+        trippyApiTours:(state, {payload})=>{
+            state.allToursData = payload;
+            // console.log('All Tours Now working', payload)
+        },
     },
 });
 
-export const { trippyUserLogin, trippyUserLogOut } = features.actions;
+export const { trippyUserLogin, trippyUserLogOut, trippyApiCategories, trippyApiTours } = features.actions;
 
 export default features.reducer;

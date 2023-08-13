@@ -214,7 +214,7 @@
 }
 
 .ServicesWrapper{
-  width: 85%;
+  width: 95%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -249,7 +249,8 @@
   border-radius: 10px;
   flex-wrap: nowrap;
   overflow-x: auto;
-  gap: 30px;
+  gap: 40px;
+  padding-left: 15px;
 }
 
 .ServiceItem1Box{

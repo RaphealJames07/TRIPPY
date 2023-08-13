@@ -12,10 +12,9 @@
 
 .NatureBody{
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   /* background: red; */
-  display: flex;
-  justify-content: center;
+  
 }
 
 .NatureBodyWrap{
@@ -25,14 +24,11 @@
 
 .NatureBodyText{
   width: 100%;
-  height: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 35%;
 }
 .NatureBodyText h1{
   width: 100%;
-  height: 55%;
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,25 +36,24 @@
   font-weight: 500;
 }
 .NatureBodyText p{
-  width: 60%;
+  width: 100%;
   height: 30%;
   display: flex;
   justify-content: center;
   font-size: 22px;
   font-weight: 300;
-  text-align: center;
-  align-items: center;
 }
 
 .NatureImgDiv{
   width: 100%;
-  height: 60%;
+  height: 65%;
   display: flex;
+  gap: 80px;
   flex-wrap: nowrap;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; 
   scroll-behavior: smooth;
-  gap: 5px;
+  padding: 10px 0;
 }
 .NatureImgDiv::-webkit-scrollbar{
   display: none;
@@ -74,7 +69,6 @@
   height: 100%;
   display: flex;
 }
-
 
 /* End of Media Query Styling For Desktop Device */
 
@@ -107,7 +101,7 @@
 
 .NatureBody{
   width: 100%;
-  height: 70vh;
+  height: 75vh;
   /* background: red; */
   display: flex;
   justify-content: center;
@@ -120,7 +114,7 @@
 
 .NatureBodyText{
   width: 100%;
-  height: 45%;
+  height: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,12 +136,12 @@
   font-size: 18px;
   font-weight: 300;
   text-align: center;
-  align-items: start;
+  /* align-items: center; */
 }
 
 .NatureImgDiv{
   width: 100%;
-  height: 55%;
+  height: 60%;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;

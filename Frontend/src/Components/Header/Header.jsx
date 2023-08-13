@@ -14,11 +14,11 @@ const Header = () => {
     const Dispatch = useDispatch();
 
     const user = useSelector((state) => state.Trippy.trippyUser);
-    if (user) {
-        console.log("User is Available: ", user);
-    } else {
-        console.log("User is Unavailable");
-    }
+    // if (user) {
+    //     console.log("User is Available: ", user);
+    // } else {
+    //     console.log("User is Unavailable");
+    // }
 
     const handleDropdown = () => {
         document.querySelector(".HeaderBodyMobile").classList.remove("active");
