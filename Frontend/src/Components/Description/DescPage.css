@@ -20,7 +20,44 @@
   width: 100%;
   height: 45%;
   background: #000;
+  display: flex;
+  justify-content: space-between;
 }
+.leftarrow{
+  width: 5%;
+  height: 100%;
+  background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theleftarrowicon{
+  width: 20%;
+  height: 50%;
+  background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.therightarrowicon{
+  width: 20%;
+  height: 50%;
+  background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightarrow{
+  width: 5%;
+  height: 100%;
+  background-color: brown;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
 .DescDown{
   width: 100%;
   height: 55%;
