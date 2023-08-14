@@ -12,18 +12,18 @@
 
 .DescBody{
   width: 100%;
-  height: 110vh;
+  height: 130vh;
   font-family: 'Kanit', sans-serif;
 }
 
 .DescTop{
   width: 100%;
-  height: 55%;
+  height: 45%;
   background: #000;
 }
 .DescDown{
   width: 100%;
-  height: 45%;
+  height: 55%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +35,7 @@
 
 .DescDownInitials{
   width: 95%;
-  height: 30%;
+  height: 20%;
   display: flex;
   justify-content: space-between;
 }
@@ -67,7 +67,7 @@
 
 .DescNav{
   width: 100%;
-  height: 15%;
+  height: 10%;
 }
 
 .DescNav ul{
@@ -95,12 +95,12 @@
 
 .DescBoard{
   width: 100%;
-  height: 40%;
+  height: 60%;
 }
 
 .DescButtonBook{
   width: 90%;
-  height: 15%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: end;
@@ -110,6 +110,127 @@
   height: 50px;
   cursor: pointer;
 }
+
+.ReviewContainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.ReviewBody{
+  width: 65%;
+  height: 100%;
+}
+
+.CommentBody{
+  width: 45%;
+  height: 95%;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.CommentFields{
+  width: 80%;
+  height: 50%;
+}
+.CommentFields label{
+  width: 50%;
+  height: 50%;
+}
+
+.CommentFields input{
+  width: 50%;
+  height: 50%;
+}
+
+.CommentFields .CommentFieldText{
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+}
+
+.CommentFields .CommentFieldStar{
+  width: 50px;
+  height: 40px;
+}
+
+.ReviewsHeader{
+  width: 100%;
+  height: 20%;
+}
+
+.ReviewCommentsSec{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto;
+}
+.ReviewCommentsSec::-webkit-scrollbar{
+  display: none;
+}
+
+.ReviewComment1{
+  width: 100%;
+  height: 100px;
+  flex: 0 0 auto;
+}
+
+.ReviewComment1Info{
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+
+.ReviewComment1Pfp{
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ReviewComment1Pfp img{
+  width: 50px;
+  height: 50px;
+  background: purple;
+  border-radius: 50%;
+}
+
+.ReviewComment1Details{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ReviewComment1Text{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ReviewComment1Text p{
+  width: 95%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
