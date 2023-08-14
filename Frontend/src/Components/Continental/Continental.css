@@ -12,15 +12,16 @@
 
 .ContiBody{
   width: 100%;
-  height: 60vh;
-  /* background: #000; */
+  height: 80vh;
+  background: #f0f0f0;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .ContiWrapper{
   width: 100%;
-  height: 100%;
+  height: 95%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -29,7 +30,6 @@
 .ContiTop{
   width: 85%;
   height: 30%;
-
 }
 
 .ContiHeadetTextDiv{
@@ -40,77 +40,124 @@
 }
 
 .ContiNav{
-  width: 100%;
+  width: 60%;
   height: 50%;
-}
-.ContiNav ul{
-  width: 40%;
-  height: 50%;
-  /* background: #000; */
   display: flex;
   justify-content: space-between;
-  list-style-type: none;
 }
-.ContiNav ul li{
-  cursor: pointer;
-  width: 15%;
-  height: 100%;
+.ContiNav div{
+  width: 20%;
+  height: 60%;
   display: flex;
-  justify-content: center;
-  /* background: grey; */
   align-items: center;
-  border-radius: 3px;
-}
-.ContiNav ul li:last-child{
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 300;
   cursor: pointer;
-  width: 35%;
-  height: 100%;
+}
+.ContiNav div:first-child{
+  width: 20%;
+  height: 60%;
   display: flex;
-  justify-content: center;
-  /* background: grey; */
   align-items: center;
-
+  background: #aaaaaa;
+  justify-content: center;
+}
+.ContiNav div:last-child{
+  width: 27%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.ContiNav ul li:first-child{
-  background: #cfcfcf;
-}
 
 .ContiDown{
-  position: relative;
-  width: 100%;
+  /* position: relative; */
+  width: 95%;
   height: 70%;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  cursor: grab;
   -webkit-overflow-scrolling: touch; 
   scroll-behavior: smooth;
+  gap: 20px;
 }
 
-.ContiDown:active {
-  cursor: grabbing;
-}
 .ContiDown::-webkit-scrollbar{
   display: none;
 }
 
 .ContiImgBox{
-  width: 450px;
-  max-width: 100%;
-  /* background: #000; */
+  width: 340px;
   scroll-snap-align: center;
-  margin-right: 10px;
   flex: 0 0 auto;
-  border: 1px solid #000;
   user-select: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ContiImgDiv{
+  width: 100%;
+  height: 60%;
 }
 .ContiImgBox img{
   width: 100%;
   height: 100%;
   user-select: none;
   object-fit: cover;
+  border-radius: 5px;
+
 }
+
+.ContiCTA{
+  /* position: absolute;
+  bottom: 0; */
+  width: 100%;
+  height: 40%;
+  background: #ffffff;
+  border-radius: 0 0 5px 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ContiCTA h3{
+  font-size: 22px;
+  font-weight: 200;
+}
+.ContiCTA h4{
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.ContiCTABtnRev{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ContiCTAREV{
+  width: 70%;
+  display: flex;
+  align-items: center;
+  font-weight: 200;
+}
+.ContiCTAREV span{
+  margin-left: 10px;
+}
+
+.ContiCTABtnRev button{
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #000;
+  font-size: 16px;
+}
+
 
 /* End of Media Query Styling For Desktop Device */
 
@@ -234,14 +281,175 @@
 
 /* Media Query Styling for Mobile Device */
 
-@media only screen and (max-width: 414px){
+@media only screen and (max-width: 428px){
   @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .ContiBody{
+    width: 100%;
+    height: 80vh;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ContiWrapper{
+    width: 100%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .ContiTop{
+    width: 85%;
+    height: 30%;
+  }
+  
+  .ContiHeadetTextDiv{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    
+  }
+  .ContiHeadetTextDiv h1{
+    font-size: 24px;
+    font-weight: 400;
+  }
+  
+  .ContiNav{
+    width: 100%;
+    height: 50%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .ContiNav div{
+    width: 150px;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 300;
+    cursor: pointer;
+    flex: 0 0 auto;
+    user-select: none;
+  }
+  .ContiNav div:first-child{
+    width: 100px;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    background: #aaaaaa;
+    justify-content: center;
+    flex: 0 0 auto;
+    user-select: none;
+  }
+  .ContiNav div:last-child{
+    width: 200px;
+    /* background: #000; */
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    user-select: none;
+  }
+  
+
+  
+  .ContiDown{
+    /* position: relative; */
+    width: 95%;
+    height: 70%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+    scroll-behavior: smooth;
+    gap: 20px;
+  }
+  
+  .ContiDown::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .ContiImgBox{
+    width: 340px;
+    scroll-snap-align: center;
+    flex: 0 0 auto;
+    user-select: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ContiImgDiv{
+    width: 100%;
+    height: 60%;
+  }
+  .ContiImgBox img{
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    object-fit: cover;
+    border-radius: 5px;
+  
+  }
+  
+  .ContiCTA{
+    /* position: absolute;
+    bottom: 0; */
+    width: 100%;
+    height: 40%;
+    background: #ffffff;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .ContiCTA h3{
+    font-size: 22px;
+    font-weight: 200;
+  }
+  .ContiCTA h4{
+    font-size: 16px;
+    font-weight: 200;
+  }
+  
+  .ContiCTABtnRev{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .ContiCTAREV{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    font-weight: 200;
+  }
+  .ContiCTAREV span{
+    margin-left: 10px;
+  }
+  
+  .ContiCTABtnRev button{
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #000;
+    font-size: 16px;
+  }
 
 
 }
