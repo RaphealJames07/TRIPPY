@@ -17,7 +17,7 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [message, setMessage] = useState({
         error: false,
-        value: "",
+        type: "",
         msg: "",
     });
     const [loading, setLoading] = useState(false);
@@ -26,22 +26,91 @@ const SignUp = () => {
 
     const signUp = (e) => {
         e.preventDefault();
-    
-        setMessage("");
-        setLoading(true);
 
-        axios
-            .post(url, data)
-            .then((res) => {
-                console.log(res);
-                nav("/Verify");
-            })
-            .catch((err) => {
-                console.log("Error:", err.response.data); // Log the entire error response
-                const errorMsg = err.response?.data?.error;
-                setMessage({ error: true, value: "email", msg: errorMsg });
-                setLoading(false);
+        if (!firstName) {
+            setMessage({
+                error: true,
+                type: "firstName",
+                msg: "*Input your name",
             });
+            setLoading(false);
+        } else if (!lastName) {
+            setMessage({
+                error: true,
+                type: "lastName",
+                msg: "* Input last Name",
+            });
+            setLoading(false);
+        } else if (!email) {
+            setMessage({
+                error: true,
+                type: "email",
+                msg: "* Enter Email Address",
+            });
+            setLoading(false);
+        } else if (!email.includes("@")) {
+            setMessage({
+                error: true,
+                type: "email",
+                msg: "* email must include @",
+            });
+            setLoading(false);
+        } else if (!password) {
+            setMessage({
+                error: true,
+                type: "password",
+                msg: "*Enter Password",
+            });
+            setLoading(false);
+        } else if (
+            !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+                password
+            )
+        ) {
+            setMessage({
+                error: true,
+                type: "password",
+                msg: "* Password must contain uppercase, lowercase, digit, and special character",
+            });
+            setLoading(false);
+        } else if (password.length < 8) {
+            setMessage({
+                error: true,
+                type: "password",
+                msg: "* Password must be at least 8 characters long",
+            });
+            setLoading(false);
+        } else if (!confirmPassword) {
+            setMessage({
+                error: true,
+                type: "confirmPassword",
+                msg: "*Confirm password",
+            });
+            setLoading(false);
+        } else if (password !== confirmPassword) {
+            setMessage({
+                error: true,
+                type: "confirmPassword",
+                msg: " *Passwords do not match",
+            });
+            setLoading(false);
+        } else {
+            setMessage("");
+            setLoading(true);
+
+            axios
+                .post(url, data)
+                .then((res) => {
+                    console.log(res);
+                    nav("/Verify");
+                })
+                .catch((err) => {
+                    console.log("Error:", err);
+                    const errorMsg = err.response?.data?.error;
+                    setMessage({ error: true, value: "email", msg: errorMsg });
+                    setLoading(false);
+                });
+        }
     };
 
     return (
@@ -62,68 +131,111 @@ const SignUp = () => {
                                 </div>
                             </div>
                             <div className="SignUpNameDivInput">
-                                <input
-                                    type="text"
-                                    placeholder="Enter your First Name"
-                                    value={firstName}
-                                    onChange={(e) =>
-                                        setFirstName(e.target.value)
-                                    }
-                                />
-                                .
-                                {message.type === "firstName" ? (
-                                    <p
+                                <div className="SignUpNameDivInput1">
+                                    <input
+                                        type="text"
+                                        placeholder="Enter your First Name"
+                                        value={firstName}
+                                        onChange={(e) =>
+                                            setFirstName(e.target.value)
+                                        }
                                         style={{
-                                            color: "red",
-                                            fontSize: "10px",
-                                            marginLeft: "5px",
+                                            border:
+                                                message.type === "firstName"
+                                                    ? "2px solid red"
+                                                    : null,
                                         }}
-                                    >
-                                        {message.msg}
-                                    </p>
-                                ) : null}
-                                <input
-                                    type="text"
-                                    placeholder="Enter your Last Name"
-                                    value={lastName}
-                                    onChange={(e) =>
-                                        setLastName(e.target.value)
-                                    }
-                                />
-                                {message.type === "lastName" ? (
-                                    <p
+                                    />
+                                    {message.type === "firstName" ? (
+                                        <p
+                                            style={{
+                                                color: "red",
+                                                fontSize: "14px",
+                                                marginLeft: "5px",
+                                            }}
+                                        >
+                                            {message.msg}
+                                        </p>
+                                    ) : null}
+                                </div>
+
+                                <div className="SignUpNameDivInput2">
+                                    <input
+                                        type="text"
+                                        placeholder="Enter your Last Name"
+                                        value={lastName}
+                                        onChange={(e) =>
+                                            setLastName(e.target.value)
+                                        }
                                         style={{
-                                            color: "red",
-                                            fontSize: "10px",
-                                            marginLeft: "5px",
+                                            border:
+                                                message.type === "lastName"
+                                                    ? "2px solid red"
+                                                    : null,
                                         }}
-                                    >
-                                        {message.msg}
-                                    </p>
-                                ) : null}
+                                    />
+                                    {message.type === "lastName" ? (
+                                        <p
+                                            style={{
+                                                color: "red",
+                                                fontSize: "14px",
+                                                marginLeft: "5px",
+                                            }}
+                                        >
+                                            {message.msg}
+                                        </p>
+                                    ) : null}
+                                </div>
                             </div>
+
                             <div className="SignUpEmailDiv">
-                                <label htmlFor="Email">Email</label>
+                                <label htmlFor="Email">
+                                    Email
+                                    <span>
+                                        {message.type === "email" ? (
+                                            <p
+                                                style={{
+                                                    color: "red",
+                                                    fontSize: "14px",
+                                                    marginLeft: "5px",
+                                                }}
+                                            >
+                                                {message.msg}
+                                            </p>
+                                        ) : null}
+                                    </span>
+                                </label>
+
                                 <input
                                     type="email"
                                     placeholder="Input Your Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    style={{
+                                        border:
+                                            message.type === "email"
+                                                ? "2px solid red"
+                                                : null,
+                                    }}
                                 />
-                                {message.type === "email" ? (
-                                    <p
-                                        style={{
-                                            color: "red",
-                                            fontSize: "10px",
-                                            marginLeft: "5px",
-                                        }}
-                                    >
-                                        {message.msg}
-                                    </p>
-                                ) : null}
                             </div>
                             <div className="SignUpPasswordDiv">
-                                <label htmlFor="Password">Password</label>
+                                <label htmlFor="Password">
+                                    Password
+                                    <span>
+                                        {message.type === "password" ? (
+                                            <p
+                                                style={{
+                                                    color: "red",
+                                                    fontSize: "14px",
+                                                    marginLeft: "5px",
+                                                }}
+                                            >
+                                                {message.msg}
+                                            </p>
+                                        ) : null}
+                                    </span>
+                                </label>
                                 <input
                                     type="password"
                                     placeholder="Input Your Password"
@@ -131,22 +243,30 @@ const SignUp = () => {
                                     onChange={(e) =>
                                         setPassword(e.target.value)
                                     }
+                                    style={{
+                                        border:
+                                            message.type === "password"
+                                                ? "2px solid red"
+                                                : null,
+                                    }}
                                 />
-                                {message.type === "password" ? (
-                                    <p
-                                        style={{
-                                            color: "red",
-                                            fontSize: "10px",
-                                            marginLeft: "5px",
-                                        }}
-                                    >
-                                        {message.msg}
-                                    </p>
-                                ) : null}
                             </div>
                             <div className="SignUpPasswordDiv">
-                                <label htmlFor="Password">
-                                    Confirm Password
+                                <label htmlFor="confirmPassword">
+                                    Confirm Password{" "}
+                                    <span className="span2">
+                                        {message.type === "confirmPassword" ? (
+                                            <p
+                                                style={{
+                                                    color: "red",
+                                                    fontSize: "14px",
+                                                    marginLeft: "5px",
+                                                }}
+                                            >
+                                                {message.msg}
+                                            </p>
+                                        ) : null}
+                                    </span>
                                 </label>
                                 <input
                                     type="password"
@@ -156,17 +276,6 @@ const SignUp = () => {
                                         setConfirmPassword(e.target.value)
                                     }
                                 />
-                                {message.type === "confirmPassword" ? (
-                                    <p
-                                        style={{
-                                            color: "red",
-                                            fontSize: "10px",
-                                            marginLeft: "5px",
-                                        }}
-                                    >
-                                        {message.msg}
-                                    </p>
-                                ) : null}
                             </div>
                             <div className="SignUpBtnDiv">
                                 <button onClick={(e) => signUp(e)}>

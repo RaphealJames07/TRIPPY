@@ -10,6 +10,7 @@ import ForgetPassword from "./Components/Auth/ForgetPassword/ForgetPassword";
 import ForgetPwd from "./Components/Auth/ForgetPassword/ForgetPwd2";
 import ResetPassword from "./Components/Auth/ResetPassword/ResetPassword";
 import ResetPwdSuccess from "./Components/Auth/ResetPassword/ResetPwdSuccess";
+import Description from "./Components/Description/Description";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/ForgetPasswordConfirm" element={<ForgetPwd />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/ResetPwdSuccess" element={<ResetPwdSuccess />} />
+            <Route path="/Description" element={<Description />} />
           </Routes>
         </HashRouter>
       </div>

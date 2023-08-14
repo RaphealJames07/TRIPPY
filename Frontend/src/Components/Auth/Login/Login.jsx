@@ -26,40 +26,63 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        setLoading(true);
 
         if (networkErr) {
             setNetworkErr(false); // Reset networkErr to false
-        }
-
-        axios
-            .post(url, data)
-            .then((res) => {
-                console.log(res.data.user);
-                const { email, firstName, lastName, token } = res.data.user;
-                Dispatch(
-                    trippyUserLogin({ email, firstName, lastName, token })
-                );
-                nav("/Home");
-            })
-            .catch((err) => {
-                setLoading(false);
-                console.log(err);
-                const Neterror = err.message;
-                if (Neterror === "Network Error") {
-                    console.log(Neterror);
-                    setNetworkErr(true);
-                }
-                const badError = err.response.data.message;
-                if (badError === "invalid credentials") {
-                    setInputHasError(true); // Set input error state to true
-                }
-                setMessage({
-                    error: true,
-                    value: "email",
-                    msg: err.response.data.error,
-                });
+            setLoading(false);
+        } else if (!email) {
+            setMessage({
+                error: true,
+                type: "email",
+                msg: "Input your email",
             });
+            setLoading(false);
+        } else if (!email.includes("@")) {
+            setMessage({
+                error: true,
+                type: "email",
+                msg: "Email should contain @",
+            });
+            setLoading(false);
+        } else if (!password) {
+            setMessage({
+                error: true,
+                type: "password",
+                msg: "Enter Password",
+            });
+            setLoading(false);
+        } else {
+            setMessage("");
+            setLoading(true);
+            axios
+                .post(url, data)
+                .then((res) => {
+                    console.log(res.data.user);
+                    const { email, firstName, lastName, token } = res.data.user;
+                    Dispatch(
+                        trippyUserLogin({ email, firstName, lastName, token })
+                    );
+                    nav("/Home");
+                })
+                .catch((err) => {
+                    setLoading(false);
+                    console.log(err);
+                    const Neterror = err.message;
+                    if (Neterror === "Network Error") {
+                        console.log(Neterror);
+                        setNetworkErr(true);
+                    }
+                    const badError = err.response.data.message;
+                    if (badError === "invalid credentials") {
+                        setInputHasError(true); // Set input error state to true
+                    }
+                    setMessage({
+                        error: true,
+                        value: "email",
+                        msg: err.response.data.error,
+                    });
+                });
+        }
     };
 
     return (
@@ -251,7 +274,7 @@ const Login = () => {
                                                 ? "red"
                                                 : "initial",
                                         }}
-                                        type="password"
+                                        type="passwords"
                                         placeholder="Input Your Password"
                                         value={password}
                                         onChange={(e) =>
