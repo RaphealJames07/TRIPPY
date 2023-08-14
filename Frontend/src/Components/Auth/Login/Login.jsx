@@ -123,7 +123,7 @@ const Login = () => {
                                 <Link
                                     style={{
                                         textDecoration: "none",
-                                        color: "black",
+                                        color: "blue",
                                         cursor: "pointer",
                                     }}
                                     to="/ForgetPassword"

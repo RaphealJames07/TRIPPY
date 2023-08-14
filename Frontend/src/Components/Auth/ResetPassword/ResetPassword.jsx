@@ -181,7 +181,7 @@ const ResetPassword = () => {
                             </button>
                             <p>
                                 <Link
-                                    to="/ResetPwdSuccess"
+                                    to="/Login"
                                     style={{ textDecoration: "none" }}
                                 >
                                     Back to Login

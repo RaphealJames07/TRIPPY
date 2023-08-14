@@ -24,7 +24,7 @@ const ForgetPwd = () => {
                             </p>
                             <p className="BLGN">
                                 <Link
-                                    to="/reset-password"
+                                    to="/Login"
                                     style={{ textDecoration: "none" }}
                                 >
                                     Back to Login
