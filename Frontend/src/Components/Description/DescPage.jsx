@@ -1,20 +1,62 @@
 import "./DescPage.css";
 import { GrLocation } from "react-icons/gr";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import Reviews from "./Reviews";
 import Amenities from "./Amenities";
+import { BiSolidLeftArrow, BiSolidRightArrow} from 'react-icons/bi';
+
 
 const DescPage = () => {
     const [description, setDescription] = useState(false);
     const [amenities, setAmenities] = useState(false);
     const [reviews, setReviews] = useState(false);
+    const [images, setImages] = useState([]);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        fetchImages();
+    }, []);
+
+    const fetchImages = async () => {
+        try {
+            const response = await axios.get("https://trippyapiv1.onrender.com/trippy/find-categories");
+            setImages(response.data.categories);
+        } catch (error) {
+            console.error("Error fetching images:", error);
+        }
+    };
+
+    useEffect(() => {
+        if (images.length === 0) return;
+        
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 5000); 
+        return () => clearInterval(interval);
+    }, [images]);
+
+    const goToPreviousImage = () => {
+        setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    };
+
+    const goToNextImage = () => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    
 
     return (
         <>
             <div className="DescBody">
                 <div className="DescTop">
-                    <img src="" alt="" />
+                    <div className="leftarrow" onClick={goToPreviousImage}>
+                        <div className="theleftarrowicon"><BiSolidLeftArrow/></div>
+                    </div>
+                    <div className="rightarrow" onClick={goToNextImage}>
+                        <div className="therightarrowicon"><BiSolidRightArrow/></div>
+                    </div>
                 </div>
                 <div className="DescDown">
                     <div className="DescDownWrap">
