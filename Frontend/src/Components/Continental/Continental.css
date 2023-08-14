@@ -1,0 +1,361 @@
+
+/* TEMPLATE FOR STYLINGS */
+
+/* Media Query Styling For Desktop Device */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ContiBody{
+  width: 100%;
+  height: 80vh;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ContiWrapper{
+  width: 100%;
+  height: 95%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ContiTop{
+  width: 85%;
+  height: 30%;
+}
+
+.ContiHeadetTextDiv{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.ContiNav{
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+.ContiNav ul{
+  width: 90%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  gap: 60px;
+}
+.ContiNav ul li{
+  width: 20%;
+  height: 100%;
+  cursor: pointer;
+  background: #ffffff42;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.ContiNav ul li.active{
+  width: 20%;
+  height: 100%;
+  cursor: pointer;
+  background: #00000042;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+
+
+.ContiDown{
+  /* position: relative; */
+  width: 95%;
+  height: 70%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; 
+  scroll-behavior: smooth;
+  gap: 20px;
+  /* background: #000; */
+}
+
+.ContiDown::-webkit-scrollbar{
+  display: none;
+}
+
+.ContiImgBox{
+  width: 340px;
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+  user-select: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ContiImgDiv{
+  width: 100%;
+  height: 60%;
+}
+.ContiImgBox img{
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  object-fit: cover;
+  border-radius: 5px;
+
+}
+
+.ContiCTA{
+  /* position: absolute;
+  bottom: 0; */
+  width: 100%;
+  height: 40%;
+  background: #ffffff;
+  border-radius: 0 0 5px 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ContiCTA h3{
+  font-size: 22px;
+  font-weight: 200;
+}
+.ContiCTA h4{
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.ContiCTABtnRev{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ContiCTAREV{
+  width: 70%;
+  display: flex;
+  align-items: center;
+  font-weight: 200;
+}
+.ContiCTAREV span{
+  margin-left: 10px;
+}
+
+.ContiCTABtnRev button{
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #000;
+  font-size: 16px;
+}
+
+
+/* End of Media Query Styling For Desktop Device */
+
+/* Media Query Styling for Tablet Device */
+
+@media only screen and (max-width: 1024px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+
+
+}
+
+/* End of Media Query Styling for Tablet Device */
+
+/* Media Query Styling for Mobile Device */
+
+@media only screen and (max-width: 428px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .ContiBody{
+    width: 100%;
+    height: 80vh;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ContiWrapper{
+    width: 100%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .ContiTop{
+    width: 85%;
+    height: 30%;
+  }
+  
+  .ContiHeadetTextDiv{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .ContiNav{
+    width: 100%;
+    height: 25%;
+    /* display: flex; */
+  }
+  .ContiNav ul{
+    width: 99%;
+    height: 100%;
+    display: flex;
+    list-style: none;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 40px;
+  }
+  .ContiNav ul::-webkit-scrollbar{
+    display: none;
+  }
+  .ContiNav ul li{
+    width: max-content;
+    height: 100%;
+    cursor: pointer;
+    background: #ffffff42;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+    flex: 0 0 auto;
+    user-select: none;
+    padding: 0 10%;
+  }
+  
+  .ContiNav ul li.active{
+    width: max-content;
+    height: 100%;
+    cursor: pointer;
+    background: #00000042;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+  }
+  
+  
+  
+  .ContiDown{
+    /* position: relative; */
+    width: 95%;
+    height: 70%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+    scroll-behavior: smooth;
+    gap: 20px;
+    /* background: #000; */
+  }
+  
+  .ContiDown::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .ContiImgBox{
+    width: 340px;
+    scroll-snap-align: center;
+    flex: 0 0 auto;
+    user-select: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ContiImgDiv{
+    width: 100%;
+    height: 60%;
+  }
+  .ContiImgBox img{
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    object-fit: cover;
+    border-radius: 5px;
+  
+  }
+  
+  .ContiCTA{
+    /* position: absolute;
+    bottom: 0; */
+    width: 100%;
+    height: 40%;
+    background: #ffffff;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .ContiCTA h3{
+    font-size: 22px;
+    font-weight: 200;
+  }
+  .ContiCTA h4{
+    font-size: 16px;
+    font-weight: 200;
+  }
+  
+  .ContiCTABtnRev{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .ContiCTAREV{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    font-weight: 200;
+  }
+  .ContiCTAREV span{
+    margin-left: 10px;
+  }
+  
+  .ContiCTABtnRev button{
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #000;
+    font-size: 16px;
+  }
+  
+  
+
+}
+
+/* End of Media Query Styling for Mobile Device */

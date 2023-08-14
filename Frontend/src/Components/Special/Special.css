@@ -1,0 +1,168 @@
+
+/* TEMPLATE FOR STYLINGS */
+
+/* Media Query Styling For Desktop Device */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.SpecialBody{
+  width: 100%;
+  height: 80vh;
+  /* background: red; */
+  
+}
+
+.SpecialBodyWrap{
+  width: 95%;
+  height: 100%;
+}
+
+.SpecialBodyText{
+  width: 100%;
+  height: 35%;
+}
+.SpecialBodyText h1{
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 500;
+}
+.SpecialBodyText p{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.SpecialImgDiv{
+  width: 100%;
+  height: 65%;
+  display: flex;
+  gap: 80px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; 
+  scroll-behavior: smooth;
+}
+.SpecialImgDiv::-webkit-scrollbar{
+  display: none;
+}
+
+.SpecialImgDivItem1{
+  width: 20%;
+  height: 100%;
+  flex: 0 0 auto;
+}
+.SpecialImgDivItem1 img{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+/* End of Media Query Styling For Desktop Device */
+
+/* Media Query Styling for Tablet Device */
+
+@media only screen and (max-width: 1024px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+}
+
+/* End of Media Query Styling for Tablet Device */
+
+/* Media Query Styling for Mobile Device */
+
+@media only screen and (max-width: 428px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.SpecialBody{
+  width: 100%;
+  height: 70vh;
+  /* background: red; */
+  display: flex;
+  justify-content: center;
+}
+
+.SpecialBodyWrap{
+  width: 95%;
+  height: 100%;
+}
+
+.SpecialBodyText{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.SpecialBodyText h1{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 500;
+}
+.SpecialBodyText p{
+  width: 80%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.SpecialImgDiv{
+  width: 100%;
+  height: 65%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; 
+  scroll-behavior: smooth;
+  gap: 5px;
+  padding: 10px 0;
+}
+.SpecialImgDiv::-webkit-scrollbar{
+  display: none;
+}
+
+.SpecialImgDivItem1{
+  width: 70%;
+  height: 100%;
+  flex: 0 0 auto;
+}
+.SpecialImgDivItem1 img{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+}
+
+/* End of Media Query Styling for Mobile Device */
