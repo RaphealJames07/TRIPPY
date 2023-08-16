@@ -29,7 +29,8 @@ const App = () => {
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/ResetPwdSuccess" element={<ResetPwdSuccess />} />
             <Route path="/Description" element={<Description />} />
-            <Route path="/DescPage" element={<DescPage />} />
+            <Route path="/DescPage/:tourId" element={<DescPage />} />
+            {/* <Route path="/DescPage" element={<DescPage />} /> */}
           </Routes>
         </HashRouter>
       </div>

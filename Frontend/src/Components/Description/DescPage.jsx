@@ -1,7 +1,7 @@
 import "./DescPage.css";
 import { GrLocation } from "react-icons/gr";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-// import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
+
 import { useState } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -9,59 +9,26 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateOneTourData } from "../Redux/Features";
-
-// import { useState, useEffect } from "react";
-// import axios from "axios";
+import { useParams } from 'react-router-dom';
 
 const DescPage = () => {
+    const { tourId } = useParams();
     const [description, setDescription] = useState(true);
     const [amenities, setAmenities] = useState(false);
     const [reviews, setReviews] = useState(false);
-    // const [images, setImages] = useState([]);
-    // const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    // useEffect(() => {
-    //     fetchImages();
-    // }, []);
-
-    // const fetchImages = async () => {
-    //     try {
-    //         const response = await axios.get("https://trippyapiv1.onrender.com/trippy/find-categories");
-    //         setImages(response.data.categories);
-    //     } catch (error) {
-    //         console.error("Error fetching images:", error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     if (images.length === 0) return;
-
-    //     const interval = setInterval(() => {
-    //         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    //     }, 5000);
-    //     return () => clearInterval(interval);
-    // }, [images]);
-
-    // const goToPreviousImage = () => {
-    //     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-    // };
-
-    // const goToNextImage = () => {
-    //     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    // };
-
-    const findOne = useSelector((state) => state.Trippy.findOneTourData);
-    const tourId = findOne._id;
-
-    const updatedFindOne = useSelector((state) => state.Trippy.findOneTourData);
-    console.log(findOne);
-    console.log(updatedFindOne);
-
+    
     const [rating, setRating] = useState();
     const [comment, setComment] = useState("");
 
+    const findOne = useSelector((state) => state.Trippy.findOneTourData);
+    // const tourId = findOne._id;
+
+    const updatedFindOne = useSelector((state) => state.Trippy.findOneTourData);
+    // console.log(findOne);
+    console.log('new data', updatedFindOne);
+
     const userToken = useSelector((state) => state.Trippy.trippyUser.token);
-    console.log(userToken);
+    // console.log(userToken);
     const Dispatch = useDispatch;
 
     const handleCommentUpload = () => {
@@ -79,12 +46,18 @@ const DescPage = () => {
             )
             .then((res) => {
                 console.log("Comment posted", res);
-                const updateData = res.data;
-                console.log(updateData);
-                Dispatch(updateOneTourData(updateData));
-            });
+                const updatedTourData = { ...findOne, comments: res.data.comments };
+                Dispatch(updateOneTourData(updatedTourData));
+                setDescription(true);
+                setAmenities(false);
+                setReviews(true);
+                setRating("");
+                setComment("");
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
     };
-    console.log(updatedFindOne);
 
     return (
         <>
@@ -94,24 +67,19 @@ const DescPage = () => {
                 {updatedFindOne ? (
                     <div className="DescBody">
                         <div className="DescTop">
-                            {/* <div className="leftarrow" onClick={goToPreviousImage}>
-                        <div className="theleftarrowicon"><BiSolidLeftArrow/></div>
-                    </div>
-                    <div className="rightarrow" onClick={goToNextImage}>
-                        <div className="therightarrowicon"><BiSolidRightArrow/></div>
-                    </div> */}
-                            <img src={updatedFindOne.images[0]} alt="" />
+                           
+                            <img src={updatedFindOne?.images[0]} alt="" />
                         </div>
                         <div className="DescDown">
                             <div className="DescDownWrap">
                                 <div className="DescDownInitials">
                                     <div className="DescDownHeadText">
-                                        <h1>{updatedFindOne.tourName}</h1>
+                                        <h1>{updatedFindOne?.tourName}</h1>
                                     </div>
                                     <div className="DescDownHeaderInfo">
                                         <span>
                                             <GrLocation />
-                                            <h2>{updatedFindOne.country}</h2>
+                                            <h2>{updatedFindOne?.country}</h2>
                                         </span>
                                         <span>
                                             <AiFillStar />
@@ -156,7 +124,7 @@ const DescPage = () => {
                                 <div className="DescBoard">
                                     {description ? (
                                         <>
-                                            <p>{updatedFindOne.info}</p>
+                                            <p>{updatedFindOne?.info}</p>
                                         </>
                                     ) : reviews ? (
                                         <>
@@ -166,7 +134,7 @@ const DescPage = () => {
                                                         <h2>What People Say</h2>
                                                     </div>
                                                     <div className="ReviewCommentsSec">
-                                                        {updatedFindOne.ratings.map(
+                                                        {updatedFindOne?.ratings.map(
                                                             (item) => (
                                                                 <div
                                                                     className="ReviewComment1"
@@ -290,7 +258,7 @@ const DescPage = () => {
                                             </div>
                                         </>
                                     ) : amenities ? (
-                                        <>{updatedFindOne.amenities}</>
+                                        <>{updatedFindOne?.amenities}</>
                                     ) : null}
                                 </div>
                                 <div className="DescButtonBook">

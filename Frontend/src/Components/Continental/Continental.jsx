@@ -21,19 +21,13 @@ const Continental = () => {
     const Dispatch = useDispatch()
 
     const toursApiData = useSelector((state) => state.Trippy.allApiData);
-    // console.log(toursApiData);
+    console.log(toursApiData);
 
     const africaPlaces = toursApiData
         .filter((obj) => obj.continent === "africa")
         .map((obj) => obj.places)
         .flat();
 
-    // console.log("Africa places are", africaPlaces);
-
-    // const tourId = africaPlaces[0]._id;
-    // console.log("Tour is", tourId);
-
-    // const url = `https://trippyapiv1.onrender.com/trippy/findone-tour/:id`;
 
     const handleViewMore = (tourId) => {
         axios
@@ -44,7 +38,7 @@ const Continental = () => {
                 const tourData = res.data.tour;
                 // console.log(tourData);
                 Dispatch(findOneTour(tourData))
-                nav(`/DescPage`);
+                nav(`/DescPage/${tourId}`);
             })
             .catch((error) => {
                 console.error("Error fetching tour data:", error);
