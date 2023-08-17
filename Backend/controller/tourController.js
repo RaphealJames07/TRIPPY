@@ -1,5 +1,6 @@
 const Tour = require("../model/tourModel");
 const cloudinary = require("../utilities/cloudinary");
+const { getCurrentDateTime } = require("../utilities/currentDate");
 
 //create tour
 const createTour = async (req, res) => {
@@ -80,6 +81,7 @@ const findTourById = async (req, res) => {
     const tour = await Tour.findById(id).populate("ratings.postedBy", [
       "firstName",
       "lastName",
+      "profilePicture",
     ]);
     res.status(200).json({
       success: true,
@@ -169,6 +171,7 @@ const tourRating = async (req, res) => {
     let alreadyRated = tour.ratings.find(
       (obj) => obj.postedBy?.toString() === _id.toString()
     );
+    const date = getCurrentDateTime();
 
     if (alreadyRated) {
       // Update existing rating
@@ -180,7 +183,11 @@ const tourRating = async (req, res) => {
           },
         },
         {
-          $set: { "ratings.$.star": star, "ratings.$.comment": comment },
+          $set: {
+            "ratings.$.star": star,
+            "ratings.$.comment": comment,
+            "ratings.$.postedTime": date,
+          },
         },
         { new: true }
       );
@@ -193,6 +200,7 @@ const tourRating = async (req, res) => {
             ratings: {
               star: star,
               comment: comment,
+              postedTime: date,
               postedBy: _id,
             },
           },
