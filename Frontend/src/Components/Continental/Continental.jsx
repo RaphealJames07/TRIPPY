@@ -6,6 +6,10 @@ import America from "../Continents/America";
 import AllContinent from "../Continents/All";
 import Asia from "../Continents/Asia";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import axios from "axios";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { findOneTour } from "../Redux/Features";
 
 const Continental = () => {
     const [africa, setAfrica] = useState(true);
@@ -13,16 +17,33 @@ const Continental = () => {
     const [asia, setAsia] = useState(false);
     const [america, setAmerica] = useState(false);
     const [all, setAll] = useState(false);
+    const nav = useNavigate();
+    const Dispatch = useDispatch()
 
     const toursApiData = useSelector((state) => state.Trippy.allApiData);
-    // console.log(toursApiData);
+    console.log(toursApiData);
 
     const africaPlaces = toursApiData
         .filter((obj) => obj.continent === "africa")
         .map((obj) => obj.places)
         .flat();
 
-    // console.log("Africa places are", africaPlaces);
+
+    const handleViewMore = (tourId) => {
+        axios
+            .get(
+                `https://trippyapiv1.onrender.com/trippy/findone-tour/${tourId}`
+            )
+            .then((res) => {
+                const tourData = res.data.tour;
+                // console.log(tourData);
+                Dispatch(findOneTour(tourData))
+                nav(`/DescPage/${tourId}`);
+            })
+            .catch((error) => {
+                console.error("Error fetching tour data:", error);
+            });
+    };
 
     return (
         <>
@@ -80,7 +101,7 @@ const Continental = () => {
                                         setAll(false);
                                     }}
                                 >
-                                     Americans
+                                    Americans
                                 </li>
                                 <li
                                     className={all ? "active" : null}
@@ -127,7 +148,15 @@ const Continental = () => {
                                                         Review
                                                     </span>
                                                 </div>
-                                                <button>View More</button>
+                                                <button
+                                                    onClick={() =>
+                                                        handleViewMore(
+                                                            item?._id
+                                                        )
+                                                    }
+                                                >
+                                                    View More
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

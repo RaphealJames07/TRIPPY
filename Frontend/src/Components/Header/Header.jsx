@@ -39,7 +39,7 @@ const Header = () => {
                     <div className="HeaderNavDiv">
                         <nav>
                             <ul>
-                                <li>Home</li>
+                                <li><Link style={{textDecoration:'none'}} to='/Home'>Home</Link></li>
                                 <li>Booking</li>
                                 <li>Explore</li>
                                 <li>About Us</li>

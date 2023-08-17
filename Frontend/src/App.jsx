@@ -11,6 +11,9 @@ import ForgetPwd from "./Components/Auth/ForgetPassword/ForgetPwd2";
 import ResetPassword from "./Components/Auth/ResetPassword/ResetPassword";
 import ResetPwdSuccess from "./Components/Auth/ResetPassword/ResetPwdSuccess";
 import Description from "./Components/Description/Description";
+import DescPage from "./Components/Description/DescPage";
+import Booking from "./Components/Booking/Booking";
+import Flight from "./Components/Booking/Flight";
 
 const App = () => {
   return (
@@ -28,6 +31,10 @@ const App = () => {
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/ResetPwdSuccess" element={<ResetPwdSuccess />} />
             <Route path="/Description" element={<Description />} />
+            <Route path="/DescPage/:tourId" element={<DescPage />} />
+            <Route path="/Booking" element={<Booking />} />
+            <Route path="/Flight" element={<Flight />} />
+            
           </Routes>
         </HashRouter>
       </div>
