@@ -51,6 +51,7 @@ const initialState = {
     trippyUser: { token: "", firstName: "", lastName: "", email: "" },
     allApiData: [],
     allToursData:[],
+    findOneTourData: [],
 };
 
 const features = createSlice({
@@ -74,9 +75,21 @@ const features = createSlice({
             state.allToursData = payload;
             // console.log('All Tours Now working', payload)
         },
+        findOneTour:(state, {payload})=>{
+            state.findOneTourData = payload;
+            // console.log('FindOne Tours data Now working', payload)
+        },
+        updateOneTourData: (state, { payload }) => {
+            // Update the findOneTourData state with the new data
+            return {
+                ...state,
+                findOneTourData: payload,
+            };
+        },
+        
     },
 });
 
-export const { trippyUserLogin, trippyUserLogOut, trippyApiCategories, trippyApiTours } = features.actions;
+export const { trippyUserLogin, trippyUserLogOut, trippyApiCategories, trippyApiTours, findOneTour,updateOneTourData } = features.actions;
 
 export default features.reducer;
