@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./BookingCart.css";
-import TourImg from "../../assets/HeroBg.png";
+// import TourImg from "../../assets/HeroBg.png";
 import { useDispatch } from "react-redux";
 import { clearBookingData } from "../Redux/Features";
 
@@ -24,7 +24,7 @@ function BookingCart() {
 
     const mergedArray = [mergedBookingData];
 
-    // console.log(mergedArray);
+    console.log(mergedArray);
     // console.log(mergedArray[0].tourData);
 
     return (
@@ -45,7 +45,7 @@ function BookingCart() {
                                 <div className="text">
                                     <h2>
                                         {mergedArray[0].tourData.city}{" "}
-                                        <span></span>
+                                        <span> Tour Price:{mergedArray[0].tourData.pricePerPerson}</span>
                                     </h2>
                                     <h2>{mergedArray[0].tourData.country}</h2>
                                 </div>
@@ -57,16 +57,16 @@ function BookingCart() {
                                                 mergedArray[0].flightData
                                                     .depatureTime
                                             }
-                                            <br />
-                                            Time: 8:00AM <br />
+                                            <br /> Arrival Time  
+                                            {mergedArray[0].flightData.arrivalTime}<br />
                                             Lagos Int’l Airport Lagos NG <br />
-                                            Greece Int’l Airport Athens, GC
+                                            Nairobi Intl airport Nairobi KY
                                         </p>
                                     </div>
                                     <div className="card1">
                                         <p>
-                                            Hotel: Comfort Suites <br />
-                                            Check In: 21 Jan Check Out: 24 Jan{" "}
+                                            Hotel: {mergedArray[0].hotelData.hotelName} <br />
+                                            Check In: <span>{mergedArray[0].hotelData.checkIn}</span> <span> Check Out: {mergedArray[0].hotelData.checkOut}</span>{" "}
                                             <br />
                                             Rooms: 2 Persons: 3
                                         </p>
