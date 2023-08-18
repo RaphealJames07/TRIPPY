@@ -55,7 +55,7 @@ const initialState = {
     trippyHotelData: [],
     trippyFlightData: [],
     trippyCarData: [],
-    trippyBookingData: [],
+    trippyBookingCart: [],
 };
 
 const features = createSlice({
@@ -92,7 +92,7 @@ const features = createSlice({
         },
         hotelData: (state, { payload }) => {
             state.trippyHotelData = payload;
-            console.log('Hotel data is available in redux', payload);
+            // console.log('Hotel data is available in redux', payload);
         },
         flightData: (state, { payload }) => {
             state.trippyFlightData = payload;
@@ -100,15 +100,24 @@ const features = createSlice({
         },
         carData: (state, { payload }) => {
             state.trippyCarData = payload;
-            console.log('Car data is available in redux', payload);
+            // console.log('Car data is available in redux', payload);
         },
         bookingData: (state, { payload }) => {
-            state.trippyBookingData = payload;
+            state.trippyBookingCart = [...state.trippyBookingCart, payload]
+            console.log('one added', payload);
+        },
+        clearBookingData: (state, ) => {
+            state.trippyBookingCart = []
+            state.trippyHotelData = []
+            state.trippyFlightData = []
+            state.trippyCarData = []
+            state.findOneTourData = []
         },
     },
 });
 
 export const {
+    clearBookingData,
     trippyUserLogin,
     trippyUserLogOut,
     trippyApiCategories,
