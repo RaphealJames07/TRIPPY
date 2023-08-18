@@ -50,8 +50,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     trippyUser: { token: "", firstName: "", lastName: "", email: "" },
     allApiData: [],
-    allToursData:[],
+    allToursData: [],
     findOneTourData: [],
+    trippyHotelData: [],
+    trippyFlightData: [],
+    trippyCarData: [],
+    trippyBookingCart: [],
 };
 
 const features = createSlice({
@@ -67,15 +71,15 @@ const features = createSlice({
             // state.trippyUser = { id: "", token: "", name: "", email: "" };
             state.trippyUser = null;
         },
-        trippyApiCategories:(state, {payload})=>{
+        trippyApiCategories: (state, { payload }) => {
             state.allApiData = payload;
             // console.log('All Category Now working', payload)
         },
-        trippyApiTours:(state, {payload})=>{
+        trippyApiTours: (state, { payload }) => {
             state.allToursData = payload;
             // console.log('All Tours Now working', payload)
         },
-        findOneTour:(state, {payload})=>{
+        findOneTour: (state, { payload }) => {
             state.findOneTourData = payload;
             // console.log('FindOne Tours data Now working', payload)
         },
@@ -86,10 +90,44 @@ const features = createSlice({
                 findOneTourData: payload,
             };
         },
-        
+        hotelData: (state, { payload }) => {
+            state.trippyHotelData = payload;
+            // console.log('Hotel data is available in redux', payload);
+        },
+        flightData: (state, { payload }) => {
+            state.trippyFlightData = payload;
+            // console.log('flight data is available in redux', payload);
+        },
+        carData: (state, { payload }) => {
+            state.trippyCarData = payload;
+            // console.log('Car data is available in redux', payload);
+        },
+        bookingData: (state, { payload }) => {
+            state.trippyBookingCart = [...state.trippyBookingCart, payload]
+            console.log('one added', payload);
+        },
+        clearBookingData: (state, ) => {
+            state.trippyBookingCart = []
+            state.trippyHotelData = []
+            state.trippyFlightData = []
+            state.trippyCarData = []
+            state.findOneTourData = []
+        },
     },
 });
 
-export const { trippyUserLogin, trippyUserLogOut, trippyApiCategories, trippyApiTours, findOneTour,updateOneTourData } = features.actions;
+export const {
+    clearBookingData,
+    trippyUserLogin,
+    trippyUserLogOut,
+    trippyApiCategories,
+    trippyApiTours,
+    findOneTour,
+    updateOneTourData,
+    hotelData,
+    flightData,
+    carData,
+    bookingData,
+} = features.actions;
 
 export default features.reducer;

@@ -71,6 +71,13 @@
   color: white;
 }
 
+.Demma{
+  width: 33%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .FooterCompanyDiv{
   width: 20%;
   height: 100%;
