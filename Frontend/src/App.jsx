@@ -14,6 +14,7 @@ import Description from "./Components/Description/Description";
 import DescPage from "./Components/Description/DescPage";
 import Booking from "./Components/Booking/Booking";
 import Flight from "./Components/Booking/Flight";
+import BookingCart from "./Components/BookingCart/BookingCart";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
             <Route path="/DescPage/:tourId" element={<DescPage />} />
             <Route path="/Booking" element={<Booking />} />
             <Route path="/Flight" element={<Flight />} />
+            <Route path="/BookingCart" element={<BookingCart />} />
             
           </Routes>
         </HashRouter>

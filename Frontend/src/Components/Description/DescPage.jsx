@@ -9,27 +9,33 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateOneTourData } from "../Redux/Features";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { bookingData } from "../Redux/Features";
+import { useNavigate } from "react-router-dom";
+// import ClearBookingModal from "../ExitModal/Modal";
 
 const DescPage = () => {
     const { tourId } = useParams();
     const [description, setDescription] = useState(true);
     const [amenities, setAmenities] = useState(false);
     const [reviews, setReviews] = useState(false);
-    
+
     const [rating, setRating] = useState();
     const [comment, setComment] = useState("");
+    const nav = useNavigate();
 
     const findOne = useSelector((state) => state.Trippy.findOneTourData);
+    console.log(findOne);
     // const tourId = findOne._id;
 
-    const updatedFindOne = useSelector((state) => state.Trippy.findOneTourData);
+    // const updatedFindOne = useSelector((state) => state.Trippy.findOneTourData);
     // console.log(findOne);
-    console.log('new data', updatedFindOne);
+    // console.log("new data", updatedFindOne);
 
     const userToken = useSelector((state) => state.Trippy.trippyUser.token);
     // console.log(userToken);
-    const Dispatch = useDispatch;
+    const dispatch = useDispatch();
 
     const handleCommentUpload = () => {
         const token = userToken;
@@ -46,40 +52,55 @@ const DescPage = () => {
             )
             .then((res) => {
                 console.log("Comment posted", res);
-                const updatedTourData = { ...findOne, comments: res.data.comments };
-                Dispatch(updateOneTourData(updatedTourData));
+                const updatedTourData = {
+                    ...findOne,
+                    comments: res.data.comments,
+                };
+                dispatch(updateOneTourData(updatedTourData));
                 setDescription(true);
                 setAmenities(false);
                 setReviews(true);
                 setRating("");
                 setComment("");
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.log(err);
-            })
+            });
     };
+
+    const HandleBookNow = () => {
+        const selectedTourData = {
+            type: "tour",
+            tourData: findOne,
+        };
+
+        dispatch(bookingData(selectedTourData));
+        nav("/Booking");
+        // console.log('two added');
+    };
+
+
 
     return (
         <>
             <div className="DescriptionBody">
                 <Header />
-
-                {updatedFindOne ? (
+                
+                {findOne ? (
                     <div className="DescBody">
                         <div className="DescTop">
-                           
-                            <img src={updatedFindOne?.images[0]} alt="" />
+                            <img src={findOne?.images} alt="" />
                         </div>
                         <div className="DescDown">
                             <div className="DescDownWrap">
                                 <div className="DescDownInitials">
                                     <div className="DescDownHeadText">
-                                        <h1>{updatedFindOne?.tourName}</h1>
+                                        <h1>{findOne?.tourName}</h1>
                                     </div>
                                     <div className="DescDownHeaderInfo">
                                         <span>
                                             <GrLocation />
-                                            <h2>{updatedFindOne?.country}</h2>
+                                            <h2>{findOne?.country}</h2>
                                         </span>
                                         <span>
                                             <AiFillStar />
@@ -124,7 +145,7 @@ const DescPage = () => {
                                 <div className="DescBoard">
                                     {description ? (
                                         <>
-                                            <p>{updatedFindOne?.info}</p>
+                                            <p>{findOne?.info}</p>
                                         </>
                                     ) : reviews ? (
                                         <>
@@ -134,7 +155,7 @@ const DescPage = () => {
                                                         <h2>What People Say</h2>
                                                     </div>
                                                     <div className="ReviewCommentsSec">
-                                                        {updatedFindOne?.ratings.map(
+                                                        {findOne?.ratings.map(
                                                             (item) => (
                                                                 <div
                                                                     className="ReviewComment1"
@@ -251,18 +272,20 @@ const DescPage = () => {
                                                                 handleCommentUpload
                                                             }
                                                         >
-                                                            Post
+                                                            <Link>Post</Link>
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </>
                                     ) : amenities ? (
-                                        <>{updatedFindOne?.amenities}</>
+                                        <>{findOne?.amenities}</>
                                     ) : null}
                                 </div>
                                 <div className="DescButtonBook">
-                                    <button>Book Now</button>
+                                    <button onClick={HandleBookNow}>
+                                        Book Now
+                                    </button>
                                 </div>
                             </div>
                         </div>

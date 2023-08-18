@@ -11,6 +11,7 @@ import { hotelData, flightData, carData } from "../Redux/Features";
 import Flight from "./Flight";
 import Hotel from "./Hotel";
 import Car from "./Car";
+import { Link } from "react-router-dom";
 
 const Booking = () => {
     const [showPopup, setShowPopup] = useState(false);
@@ -74,8 +75,7 @@ const Booking = () => {
             .get(url)
             .then((res) => {
                 console.log(res.data);
-                dispatch(carData(res.data.
-                  carRentals));
+                dispatch(carData(res.data.carRentals));
             })
             .catch((err) => {
                 console.log(err);
@@ -364,6 +364,16 @@ const Booking = () => {
                                         </button>
                                     </div>
                                 </div>
+                                <Link to='/BookingCart'>
+                                    <button
+                                        style={{
+                                            padding: "15px",
+                                            cursor: "pointer",
+                                        }}
+                                    >
+                                        Proceed to Booking Summary
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                         {showPopup && (

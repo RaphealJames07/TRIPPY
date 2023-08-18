@@ -1,17 +1,32 @@
 import "./Header.css";
 import Logo from "../../assets/Logo.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { trippyUserLogOut } from "../Redux/Features";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { HiOutlinePlus } from "react-icons/hi";
+import ClearBookingModal from "../ExitModal/Modal";
+
 
 const Header = () => {
     const [toggleUser, setToggleUser] = useState(false);
     const [toggleDropdown, setToggleDropdown] = useState(false);
     const Dispatch = useDispatch();
+    const nav = useNavigate()
+
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const bookingCart = useSelector((state) => state.Trippy.trippyBookingCart);
+
+
+    const handleHomeButtonClick = () => {
+        if (bookingCart.length > 0) {
+            setModalIsOpen(true);
+        } else {
+            nav('/Home')
+        }
+    };
 
     const user = useSelector((state) => state.Trippy.trippyUser);
     // if (user) {
@@ -39,10 +54,21 @@ const Header = () => {
                     <div className="HeaderNavDiv">
                         <nav>
                             <ul>
-                                <li><Link style={{textDecoration:'none'}} to='/Home'>Home</Link></li>
+                                <li  onClick={handleHomeButtonClick}>
+                                    <Link
+                                        style={{ textDecoration: "none" }}
+                                        to="/Home"
+                                    >
+                                        Home
+                                    </Link>
+                                </li>
                                 <li>Booking</li>
                                 <li>Explore</li>
                                 <li>About Us</li>
+                                <ClearBookingModal
+                                    isOpen={modalIsOpen}
+                                    onRequestClose={() => setModalIsOpen(false)}
+                                />
                             </ul>
                         </nav>
                     </div>
@@ -67,7 +93,8 @@ const Header = () => {
                     onMouseLeave={() => setToggleUser(!toggleUser)}
                 >
                     {user ? (
-                        <button className="UserMobileDropDownSignoutBtn"
+                        <button
+                            className="UserMobileDropDownSignoutBtn"
                             onClick={() => {
                                 Dispatch(trippyUserLogOut());
                                 // alert("User LogOut Successfully");

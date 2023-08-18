@@ -1,45 +1,57 @@
 import "./Flight.css";
 import { CiLocationOn } from "react-icons/ci";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux";
+import { bookingData } from "../Redux/Features";
 
 const Car = () => {
+    const dispatch = useDispatch();
+    const carDataToMap = useSelector((state) => state.Trippy.trippyCarData);
+    // console.log('Car data is ready to be mapped', carDataToMap);
 
-  const carDataToMap = useSelector(
-        (state) => state.Trippy.trippyCarData
-    );
-    console.log('Car data is ready to be mapped', carDataToMap);
+    const handleAddCar = (selectedCar) => {
+      const selectedCarData = {
+        type: "car",
+        carData: selectedCar,
+    };
+    dispatch(bookingData(selectedCarData));
+    };
 
-  return (
-    <>
-      <div className="HotelPopUpSearchItem1">
+    return (
+        <>
+            {
+              carDataToMap?.map((item, index) =>(
+                <div className="HotelPopUpSearchItem1" key={index}>
                 <div className="HotelPopUpItem1A">
-                    <img src="" alt="" />
+                    {/* <img src={item?.image} alt="" /> */}
                 </div>
                 <div className="HotelPopUpItem1B">
-                    <h3>Toyota Corolla</h3>
+                    <h3>{item?.brand} <span></span></h3>
                     <div className="HotelPopUpItem1BTop">
                         <CiLocationOn />
                         <p>
-                            Color <span>Seat 4</span>
+                            {item?.location} <span>{item?.registrationNumber}</span>
                         </p>
                     </div>
                     <div className="HotelPopUpItem1BMid">
                         <CiLocationOn />
-                        <p>3 days</p>
+                        <p>{item?.maxPassengers} people max</p>
                     </div>
                     <div className="HotelPopUpItem1BDown">
                         <CiLocationOn />
                         <p>
-                            $807{" "}
+                            price per day ${item?.priceperDay}
                             <span>
-                                <button>Add</button>
+                                <button onClick={()=>handleAddCar(item)}>Add</button>
                             </span>
                         </p>
                     </div>
                 </div>
             </div>
-    </>
-  )
-}
+              ))
+            }
+        </>
+    );
+};
 
-export default Car
+export default Car;
