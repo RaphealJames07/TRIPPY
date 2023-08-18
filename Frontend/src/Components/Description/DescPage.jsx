@@ -89,7 +89,7 @@ const DescPage = () => {
                 {findOne ? (
                     <div className="DescBody">
                         <div className="DescTop">
-                            <img src={findOne?.images} alt="" />
+                            <img src={findOne?.images[0]} alt="" />
                         </div>
                         <div className="DescDown">
                             <div className="DescDownWrap">
