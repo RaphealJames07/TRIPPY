@@ -61,23 +61,25 @@ function BookingCart() {
                                             {mergedArray[0].flightData.arrivalTime}<br />
                                             Lagos Int’l Airport Lagos NG <br />
                                             Nairobi Intl airport Nairobi KY
-                                        </p>
+                                        <p>Price:N{mergedArray[0].flightData.priceFlex}</p>
+                                        </p> <br />
                                     </div>
                                     <div className="card1">
                                         <p>
                                             Hotel: {mergedArray[0].hotelData.hotelName} <br />
                                             Check In: <span>{mergedArray[0].hotelData.checkIn}</span> <span> Check Out: {mergedArray[0].hotelData.checkOut}</span>{" "}
                                             <br />
-                                            Rooms: 2 Persons: 3
+                                            Max Per Rooms: {mergedArray[0].hotelData.maxPerRoom} <br /><span>Price:N{mergedArray[0].hotelData.pricePerNight}</span>
                                         </p>
                                     </div>
                                 </div>
                                 <div className="shape3">
                                     <div className="card2">
                                         <p>
-                                            Car: Toyota Corolla
+                                            Car: {mergedArray[0].carData.brand} <span>{mergedArray[0].carData.model}</span>
                                             <br />
-                                            Seat: 4 Color: Black
+                                            Seat: {mergedArray[0].carData.maxPassengers} regNo: {mergedArray[0].carData.registrationNumber}
+                                            <p>Price:N{mergedArray[0].carData.pricePerDay}</p>
                                         </p>
                                     </div>
                                     <div className="card3">
