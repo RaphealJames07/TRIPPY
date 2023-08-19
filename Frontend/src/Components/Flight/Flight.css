@@ -1,0 +1,310 @@
+
+/* TEMPLATE FOR STYLINGS */
+
+/* Media Query Styling For Desktop Device */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.FlightBody{
+  width: 100%;
+  height: 120vh;
+  background: #f0efe8;
+  display: flex;justify-content: center;
+}
+
+.FlightWrapper{
+  width: 85%;
+  height: 100%;
+  /* display: none; */
+}
+
+.FlightProgress{
+  width: 100%;
+  height: 15%;
+  /* background: #fff; */
+}
+.FlightProgress p{
+  color: #00B4D8;
+  font-size: 18px;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  /* background: #000; */
+}
+
+.FlightProgressBar{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.FlightProgressBar .Circle{
+  width: 30px;
+  height: 30px;
+  background: #00B4D8;
+  border-radius: 50%;
+}
+.FlightProgressBar .Line{
+  width: 100px;
+  height: 5px;
+  background: #00B4D8;
+  /* border-radius: 50%; */
+}
+
+.FlightDetailText{
+  width: 100%;
+  height: 10%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FlightSearchDiv{
+  width: 100%;
+  height: 75%;
+  background: #fff;
+}
+
+.FlightSearchDiv1{
+  width: 100%;
+  height: 20%;
+}
+
+.FlightSearchDiv1Text{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.FlightSearchDiv1DateInput{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  padding: 15px 0;
+  justify-content: space-between;
+}
+.FlightSearchDiv1DateInput input{
+  width: 48%;
+  height: 100%;
+  border: 2px solid #00B4D8;
+  border-radius: 5px;
+  outline: #00B4D8;
+  padding-left: 10px;
+}
+
+.FlightSearchDiv2{
+  width: 100%;
+  height: 20%;
+}
+
+.FlightSearchDiv2Text{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+}
+.FlightSearchDiv2Text label{
+  width: 48%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.FlightSearchDiv2DateInput{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  padding: 15px 0;
+  justify-content: space-between;
+}
+.FlightSearchDiv2DateInput input{
+  width: 48%;
+  height: 100%;
+  border: 2px solid #00B4D8;
+  border-radius: 5px;
+  outline: #00B4D8;
+  padding-left: 10px;
+}
+
+.FlightSearchButtons{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.FlightSearchButtons button{
+  width: 20%;
+  height: 35%;
+  cursor: pointer;
+}
+.FlightSearchButtons .Skip{
+  font-size: 20px;
+  background: #dfe095;
+  border-radius: 5px;
+}
+.FlightSearchButtons .Search{
+  font-size: 20px;
+  background: #00BB8E;
+  border-radius: 5px;
+}
+
+.FlightPopUpSearch{
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: #ffffff9b;
+  display: flex;
+  /* display: none; */
+  justify-content: center;
+  align-items: center;
+}
+
+.FlightPopUpSearchBox{
+  width: 30%;
+  height: 80%;
+  background: #fff;
+  border: 2px solid #00B4D8;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.FlightPopUpSearchHeaderText{
+  width: 100%;
+  height: 60px;
+  background: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.FlightPopUpSearchItemBox{
+  width: 100%;
+  height: 100%;
+  padding: 30px 50px;
+  overflow-y: scroll;
+}
+.FlightPopUpSearchItemBox::-webkit-scrollbar{
+  display: none;
+}
+
+.FlightPopUpSearchItemBoxWrap{
+  width: 100%;
+  height: 100%;
+}
+
+.FlightPopUpSearchItem1{
+  width: 100%;
+  height: 140px;
+  /* background: #000; */
+  margin: 3px;
+  background: #00B4D8;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+}
+
+.FlightPopUpSearchItem1A{
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.FlightPopUpSearchItem1B{
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: space-between;
+
+}
+.FlightPopUpSearchItem1C{
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: space-between;
+
+}
+.FlightPopUpSearchItem1D{
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+.FlightPopUpSearchItem1D button{
+  width: 80px;
+  height: 30px;
+  background: #fff;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #00B4D8;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* End of Media Query Styling For Desktop Device */
+
+/* Media Query Styling for Tablet Device */
+
+@media only screen and (max-width: 1024px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+}
+
+/* End of Media Query Styling for Tablet Device */
+
+/* Media Query Styling for Mobile Device */
+
+@media only screen and (max-width: 414px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+}
+
+/* End of Media Query Styling for Mobile Device */

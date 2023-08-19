@@ -24,6 +24,10 @@
   object-fit: cover;
 }
 
+.HeroFade{
+  text-align: center;
+}
+
 .HeroSearchDivMobile{
   width: 100%;
   height: 510px;
@@ -72,8 +76,8 @@
 }
 
 .HeroSearchDivText{
-  width: 20%;
-  height: 30%;
+  width: 25%;
+  height: 25%;
   background: #fff;
   display: flex;
   align-items: center;

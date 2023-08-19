@@ -364,7 +364,7 @@ const Booking = () => {
                                         </button>
                                     </div>
                                 </div>
-                                <Link to='/BookingCart'>
+                                <Link to="/BookingCart">
                                     <button
                                         style={{
                                             padding: "15px",

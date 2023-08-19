@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { trippyUserLogin } from "../../Redux/Features";
 import axios from "axios";
 import NetworkError from "../../Functions/NetworkError";
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const Login = () => {
     const nav = useNavigate();
@@ -15,6 +16,9 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [networkErr, setNetworkErr] = useState(false);
+    const [emailErrorMessage, setEmailErrorMessage] = useState("");
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [message, setMessage] = useState({
         error: false,
         value: "",
@@ -30,29 +34,22 @@ const Login = () => {
         if (networkErr) {
             setNetworkErr(false); // Reset networkErr to false
             setLoading(false);
+            setInputHasError(true);
         } else if (!email) {
-            setMessage({
-                error: true,
-                type: "email",
-                msg: "Input your email",
-            });
+            setEmailErrorMessage("Input your email");
             setLoading(false);
+            setInputHasError(true);
         } else if (!email.includes("@")) {
-            setMessage({
-                error: true,
-                type: "email",
-                msg: "Email should contain @",
-            });
+            setEmailErrorMessage("Email should contain @");
             setLoading(false);
+            setInputHasError(true);
         } else if (!password) {
-            setMessage({
-                error: true,
-                type: "password",
-                msg: "Enter Password",
-            });
+            setPasswordErrorMessage("Enter Password");
             setLoading(false);
+            setInputHasError(true);
         } else {
             setMessage("");
+            setInputHasError(false);
             setLoading(true);
             axios
                 .post(url, data)
@@ -85,12 +82,35 @@ const Login = () => {
         }
     };
 
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    const handleImageLoad = () => {
+        setImageLoaded(true);
+    };
+
+    const handleImageError = () => {
+        setImageLoaded(false);
+    };
+
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    };
+
     return (
         <>
             {/* Elements for Desktop */}
             <div className="LoginBody">
                 <div className="LoginLeft">
-                    <img src={LoginImg} alt="" />
+                    {!imageLoaded && (
+                        <div className="placeholder">Loading...</div>
+                    )}
+                    <img
+                        src={LoginImg}
+                        alt=""
+                        onLoad={handleImageLoad}
+                        onError={handleImageError}
+                        style={{ display: imageLoaded ? "block" : "none" }}
+                    />
                 </div>
 
                 <div className="LoginRight">
@@ -98,26 +118,80 @@ const Login = () => {
                         <h1>Login</h1>
                         <div className="InputDivs">
                             <div className="EmailDiv">
-                                <label htmlFor="Email">Email</label>
+                                <label htmlFor="Email">
+                                    Email{" "}
+                                    <span>
+                                        <p
+                                            style={{
+                                                color: "red",
+                                                fontSize: "14px",
+                                                marginLeft: "5px",
+                                            }}
+                                        >
+                                            {emailErrorMessage}
+                                        </p>
+                                    </span>
+                                </label>
                                 <input
                                     type="email"
                                     placeholder="Input Your Email"
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => {
+                                        setEmail(e.target.value);
+                                        setEmailErrorMessage("");
+                                        setInputHasError(false);
+                                    }}
+                                    style={{
+                                        border: `${
+                                            inputHasError
+                                                ? "2px solid red"
+                                                : null
+                                        }`,
+                                    }}
                                 />
-                                <p>{message.msg}</p>
                             </div>
                             <div className="PasswordDiv">
-                                <label htmlFor="Password">Password</label>
-                                <input
-                                    type="password"
+                                <label htmlFor="Password">
+                                    Password{" "}
+                                    <span>
+                                        <p
+                                            style={{
+                                                color: "red",
+                                                fontSize: "14px",
+                                                marginLeft: "5px",
+                                            }}
+                                        >
+                                            {passwordErrorMessage}
+                                        </p>
+                                    </span>
+                                </label>
+                                <input className="PwdInput"
+                                    type={showPassword ? "text" : "password"}
                                     placeholder="Input Your Password"
                                     value={password}
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                        setPasswordErrorMessage("");
+                                        setInputHasError(false);
+                                    }}
+                                    style={{
+                                        border: `${
+                                            inputHasError
+                                                ? "2px solid red"
+                                                : null
+                                        }`,
+                                    }}
                                 />
-                                <p>{message.msg}</p>
+                                <button
+                                    className="TogglePasswordButton"
+                                    onClick={handleTogglePassword}
+                                >
+                                    {showPassword ? (
+                                        <AiOutlineEyeInvisible />
+                                    ) : (
+                                        <AiOutlineEye />
+                                    )}
+                                </button>
                             </div>
                             <p className="ForgetPwd">
                                 <Link
@@ -132,7 +206,10 @@ const Login = () => {
                                 </Link>
                             </p>
                             <div className="LoginDiv">
-                                <button onClick={(e) => handleLogin(e)}>
+                                <button
+                                    onClick={(e) => handleLogin(e)}
+                                    disabled={inputHasError || loading}
+                                >
                                     {loading ? "Loading..." : "Login"}
                                 </button>
                             </div>
@@ -207,7 +284,10 @@ const Login = () => {
                                     </Link>
                                 </p>
                                 <div className="LoginDivTablet">
-                                    <button onClick={(e) => handleLogin(e)}>
+                                    <button
+                                        onClick={(e) => handleLogin(e)}
+                                        disabled={inputHasError || loading}
+                                    >
                                         {loading ? "Loading..." : "Login"}
                                     </button>
                                 </div>
@@ -252,34 +332,31 @@ const Login = () => {
                                 <div className="EmailDivMobile">
                                     <label htmlFor="Email">Email</label>
                                     <input
-                                        style={{
-                                            borderColor: inputHasError
-                                                ? "red"
-                                                : "initial",
-                                        }}
                                         type="email"
                                         placeholder="Input Your Email"
                                         value={email}
-                                        onChange={(e) =>
-                                            setEmail(e.target.value)
-                                        }
+                                        onChange={(e) => {
+                                            setEmail(e.target.value);
+                                            setEmailErrorMessage("");
+                                            setInputHasError(false);
+                                        }}
                                     />
                                     <p>{message.msg}</p>
                                 </div>
                                 <div className="PasswordDivMobile">
                                     <label htmlFor="Password">Password</label>
                                     <input
-                                        style={{
-                                            borderColor: inputHasError
-                                                ? "red"
-                                                : "initial",
-                                        }}
-                                        type="passwords"
+                                        type="password"
                                         placeholder="Input Your Password"
                                         value={password}
-                                        onChange={(e) =>
-                                            setPassword(e.target.value)
-                                        }
+                                        onChange={(e) => {
+                                            setPassword(e.target.value);
+                                            setPasswordErrorMessage("");
+                                            setInputHasError(false); // Reset input error state
+                                        }}
+                                        className={`EmailDiv ${
+                                            inputHasError ? "error" : ""
+                                        }`}
                                     />
                                     <p>{message.msg}</p>
                                 </div>
@@ -296,7 +373,10 @@ const Login = () => {
                                     </Link>
                                 </p>
                                 <div className="LoginDivMobile">
-                                    <button onClick={(e) => handleLogin(e)}>
+                                    <button
+                                        onClick={(e) => handleLogin(e)}
+                                        disabled={inputHasError || loading}
+                                    >
                                         {loading ? "Loading..." : "Login"}
                                     </button>
                                 </div>
