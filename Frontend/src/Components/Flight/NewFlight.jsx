@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useState } from "react";
 import { flightData } from "../Redux/Features";
+import { clearFlightData } from "../Redux/Features";
+import { useSelector } from "react-redux";
+import { bookingData } from "../Redux/Features";
 
 const NewFlight = () => {
     const [fromFlight, setFromFlight] = useState("");
@@ -24,6 +27,20 @@ const NewFlight = () => {
                 console.log(err);
             });
     };
+
+    const flightDataToMap = useSelector(
+      (state) => state.Trippy.trippyFlightData
+  );
+
+  const handleAddFlight = (selectedFlight) => {
+      const selectedFlightData = {
+          type: "flight",
+
+          flightData: selectedFlight,
+      };
+      dispatch(bookingData(selectedFlightData));
+      // alert("Flight added successfully");
+  };
 
     return (
         <>
@@ -81,13 +98,15 @@ const NewFlight = () => {
                         <button onClick={handleFlightSearch}>Search</button>
                     </div>
                     <div className="NewFlightContentResults">
-                        <div className="NewFlightResultItem1">
+                        {
+                          flightDataToMap?.map((item, index)=>(
+                            <div className="NewFlightResultItem1" key={index}>
                             <div className="NewFlightResultItem1Left">
                                <div className="NewFlightResultItem1ImgDiv">
-                               <img src="" alt="" />
+                               <img src={item?.airlineLogo} alt="" />
                                </div>
                                 <p>
-                                    10:45 pm - 6:05 <br /> <span>Kenya Airways</span>
+                                    {item?.depatureTime} PM - {item?.arrivalTime} <br /> <span>{item?.airlineName}</span>
                                 </p>
                                 <p>NonStop</p>
                                 <p>
@@ -96,138 +115,22 @@ const NewFlight = () => {
                             </div>
                             <div className="NewFlightResultItem1Right">
                                 <div className="NewFlightResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Economy</p>
+                                    <h3>${item?.priceFlex} / per person (Flex)</h3>
+                                    <p>${item?.priceStandard}</p>
+                                    <p>{item?.from} to <span>{item?.to}</span></p>
                                 </div>
 
                                 <div className="NewFlightResultItem1RightDown">
-                                    <button>Add Flight</button>
+                                    <button onClick={()=>handleAddFlight(item)}>Add Flight</button>
                                 </div>
                             </div>
                         </div>
-                        <div className="NewFlightResultItem1">
-                            <div className="NewFlightResultItem1Left">
-                               <div className="NewFlightResultItem1ImgDiv">
-                               <img src="" alt="" />
-                               </div>
-                                <p>
-                                    10:45 pm - 6:05 <br /> <span>Kenya Airways</span>
-                                </p>
-                                <p>NonStop</p>
-                                <p>
-                                    5h 20min  <br /><span>LOs-NBO</span>
-                                </p>
-                            </div>
-                            <div className="NewFlightResultItem1Right">
-                                <div className="NewFlightResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Economy</p>
-                                </div>
-
-                                <div className="NewFlightResultItem1RightDown">
-                                    <button>Add Flight</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="NewFlightResultItem1">
-                            <div className="NewFlightResultItem1Left">
-                               <div className="NewFlightResultItem1ImgDiv">
-                               <img src="" alt="" />
-                               </div>
-                                <p>
-                                    10:45 pm - 6:05 <br /> <span>Kenya Airways</span>
-                                </p>
-                                <p>NonStop</p>
-                                <p>
-                                    5h 20min  <br /><span>LOs-NBO</span>
-                                </p>
-                            </div>
-                            <div className="NewFlightResultItem1Right">
-                                <div className="NewFlightResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Economy</p>
-                                </div>
-
-                                <div className="NewFlightResultItem1RightDown">
-                                    <button>Add Flight</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="NewFlightResultItem1">
-                            <div className="NewFlightResultItem1Left">
-                               <div className="NewFlightResultItem1ImgDiv">
-                               <img src="" alt="" />
-                               </div>
-                                <p>
-                                    10:45 pm - 6:05 <br /> <span>Kenya Airways</span>
-                                </p>
-                                <p>NonStop</p>
-                                <p>
-                                    5h 20min  <br /><span>LOs-NBO</span>
-                                </p>
-                            </div>
-                            <div className="NewFlightResultItem1Right">
-                                <div className="NewFlightResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Economy</p>
-                                </div>
-
-                                <div className="NewFlightResultItem1RightDown">
-                                    <button>Add Flight</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="NewFlightResultItem1">
-                            <div className="NewFlightResultItem1Left">
-                               <div className="NewFlightResultItem1ImgDiv">
-                               <img src="" alt="" />
-                               </div>
-                                <p>
-                                    10:45 pm - 6:05 <br /> <span>Kenya Airways</span>
-                                </p>
-                                <p>NonStop</p>
-                                <p>
-                                    5h 20min  <br /><span>LOs-NBO</span>
-                                </p>
-                            </div>
-                            <div className="NewFlightResultItem1Right">
-                                <div className="NewFlightResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Economy</p>
-                                </div>
-
-                                <div className="NewFlightResultItem1RightDown">
-                                    <button>Add Flight</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="NewFlightResultItem1">
-                            <div className="NewFlightResultItem1Left">
-                               <div className="NewFlightResultItem1ImgDiv">
-                               <img src="" alt="" />
-                               </div>
-                                <p>
-                                    10:45 pm - 6:05 <br /> <span>Kenya Airways</span>
-                                </p>
-                                <p>NonStop</p>
-                                <p>
-                                    5h 20min  <br /><span>LOs-NBO</span>
-                                </p>
-                            </div>
-                            <div className="NewFlightResultItem1Right">
-                                <div className="NewFlightResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Economy</p>
-                                </div>
-
-                                <div className="NewFlightResultItem1RightDown">
-                                    <button>Add Flight</button>
-                                </div>
-                            </div>
-                        </div>
+                          ))
+                        }
+                        
                     </div>
                 </div>
-                <button className="CancelSearchBtn">Cancel Search</button>
+                <button className="CancelSearchBtn" onClick={()=>dispatch(clearFlightData())}>Cancel Search</button>
             </div>
         </>
     );

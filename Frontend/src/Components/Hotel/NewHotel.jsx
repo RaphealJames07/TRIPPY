@@ -1,6 +1,43 @@
 import "./NewHotel.css";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux";
+import { bookingData } from "../Redux/Features";
+import { useState } from "react";
+import axios from "axios";
+import { hotelData, clearHotelData } from "../Redux/Features";
 
 const NewHotel = () => {
+    const [hotelCity, setHotelCity] = useState("");
+    const dispatch = useDispatch();
+
+    const handleHotelSearch = () => {
+        const url = `https://trippyapiv1.onrender.com/trippy//find-hotels/?city=${encodeURIComponent(
+            hotelCity
+        )}`;
+
+        axios
+            .get(url)
+            .then((res) => {
+                console.log(res.data);
+                dispatch(hotelData(res.data.hotels));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const hotelDataToMap = useSelector((state) => state.Trippy.trippyHotelData);
+    // console.log("Hotel data is ready to be mapped", hotelDataToMap);
+
+    const handleAddHotel = (selectedHotel) => {
+        const selectedHotelData = {
+            type: "hotel",
+            hotelData: selectedHotel,
+        };
+        dispatch(bookingData(selectedHotelData));
+        // alert("Flight added successfully");
+    };
+
     return (
         <>
             <div className="NewHotelBody">
@@ -9,7 +46,12 @@ const NewHotel = () => {
                 </div>
                 <div className="NewHotelContent">
                     <div className="NewHotelContentInput">
-                        <select name="OriginAirport" id="OriginAirport">
+                        <select
+                            name="Location"
+                            id="Location"
+                            onChange={(e) => setHotelCity(e.target.value)}
+                            value={hotelCity}
+                        >
                             <option value="" onChange={(e) => e.target.value}>
                                 Location
                             </option>
@@ -21,6 +63,12 @@ const NewHotel = () => {
                                 Lagos
                             </option>
                             <option
+                                value="nairobi"
+                                onChange={(e) => e.target.value}
+                            >
+                                Nairobi
+                            </option>
+                            <option
                                 value="accra"
                                 onChange={(e) => e.target.value}
                             >
@@ -28,259 +76,72 @@ const NewHotel = () => {
                             </option>
                         </select>
 
-                        <button>Search</button>
+                        <button onClick={handleHotelSearch}>Search</button>
                     </div>
                     <div className="NewHotelContentResults">
-                        <div className="NewHotelResultItem1">
-                            <div className="NewHotelResultItem1Left">
-                                <div className="NewHotelResultItem1ImgDiv">
-                                    <img src="" alt="" />
-                                </div>
-                                <div className="NewHotelResultItem1Desc">
-                                    <div className="NewHotelResultItem1DescTop">
-                                        <span>
-                                            <h1>Comfort Suites</h1>
+                        {hotelDataToMap?.map((item, index) => (
+                            <div className="NewHotelResultItem1" key={index}>
+                                <div className="NewHotelResultItem1Left">
+                                    <div className="NewHotelResultItem1ImgDiv">
+                                        <img src={item?.images[1]} alt="" />
+                                    </div>
+                                    <div className="NewHotelResultItem1Desc">
+                                        <div className="NewHotelResultItem1DescTop">
+                                            <h1>{item?.hotelName}</h1>
                                             <p>
-                                                star <span>City</span>
+                                                star rating {item?.starRating}{" "}
+                                                <span>{item?.city}</span>
                                             </p>
-                                        </span>
-                                        <span>
-                                            <span></span>
-                                            <p>1 reviews</p>
-                                            <p>max per room</p>
-                                        </span>
-                                    </div>
-                                    <div className="NewHotelResultItem1DescDown">
-                                        <p>
-                                            <span>Gym</span>
-                                            <span>Pool</span>
-                                            <span>Free wifi</span>
-                                            <span>bar</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="NewHotelResultItem1Right">
-                                <div className="NewHotelResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Suite</p>
-                                    <p>regular</p>
-                                </div>
 
-                                <div className="NewHotelResultItem1RightDown">
-                                    <button>Add Hotel</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="NewHotelResultItem1">
-                            <div className="NewHotelResultItem1Left">
-                                <div className="NewHotelResultItem1ImgDiv">
-                                    <img src="" alt="" />
-                                </div>
-                                <div className="NewHotelResultItem1Desc">
-                                    <div className="NewHotelResultItem1DescTop">
-                                        <span>
-                                            <h1>Comfort Suites</h1>
+                                            <span>
+                                                <span>
+                                                    {item?.ratings.length}{" "}
+                                                    reviews
+                                                </span>
+                                                <span>
+                                                    {" "}
+                                                    ( {item?.maxPerRoom} ) max
+                                                    per room
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div className="NewHotelResultItem1DescDown">
                                             <p>
-                                                star <span>City</span>
+                                                <span>{item?.features[0]}</span>
+                                                <span>{item?.features[1]}</span>
+                                                <span>{item?.features[2]}</span>
+                                                <span>{item?.features[3]}</span>
                                             </p>
-                                        </span>
-                                        <span>
-                                            <span></span>
-                                            <p>1 reviews</p>
-                                            <p>max per room</p>
-                                        </span>
-                                    </div>
-                                    <div className="NewHotelResultItem1DescDown">
-                                        <p>
-                                            <span>Gym</span>
-                                            <span>Pool</span>
-                                            <span>Free wifi</span>
-                                            <span>bar</span>
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="NewHotelResultItem1Right">
-                                <div className="NewHotelResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Suite</p>
-                                    <p>regular</p>
-                                </div>
+                                <div className="NewHotelResultItem1Right">
+                                    <div className="NewHotelResultItem1RightTop">
+                                        <h3>
+                                            ${item?.pricePerNight} / Per Night
+                                        </h3>
+                                        <p>Chek In: {item?.checkIn}</p>
+                                        <p>Check Out: {item?.checkOut}</p>
+                                    </div>
 
-                                <div className="NewHotelResultItem1RightDown">
-                                    <button>Add Hotel</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="NewHotelResultItem1">
-                            <div className="NewHotelResultItem1Left">
-                                <div className="NewHotelResultItem1ImgDiv">
-                                    <img src="" alt="" />
-                                </div>
-                                <div className="NewHotelResultItem1Desc">
-                                    <div className="NewHotelResultItem1DescTop">
-                                        <span>
-                                            <h1>Comfort Suites</h1>
-                                            <p>
-                                                star <span>City</span>
-                                            </p>
-                                        </span>
-                                        <span>
-                                            <span></span>
-                                            <p>1 reviews</p>
-                                            <p>max per room</p>
-                                        </span>
-                                    </div>
-                                    <div className="NewHotelResultItem1DescDown">
-                                        <p>
-                                            <span>Gym</span>
-                                            <span>Pool</span>
-                                            <span>Free wifi</span>
-                                            <span>bar</span>
-                                        </p>
+                                    <div className="NewHotelResultItem1RightDown">
+                                        <button
+                                            onClick={() => handleAddHotel(item)}
+                                        >
+                                            Add Hotel
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div className="NewHotelResultItem1Right">
-                                <div className="NewHotelResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Suite</p>
-                                    <p>regular</p>
-                                </div>
-
-                                <div className="NewHotelResultItem1RightDown">
-                                    <button>Add Hotel</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="NewHotelResultItem1">
-                            <div className="NewHotelResultItem1Left">
-                                <div className="NewHotelResultItem1ImgDiv">
-                                    <img src="" alt="" />
-                                </div>
-                                <div className="NewHotelResultItem1Desc">
-                                    <div className="NewHotelResultItem1DescTop">
-                                        <span>
-                                            <h1>Comfort Suites</h1>
-                                            <p>
-                                                star <span>City</span>
-                                            </p>
-                                        </span>
-                                        <span>
-                                            <span></span>
-                                            <p>1 reviews</p>
-                                            <p>max per room</p>
-                                        </span>
-                                    </div>
-                                    <div className="NewHotelResultItem1DescDown">
-                                        <p>
-                                            <span>Gym</span>
-                                            <span>Pool</span>
-                                            <span>Free wifi</span>
-                                            <span>bar</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="NewHotelResultItem1Right">
-                                <div className="NewHotelResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Suite</p>
-                                    <p>regular</p>
-                                </div>
-
-                                <div className="NewHotelResultItem1RightDown">
-                                    <button>Add Hotel</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="NewHotelResultItem1">
-                            <div className="NewHotelResultItem1Left">
-                                <div className="NewHotelResultItem1ImgDiv">
-                                    <img src="" alt="" />
-                                </div>
-                                <div className="NewHotelResultItem1Desc">
-                                    <div className="NewHotelResultItem1DescTop">
-                                        <span>
-                                            <h1>Comfort Suites</h1>
-                                            <p>
-                                                star <span>City</span>
-                                            </p>
-                                        </span>
-                                        <span>
-                                            <span></span>
-                                            <p>1 reviews</p>
-                                            <p>max per room</p>
-                                        </span>
-                                    </div>
-                                    <div className="NewHotelResultItem1DescDown">
-                                        <p>
-                                            <span>Gym</span>
-                                            <span>Pool</span>
-                                            <span>Free wifi</span>
-                                            <span>bar</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="NewHotelResultItem1Right">
-                                <div className="NewHotelResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Suite</p>
-                                    <p>regular</p>
-                                </div>
-
-                                <div className="NewHotelResultItem1RightDown">
-                                    <button>Add Hotel</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="NewHotelResultItem1">
-                            <div className="NewHotelResultItem1Left">
-                                <div className="NewHotelResultItem1ImgDiv">
-                                    <img src="" alt="" />
-                                </div>
-                                <div className="NewHotelResultItem1Desc">
-                                    <div className="NewHotelResultItem1DescTop">
-                                        <span>
-                                            <h1>Comfort Suites</h1>
-                                            <p>
-                                                star <span>City</span>
-                                            </p>
-                                        </span>
-                                        <span>
-                                            <span></span>
-                                            <p>1 reviews</p>
-                                            <p>max per room</p>
-                                        </span>
-                                    </div>
-                                    <div className="NewHotelResultItem1DescDown">
-                                        <p>
-                                            <span>Gym</span>
-                                            <span>Pool</span>
-                                            <span>Free wifi</span>
-                                            <span>bar</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="NewHotelResultItem1Right">
-                                <div className="NewHotelResultItem1RightTop">
-                                    <h3>$544 / per person</h3>
-                                    <p>Suite</p>
-                                    <p>regular</p>
-                                </div>
-
-                                <div className="NewHotelResultItem1RightDown">
-                                    <button>Add Hotel</button>
-                                </div>
-                            </div>
-                        </div>
-                       
+                        ))}
                     </div>
                 </div>
-                <button className="CancelSearchBtn">Cancel Search</button>
+                <button
+                    className="CancelSearchBtn"
+                    onClick={() => dispatch(clearHotelData())}
+                >
+                    Clear Search
+                </button>
             </div>
         </>
     );

@@ -12,20 +12,20 @@ function BookingCart() {
         (state) => state.Trippy.trippyBookingCart
     );
     // console.log("SEE DATA", bookingCartData);
-    const mergedBookingData = {};
+    // const mergedBookingData = {};
 
-    bookingCartData.forEach((item) => {
-        Object.keys(item).forEach((key) => {
-            if (!mergedBookingData.hasOwnProperty(key)) {
-                mergedBookingData[key] = item[key];
-            }
-        });
-    });
+    // bookingCartData.forEach((item) => {
+    //     Object.keys(item).forEach((key) => {
+    //         if (!mergedBookingData.hasOwnProperty(key)) {
+    //             mergedBookingData[key] = item[key];
+    //         }
+    //     });
+    // });
 
-    const mergedArray = [mergedBookingData];
+    const mergedArray = [bookingCartData];
 
     console.log(mergedArray);
-    // console.log(mergedArray[0].tourData);
+    console.log(mergedArray[0].tourData);
 
     return (
         <>

@@ -6,7 +6,7 @@
 
 .NewFlightBody{
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -102,6 +102,11 @@
   height:100%;
   background: #000;
   border-radius: 5px;
+}
+.NewFlightResultItem1ImgDiv img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .NewFlightResultItem1Right{
