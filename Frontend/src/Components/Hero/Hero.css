@@ -277,7 +277,7 @@
 .HeroBody{
   width: 100%;
   height: 118vh;
-  
+  margin-top: 80px;
 }
 
 .HeroWrapper{
@@ -290,16 +290,16 @@
 }
 
 .HeroTexth1{
-  width: 95%;
-  height: 35%;
+  width: 100%;
+  height: 100%;
   display: flex;
   /* align-items: center; */
   justify-content: center;
-  padding-top: 60px;
+  
   
 }
 .HeroTexth1 h1{
-  width: 80%;
+  width: 100%;
   color: #d6d6d6;
   font-size: 50px;
   font-style: normal;

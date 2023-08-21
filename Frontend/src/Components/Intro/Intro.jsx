@@ -20,7 +20,7 @@ const Intro = () => {
                         <h3>Explore the world, get Trippy.</h3>
                     </Fade>
                     <Link
-                        to="/Home"
+                        to="/HeaderNew"
                         style={{ color: "black", textDecoration: "none" }}
                     >
                         <Flip right>

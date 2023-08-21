@@ -11,6 +11,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background: #000;
 }
 
 .NewHotelHead{
@@ -32,7 +33,7 @@
 .NewHotelContentInput{
   width: 100%;
   height: 15%;
-  background: #bd8f8f;
+  background: red;
   border-radius: 7px;
   display: flex;
   align-items: center;

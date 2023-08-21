@@ -1,4 +1,4 @@
-import "./NewFlight.css";
+import "./NewFlights.css";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useState } from "react";
@@ -29,18 +29,18 @@ const NewFlight = () => {
     };
 
     const flightDataToMap = useSelector(
-      (state) => state.Trippy.trippyFlightData
-  );
+        (state) => state.Trippy.trippyFlightData
+    );
 
-  const handleAddFlight = (selectedFlight) => {
-      const selectedFlightData = {
-          type: "flight",
+    const handleAddFlight = (selectedFlight) => {
+        const selectedFlightData = {
+            type: "flight",
 
-          flightData: selectedFlight,
-      };
-      dispatch(bookingData(selectedFlightData));
-      // alert("Flight added successfully");
-  };
+            flightData: selectedFlight,
+        };
+        dispatch(bookingData(selectedFlightData));
+        // alert("Flight added successfully");
+    };
 
     return (
         <>
@@ -98,39 +98,56 @@ const NewFlight = () => {
                         <button onClick={handleFlightSearch}>Search</button>
                     </div>
                     <div className="NewFlightContentResults">
-                        {
-                          flightDataToMap?.map((item, index)=>(
+                        {flightDataToMap?.map((item, index) => (
                             <div className="NewFlightResultItem1" key={index}>
-                            <div className="NewFlightResultItem1Left">
-                               <div className="NewFlightResultItem1ImgDiv">
-                               <img src={item?.airlineLogo} alt="" />
-                               </div>
-                                <p>
-                                    {item?.depatureTime} PM - {item?.arrivalTime} <br /> <span>{item?.airlineName}</span>
-                                </p>
-                                <p>NonStop</p>
-                                <p>
-                                    5h 20min  <br /><span>LOs-NBO</span>
-                                </p>
-                            </div>
-                            <div className="NewFlightResultItem1Right">
-                                <div className="NewFlightResultItem1RightTop">
-                                    <h3>${item?.priceFlex} / per person (Flex)</h3>
-                                    <p>${item?.priceStandard}</p>
-                                    <p>{item?.from} to <span>{item?.to}</span></p>
+                                <div className="NewFlightResultItem1Left">
+                                    <div className="NewFlightResultItem1ImgDiv">
+                                        <img src={item?.airlineLogo} alt="" />
+                                    </div>
+                                    <p>
+                                        {item?.depatureTime} PM -{" "}
+                                        {item?.arrivalTime} <br />{" "}
+                                        <span>{item?.airlineName}</span>
+                                    </p>
+                                    <p>NonStop</p>
+                                    <p>
+                                        5h 20min <br />
+                                        <span>LOs-NBO</span>
+                                    </p>
                                 </div>
+                                <div className="NewFlightResultItem1Right">
+                                    <div className="NewFlightResultItem1RightTop">
+                                        <h3>
+                                            ${item?.priceFlex} / per person
+                                            (Flex)
+                                        </h3>
+                                        <p>${item?.priceStandard}</p>
+                                        <p>
+                                            {item?.from} to{" "}
+                                            <span>{item?.to}</span>
+                                        </p>
+                                    </div>
 
-                                <div className="NewFlightResultItem1RightDown">
-                                    <button onClick={()=>handleAddFlight(item)}>Add Flight</button>
+                                    <div className="NewFlightResultItem1RightDown">
+                                        <button
+                                            onClick={() =>
+                                                handleAddFlight(item)
+                                            }
+                                        >
+                                            Add Flight
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                          ))
-                        }
-                        
+                        ))}
                     </div>
                 </div>
-                <button className="CancelSearchBtn" onClick={()=>dispatch(clearFlightData())}>Cancel Search</button>
+                <button
+                    className="CancelSearchBtn"
+                    onClick={() => dispatch(clearFlightData())}
+                >
+                    Cancel Search
+                </button>
             </div>
         </>
     );

@@ -1,6 +1,8 @@
 import "./HeaderNew.css";
+import "./HeaderNewMedia.css";
 import { useState, useEffect } from "react";
 import Icon from "../../assets/bag.png";
+import { MdOutlineCancel } from "react-icons/md";
 import NewFlight from "../Flight/NewFlight";
 import NewHotel from "../Hotel/NewHotel";
 import NewCar from "../Car/NewCar";
@@ -12,9 +14,11 @@ import { Fade } from "react-awesome-reveal";
 import Hero from "../Hero/Hero";
 import Continental from "../Continental/Continental";
 import Footer from "../Footer/Footer";
+import Logo from "../../assets/Logo.png";
+import Ham from "../../assets/hamburger.png";
 
 const HeaderNew = () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [showHelloWorld, setShowHelloWorld] = useState(false);
     const [home, setHome] = useState(true);
@@ -25,9 +29,14 @@ const HeaderNew = () => {
     const [bookings, setBookings] = useState(false);
     const [favorites, setFavorites] = useState(false);
     const [about, setAbout] = useState(false);
+    const [popUp, setPopUp] = useState(false);
 
     const toggleCollapse = () => {
         setOpen(!open);
+    };
+
+    const togglePopUp = () => {
+        setPopUp(!popUp);
     };
 
     useEffect(() => {
@@ -56,11 +65,14 @@ const HeaderNew = () => {
                 <div className="HeaderNewTopDiv">
                     <div className="HeaderNewTopDivWrap">
                         <div className="HeaderNewTopDivLeft">
-                            <div
-                                className="HeaderNewTopDivLeftHamburger"
+                            <img
+                                src={Ham}
+                                alt=""
                                 onClick={toggleCollapse}
-                            ></div>
-                            <h1>Trippy</h1>
+                                className="Ham"
+                            />
+
+                            <img src={Logo} alt="" />
                         </div>
                         <div
                             className="HeaderNewHelloWorld"
@@ -70,40 +82,76 @@ const HeaderNew = () => {
                         >
                             {showHelloWorld & home ? (
                                 <Fade className="FadeBody">
-                                <>
-
-                                    <input type="text" placeholder="Flights" />
-                                    <input type="text" placeholder="Hotels" />
-                                    <input type="text" placeholder="Car" />
-                                    <button>Search</button>
-                                </>
+                                    <>
+                                        <input
+                                            type="text"
+                                            placeholder="Flights"
+                                        />
+                                        <input
+                                            type="text"
+                                            placeholder="Hotels"
+                                        />
+                                        <input type="text" placeholder="Car" />
+                                        <button>Search</button>
+                                    </>
                                 </Fade>
                             ) : (
                                 <>
                                     <Fade cascade={true}>
-                                        <h2>
-                                            Good Morning Mr Koko
-                                        </h2>
+                                        <h2>Good Morning Mr Koko</h2>
                                     </Fade>
                                 </>
                             )}
                         </div>
                         <div className="HeaderNewTopDivRight">
-                            <div className="HeaderNewTopDivRightCircle">RJ</div>
-                            <p>
-                                raphealjuniro07@gmail.com <span>V</span>
-                            </p>
+                            <div
+                                className="HeaderNewTopDivRightCircle"
+                                onClick={() => togglePopUp(!popUp)}
+                            >
+                                RJ
+                            </div>
                         </div>
                     </div>
+                    {popUp ? (
+                        <>
+                            <div className="HeaderAccPopUp">
+                                <div className="HeaderAccPopUpTop">
+                                    <div className="HeaderAccPopUpTopIcon">
+                                        R
+                                    </div>
+                                    <div className="HeaderAccPopUpTopText">
+                                        <h3>Rapheal James</h3>
+                                        <p>raphealjunior07@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div className="HeaderAccPopUpDown">
+                                    <ul>
+                                        <li>WishList</li>
+                                        <li>Profile</li>
+                                        <li>Help/FAQ</li>
+                                    </ul>
+                                    <button>SignOut</button>
+                                </div>
+                            </div>
+                        </>
+                    ) : null}
                 </div>
                 <div className="HeaderNewNavdiv">
                     <div
                         id="example-collapse-text"
                         className={`collapse ${open ? "show" : ""}`}
                     >
+                        <div className="MobileNavDropHeader">
+                        <img src={Logo} alt="" />
+                            <MdOutlineCancel
+                                className="CancelNavDrop"
+                                onClick={toggleCollapse}
+                            />
+                        </div>
                         <ul>
                             <li
                                 onClick={() => {
+                                    toggleCollapse(false)
                                     setHome(true);
                                     setFlight(false);
                                     setHotel(false);
@@ -121,6 +169,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
+                                    toggleCollapse(false)
                                     setHome(false);
                                     setFlight(true);
                                     setHotel(false);
@@ -138,6 +187,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
+                                    toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(true);
@@ -155,6 +205,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
+                                    toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);
@@ -172,6 +223,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
+                                    toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);
@@ -189,6 +241,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
+                                    toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);
@@ -206,6 +259,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
+                                    toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);
@@ -223,6 +277,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
+                                    toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);
@@ -244,7 +299,7 @@ const HeaderNew = () => {
                         <div className="HeaderNewNavdivMainWrap">
                             {home ? (
                                 <>
-                                    <Hero/>
+                                    <Hero />
                                     <Continental />
                                 </>
                             ) : flight ? (
@@ -262,9 +317,8 @@ const HeaderNew = () => {
                             ) : about ? (
                                 <NewAbout />
                             ) : null}
-                        
                         </div>
-                        <Footer/>
+                        <Footer />
                     </div>
                 </div>
             </div>
