@@ -6,10 +6,13 @@ import { flightData } from "../Redux/Features";
 import { clearFlightData } from "../Redux/Features";
 import { useSelector } from "react-redux";
 import { bookingData } from "../Redux/Features";
+import { Link } from "react-router-dom";
+
 
 const NewFlight = () => {
     const [fromFlight, setFromFlight] = useState("");
     const [toFlight, setToFlight] = useState("");
+    const [showResult, setShowResult] = useState(false);
     const dispatch = useDispatch();
 
     const handleFlightSearch = () => {
@@ -28,13 +31,17 @@ const NewFlight = () => {
             });
     };
 
+    const handleShowResult = () => {
+        setShowResult(true);
+        handleFlightSearch();
+    };
     const flightDataToMap = useSelector(
         (state) => state.Trippy.trippyFlightData
     );
 
     const handleAddFlight = (selectedFlight) => {
         const selectedFlightData = {
-            type: "flight",
+         
 
             flightData: selectedFlight,
         };
@@ -95,52 +102,65 @@ const NewFlight = () => {
                                 Cairo
                             </option>
                         </select>
-                        <button onClick={handleFlightSearch}>Search</button>
+                        <button onClick={handleShowResult}>Search</button>
                     </div>
-                    <div className="NewFlightContentResults">
-                        {flightDataToMap?.map((item, index) => (
-                            <div className="NewFlightResultItem1" key={index}>
-                                <div className="NewFlightResultItem1Left">
-                                    <div className="NewFlightResultItem1ImgDiv">
-                                        <img src={item?.airlineLogo} alt="" />
-                                    </div>
-                                    <p>
-                                        {item?.depatureTime} PM -{" "}
-                                        {item?.arrivalTime} <br />{" "}
-                                        <span>{item?.airlineName}</span>
-                                    </p>
-                                    <p>NonStop</p>
-                                    <p>
-                                        5h 20min <br />
-                                        <span>LOs-NBO</span>
-                                    </p>
-                                </div>
-                                <div className="NewFlightResultItem1Right">
-                                    <div className="NewFlightResultItem1RightTop">
-                                        <h3>
-                                            ${item?.priceFlex} / per person
-                                            (Flex)
-                                        </h3>
-                                        <p>${item?.priceStandard}</p>
+                    {showResult && (
+                        <div
+                            className="NewFlightContentResults"
+                            
+                        >
+                            {flightDataToMap?.map((item, index) => (
+                                <div
+                                    className="NewFlightResultItem1"
+                                    key={index}
+                                >
+                                    <div className="NewFlightResultItem1Left">
+                                        <div className="NewFlightResultItem1ImgDiv">
+                                            <img
+                                                src={item?.airlineLogo}
+                                                alt=""
+                                            />
+                                        </div>
                                         <p>
-                                            {item?.from} to{" "}
-                                            <span>{item?.to}</span>
+                                            {item?.depatureTime} PM -{" "}
+                                            {item?.arrivalTime} <br />{" "}
+                                            <span>{item?.airlineName}</span>
+                                        </p>
+                                        <p>NonStop</p>
+                                        <p>
+                                            5h 20min <br />
+                                            <span>LOs-NBO</span>
                                         </p>
                                     </div>
+                                    <div className="NewFlightResultItem1Right">
+                                        <div className="NewFlightResultItem1RightTop">
+                                            <h3>
+                                                ${item?.priceFlex} / per person
+                                                (Flex)
+                                            </h3>
+                                            <p>${item?.priceStandard}</p>
+                                            <p>
+                                                {item?.from} to{" "}
+                                                <span>{item?.to}</span>
+                                            </p>
+                                        </div>
 
-                                    <div className="NewFlightResultItem1RightDown">
-                                        <button
-                                            onClick={() =>
-                                                handleAddFlight(item)
-                                            }
-                                        >
-                                            Add Flight
-                                        </button>
+                                        <div className="NewFlightResultItem1RightDown">
+                                            <Link to='/BookingCar'>
+                                            <button
+                                                onClick={() =>
+                                                    handleAddFlight(item)
+                                                }
+                                            >
+                                                Add Flight
+                                            </button>
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
                 <button
                     className="CancelSearchBtn"

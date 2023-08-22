@@ -1,5 +1,5 @@
-import "./HeaderNew.css";
-import "./HeaderNewMedia.css";
+import "../Header/HeaderNew.css";
+
 import { useState, useEffect } from "react";
 import Icon from "../../assets/bag.png";
 import { MdOutlineCancel } from "react-icons/md";
@@ -20,15 +20,18 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { trippyUserLogOut } from "../Redux/Features";
 import { useDispatch } from "react-redux";
-import DescPage from "../Description/DescPage";
+import Hero from "../Hero/Hero";
+import Continental from "../Continental/Continental";
+// import DescPage from "../Description/DescPage";
+// import Booking from "./Booking";
 
-const Header = () => {
+const BookingFlight = () => {
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [showHelloWorld, setShowHelloWorld] = useState(false);
-    const [home, setHome] = useState(true);
-    const [flight, setFlight] = useState(false);
+    const [home, setHome] = useState(false);
+    const [flight, setFlight] = useState(true);
     const [hotel, setHotel] = useState(false);
     const [car, setCar] = useState(false);
     const [explore, setExplore] = useState(false);
@@ -334,7 +337,8 @@ const Header = () => {
                         <div className="HeaderNewNavdivMainWrap">
                             {home ? (
                                 <>
-                                    <DescPage />
+                                    <Hero />
+                                    <Continental />
                                 </>
                             ) : flight ? (
                                 <NewFlight />
@@ -360,4 +364,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default BookingFlight;

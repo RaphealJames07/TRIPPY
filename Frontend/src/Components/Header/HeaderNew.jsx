@@ -16,9 +16,16 @@ import Continental from "../Continental/Continental";
 import Footer from "../Footer/Footer";
 import Logo from "../../assets/Logo.png";
 import Ham from "../../assets/hamburger.png";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { trippyUserLogOut } from "../Redux/Features";
+import { useDispatch } from "react-redux";
+// import HeaderNewTop from "./HeaderNewTop";
+
 
 const HeaderNew = () => {
-    const [open, setOpen] = useState(true);
+    const dispatch = useDispatch()
+    const [open, setOpen] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [showHelloWorld, setShowHelloWorld] = useState(false);
     const [home, setHome] = useState(true);
@@ -59,6 +66,8 @@ const HeaderNew = () => {
         }
     }, [scrollPosition]);
 
+    const user = useSelector((state) => state.Trippy.trippyUser);
+    console.log(user);
     return (
         <>
             <div className="HeaderNewBody">
@@ -112,6 +121,7 @@ const HeaderNew = () => {
                             </div>
                         </div>
                     </div>
+                    
                     {popUp ? (
                         <>
                             <div className="HeaderAccPopUp">
@@ -130,7 +140,27 @@ const HeaderNew = () => {
                                         <li>Profile</li>
                                         <li>Help/FAQ</li>
                                     </ul>
-                                    <button>SignOut</button>
+                                    <div className="HeaderAccPopUpDownBtns">
+                                        {user ? (
+                                            <>
+                                                <div className="HeaderAccPopUpDownBtns1">
+                                                    <button onClick={() => {
+                                dispatch(trippyUserLogOut());
+                                // alert("User LogOut Successfully");
+                            }}>SignOut</button>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <div className="HeaderAccPopUpDownBtns2">
+                                                <Link to="/Login">
+                                                    <button>Log In</button>
+                                                </Link>
+                                                <Link to="/SignUp">
+                                                    <button>Sign Up</button>
+                                                </Link>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </>
@@ -142,7 +172,7 @@ const HeaderNew = () => {
                         className={`collapse ${open ? "show" : ""}`}
                     >
                         <div className="MobileNavDropHeader">
-                        <img src={Logo} alt="" />
+                            <img src={Logo} alt="" />
                             <MdOutlineCancel
                                 className="CancelNavDrop"
                                 onClick={toggleCollapse}
@@ -151,7 +181,7 @@ const HeaderNew = () => {
                         <ul>
                             <li
                                 onClick={() => {
-                                    toggleCollapse(false)
+                                    // toggleCollapse(false)
                                     setHome(true);
                                     setFlight(false);
                                     setHotel(false);
@@ -169,7 +199,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
-                                    toggleCollapse(false)
+                                    // toggleCollapse(false)
                                     setHome(false);
                                     setFlight(true);
                                     setHotel(false);
@@ -187,7 +217,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
-                                    toggleCollapse(false)
+                                    // toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(true);
@@ -205,7 +235,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
-                                    toggleCollapse(false)
+                                    // toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);
@@ -223,7 +253,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
-                                    toggleCollapse(false)
+                                    // toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);
@@ -241,7 +271,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
-                                    toggleCollapse(false)
+                                    // toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);
@@ -259,7 +289,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
-                                    toggleCollapse(false)
+                                    // toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);
@@ -277,7 +307,7 @@ const HeaderNew = () => {
                             </li>
                             <li
                                 onClick={() => {
-                                    toggleCollapse(false)
+                                    // toggleCollapse(false)
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);

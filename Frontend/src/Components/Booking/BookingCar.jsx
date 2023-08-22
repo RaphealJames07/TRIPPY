@@ -1,5 +1,5 @@
-import "./HeaderNew.css";
-import "./HeaderNewMedia.css";
+import "../Header/HeaderNew.css";
+
 import { useState, useEffect } from "react";
 import Icon from "../../assets/bag.png";
 import { MdOutlineCancel } from "react-icons/md";
@@ -20,17 +20,20 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { trippyUserLogOut } from "../Redux/Features";
 import { useDispatch } from "react-redux";
-import DescPage from "../Description/DescPage";
+import Hero from "../Hero/Hero";
+import Continental from "../Continental/Continental";
+// import DescPage from "../Description/DescPage";
+// import Booking from "./Booking";
 
-const Header = () => {
+const BookingCar = () => {
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [showHelloWorld, setShowHelloWorld] = useState(false);
-    const [home, setHome] = useState(true);
+    const [home, setHome] = useState(false);
     const [flight, setFlight] = useState(false);
     const [hotel, setHotel] = useState(false);
-    const [car, setCar] = useState(false);
+    const [car, setCar] = useState(true);
     const [explore, setExplore] = useState(false);
     const [bookings, setBookings] = useState(false);
     const [favorites, setFavorites] = useState(false);
@@ -262,8 +265,8 @@ const Header = () => {
                                     setHome(false);
                                     setFlight(false);
                                     setHotel(false);
-                                    setCar(false);
-                                    setExplore(true);
+                                    setCar(true);
+                                    setExplore(false);
                                     setBookings(false);
                                     setFavorites(false);
                                     setAbout(false);
@@ -332,16 +335,19 @@ const Header = () => {
                     </div>
                     <div className="HeaderNewNavdivMain">
                         <div className="HeaderNewNavdivMainWrap">
-                            {home ? (
+                            {car ? (
                                 <>
-                                    <DescPage />
+                                    <NewCar />
                                 </>
                             ) : flight ? (
                                 <NewFlight />
                             ) : hotel ? (
                                 <NewHotel />
-                            ) : car ? (
-                                <NewCar />
+                            ) : home ? (
+                                <>
+                                    <Hero />
+                                    <Continental />
+                                </>
                             ) : explore ? (
                                 <NewExplore />
                             ) : bookings ? (
@@ -360,4 +366,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default BookingCar;

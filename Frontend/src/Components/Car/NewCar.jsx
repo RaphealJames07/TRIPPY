@@ -4,6 +4,7 @@ import { bookingData } from "../Redux/Features";
 import { useState } from "react";
 import axios from "axios";
 import { carData, clearCarData } from "../Redux/Features";
+import { Link } from "react-router-dom";
 
 const NewCar = () => {
     const [carCity, setCarCity] = useState("");
@@ -27,7 +28,7 @@ const NewCar = () => {
     const carDataToMap = useSelector((state) => state.Trippy.trippyCarData);
     const handleAddCar = (selectedCar) => {
         const selectedCarData = {
-            type: "car",
+           
             carData: selectedCar,
         };
         dispatch(bookingData(selectedCarData));
@@ -112,11 +113,15 @@ const NewCar = () => {
                                     </div>
 
                                     <div className="NewHotelResultItem1RightDown">
-                                        <button
-                                            onClick={() => handleAddCar(item)}
-                                        >
-                                            Add Car
-                                        </button>
+                                        <Link to="/BookingHotel">
+                                            <button
+                                                onClick={() =>
+                                                    handleAddCar(item)
+                                                }
+                                            >
+                                                Add Car
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

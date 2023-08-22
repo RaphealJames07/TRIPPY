@@ -59,7 +59,7 @@ const Login = () => {
                     Dispatch(
                         trippyUserLogin({ email, firstName, lastName, token })
                     );
-                    nav("/Home");
+                    nav("/HeaderNew");
                 })
                 .catch((err) => {
                     setLoading(false);

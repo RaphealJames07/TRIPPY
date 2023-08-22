@@ -5,11 +5,13 @@ import { bookingData } from "../Redux/Features";
 import { useState } from "react";
 import axios from "axios";
 import { hotelData, clearHotelData } from "../Redux/Features";
+import { useNavigate } from "react-router";
+
 
 const NewHotel = () => {
     const [hotelCity, setHotelCity] = useState("");
     const dispatch = useDispatch();
-
+    const nav = useNavigate()
     const handleHotelSearch = () => {
         const url = `https://trippyapiv1.onrender.com/trippy//find-hotels/?city=${encodeURIComponent(
             hotelCity
@@ -31,10 +33,11 @@ const NewHotel = () => {
 
     const handleAddHotel = (selectedHotel) => {
         const selectedHotelData = {
-            type: "hotel",
+            
             hotelData: selectedHotel,
         };
         dispatch(bookingData(selectedHotelData));
+        nav('/BookingCart')
         // alert("Flight added successfully");
     };
 

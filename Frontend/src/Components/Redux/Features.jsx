@@ -103,8 +103,8 @@ const features = createSlice({
             // console.log('Car data is available in redux', payload);
         },
         bookingData: (state, { payload }) => {
-            state.trippyBookingCart.push = payload
-            console.log("one added", payload);
+            state.trippyBookingCart.push(payload); // Append the payload to the array
+            console.log("Added to cart:", payload);
         },
         clearBookingData: (state) => {
             state.trippyBookingCart = [];

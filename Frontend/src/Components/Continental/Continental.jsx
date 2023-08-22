@@ -39,7 +39,7 @@ const Continental = () => {
                 const tourData = res.data.tour;
                 // console.log(tourData);
                 Dispatch(findOneTour(tourData))
-                nav(`/DescPage/${tourId}`);
+                nav(`/BookingNew/${tourId}`);
             })
             .catch((error) => {
                 console.error("Error fetching tour data:", error);
