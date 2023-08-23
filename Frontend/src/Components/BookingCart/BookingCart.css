@@ -108,6 +108,10 @@
   cursor: pointer;
 }
 
+button{
+  cursor: pointer;
+}
+
 .shape{
   width: 95%;
   height: 95%;

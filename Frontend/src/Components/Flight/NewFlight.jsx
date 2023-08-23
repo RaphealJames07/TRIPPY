@@ -12,10 +12,17 @@ import { Link } from "react-router-dom";
 const NewFlight = () => {
     const [fromFlight, setFromFlight] = useState("");
     const [toFlight, setToFlight] = useState("");
+    // const [froFlight, setFroFlight] = useState("");
+    // const [troFlight, setTroFlight] = useState("");
     const [showResult, setShowResult] = useState(false);
     const dispatch = useDispatch();
 
     const handleFlightSearch = () => {
+        // const url = `https://trippyapiv1.onrender.com/trippy/find-flights/?from=${encodeURIComponent(
+        //     fromFlight
+        // )}&to=${encodeURIComponent(toFlight)}backFrom=${encodeURIComponent(
+        //     froFlight
+        // )}&backTo=${encodeURIComponent(troFlight)}`;
         const url = `https://trippyapiv1.onrender.com/trippy/find-flights/?from=${encodeURIComponent(
             fromFlight
         )}&to=${encodeURIComponent(toFlight)}`;
@@ -57,6 +64,7 @@ const NewFlight = () => {
                 </div>
                 <div className="NewFlightContent">
                     <div className="NewFlightContentInput">
+                        <h3>Go Flight</h3>
                         <select
                             name="OriginAirport"
                             id="OriginAirport"
@@ -78,6 +86,12 @@ const NewFlight = () => {
                                 onChange={(e) => e.target.value}
                             >
                                 Accra
+                            </option>
+                            <option
+                                value="nairobi"
+                                onChange={(e) => e.target.value}
+                            >
+                                Nairobi
                             </option>
                         </select>
                         <select
@@ -101,9 +115,64 @@ const NewFlight = () => {
                             >
                                 Cairo
                             </option>
+                            <option
+                                value="lagos"
+                                onChange={(e) => e.target.value}
+                            >
+                                Lagos
+                            </option>
                         </select>
                         <button onClick={handleShowResult}>Search</button>
                     </div>
+                    {/* <div className="NewFlightContentInput">
+                        <h3>Return Flight</h3>
+                        <select
+                            name="DestinationAirport"
+                            id="DestinationAirport"
+                            onChange={(e) => setFroFlight(e.target.value)}
+                            value={froFlight}
+                        >
+                            <option value="" onChange={(e) => e.target.value}>
+                                Select Destination Airport
+                            </option>
+                            <option
+                                value="nairobi"
+                                onChange={(e) => e.target.value}
+                            >
+                                Nairobi
+                            </option>
+                            <option
+                                value="cairo"
+                                onChange={(e) => e.target.value}
+                            >
+                                Cairo
+                            </option>
+                        </select>
+                        <select
+                            name="OriginAirport"
+                            id="OriginAirport"
+                            onChange={(e) => setTroFlight(e.target.value)}
+                            value={troFlight}
+                        >
+                            <option value="" onChange={(e) => e.target.value}>
+                                Select Origin Airport
+                            </option>
+
+                            <option
+                                value="lagos"
+                                onChange={(e) => e.target.value}
+                            >
+                                Lagos
+                            </option>
+                            <option
+                                value="accra"
+                                onChange={(e) => e.target.value}
+                            >
+                                Accra
+                            </option>
+                        </select>
+                        <button onClick={handleShowResult}>Search</button>
+                    </div> */}
                     {showResult && (
                         <div
                             className="NewFlightContentResults"

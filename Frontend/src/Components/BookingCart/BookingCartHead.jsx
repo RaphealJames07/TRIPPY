@@ -68,7 +68,7 @@ const BookingCartHead = () => {
     }, [scrollPosition]);
 
     const user = useSelector((state) => state.Trippy.trippyUser);
-    console.log(user);
+    // console.log(user);
     return (
         <>
             <div className="HeaderNewBody">
