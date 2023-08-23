@@ -44,7 +44,7 @@ function generateDynamicEmail(link, firstName) {
             		<td>
             			<div style="padding: 0 2.5em; text-align: center;">
             				<h2 style="font-family: 'Lato', sans-serif; color: rgba(0,0,0,.3); font-size: 40px; margin-bottom: 0; font-weight: 400;">Please verify your email</h2>
-            				<h3 style="font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 300;">Welcome On Board Trippy,${firstName},<br/> Travel with Bliss</h3>
+            				<h3 style="font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 300;">Welcome On Board Trippy, ${firstName},<br/> Travel with Bliss</h3>
             				<p><a href=${link} class="btn btn-primary" style="padding: 10px 15px; display: inline-block; border-radius: 5px; background: #30e3ca; color: #ffffff; text-decoration: none;">Verify</a></p>
             			</div>
             		</td>
@@ -88,10 +88,10 @@ function generateDynamicEmail(link, firstName) {
                       <td style="text-align: left; padding-left: 10px;">
                       	<h3 style="color: #000; font-size: 20px; margin-top: 0; font-weight: 400;">Useful Links</h3>
                       	<ul>
-					                <li><a href="#" style="color: #30e3ca;">Home</a></li>
-					                <li><a href="#" style="color: #30e3ca;">About</a></li>
-					                <li><a href="#" style="color: #30e3ca;">Services</a></li>
-					                <li><a href="#" style="color: #30e3ca;">Work</a></li>
+					                <li><a href="https://trippy-huas.onrender.com/" style="color: #30e3ca;">Home</a></li>
+					                <li><a href="https://trippy-huas.onrender.com/" style="color: #30e3ca;">About</a></li>
+					                <li><a href="https://trippy-huas.onrender.com/" style="color: #30e3ca;">Services</a></li>
+					                <li><a href="https://trippy-huas.onrender.com/" style="color: #30e3ca;">Work</a></li>
 					              </ul>
                       </td>
                     </tr>
