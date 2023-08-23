@@ -1,159 +1,361 @@
-import "./Header.css";
+import "./HeaderNew.css";
+import "./HeaderNewMedia.css";
+import { useState, useEffect } from "react";
+import Icon from "../../assets/bag.png";
+import { MdOutlineCancel } from "react-icons/md";
+import NewFlight from "../Flight/NewFlight";
+import NewHotel from "../Hotel/NewHotel";
+import NewCar from "../Car/NewCar";
+import NewExplore from "../Explore/NewExplore";
+import NewBookings from "../Bookings/NewBookings";
+import NewFavorites from "../Favorites/NewFavorites";
+import NewAbout from "../About/NewAbout";
+import { Fade } from "react-awesome-reveal";
+// import Hero from "../Hero/Hero";
+// import Continental from "../Continental/Continental";
+import Footer from "../Footer/Footer";
 import Logo from "../../assets/Logo.png";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import Ham from "../../assets/hamburger.png";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { trippyUserLogOut } from "../Redux/Features";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { HiOutlinePlus } from "react-icons/hi";
-import ClearBookingModal from "../ExitModal/Modal";
-
+import { useDispatch } from "react-redux";
+import DescPage from "../Description/DescPage";
 
 const Header = () => {
-    const [toggleUser, setToggleUser] = useState(false);
-    const [toggleDropdown, setToggleDropdown] = useState(false);
-    const Dispatch = useDispatch();
-    const nav = useNavigate()
+    const dispatch = useDispatch();
+    const [open, setOpen] = useState(false);
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [showHelloWorld, setShowHelloWorld] = useState(false);
+    const [home, setHome] = useState(true);
+    const [flight, setFlight] = useState(false);
+    const [hotel, setHotel] = useState(false);
+    const [car, setCar] = useState(false);
+    const [explore, setExplore] = useState(false);
+    const [bookings, setBookings] = useState(false);
+    const [favorites, setFavorites] = useState(false);
+    const [about, setAbout] = useState(false);
+    const [popUp, setPopUp] = useState(false);
 
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const bookingCart = useSelector((state) => state.Trippy.trippyBookingCart);
-
-
-    const handleHomeButtonClick = () => {
-        if (bookingCart.length > 0) {
-            setModalIsOpen(true);
-        } else {
-            nav('/Home')
-        }
+    const toggleCollapse = () => {
+        setOpen(!open);
     };
+
+    const togglePopUp = () => {
+        setPopUp(!popUp);
+    };
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollPosition(window.scrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (scrollPosition > 500) {
+            setShowHelloWorld(true);
+        } else {
+            setShowHelloWorld(false);
+        }
+    }, [scrollPosition]);
 
     const user = useSelector((state) => state.Trippy.trippyUser);
-    // if (user) {
-    //     console.log("User is Available: ", user);
-    // } else {
-    //     console.log("User is Unavailable");
-    // }
-
-    const handleDropdown = () => {
-        document.querySelector(".HeaderBodyMobile").classList.remove("active");
-        setToggleDropdown(!toggleDropdown);
-    };
-    const handleRomoveDropdown = () => {
-        document.querySelector(".HeaderBodyMobile").classList.add("active");
-        setToggleDropdown(!toggleDropdown);
-    };
-
+    console.log(user);
     return (
         <>
-            <div className="HeaderBody">
-                <div className="HeaderWrapper">
-                    <div className="HeaderLogoDiv">
-                        <img src={Logo} alt="" />
-                    </div>
-                    <div className="HeaderNavDiv">
-                        <nav>
-                            <ul>
-                                <li  onClick={handleHomeButtonClick}>
-                                    <Link
-                                        style={{ textDecoration: "none" }}
-                                        to="/Home"
-                                    >
-                                        Home
-                                    </Link>
-                                </li>
-                                <li>Booking</li>
-                                <li>Explore</li>
-                                <li>About Us</li>
-                                <ClearBookingModal
-                                    isOpen={modalIsOpen}
-                                    onRequestClose={() => setModalIsOpen(false)}
-                                />
-                            </ul>
-                        </nav>
-                    </div>
-                    <div className="HeaderAccDiv">
-                        {user ? (
-                            <div
-                                className="UserCircle"
-                                onMouseEnter={() => setToggleUser(!toggleUser)}
-                            ></div>
-                        ) : (
-                            <div
-                                className="NoUserCircle"
-                                onMouseEnter={() => setToggleUser(!toggleUser)}
-                            ></div>
-                        )}
-                    </div>
-                </div>
-            </div>
-            {toggleUser ? (
-                <div
-                    className="UserMobileDropDown"
-                    onMouseLeave={() => setToggleUser(!toggleUser)}
-                >
-                    {user ? (
-                        <button
-                            className="UserMobileDropDownSignoutBtn"
-                            onClick={() => {
-                                Dispatch(trippyUserLogOut());
-                                // alert("User LogOut Successfully");
-                            }}
+            <div className="HeaderNewBody">
+                <div className="HeaderNewTopDiv">
+                    <div className="HeaderNewTopDivWrap">
+                        <div className="HeaderNewTopDivLeft">
+                            <img
+                                src={Ham}
+                                alt=""
+                                onClick={toggleCollapse}
+                                className="Ham"
+                            />
+
+                            <img src={Logo} alt="" />
+                        </div>
+                        <div
+                            className="HeaderNewHelloWorld"
+                            // style={{
+                            //     display: showHelloWorld ? "flex" : "none",
+                            // }}
                         >
-                            SignOut
-                        </button>
-                    ) : (
-                        <>
-                            <Link className="LinkTag" to="/Login">
-                                <button>Login</button>
-                            </Link>
-                            <Link className="LinkTag" to="/SignUp">
-                                <button>SignUp</button>
-                            </Link>
-                        </>
-                    )}
-                </div>
-            ) : null}
-            <div className="HeaderBodyMobile active">
-                <div className="HeaderLogoMobileDiv">
-                    <img src={Logo} alt="" />
-                </div>
-                <div className="HeaderDropBoxMobileDiv">
-                    <div className="Togglebox">
-                        <GiHamburgerMenu
-                            className="GiHamburgerMenu"
-                            onClick={handleDropdown}
-                        />
+                            {showHelloWorld & home ? (
+                                <Fade className="FadeBody">
+                                    <>
+                                        <input
+                                            type="text"
+                                            placeholder="Flights"
+                                        />
+                                        <input
+                                            type="text"
+                                            placeholder="Hotels"
+                                        />
+                                        <input type="text" placeholder="Car" />
+                                        <button>Search</button>
+                                    </>
+                                </Fade>
+                            ) : (
+                                <>
+                                    <Fade cascade={true}>
+                                        <h2>Good Morning Mr Koko</h2>
+                                    </Fade>
+                                </>
+                            )}
+                        </div>
+                        <div className="HeaderNewTopDivRight">
+                            <div
+                                className="HeaderNewTopDivRightCircle"
+                                onClick={() => togglePopUp(!popUp)}
+                            >
+                                RJ
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="HeaderAccDivMobile">
-                        {user ? (
-                            <div
-                                className="UserCircleMobile"
-                                onClick={() => setToggleUser(!toggleUser)}
-                            ></div>
-                        ) : (
-                            <div
-                                className="NoUserCircleMobile"
-                                onClick={() => setToggleUser(!toggleUser)}
-                            ></div>
-                        )}
+                    {popUp ? (
+                        <>
+                            <div className="HeaderAccPopUp">
+                                <div className="HeaderAccPopUpTop">
+                                    <div className="HeaderAccPopUpTopIcon">
+                                        R
+                                    </div>
+                                    <div className="HeaderAccPopUpTopText">
+                                        <h3>Rapheal James</h3>
+                                        <p>raphealjunior07@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div className="HeaderAccPopUpDown">
+                                    <ul>
+                                        <li>WishList</li>
+                                        <li>Profile</li>
+                                        <li>Help/FAQ</li>
+                                    </ul>
+                                    <div className="HeaderAccPopUpDownBtns">
+                                        {user ? (
+                                            <>
+                                                <div className="HeaderAccPopUpDownBtns1">
+                                                    <button
+                                                        onClick={() => {
+                                                            dispatch(
+                                                                trippyUserLogOut()
+                                                            );
+                                                            // alert("User LogOut Successfully");
+                                                        }}
+                                                    >
+                                                        SignOut
+                                                    </button>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <div className="HeaderAccPopUpDownBtns2">
+                                                <Link to="/Login">
+                                                    <button>Log In</button>
+                                                </Link>
+                                                <Link to="/SignUp">
+                                                    <button>Sign Up</button>
+                                                </Link>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    ) : null}
+                </div>
+                <div className="HeaderNewNavdiv">
+                    <div
+                        id="example-collapse-text"
+                        className={`collapse ${open ? "show" : ""}`}
+                    >
+                        <div className="MobileNavDropHeader">
+                            <img src={Logo} alt="" />
+                            <MdOutlineCancel
+                                className="CancelNavDrop"
+                                onClick={toggleCollapse}
+                            />
+                        </div>
+                        <ul>
+                            <li
+                                onClick={() => {
+                                    // toggleCollapse(false)
+                                    setHome(true);
+                                    setFlight(false);
+                                    setHotel(false);
+                                    setCar(false);
+                                    setExplore(false);
+                                    setBookings(false);
+                                    setFavorites(false);
+                                    setAbout(false);
+                                }}
+                            >
+                                <span>
+                                    <img src={Icon} alt="" />
+                                </span>
+                                <p>Home</p>
+                            </li>
+                            <li
+                                onClick={() => {
+                                    // toggleCollapse(false)
+                                    setHome(false);
+                                    setFlight(true);
+                                    setHotel(false);
+                                    setCar(false);
+                                    setExplore(false);
+                                    setBookings(false);
+                                    setFavorites(false);
+                                    setAbout(false);
+                                }}
+                            >
+                                <span>
+                                    <img src={Icon} alt="" />
+                                </span>
+                                <p>Flight</p>
+                            </li>
+                            <li
+                                onClick={() => {
+                                    // toggleCollapse(false)
+                                    setHome(false);
+                                    setFlight(false);
+                                    setHotel(true);
+                                    setCar(false);
+                                    setExplore(false);
+                                    setBookings(false);
+                                    setFavorites(false);
+                                    setAbout(false);
+                                }}
+                            >
+                                <span>
+                                    <img src={Icon} alt="" />
+                                </span>
+                                <p>Hotel</p>
+                            </li>
+                            <li
+                                onClick={() => {
+                                    // toggleCollapse(false)
+                                    setHome(false);
+                                    setFlight(false);
+                                    setHotel(false);
+                                    setCar(true);
+                                    setExplore(false);
+                                    setBookings(false);
+                                    setFavorites(false);
+                                    setAbout(false);
+                                }}
+                            >
+                                <span>
+                                    <img src={Icon} alt="" />
+                                </span>
+                                <p>Car</p>
+                            </li>
+                            <li
+                                onClick={() => {
+                                    // toggleCollapse(false)
+                                    setHome(false);
+                                    setFlight(false);
+                                    setHotel(false);
+                                    setCar(false);
+                                    setExplore(true);
+                                    setBookings(false);
+                                    setFavorites(false);
+                                    setAbout(false);
+                                }}
+                            >
+                                <span>
+                                    <img src={Icon} alt="" />
+                                </span>
+                                <p>Explore</p>
+                            </li>
+                            <li
+                                onClick={() => {
+                                    // toggleCollapse(false)
+                                    setHome(false);
+                                    setFlight(false);
+                                    setHotel(false);
+                                    setCar(false);
+                                    setExplore(false);
+                                    setBookings(true);
+                                    setFavorites(false);
+                                    setAbout(false);
+                                }}
+                            >
+                                <span>
+                                    <img src={Icon} alt="" />
+                                </span>
+                                <p>Bookings</p>
+                            </li>
+                            <li
+                                onClick={() => {
+                                    // toggleCollapse(false)
+                                    setHome(false);
+                                    setFlight(false);
+                                    setHotel(false);
+                                    setCar(false);
+                                    setExplore(false);
+                                    setBookings(false);
+                                    setFavorites(true);
+                                    setAbout(false);
+                                }}
+                            >
+                                <span>
+                                    <img src={Icon} alt="" />
+                                </span>
+                                <p>Favorites</p>
+                            </li>
+                            <li
+                                onClick={() => {
+                                    // toggleCollapse(false)
+                                    setHome(false);
+                                    setFlight(false);
+                                    setHotel(false);
+                                    setCar(false);
+                                    setExplore(false);
+                                    setBookings(false);
+                                    setFavorites(false);
+                                    setAbout(true);
+                                }}
+                            >
+                                <span>
+                                    <img src={Icon} alt="" />
+                                </span>
+                                <p> About Us</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="HeaderNewNavdivMain">
+                        <div className="HeaderNewNavdivMainWrap">
+                            {home ? (
+                                <>
+                                    <DescPage />
+                                </>
+                            ) : flight ? (
+                                <NewFlight />
+                            ) : hotel ? (
+                                <NewHotel />
+                            ) : car ? (
+                                <NewCar />
+                            ) : explore ? (
+                                <NewExplore />
+                            ) : bookings ? (
+                                <NewBookings />
+                            ) : favorites ? (
+                                <NewFavorites />
+                            ) : about ? (
+                                <NewAbout />
+                            ) : null}
+                        </div>
+                        <Footer />
                     </div>
                 </div>
             </div>
-            {toggleDropdown && (
-                <div className="HeaderMobileDropDown">
-                    <HiOutlinePlus
-                        className="HiOutlinePlus"
-                        onClick={handleRomoveDropdown}
-                    />
-
-                    <div>Home</div>
-                    <div>Booking</div>
-                    <div>Explore</div>
-                    <div>About Us</div>
-                </div>
-            )}
         </>
     );
 };

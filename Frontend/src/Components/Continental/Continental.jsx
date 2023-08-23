@@ -10,6 +10,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { findOneTour } from "../Redux/Features";
+// import ContentLoader from "react-content-loader";
 
 const Continental = () => {
     const [africa, setAfrica] = useState(true);
@@ -38,7 +39,7 @@ const Continental = () => {
                 const tourData = res.data.tour;
                 // console.log(tourData);
                 Dispatch(findOneTour(tourData))
-                nav(`/DescPage/${tourId}`);
+                nav(`/BookingNew/${tourId}`);
             })
             .catch((error) => {
                 console.error("Error fetching tour data:", error);
@@ -129,6 +130,8 @@ const Continental = () => {
                                                 alt=""
                                                 draggable="false"
                                             />
+                                            {/* <ContentLoader/> */}
+                                            <div className="ContiAddToFav"></div>
                                         </div>
                                         <div className="ContiCTA">
                                             {item?.tourName}

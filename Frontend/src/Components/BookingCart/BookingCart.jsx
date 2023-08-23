@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+// import Footer from "../Footer/Footer";
+// import Header from "../Header/Header";
 import "./BookingCart.css";
 // import TourImg from "../../assets/HeroBg.png";
 import { useDispatch } from "react-redux";
 import { clearBookingData } from "../Redux/Features";
+import axios from "axios";
+import { useState } from "react";
 
 function BookingCart() {
     const dispatch = useDispatch();
@@ -12,75 +14,176 @@ function BookingCart() {
         (state) => state.Trippy.trippyBookingCart
     );
     // console.log("SEE DATA", bookingCartData);
-    const mergedBookingData = {};
+    const cartData = bookingCartData;
+    const userToken = useSelector((state) => state.Trippy.trippyUser.token);
+    console.log("User Token is", userToken);
+    const userData = useSelector((state) => state.Trippy.trippyUser);
+    const userFirstName = userData.firstName;
 
-    bookingCartData.forEach((item) => {
-        Object.keys(item).forEach((key) => {
-            if (!mergedBookingData.hasOwnProperty(key)) {
-                mergedBookingData[key] = item[key];
+    console.log("User Data is", userData);
+
+    const mergedObject = cartData.reduce((merged, currentObject) => {
+        Object.entries(currentObject).forEach(([key, value]) => {
+            if (!merged[key]) {
+                merged[key] = [value];
+            } else {
+                merged[key].push(value);
             }
         });
-    });
+        return merged;
+    }, {});
 
-    const mergedArray = [mergedBookingData];
+    // console.log('GPT', mergedObject);
+    const NewCartData = [mergedObject];
+    console.log("My Final", NewCartData);
 
-    console.log(mergedArray);
-    // console.log(mergedArray[0].tourData);
+    const flightId = `${NewCartData[0].flightData[0]._id}`;
+    const returnFlightId = `${NewCartData[0].flightData[1]._id}`;
+    const flightPrice =
+        parseFloat(NewCartData[0].flightData[1].priceFlex) +
+        parseFloat(NewCartData[0].flightData[0].priceFlex);
+    const numberOfTickets = 2;
+    const namesOfTravelers = ["John Doe", "Mary John"];
+    const flightDate = `27-01-2023`;
+    const returnDate = `30-01-2023`;
+    const carRentalId = `${NewCartData[0].carData[0]._id}`;
+    const rentalDays = 3;
+    const rentalDate = `27-01-2023`;
+    const rentalPrice =
+        parseFloat(NewCartData[0].carData[0].pricePerDay) * rentalDays;
+    const hotelId = `${NewCartData[0].hotelData[0]._id}`;
+    const tourId = `${NewCartData[0].tourData[0]._id}`;
+    const tourPrice = parseFloat(NewCartData[0].tourData[0].pricePerPerson) * 2;
+    const checkInDate = `27-01-2023`;
+    const checkOutDate = `30-01-2023`;
+    const numberOfGuests = 2;
+    const numberOfRooms = 1;
+    const hotelPrice = parseFloat(NewCartData[0].hotelData[0].pricePerNight);
+    const totalPrice = flightPrice + rentalPrice + hotelPrice + tourPrice;
+
+    const data = {
+        flightId,
+        returnFlightId,
+        numberOfTickets,
+        namesOfTravelers,
+        flightDate,
+        returnDate,
+        flightPrice,
+        carRentalId,
+        rentalDays,
+        rentalDate,
+        rentalPrice,
+        hotelId,
+        tourId,
+        checkInDate,
+        checkOutDate,
+        numberOfGuests,
+        numberOfRooms,
+        hotelPrice,
+        totalPrice,
+    };
+
+    const [bookingProcessing, setBookingProcessing] = useState(false);
+
+    const handleBooking = () => {
+        console.log("Booking processing");
+        setBookingProcessing(true);
+        const token = userToken;
+        const requestedData = data;
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        axios
+            .post(
+                `https://trippyapiv1.onrender.com/trippy/new-booking`,
+                requestedData,
+                { headers }
+            )
+            .then((res) => {
+                console.log(res);
+                payment();
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        setBookingProcessing(false);
+    };
+
+    const payment = () => {
+        const refVal = "KoKo" + Math.random() * 1000;
+        window.Korapay.initialize({
+            key: "pk_test_g6zBHAZmHopS6Tyyvwn7iz5ucLqrDP6kqWwvKr66",
+            reference: `${refVal}`,
+            amount: totalPrice,
+            currency: "NGN",
+            customer: {
+                name: userFirstName,
+                email: userData.email,
+            },
+            notification_url: "https://example.com/webhook",
+        });
+    };
 
     return (
         <>
             <div className="BookingCartBody">
-                <Header />
+                {/* <Header /> */}
 
-                <div className="container">
-                    {mergedArray?.map((item, index) => (
-                        <div className="box1" key={index}>
+                {NewCartData?.map((item, index) => (
+                    <div className="container" key={index}>
+                        <div className="box1">
                             <div className="shape">
                                 <div className="shape1">
                                     <img
-                                        src={mergedArray[0].tourData.images[0]}
+                                        src={item?.tourData[0].images[0]}
                                         alt="tour"
                                     />
                                 </div>
                                 <div className="text">
                                     <h2>
-                                        {mergedArray[0].tourData.city}{" "}
-                                        <span> Tour Price:{mergedArray[0].tourData.pricePerPerson}</span>
+                                        {item?.tourData[0].tourName}
+                                        <span>
+                                            {" "}
+                                            Tour Price:{" "}
+                                            {item?.tourData[0].pricePerPerson}
+                                        </span>
                                     </h2>
-                                    <h2>{mergedArray[0].tourData.country}</h2>
+                                    <h2></h2>
                                 </div>
                                 <div className="shape2">
                                     <div className="card1">
                                         <p>
-                                            Departure Time:{" "}
-                                            {
-                                                mergedArray[0].flightData
-                                                    .depatureTime
-                                            }
-                                            <br /> Arrival Time  
-                                            {mergedArray[0].flightData.arrivalTime}<br />
+                                            Departure Time:
+                                            <br /> Arrival Time
+                                            <br />
                                             Lagos Int’l Airport Lagos NG <br />
                                             Nairobi Intl airport Nairobi KY
-                                        <p>Price:N{mergedArray[0].flightData.priceFlex}</p>
-                                        </p> <br />
+                                        </p>{" "}
+                                        <span>
+                                            <p>Price:N</p>
+                                        </span>
+                                        <br />
                                     </div>
                                     <div className="card1">
                                         <p>
-                                            Hotel: {mergedArray[0].hotelData.hotelName} <br />
-                                            Check In: <span>{mergedArray[0].hotelData.checkIn}</span> <span> Check Out: {mergedArray[0].hotelData.checkOut}</span>{" "}
-                                            <br />
-                                            Max Per Rooms: {mergedArray[0].hotelData.maxPerRoom} <br /><span>Price:N{mergedArray[0].hotelData.pricePerNight}</span>
+                                            Hotel: <br />
+                                            Check In: <span></span>{" "}
+                                            <span> Check Out: </span> <br />
+                                            Max Per Rooms: <br />
                                         </p>
+                                        <span>Price:N</span>
                                     </div>
                                 </div>
                                 <div className="shape3">
                                     <div className="card2">
                                         <p>
-                                            Car: {mergedArray[0].carData.brand} <span>{mergedArray[0].carData.model}</span>
+                                            Car: <span></span>
                                             <br />
-                                            Seat: {mergedArray[0].carData.maxPassengers} regNo: {mergedArray[0].carData.registrationNumber}
-                                            <p>Price:N{mergedArray[0].carData.pricePerDay}</p>
+                                            Seat: regNo:
                                         </p>
+                                        <span>
+                                            <p>Price:N</p>
+                                        </span>
                                     </div>
                                     <div className="card3">
                                         <p>Name</p>
@@ -96,49 +199,52 @@ function BookingCart() {
                                 </div>
                             </div>
                         </div>
-                    ))}
-                    <div className="box2">
-                        <div className="innerbox2">
-                            <div className="innerbox1">Total Bookings</div>
-                            <div className="innerbox">
-                                <p>Flight Total:</p>
-                                <p>300.00</p>
+
+                        <div className="box2">
+                            <div className="innerbox2">
+                                <div className="innerbox1">Total Bookings</div>
+                                <div className="innerbox">
+                                    <p>Flight Total:</p>
+                                    <p>300.00</p>
+                                </div>
+                                <div className="innerbox">
+                                    <p>Hotel Total:</p>
+                                    <p>80.00</p>
+                                </div>
+                                <div className="innerbox">
+                                    <p>Car Total:</p>
+                                    <p>45.00</p>
+                                </div>
+                                <div className="innerbox">
+                                    <p>Sub Total:</p>
+                                    <p>45.00</p>
+                                </div>
+                                <div className="innerbox">
+                                    <p>Service Charge</p>
+                                    <p>45.00</p>
+                                </div>
+                                <div className="innerbox">
+                                    <p>Total</p>
+                                    <p>90.00</p>
+                                </div>
+                                <button className="pay" onClick={handleBooking}>
+                                    {bookingProcessing
+                                        ? "Booking Processing..."
+                                        : "Proceed to Pay"}
+                                </button>
+                                <button
+                                    className="deleteBooking"
+                                    onClick={() => {
+                                        dispatch(clearBookingData());
+                                        // alert("User LogOut Successfully");
+                                    }}
+                                >
+                                    Cancel Boking
+                                </button>
                             </div>
-                            <div className="innerbox">
-                                <p>Hotel Total:</p>
-                                <p>80.00</p>
-                            </div>
-                            <div className="innerbox">
-                                <p>Car Total:</p>
-                                <p>45.00</p>
-                            </div>
-                            <div className="innerbox">
-                                <p>Sub Total:</p>
-                                <p>45.00</p>
-                            </div>
-                            <div className="innerbox">
-                                <p>Service Charge</p>
-                                <p>45.00</p>
-                            </div>
-                            <div className="innerbox">
-                                <p>Total</p>
-                                <p>90.00</p>
-                            </div>
-                            <button className="pay">Proceed to Pay</button>
-                            <button
-                                className="deleteBooking"
-                                onClick={() => {
-                                    dispatch(clearBookingData());
-                                    // alert("User LogOut Successfully");
-                                }}
-                            >
-                                Cancel Boking
-                            </button>
                         </div>
                     </div>
-                </div>
-
-                <Footer />
+                ))}
             </div>
         </>
     );

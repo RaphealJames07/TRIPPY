@@ -1,0 +1,87 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.CocoBody{
+  width: 100%;
+  height: 250vh;
+  background: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+.CocoBodyWrap{
+  width: 80%;
+  height: 100%;
+  background: #d6e1dc;
+}
+
+.CocoTop{
+  width: 100%;
+  height: 40%;
+}
+
+.CocoTopImgDiv{
+  width: 100%;
+  height: 60%;
+}
+.CocoTop img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.CocoTourDetailsDiv{
+  height: 50%;
+  width: 100%;
+  background: grey;
+}
+
+
+
+.CocoDown{
+  width: 100%;
+  height: 60%;
+  display: flex;
+}
+
+.CocoLeft{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoRight{
+  width: 30%;
+  height: 100%;
+}
+
+
+.CocoTourFlightDiv{
+  width: 100%;
+  height: 33%;
+  background: #5f4343;
+}
+
+.CocoTourHotelDiv{
+  width: 100%;
+  height: 33%;
+  background: gold;
+}
+
+.CocoTourCarDiv{
+  width: 100%;
+  height: 33%;
+  background: hotpink;
+}
+
+.CocoPayment{
+  width: 100%;
+  height: 40%;
+  background: #000;
+}

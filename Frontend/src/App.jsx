@@ -14,7 +14,18 @@ import Description from "./Components/Description/Description";
 import DescPage from "./Components/Description/DescPage";
 import Booking from "./Components/Booking/Booking";
 import Flight from "./Components/Booking/Flight";
-import BookingCart from "./Components/BookingCart/BookingCart";
+// import BookingCart from "./Components/BookingCart/BookingCart";
+import Play from "./Components/PlayGround/Play";
+import HeaderNew from './Components/Header/HeaderNew'
+import NewHotel from "./Components/Hotel/NewHotel";
+import NewFlight from "./Components/Flight/NewFlight";
+import Header from "./Components/Header/Header";
+import BookingNew from "./Components/Booking/BookingH";
+import BookingCar from "./Components/Booking/BookingCar";
+import BookingHotel from "./Components/Booking/BookingHotel";
+import BookingFlight from "./Components/Booking/BookingFlight";
+import BookingCartHead from "./Components/BookingCart/BookingCartHead";
+
 
 const App = () => {
   return (
@@ -33,9 +44,21 @@ const App = () => {
             <Route path="/ResetPwdSuccess" element={<ResetPwdSuccess />} />
             <Route path="/Description" element={<Description />} />
             <Route path="/DescPage/:tourId" element={<DescPage />} />
+            <Route path="/DescPage" element={<DescPage />} />
             <Route path="/Booking" element={<Booking />} />
             <Route path="/Flight" element={<Flight />} />
-            <Route path="/BookingCart" element={<BookingCart />} />
+            {/* <Route path="/BookingCart" element={<BookingCart />} /> */}
+            <Route path="/Play" element={<Play/>} />
+            <Route path="/HeaderNew" element={<HeaderNew/>} />
+            <Route path="/NewHotel" element={<NewHotel/>} />
+            <Route path="/NewFlight" element={<NewFlight/>} />
+            <Route path="/HeaderTwo" element={<Header/>} />
+            <Route path="/BookingNew/:tourId" element={<BookingNew/>} />
+            <Route path="/BookingCar" element={<BookingCar/>} />
+            <Route path="/BookingHotel" element={<BookingHotel/>} />
+            <Route path="/BookingFlight" element={<BookingFlight/>} />
+            <Route path="/BookingCart" element={<BookingCartHead/>} />
+            
             
           </Routes>
         </HashRouter>

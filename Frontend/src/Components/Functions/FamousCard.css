@@ -31,7 +31,7 @@
   overflow: hidden;
   min-height: 100%;
   transition: 0.7s;
-  /* background: #000; */
+  background: #000;
 }
 
 .solution_cards_box .solution_card:hover {

@@ -103,15 +103,25 @@ const features = createSlice({
             // console.log('Car data is available in redux', payload);
         },
         bookingData: (state, { payload }) => {
-            state.trippyBookingCart = [...state.trippyBookingCart, payload]
-            console.log('one added', payload);
+            state.trippyBookingCart.push(payload); // Append the payload to the array
+            console.log("Added to cart:", payload);
         },
-        clearBookingData: (state, ) => {
-            state.trippyBookingCart = []
-            state.trippyHotelData = []
-            state.trippyFlightData = []
-            state.trippyCarData = []
-            state.findOneTourData = []
+        clearBookingData: (state) => {
+            state.trippyBookingCart = [];
+            state.trippyHotelData = [];
+            state.trippyFlightData = [];
+            state.trippyCarData = [];
+            state.findOneTourData = [];
+        },
+        clearHotelData: (state) => {
+            state.trippyHotelData = [];
+        },
+        clearFlightData: (state) => {
+            state.trippyFlightData = [];
+        },
+        clearCarData: (state) => {
+            state.trippyCarData = [];
+            console.log('cleared');
         },
     },
 });
@@ -125,6 +135,9 @@ export const {
     findOneTour,
     updateOneTourData,
     hotelData,
+    clearHotelData,
+    clearFlightData,
+    clearCarData,
     flightData,
     carData,
     bookingData,
