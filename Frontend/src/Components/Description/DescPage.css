@@ -1,0 +1,309 @@
+/* 
+/* TEMPLATE FOR STYLINGS */
+
+/* Media Query Styling For Desktop Device */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.DescBody{
+  width: 100%;
+  height: 130vh;
+  font-family: 'Kanit', sans-serif;
+}
+
+.DescTop{
+  width: 100%;
+  height: 45%;
+  background: #d3d3d3;
+  display: flex;
+  justify-content: space-between;
+}
+.leftarrow{
+  width: 5%;
+  height: 100%;
+  background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theleftarrowicon{
+  width: 20%;
+  height: 50%;
+  background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.therightarrowicon{
+  width: 20%;
+  height: 50%;
+  background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightarrow{
+  width: 5%;
+  height: 100%;
+  background-color: brown;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.DescDown{
+  width: 100%;
+  height: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.DescDownWrap{
+  width: 90%;
+  height: 100%;
+}
+
+.DescDownInitials{
+  width: 95%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.DescDownHeadText{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.DescDownHeaderInfo{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.DescDownHeaderInfo span{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.DescDownHeaderInfo span h2{
+  margin-left: 10px;
+}
+
+.DescNav{
+  width: 100%;
+  height: 10%;
+}
+
+.DescNav ul{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 15px;
+}
+.DescNav ul li{
+  width: 15%;
+  height: 100%;
+  list-style-type: none;
+  background: #d4d4d4;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  border-radius: 5px;
+
+}
+.DescNav ul li:hover{
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.DescBoard{
+  width: 100%;
+  height: 60%;
+}
+
+.DescButtonBook{
+  width: 90%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.DescButtonBook button{
+  width: 120px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.ReviewContainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.ReviewBody{
+  width: 65%;
+  height: 100%;
+}
+
+.CommentBody{
+  width: 45%;
+  height: 95%;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.CommentFields{
+  width: 80%;
+  height: 50%;
+}
+.CommentFields label{
+  width: 50%;
+  height: 50%;
+}
+
+.CommentFields input{
+  width: 50%;
+  height: 50%;
+}
+
+.CommentFields .CommentFieldText{
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+}
+
+.CommentFields .CommentFieldStar{
+  width: 50px;
+  height: 40px;
+}
+
+.ReviewsHeader{
+  width: 100%;
+  height: 20%;
+}
+
+.ReviewCommentsSec{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto;
+}
+.ReviewCommentsSec::-webkit-scrollbar{
+  display: none;
+}
+
+.ReviewComment1{
+  width: 100%;
+  height: 100px;
+  flex: 0 0 auto;
+}
+
+.ReviewComment1Info{
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+
+.ReviewComment1Pfp{
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ReviewComment1Pfp img{
+  width: 50px;
+  height: 50px;
+  background: purple;
+  border-radius: 50%;
+}
+
+.ReviewComment1Details{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ReviewComment1Text{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ReviewComment1Text p{
+  width: 95%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* End of Media Query Styling For Desktop Device */
+
+/* Media Query Styling for Tablet Device */
+
+@media only screen and (max-width: 1024px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+}
+
+/* End of Media Query Styling for Tablet Device */
+
+/* Media Query Styling for Mobile Device */
+
+@media only screen and (max-width: 414px){
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+}
+
+/* End of Media Query Styling for Mobile Device */ 
