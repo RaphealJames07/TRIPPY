@@ -7,6 +7,9 @@ import { useDispatch } from "react-redux";
 import { clearBookingData } from "../Redux/Features";
 import axios from "axios";
 import { useState } from "react";
+import TourImg from "../../assets/home_slider.jpg.webp";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import "./BookingCart.css";
 
 function BookingCart() {
     const dispatch = useDispatch();
@@ -84,9 +87,9 @@ function BookingCart() {
     };
 
     const [bookingProcessing, setBookingProcessing] = useState(false);
+    console.log(bookingProcessing);
 
     const handleBooking = () => {
-        console.log("Booking processing");
         setBookingProcessing(true);
         const token = userToken;
         const requestedData = data;
@@ -126,121 +129,242 @@ function BookingCart() {
 
     return (
         <>
-            <div className="BookingCartBody">
-                {/* <Header /> */}
-
-                {NewCartData?.map((item, index) => (
-                    <div className="container" key={index}>
-                        <div className="box1">
-                            <div className="shape">
-                                <div className="shape1">
-                                    <img
-                                        src={item?.tourData[0].images[0]}
-                                        alt="tour"
-                                    />
-                                </div>
-                                <div className="text">
+            <div className="CocoBody">
+                {cartData?.map((item, index) => (
+                    <div className="CocoBodyWrap" key={index}>
+                        <div className="CocoTop">
+                            <h1 className="CocoTopHeaderText">
+                                Booking Summary
+                            </h1>
+                            <div className="CocoTopImgDiv">
+                                <img src={TourImg} alt="" />
+                            </div>
+                            <div className="CocoTopTourDetailsDiv">
+                                <div className="CocoTopTourDetailsDivOne">
                                     <h2>
-                                        {item?.tourData[0].tourName}
-                                        <span>
-                                            {" "}
-                                            Tour Price:{" "}
-                                            {item?.tourData[0].pricePerPerson}
+                                        Tour Name: Nairobi Safari
+                                        <span style={{ marginLeft: "30px" }}>
+                                            City: Nairobi
                                         </span>
                                     </h2>
-                                    <h2></h2>
-                                </div>
-                                <div className="shape2">
-                                    <div className="card1">
-                                        <p>
-                                            Departure Time:
-                                            <br /> Arrival Time
-                                            <br />
-                                            Lagos Int’l Airport Lagos NG <br />
-                                            Nairobi Intl airport Nairobi KY
-                                        </p>{" "}
-                                        <span>
-                                            <p>Price:N</p>
-                                        </span>
-                                        <br />
-                                    </div>
-                                    <div className="card1">
-                                        <p>
-                                            Hotel: <br />
-                                            Check In: <span></span>{" "}
-                                            <span> Check Out: </span> <br />
-                                            Max Per Rooms: <br />
-                                        </p>
-                                        <span>Price:N</span>
+                                    <h3>Country: Kenya</h3>
+                                    <div className="CocoTopTourDetailsDivStar">
+                                        <AiFillStar />
+                                        <AiFillStar />
+                                        <AiFillStar />
+                                        <AiOutlineStar />
+                                        <AiOutlineStar />
                                     </div>
                                 </div>
-                                <div className="shape3">
-                                    <div className="card2">
+                                <div className="CocoTopTourDetailsDivTwo">
+                                    <div className="CocoTopTourDetailsDivTwoSpan1">
+                                        <h2>Tour Info:</h2>
                                         <p>
-                                            Car: <span></span>
-                                            <br />
-                                            Seat: regNo:
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit. Alias
+                                            adipisci cupiditate earum
+                                            consequatur, dolores aut veniam, in
+                                            nobis nostrum quos omnis iure ad
+                                            fugiat culpa placeat, sequi facilis
+                                            ipsam eos!
                                         </p>
-                                        <span>
-                                            <p>Price:N</p>
-                                        </span>
                                     </div>
-                                    <div className="card3">
-                                        <p>Name</p>
-                                        <div className="inputholder">
-                                            <input placeholder="" />
+                                    <div className="CocoTopTourDetailsDivTwoSpan2">
+                                        <h2>Amenities</h2>
+                                        <p>
+                                            Restaurants and Cafés , Guided Tours
+                                            Events and Exhibitions, Wild Life
+                                        </p>
+                                    </div>
+                                    <div className="CocoTopTourDetailsDivInputs">
+                                        <h3>
+                                            Price Per Person: 13000{" "}
+                                            <span>Total Tour Price: 20000</span>
+                                        </h3>
+                                        <div className="CocoTopTourDetailsDivInputsNum">
+                                            <label htmlFor="Name">
+                                                No Of Tickets
+                                            </label>
+                                            <input type="number" min={0} />
                                         </div>
-
-                                        <p>Email</p>
-                                        <div className="inputholder">
-                                            <input placeholder="" />
+                                        <div className="CocoTopTourDetailsDivInputsName">
+                                            <label htmlFor="Name">
+                                                Name of Tourist(1)
+                                            </label>
+                                            <input
+                                                type="text"
+                                                placeholder="Input Name"
+                                            />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div className="box2">
-                            <div className="innerbox2">
-                                <div className="innerbox1">Total Bookings</div>
-                                <div className="innerbox">
-                                    <p>Flight Total:</p>
-                                    <p>300.00</p>
+                        <div className="CocoDown">
+                            <div className="CocoLeft">
+                                <div className="CocoTourFlightDiv">
+                                    <div className="CocoTourFlightDivLeft">
+                                        <div className="CocoTourFlightDivLeftImgDiv">
+                                            <img src="" alt="" />
+                                        </div>
+                                        <div className="CocoTourFlightDivLeftDetailsDiv">
+                                            <h3>To Flight Detail</h3>
+                                            <p>Flight Name</p>
+                                            <p>
+                                                Fron Lagos to{" "}
+                                                <span>Nairobi</span>{" "}
+                                            </p>
+                                            <p>Depature Time</p>
+                                            <p>Arrival Time</p>
+                                            <p>
+                                                date <input type="date" />
+                                            </p>
+                                            <select name="" id="">
+                                                <option value="">
+                                                    Select Price
+                                                </option>
+                                                <option value="priceFlex">
+                                                    PriceFlex
+                                                </option>
+                                                <option value="priceStandard">
+                                                    PriceStandard
+                                                </option>
+                                            </select>
+                                            <p>Return Price</p>
+                                        </div>
+                                    </div>
+                                    <div className="CocoTourFlightDivRight">
+                                        <div className="CocoTourFlightDivRightImgDiv">
+                                            <img src="" alt="" />
+                                        </div>
+                                        <div className="CocoTourFlightDivRightDetailsDiv">
+                                            <h3>From Flight Detail</h3>
+                                            <p>Flight Name</p>
+                                            <p>
+                                                Fron Lagos to{" "}
+                                                <span>Nairobi</span>{" "}
+                                            </p>
+                                            <p>Depature Time</p>
+                                            <p>Arrival Time</p>
+                                            <p>
+                                                date <input type="date" />
+                                            </p>
+                                            <select name="" id="">
+                                                <option value="">
+                                                    Select Price
+                                                </option>
+                                                <option value="priceFlex">
+                                                    PriceFlex
+                                                </option>
+                                                <option value="priceStandard">
+                                                    PriceStandard
+                                                </option>
+                                            </select>
+                                            <p>Return Price</p>
+                                        </div>
+                                    </div>
+                                    {/* <p>Total Flight Price</p> */}
                                 </div>
-                                <div className="innerbox">
-                                    <p>Hotel Total:</p>
-                                    <p>80.00</p>
+                                <div className="CocoTourHotelDiv">
+                                    <div className="CocoTourHotelDivImgDiv">
+                                        <img src="" alt="" />
+                                    </div>
+                                    <div className="CocoTourHotelDivDetailsDiv">
+                                        <h3>
+                                            Hotel Name <span>Kenya</span>
+                                        </h3>
+                                        <p>12 kokoyi street</p>
+                                        <p>
+                                            CheckIn <span>CheckOut</span>
+                                        </p>
+                                        <p>
+                                            Price per night
+                                            <span>max per room (2)</span>
+                                        </p>
+                                        <p>
+                                            Nights
+                                            <input
+                                                type="number"
+                                                name=""
+                                                id=""
+                                                min={0}
+                                            />
+                                            <span>No of Guest</span>
+                                        </p>
+                                        <p>Total Hotel Price</p>
+                                    </div>
                                 </div>
-                                <div className="innerbox">
-                                    <p>Car Total:</p>
-                                    <p>45.00</p>
+                                <div className="CocoTourCarDiv">
+                                    <div className="CocoTourCarDivImgDiv">
+                                        <img src="" alt="" />
+                                    </div>
+                                    <div className="CocoTourCarDivDetailsDiv">
+                                        <h3>
+                                            Car Name <span>Model</span>
+                                        </h3>
+                                        <p>
+                                            Seats <span>Color</span>
+                                        </p>
+                                        <p>Max Passenger</p>
+                                        <p>Location</p>
+                                        <p>
+                                            PricePerDaR{" "}
+                                            <input
+                                                type="number"
+                                                name=""
+                                                id=""
+                                            />{" "}
+                                            <span>No of days</span>
+                                        </p>
+                                        <p>Regno</p>
+                                        <p>Total Price</p>
+                                    </div>
                                 </div>
-                                <div className="innerbox">
-                                    <p>Sub Total:</p>
-                                    <p>45.00</p>
+                            </div>
+                            <div className="CocoRight">
+                                <div className="CocoPayment">
+                                    <div className="CocoPaymentFigures">
+                                        <p>
+                                            Total Tour Price <span>20000</span>
+                                        </p>
+                                        <p>
+                                            Total Flight Price{" "}
+                                            <span>20000</span>
+                                        </p>
+                                        <p>
+                                            Total Car Price <span>20000</span>
+                                        </p>
+                                        <p>
+                                            Total Hotel Price <span>20000</span>
+                                        </p>
+                                        <p>
+                                            SubTotal Booking Price{" "}
+                                            <span>20000</span>
+                                        </p>
+                                        <p>
+                                            Service Charge <span>20000</span>
+                                        </p>
+                                        <h3>
+                                            Total Booking Fee <span>20000</span>
+                                        </h3>
+                                    </div>
+                                    <div className="CocoPaymentActionBtns">
+                                        <button
+                                            className="CocoPaymentActionBtnsCancel"
+                                            onClick={() =>
+                                                dispatch(clearBookingData)
+                                            }
+                                        >
+                                            Cancel Booking
+                                        </button>
+                                        <button
+                                            className="CocoPaymentActionBtnsPay"
+                                            onClick={handleBooking}
+                                        >
+                                            Pay Now
+                                        </button>
+                                    </div>
                                 </div>
-                                <div className="innerbox">
-                                    <p>Service Charge</p>
-                                    <p>45.00</p>
-                                </div>
-                                <div className="innerbox">
-                                    <p>Total</p>
-                                    <p>90.00</p>
-                                </div>
-                                <button className="pay" onClick={handleBooking}>
-                                    {bookingProcessing
-                                        ? "Booking Processing..."
-                                        : "Proceed to Pay"}
-                                </button>
-                                <button
-                                    className="deleteBooking"
-                                    onClick={() => {
-                                        dispatch(clearBookingData());
-                                        // alert("User LogOut Successfully");
-                                    }}
-                                >
-                                    Cancel Boking
-                                </button>
                             </div>
                         </div>
                     </div>
