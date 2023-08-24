@@ -1,694 +1,316 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-
-.BookingCartBody{
+.CocoBody{
   width: 100%;
-  height: max-content;
-}
-
-.page{
-  width: 100%;
-  height: 100vh;
-  background-color: rgb(126, 114, 114);
+  height: 230vh;
+  background: rgb(0, 0, 0);
   display: flex;
   align-items: center;
-  flex-direction: column;
-
-}
-
-
-
-.container{
-  width: 100%;
-  height: 900px;
-  background-color: rgb(226, 226, 226);
-  display: flex;
-  justify-content: space-between;
-}
-
-.box1{
-  width: 65%;
-  height: 99%;
-  background-color: rgb(226, 226, 226);
-  margin-left: 3%;
-  display: flex;
-  /* justify-content: center; */
-  flex-direction: column;
-  border: 3px solid #00B4D8;
-}
-
-
-.box2{
-  width: 25%;
-  height: 40%;
-  background-color: rgb(226, 226, 226);
-  margin-top:200px ;
-  margin-right: 3%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  border: 3px solid #00B4D8;
-}
-
-.innerbox2{
-  width: 80%;
-  height: 100%;
-  margin-right: 3%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.innerbox{
-  width: 100%;
-  height: 10%;
-  background-color: rgb(226, 226, 226);
-  color: #00B4D8;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.innerbox1{
-  width: 100%;
-  height: 12%;
-  font-size: 20px;
-  color: #00B4D8;
-  display: flex;
-  align-items: flex-end;
   justify-content: center;
+  font-family: sans-serif;
 }
 
-
-
-.pay{
-  width: 90%;
-  height: 13%;
-  background-color: #00BB8E;
-  border-radius: 10px;
-  border: none;
-  font-size: 18px;
-  color: white;
-}
-
-.deleteBooking{
-  width: 90%;
-  height: 13%;
-  background-color: red;
-  border-radius: 10px;
-  border: none;
-  font-size: 18px;
-  color: white;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-button{
-  cursor: pointer;
-}
-
-.shape{
+.CocoBodyWrap{
   width: 95%;
-  height: 95%;
-  background-color: rgb(226, 226, 226);
-  margin: 20px;
-}
-
-.shape1{
-  width: 100%;
-  height: 45%;
-  background-color: green;
-}
-
-.shape1 img{
-  width: 100%;
   height: 100%;
+  background: #fff;
 }
 
-.text{
+.CocoTop{
+  width: 100%;
+  height: 50%;
+}
+
+.CocoTopHeaderText{
   width: 100%;
   height: 5%;
-  margin-top: 3%;
+  justify-content: center;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  color: #00B4D8;
 }
 
-.shape2{
+.CocoTopImgDiv{
   width: 100%;
-  height: 18%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  height: 40%;
 }
-
-.card1{
-  width: 45%;
-  height: 90%;
-  display: flex;
-  align-items:center;
-  font-size: 17px;
-  color: #00B4D8
-}
-
-.shape3{
+.CocoTop img{
   width: 100%;
-  height: 28%;
-  display: flex;
-  flex-direction: row;
-  /* align-items: center; */
-  justify-content: space-between;
+  height: 100%;
+  object-fit: cover;
 }
 
-.card2{
-  width: 45%;
+.CocoTopTourDetailsDiv{
   height: 50%;
-  display: flex;
-  align-items:center;
-  font-size: 17px;
-  color: #00B4D8
+  width: 100%;
+
+  padding: 0 25px;
 }
 
 
-.card3{
-  width: 45%;
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  color: #00B4D8
-}
-
-.inputholder{
+.CocoTopTourDetailsDivOne{
   width: 100%;
   height: 20%;
-  background-color: bisque;
-}
-
-.inputholder input{
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.footer{
-  width: 100%;
-  height: 0%;
-  background-color: black;
   
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+}
+.CocoTopTourDetailsDivOne h2{
+  text-transform: capitalize;
+}
+.CocoTopTourDetailsDivOne h2 span{
+  text-transform: capitalize;
 }
 
-.box4{
+.CocoTopTourDetailsDivTwo{
   width: 100%;
-  height: 100%;
-  background-image: url(/src/assets/footer.png);
-}
+  height: 80%;
 
-.footerbody{
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 3%;
+  justify-content: space-between;
 }
 
-.footerheader{
-  width: 80%;
-  height: 11%;
-  /* background-color: aqua; */
-  color: #00B4D8;
-  margin-top: 2%;
-  font-size: 20px;
+.CocoTopTourDetailsDivTwoSpan1{
+  width: 100%;
+  height: 30%;
+ 
+}
+
+.CocoTopTourDetailsDivTwoSpan2{
+  width: 100%;
+  height: 30%;
+}
+
+.CocoTopTourDetailsDivInputs{
+  width: 100%;
+  height: 30%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
 }
-
-.footerbox{
-  width: 80%;
-  height: 7%;
-  /* background-color: aqua; */
-  margin-top: 1%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.footerbox1{
+.CocoTopTourDetailsDivInputs h3{
   width: 30%;
   height: 100%;
-  /* background-color: blue; */
-  font-size: 13px;
-  color: white;
-  margin-left: 11%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.footerbox2{
-  width: 20%;
-  height:100% ;
-  /* background-color: red; */
+.CocoTopTourDetailsDivInputsNum{
+  width: 10%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+.CocoTopTourDetailsDivInputsNum input{
+  width: 60px;
+  height: 40px;
+  padding-left: 5px;
+  font-size: 16px;
 }
 
-.lasttext{
-  color: white;
-  margin-top: 5%;
-  font-size: 15px;
+.CocoTopTourDetailsDivInputsName{
+  width: 65%;
+  height: 100%;
+  display: flex;
+  padding-left: 20px;
 }
 
+.CocoTopTourDetailsDivInputsName button{
+  width: 50px;
+  height: 40px;
+  margin: 5px;
+}
+.CocoTopTourDetailsDivInputsName input{
+  width: 200px;
+  height: 50%;
+  padding-left: 10px;margin-left: 10px;
+}
 
-@media screen and (max-width:770px) {
-  *{
-    margin: 0;
-    padding: 0;
-  }
-  
-  .page{
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(126, 114, 114);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  
-  }
-  
-  .header{
-    width: 100%;
-    height: 80px;
-    /* background-color: blueviolet; */
-    display: flex;
-    justify-content: space-evenly;
+.CocoTopTourDetailsDivTouristName{
+  width: 100%;
+  height: 5%;
 }
-  .headerlogo{
-    width: 30%;
-    height: 100%;
-    /* background-color: pink; */
-}
-  .headernamesprofile{
-    width: 90%;
-    height: 100%;
-    /* background-color: blue; */
-    display: flex;
-}
-  .headernames{
-    width: 100%;
-    height: 100%;
-    /* background-color: orange; */
-    display: flex;
-    justify-content: space-around;
-    align-items: center; 
-    flex-direction: row; 
-    gap: 20px;
-  }
-  .headernames ul {
-    list-style: none; 
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 40px;
-  }
-  
-  .container{
-    width: 100%;
-    height: 600px;
-    background-color: rgb(226, 226, 226);
-    display: flex;
-    justify-content: space-between;
-    margin-top: 7%;
-  }
-  
-  .box1{
-    width: 65%;
-    height: 99%;
-    background-color: rgb(226, 226, 226);
-    margin-left: 3%;
-    display: flex;
-    /* justify-content: center; */
-    flex-direction: column;
-    border: 3px solid #00B4D8;
-  }
-  
-  
-  .box2{
-    width: 25%;
-    height: 40%;
-    background-color: rgb(226, 226, 226);
-    margin-top:47% ;
-    margin-right: 3%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    border: 3px solid #00B4D8;
-  }
-  
-  .innerbox2{
-    width: 80%;
-    height: 85%;
-    margin-right: 3%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-  }
-  
-  .innerbox{
-    width: 100%;
-    height: 10%;
-    background-color: rgb(226, 226, 226);
-    color: #00B4D8;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .innerbox1{
-    width: 100%;
-    height: 12%;
-    font-size: 15px;
-    color: #00B4D8;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-  
-  
-  
-  .pay{
-    width: 90%;
-    height: 13%;
-    background-color: #00BB8E;
-    border-radius: 10px;
-    border: none;
-    font-size: 18px;
-    color: white;
-  }
 
-  .deleteBooking{
-    padding: 15px;
-    background: #000;
-  }
-  
-  .shape{
-    width: 95%;
-    height: 95%;
-    background-color: rgb(226, 226, 226);
-    margin: 20px;
-  }
-  
-  .shape1{
-    width: 100%;
-    height: 45%;
-    background-color: green;
-  }
-  
-  .shape1 img{
-    width: 100%;
-    height: 100%;
-  }
-  
-  .text{
-    width: 100%;
-    height: 5%;
-    margin-top: 3%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    color: #00B4D8;
-  }
-  
-  .shape2{
-    width: 100%;
-    height: 18%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .card1{
-    width: 45%;
-    height: 90%;
-    display: flex;
-    align-items:center;
-    font-size: 15px;
-    color: #00B4D8
-  }
-  
-  .shape3{
-    width: 100%;
-    height: 28%;
-    display: flex;
-    flex-direction: row;
-    /* align-items: center; */
-    justify-content: space-between;
-  }
-  
-  .card2{
-    width: 45%;
-    height: 50%;
-    display: flex;
-    align-items:center;
-    font-size: 17px;
-    color: #00B4D8
-  }
-  
-  
-  .card3{
-    width: 45%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    color: #00B4D8
-  }
-  
-  .inputholder{
-    width: 100%;
-    height: 20%;
-    background-color: bisque;
-  }
-  
-  .inputholder input{
-    width: 100%;
-    height: 100%;
-    border: none;
-  } 
+.CocoDown{
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+
+.CocoLeft{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoRight{
+  width: 30%;
+  height: 100%;
 }
 
 
-@media screen and (max-width:390px) {
-  *{
-    margin: 0;
-    padding: 0;
-  }
-  
-  .page{
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(126, 114, 114);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  
-  }
-  .header{
-    width: 100%;
-    height: 80px;
-    /* background-color: blue; */
-    display: flex;
-    justify-content: space-between;
-  }
-  .headerlogo{
-    width: 40%;
-    height: 100%;
-    /* background-color: pink; */
-  }
-  .headernamesprofile{
-    width: 70%;
-    height: 100%;
-    /* background-color: blue; */
-    display: none;
-  }
-  
-  .container{
-    width: 100%;
-    height: 600px;
-    background-color: rgb(226, 226, 226);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 7%;
-  }
-  
-  .box1{
-    width: 100%;
-    height: 99%;
-    background-color: rgb(226, 226, 226);
-    display: flex;
-    /* justify-content: center; */
-    flex-direction: column;
-    border: 3px solid #00B4D8;
-  }
-  
-  
-  .box2{
-    width: 40%;
-    height: 40%;
-    background-color: rgb(226, 226, 226);
-    margin-top:5% ;
-    margin-right: 3%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    border: 3px solid #00B4D8;
-  }
-  
-  .innerbox2{
-    width: 80%;
-    height: 85%;
-    margin-right: 3%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-  }
-  
-  .innerbox{
-    width: 100%;
-    height: 10%;
-    background-color: rgb(226, 226, 226);
-    font-size: 10px;
-    color: #00B4D8;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .innerbox1{
-    width: 100%;
-    height: 12%;
-    font-size: 15px;
-    color: #00B4D8;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-  
-  
-  
-  .pay{
-    width: 90%;
-    height: 13%;
-    background-color: #00BB8E;
-    border-radius: 10px;
-    border: none;
-    font-size: 10px;
-    color: white;
-  }
-  
-  .shape{
-    width: 100%;
-    height: 95%;
-    background-color: rgb(226, 226, 226);
-    margin: 20px;
-  }
-  
-  .shape1{
-    width: 100%;
-    height: 45%;
-    background-color: green;
-  }
-  
-  .shape1 img{
-    width: 100%;
-    height: 100%;
-  }
-  
-  .text{
-    width: 100%;
-    height: 5%;
-    margin-top: 3%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    color: #00B4D8;
-  }
-  
-  .shape2{
-    width: 100%;
-    height: 18%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .card1{
-    width: 45%;
-    height: 90%;
-    display: flex;
-    align-items:center;
-    font-size: 10px;
-    color: #00B4D8
-  }
-  
-  .shape3{
-    width: 100%;
-    height: 28%;
-    display: flex;
-    flex-direction: row;
-    /* align-items: center; */
-    justify-content: space-between;
-  }
-  
-  .card2{
-    width: 45%;
-    height: 50%;
-    display: flex;
-    align-items:center;
-    font-size: 10px;
-    color: #00B4D8
-  }
-  
-  
-  .card3{
-    width: 45%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    color: #00B4D8
-  }
-  
-  .inputholder{
-    width: 100%;
-    height: 20%;
-    background-color: bisque;
-  }
-  
-  .inputholder input{
-    width: 100%;
-    height: 100%;
-    border: none;
-  } 
+.CocoTourFlightDiv{
+  width: 100%;
+  height: 33%;
+  border: 1px solid ;
+  display: flex;
 }
 
+.CocoTourFlightDivLeft{
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.CocoTourFlightDivLeftImgDiv{
+  width: 40%;
+  height: 100%;
+}
+
+.CocoTourFlightDivLeft img{
+  width: 100%;
+  height: 100%;
+  background: blue;
+}
+
+.CocoTourFlightDivLeftDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoTourFlightDivRight{
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.CocoTourFlightDivRightImgDiv{
+  width: 40%;
+  height: 100%;
+}
+
+.CocoTourFlightDivRight img{
+  width: 100%;
+  height: 100%;
+  background: blue;
+}
+
+.CocoTourFlightDivRightDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoTourHotelDiv{
+  width: 100%;
+  height: 33%;
+  background: gold;
+  display: flex;
+}
+
+.CocoTourHotelDivImgDiv{
+  width: 40%;
+  height: 100%;
+}
+.CocoTourHotelDivImgDiv img{
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.CocoTourHotelDivDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoTourCarDiv{
+  width: 100%;
+  height: 33%;
+  background: hotpink;
+  display: flex;
+}
+
+.CocoTourCarDivImgDiv{
+  width: 40%;
+  height: 100%;
+  background: olive;
+}
+
+.CocoTourCarDivDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoPayment{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.CocoPaymentFigures{
+  width: 90%;
+  height: 80%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid;
+  padding: 15px 0;
+}
+.CocoPaymentFigures p{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.CocoPaymentActionBtns{
+  width: 90%;
+  height: 20%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #000;
+}
+.CocoPaymentActionBtns button{
+  width: 130px;
+  height: 45px;
+  border-radius: 7px;
+}
+
+.CocoPaymentActionBtnsCancel{
+  background: rgb(244, 46, 46);
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 16px;
+}
+
+.CocoPaymentActionBtnsPay{
+  background: rgb(12, 202, 123);
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 16px;
+}

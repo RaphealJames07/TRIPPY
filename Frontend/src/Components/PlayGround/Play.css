@@ -16,17 +16,17 @@
 .CocoBodyWrap{
   width: 80%;
   height: 100%;
-  background: #d6e1dc;
+  background: #fff;
 }
 
 .CocoTop{
   width: 100%;
-  height: 40%;
+  height: 50%;
 }
 
 .CocoTopImgDiv{
   width: 100%;
-  height: 60%;
+  height: 50%;
 }
 .CocoTop img{
   width: 100%;
@@ -34,17 +34,88 @@
   object-fit: cover;
 }
 
-.CocoTourDetailsDiv{
+.CocoTopTourDetailsDiv{
   height: 50%;
   width: 100%;
-  background: grey;
+
+  padding: 0 25px;
 }
 
 
+.CocoTopTourDetailsDivOne{
+  width: 100%;
+  height: 20%;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* .CocoTopTourDetailsDivOne h2{
+  
+} */
+
+.CocoTopTourDetailsDivTwo{
+  width: 100%;
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoTopTourDetailsDivTwoSpan1{
+  width: 100%;
+  height: 30%;
+ 
+}
+
+.CocoTopTourDetailsDivTwoSpan2{
+  width: 100%;
+  height: 30%;
+}
+
+.CocoTopTourDetailsDivInputs{
+  width: 100%;
+  height: 30%;
+  display: flex;
+}
+.CocoTopTourDetailsDivInputs h3{
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.CocoTopTourDetailsDivInputsNum{
+  width: 10%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+.CocoTopTourDetailsDivInputsNum input{
+  width: 60px;
+  height: 40px;
+  padding-left: 5px;
+  font-size: 16px;
+}
+
+.CocoTopTourDetailsDivInputsName{
+  width: 65%;
+  height: 100%;
+  display: flex;
+  padding-left: 20px;
+}
+.CocoTopTourDetailsDivInputsName input{
+  width: 200px;
+  height: 50%;
+  padding-left: 10px;margin-left: 10px;
+}
 
 .CocoDown{
   width: 100%;
-  height: 60%;
+  height: 50%;
   display: flex;
 }
 
@@ -65,23 +136,158 @@
 .CocoTourFlightDiv{
   width: 100%;
   height: 33%;
-  background: #5f4343;
+  border: 1px solid ;
+  display: flex;
+}
+
+.CocoTourFlightDivLeft{
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.CocoTourFlightDivLeftImgDiv{
+  width: 40%;
+  height: 100%;
+}
+
+.CocoTourFlightDivLeft img{
+  width: 100%;
+  height: 100%;
+  background: blue;
+}
+
+.CocoTourFlightDivLeftDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoTourFlightDivRight{
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.CocoTourFlightDivRightImgDiv{
+  width: 40%;
+  height: 100%;
+}
+
+.CocoTourFlightDivRight img{
+  width: 100%;
+  height: 100%;
+  background: blue;
+}
+
+.CocoTourFlightDivRightDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .CocoTourHotelDiv{
   width: 100%;
   height: 33%;
   background: gold;
+  display: flex;
+}
+
+.CocoTourHotelDivImgDiv{
+  width: 40%;
+  height: 100%;
+}
+.CocoTourHotelDivImgDiv img{
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.CocoTourHotelDivDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .CocoTourCarDiv{
   width: 100%;
   height: 33%;
   background: hotpink;
+  display: flex;
+}
+
+.CocoTourCarDivImgDiv{
+  width: 40%;
+  height: 100%;
+  background: olive;
+}
+
+.CocoTourCarDivDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .CocoPayment{
   width: 100%;
-  height: 40%;
-  background: #000;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.CocoPaymentFigures{
+  width: 90%;
+  height: 80%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid;
+  padding: 15px 0;
+}
+.CocoPaymentFigures p{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.CocoPaymentActionBtns{
+  width: 90%;
+  height: 20%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #000;
+}
+.CocoPaymentActionBtns button{
+  width: 130px;
+  height: 45px;
+  border-radius: 7px;
+}
+
+.CocoPaymentActionBtnsCancel{
+  background: rgb(244, 46, 46);
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 16px;
+}
+
+.CocoPaymentActionBtnsPay{
+  background: rgb(12, 202, 123);
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 16px;
 }
