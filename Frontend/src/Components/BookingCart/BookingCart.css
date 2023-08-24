@@ -57,10 +57,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-transform: capitalize;
 }
-/* .CocoTopTourDetailsDivOne h2{
-  
-} */
+.CocoTopTourDetailsDivOne h2{
+  text-transform: capitalize;
+}
+.CocoTopTourDetailsDivOne h2 span{
+  text-transform: capitalize;
+}
 
 .CocoTopTourDetailsDivTwo{
   width: 100%;
@@ -88,7 +92,7 @@
   display: flex;
 }
 .CocoTopTourDetailsDivInputs h3{
-  width: 25%;
+  width: 30%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -115,10 +119,21 @@
   display: flex;
   padding-left: 20px;
 }
+
+.CocoTopTourDetailsDivInputsName button{
+  width: 50px;
+  height: 40px;
+  margin: 5px;
+}
 .CocoTopTourDetailsDivInputsName input{
   width: 200px;
   height: 50%;
   padding-left: 10px;margin-left: 10px;
+}
+
+.CocoTopTourDetailsDivTouristName{
+  width: 100%;
+  height: 5%;
 }
 
 .CocoDown{

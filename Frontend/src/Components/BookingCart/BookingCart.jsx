@@ -7,11 +7,11 @@ import { useDispatch } from "react-redux";
 import { clearBookingData } from "../Redux/Features";
 import axios from "axios";
 import { useState } from "react";
-import TourImg from "../../assets/home_slider.jpg.webp";
+// import TourImg from "../../assets/home_slider.jpg.webp";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import "./BookingCart.css";
 
-function BookingCart() {
+const BookingCart = () =>{
     const dispatch = useDispatch();
     const bookingCartData = useSelector(
         (state) => state.Trippy.trippyBookingCart
@@ -19,11 +19,11 @@ function BookingCart() {
     // console.log("SEE DATA", bookingCartData);
     const cartData = bookingCartData;
     const userToken = useSelector((state) => state.Trippy.trippyUser.token);
-    console.log("User Token is", userToken);
+    // console.log("User Token is", userToken);
     const userData = useSelector((state) => state.Trippy.trippyUser);
     const userFirstName = userData.firstName;
 
-    console.log("User Data is", userData);
+    // console.log("User Data is", userData);
 
     const mergedObject = cartData.reduce((merged, currentObject) => {
         Object.entries(currentObject).forEach(([key, value]) => {
@@ -40,12 +40,30 @@ function BookingCart() {
     const NewCartData = [mergedObject];
     console.log("My Final", NewCartData);
 
+    const [tourTickets, setTourTickets] = useState(0);
+    
+
+    
+        const [touristName, setTouristName] = useState('');
+        const [allTouristNames, setAllTouristNames] = useState([]);
+    
+    const handleAddName = () => {
+        if (touristName.trim() !== '') {
+            setAllTouristNames([...allTouristNames, touristName]);
+            setTouristName(''); // Clear the input field
+        }
+    }
+    const handleClearAllNames = () => {
+        setAllTouristNames([]);
+    };
+      
+
     const flightId = `${NewCartData[0].flightData[0]._id}`;
     const returnFlightId = `${NewCartData[0].flightData[1]._id}`;
     const flightPrice =
         parseFloat(NewCartData[0].flightData[1].priceFlex) +
         parseFloat(NewCartData[0].flightData[0].priceFlex);
-    const numberOfTickets = 2;
+    const numberOfTickets = tourTickets;
     const namesOfTravelers = ["John Doe", "Mary John"];
     const flightDate = `27-01-2023`;
     const returnDate = `30-01-2023`;
@@ -56,13 +74,16 @@ function BookingCart() {
         parseFloat(NewCartData[0].carData[0].pricePerDay) * rentalDays;
     const hotelId = `${NewCartData[0].hotelData[0]._id}`;
     const tourId = `${NewCartData[0].tourData[0]._id}`;
-    const tourPrice = parseFloat(NewCartData[0].tourData[0].pricePerPerson) * 2;
+    const tourPrice = parseFloat(NewCartData[0].tourData[0].pricePerPerson);
     const checkInDate = `27-01-2023`;
     const checkOutDate = `30-01-2023`;
     const numberOfGuests = 2;
     const numberOfRooms = 1;
     const hotelPrice = parseFloat(NewCartData[0].hotelData[0].pricePerNight);
     const totalPrice = flightPrice + rentalPrice + hotelPrice + tourPrice;
+
+
+    const totalTourPrice = tourPrice * tourTickets;
 
     const data = {
         flightId,
@@ -130,24 +151,29 @@ function BookingCart() {
     return (
         <>
             <div className="CocoBody">
-                {cartData?.map((item, index) => (
+                {NewCartData?.map((item, index) => (
                     <div className="CocoBodyWrap" key={index}>
                         <div className="CocoTop">
                             <h1 className="CocoTopHeaderText">
                                 Booking Summary
                             </h1>
                             <div className="CocoTopImgDiv">
-                                <img src={TourImg} alt="" />
+                                <img src={item?.tourData[0].images[0]} alt="" />
                             </div>
                             <div className="CocoTopTourDetailsDiv">
                                 <div className="CocoTopTourDetailsDivOne">
                                     <h2>
-                                        Tour Name: Nairobi Safari
-                                        <span style={{ marginLeft: "30px" }}>
-                                            City: Nairobi
+                                        {item?.tourData[0].tourName}
+                                        <span
+                                            style={{
+                                                marginLeft: "30px",
+                                                fontSize: "19px",
+                                            }}
+                                        >
+                                            {item?.tourData[0].city}
                                         </span>
                                     </h2>
-                                    <h3>Country: Kenya</h3>
+                                    <h3>{item?.tourData[0].country}</h3>
                                     <div className="CocoTopTourDetailsDivStar">
                                         <AiFillStar />
                                         <AiFillStar />
@@ -171,32 +197,59 @@ function BookingCart() {
                                     </div>
                                     <div className="CocoTopTourDetailsDivTwoSpan2">
                                         <h2>Amenities</h2>
-                                        <p>
-                                            Restaurants and Cafés , Guided Tours
-                                            Events and Exhibitions, Wild Life
-                                        </p>
+                                        <p>{item?.tourData[0].amenities}</p>
                                     </div>
                                     <div className="CocoTopTourDetailsDivInputs">
                                         <h3>
-                                            Price Per Person: 13000{" "}
-                                            <span>Total Tour Price: 20000</span>
+                                            Price Per Person:
+                                            {item?.tourData[0].pricePerPerson}
+                                            <span>
+                                                Total Tour Price{" "}
+                                                {totalTourPrice}
+                                            </span>
                                         </h3>
                                         <div className="CocoTopTourDetailsDivInputsNum">
                                             <label htmlFor="Name">
                                                 No Of Tickets
                                             </label>
-                                            <input type="number" min={0} />
+                                            <input
+                                                type="number"
+                                                min={0}
+                                                value={tourTickets}
+                                                onChange={(e) =>
+                                                    setTourTickets(
+                                                        e.target.value
+                                                    )
+                                                }
+                                            />
                                         </div>
                                         <div className="CocoTopTourDetailsDivInputsName">
                                             <label htmlFor="Name">
-                                                Name of Tourist(1)
+                                                Name of Tourist
                                             </label>
                                             <input
                                                 type="text"
                                                 placeholder="Input Name"
+                                                value={touristName}
+                                                onChange={(e) =>
+                                                    setTouristName(
+                                                        e.target.value
+                                                    )
+                                                }
                                             />
+                                            <button onClick={handleAddName}>
+                                                Add Name
+                                            </button>
+                                            <button onClick={handleClearAllNames}>Clear Names</button>
+                                            <p>
+                                                
+                                            </p>
                                         </div>
                                     </div>
+                                        <div className="CocoTopTourDetailsDivTouristName">
+                                            <p>All Names:
+                                                {allTouristNames.join(", ")}</p>
+                                        </div>
                                 </div>
                             </div>
                         </div>
