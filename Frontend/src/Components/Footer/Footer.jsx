@@ -1,5 +1,7 @@
 import "./Footer.css";
 import Logo from "../../assets/Logo.png";
+import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
+
 
 const Footer = () => {
     return (
@@ -20,8 +22,7 @@ const Footer = () => {
                             </div>
                             <div className="FooterRights">
                                 <p>
-                                    Copyright ©2023 All rights reserved | This
-                                    template is made with love by Bad man KoKo
+                                    Copyright ©2023 All rights reserved | This template was made for travel enthusiasts and adventurers who are passionate about exploring the world.
                                 </p>
                             </div>
                         </div>
@@ -46,10 +47,18 @@ const Footer = () => {
                                 </div>
                                 <div className="TagsSocials">
                                     <div className="TagSocialIconDiv">
-                                        <div className="TagSocialIcon"></div>
-                                        <div className="TagSocialIcon"></div>
-                                        <div className="TagSocialIcon"></div>
-                                        <div className="TagSocialIcon"></div>
+                                        <div className="TagSocialIcon">
+                                         <FaFacebookF style={{ color: 'white' }} />
+                                        </div>
+                                         <div className="TagSocialIcon">
+                                         <FaInstagram style={{ color: 'white' }} />
+                                          </div>
+                                          <div className="TagSocialIcon">
+                                          <FaTwitter style={{ color: 'white' }} />
+                                           </div>
+                                          <div className="TagSocialIcon">
+                                         <FaLinkedinIn style={{ color: 'white' }} />
+                                          </div>
                                     </div>
                                     <div className="TagSocialsText">
                                         <p>Facebook</p>
@@ -64,8 +73,7 @@ const Footer = () => {
                     <div className="FooterDown">
                         <div className="FooterLine"></div>
                         <div className="FooterCopyRight">
-                            Copyright ©2023 All rights reserved | This template
-                            is made with love by Bad man KoKo
+                            Copyright ©2023 All rights reserved | This template was made for travel enthusiasts and adventurers who are passionate about exploring the world.
                         </div>
                     </div>
                 </div>

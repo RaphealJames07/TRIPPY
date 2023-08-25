@@ -1,5 +1,5 @@
 import "./SignUp.css";
-import SIgnUpImg from "../../../assets/SignUp.jpg";
+// import SIgnUpImg from "../../../assets/SignUp.jpg";
 // import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -118,8 +118,7 @@ const SignUp = () => {
             {/* ELEMENTS FOR DESKTOP SCREEN */}
             <div className="SignUpBody">
                 <div className="SignUpLeft">
-                    <img src={SIgnUpImg} alt="" />
-                </div>
+                    
                 <div className="SignUpRight">
                     <div className="SignUpWrapper">
                         <h1>Sign Up</h1>
@@ -304,6 +303,7 @@ const SignUp = () => {
                             </p>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
             {/* END OF ELEMENTS FOR DESKTOP SCREEN */}

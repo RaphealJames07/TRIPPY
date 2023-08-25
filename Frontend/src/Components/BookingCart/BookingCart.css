@@ -1,0 +1,338 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.CocoBody{
+  width: 100%;
+  height: 230vh;
+  background: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  border:  solid #000;
+}
+
+.CocoBodyWrap{
+  width: 95%;
+  height: 100%;
+  background: #fff;
+}
+
+.CocoTop{
+  width: 100%;
+  height: 50%;
+  border: 1px solid #000;
+}
+
+.CocoTopHeaderText{
+  width: 100%;
+  height: 7%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.CocoTopImgDiv{
+  width: 100%;
+  height: 40%;
+}
+.CocoTop img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.CocoTopTourDetailsDiv{
+  height: 50%;
+  width: 100%;
+
+  padding: 0 25px;
+}
+
+
+.CocoTopTourDetailsDivOne{
+  width: 100%;
+  height: 20%;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+}
+.CocoTopTourDetailsDivOne h2{
+  text-transform: capitalize;
+}
+.CocoTopTourDetailsDivOne h2 span{
+  text-transform: capitalize;
+}
+
+.CocoTopTourDetailsDivTwo{
+  width: 100%;
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoTopTourDetailsDivTwoSpan1{
+  width: 100%;
+  height: 30%;
+ 
+}
+
+.CocoTopTourDetailsDivTwoSpan2{
+  width: 100%;
+  height: 30%;
+}
+
+.CocoTopTourDetailsDivInputs{
+  width: 100%;
+  height: 30%;
+  display: flex;
+}
+.CocoTopTourDetailsDivInputs h3{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.CocoTopTourDetailsDivInputsNum{
+  width: 10%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+.CocoTopTourDetailsDivInputsNum input{
+  width: 60px;
+  height: 40px;
+  padding-left: 5px;
+  font-size: 16px;
+}
+
+.CocoTopTourDetailsDivInputsName{
+  width: 65%;
+  height: 100%;
+  display: flex;
+  padding-left: 20px;
+}
+
+.CocoTopTourDetailsDivInputsName button{
+  width: 50px;
+  height: 40px;
+  margin: 5px;
+}
+.CocoTopTourDetailsDivInputsName input{
+  width: 200px;
+  height: 50%;
+  padding-left: 10px;margin-left: 10px;
+}
+
+.CocoTopTourDetailsDivTouristName{
+  width: 100%;
+  height: 5%;
+}
+
+.CocoDown{
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+
+.CocoLeft{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoRight{
+  width: 30%;
+  height: 100%;
+}
+
+
+.CocoTourFlightDiv{
+  width: 100%;
+  height: 33%;
+  display: flex;
+  position: relative;
+  border: 1px solid #000;
+}
+
+.CocoTourFlightDivText{
+  position: absolute;
+  bottom: 0;
+  right: 40%;
+  font-size: 20px;
+}
+
+.CocoTourFlightDivLeft{
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.CocoTourFlightDivLeftImgDiv{
+  width: 40%;
+  height: 85%;
+}
+
+.CocoTourFlightDivLeft img{
+  width: 100%;
+  height: 100%;
+  
+}
+
+.CocoTourFlightDivLeftDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.CocoTourFlightDivRight{
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.CocoTourFlightDivRightImgDiv{
+  width: 40%;
+  height: 85%;
+}
+
+.CocoTourFlightDivRight img{
+  width: 100%;
+  height: 100%;
+  
+}
+
+.CocoTourFlightDivRightDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CocoTourHotelDiv{
+  width: 100%;
+  height: 33%;
+  border: 1px solid #000;
+
+  display: flex;
+}
+
+.CocoTourHotelDivImgDiv{
+  width: 40%;
+  height: 100%;
+}
+.CocoTourHotelDivImgDiv img{
+  width: 100%;
+  height: 100%;
+
+}
+
+.CocoTourHotelDivDetailsDiv{
+  width: 60%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.CocoTourCarDiv{
+  width: 100%;
+  height: 33%;
+  border: 1px solid #000;
+
+  display: flex;
+}
+
+.CocoTourCarDivImgDiv{
+  width: 40%;
+  height: 100%;
+
+}
+
+.CocoTourCarDivImgDiv img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.CocoTourCarDivDetailsDiv{
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.CocoPayment{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.CocoPaymentFigures{
+  width: 90%;
+  height: 80%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid;
+  padding: 15px 0;
+}
+.CocoPaymentFigures p{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.CocoPaymentActionBtns{
+  width: 90%;
+  height: 20%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #000;
+}
+.CocoPaymentActionBtns button{
+  width: 130px;
+  height: 45px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.CocoPaymentActionBtnsCancel{
+  background: rgb(244, 46, 46);
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 16px;
+}
+
+.CocoPaymentActionBtnsPay{
+  background: rgb(12, 202, 123);
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 16px;
+}

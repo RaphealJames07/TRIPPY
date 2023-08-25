@@ -24,6 +24,10 @@
   object-fit: cover;
 }
 
+.HeroFade{
+  text-align: center;
+}
+
 .HeroSearchDivMobile{
   width: 100%;
   height: 510px;
@@ -44,7 +48,7 @@
 }
 .HeroTexth1 h1{
   color: #EFEFEF;
-  font-size: 100px;
+  font-size: 90px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -72,8 +76,8 @@
 }
 
 .HeroSearchDivText{
-  width: 20%;
-  height: 30%;
+  width: 25%;
+  height: 25%;
   background: #fff;
   display: flex;
   align-items: center;
@@ -273,7 +277,7 @@
 .HeroBody{
   width: 100%;
   height: 118vh;
-  
+  margin-top: 80px;
 }
 
 .HeroWrapper{
@@ -286,16 +290,16 @@
 }
 
 .HeroTexth1{
-  width: 95%;
-  height: 35%;
+  width: 100%;
+  height: 100%;
   display: flex;
   /* align-items: center; */
   justify-content: center;
-  padding-top: 60px;
+  
   
 }
 .HeroTexth1 h1{
-  width: 80%;
+  width: 100%;
   color: #d6d6d6;
   font-size: 50px;
   font-style: normal;

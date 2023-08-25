@@ -3,7 +3,7 @@
 /* TEMPLATE FOR STYLINGS */
 
 /* Media Query Styling For Desktop Device */
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 
 *{
   margin: 0;
@@ -15,7 +15,7 @@
   width: 100%;
   height: 100vh;
   display: none;
-  font-family: 'Kanit', sans-serif;
+  font-family: sans-serif;
 }
 .SignUpBodyMobile{
   width: 100%;
@@ -32,46 +32,54 @@
 }
 
 .SignUpLeft{
-  width: 60%;
-  height: 100%;
-  display: flex;
-}
-
-.SignUpLeft img{
   width: 100%;
   height: 100%;
+  display: flex;
+  background-image: url(../../../assets/SignUp.jpg);
+  background-size: contain;
+  align-items: center;
+  justify-content: center;
+  /* background-repeat: no-repeat; */
   object-fit: cover;
 }
 
 .SignUpRight{
   width: 40%;
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #7dd2e3;
+  border-radius: 5px;
+  position: relative;
+}
+
+.NetworkBox{
+  position: absolute;
+  top: 40px;
 }
 
 .SignUpWrapper{
-  width: 80%;
-  height: 95%;
-  background: #00B4D8;
-  
+  width: 60%;
+  height: 90%;
+  background: #ffffff;
+  border-radius: 5px;
 }
 
 .SignUpRight h1{
   width: 100%;
-  height: 15%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 45px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 500;
 }
 
 .SignUpDiv{
   width: 100%;
-  height: 85%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,35 +100,44 @@
   align-items: center;
 }
 .SignUpNameDivLabel label{
-  width: 45%;
+  width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .SignUpNameDivInput{
-  width: 90%;
+  width: 95%;
   height: 8%;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .SignUpNameDivInput1{
-  width: 50%;
+  width: 48%;
   height: 100%;
+
+
 }
+
 .SignUpNameDivInput2{
-  width: 50%;
+  width: 48%;
   height: 100%;
 }
+
+
 .SignUpNameDivInput input{
-  width: 90%;
+  width: 95%;
   height: 100%;
   display: flex;
   justify-content: space-between;
   border-radius: 7px;
-  border: 1px solid #000;
+  border: 2px solid #00B4D8;
   padding-left: 10px;
-  outline: #000;
+}
+.SignUpNameDivInput input:active{
+  border: 2px solid #000;
 }
 
 .SignUpEmailDiv{
@@ -136,7 +153,7 @@
   height: 50%;
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
   justify-content: space-between;
 }
 .SignUpEmailDiv label span{
@@ -160,9 +177,11 @@
   width: 100%;
   height: 50%;
   border-radius: 7px;
-  border: 1px solid #000;
+  border: 2px solid #00B4D8;
   padding-left: 10px;
-  outline: #000;
+}
+.SignUpEmailDiv input:active{
+  border: 2px solid #000;
 }
 
 .SignUpPasswordDiv{
@@ -174,16 +193,18 @@
   height: 50%;
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
   justify-content: space-between;
 }
 .SignUpPasswordDiv input{
   width: 100%;
   height: 50%;
   border-radius: 7px;
-  border: 1px solid #000;
+  border: 2px solid #00B4D8;
   padding-left: 10px;
-  outline: #000;
+}
+.SignUpPasswordDiv input:active{
+  border: 2px solid #000;
 }
 
 .SignUpBtnDiv{
@@ -196,8 +217,10 @@
   border: 1px solid #000;
   border-radius: 10px;
   cursor: pointer;
-  background: #fff;
-
+  background: #00B4D8;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 
@@ -206,7 +229,7 @@
 /* Media Query Styling for Tablet Device */
 
 @media only screen and (max-width: 1024px){
-  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  
 
   *{
     margin: 0;
@@ -375,7 +398,7 @@
 /* Media Query Styling for Tablet Device */
 
 @media only screen and (max-width: 428px){
-  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  
 
   *{
     margin: 0;

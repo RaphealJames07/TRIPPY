@@ -1,15 +1,117 @@
+import "./DescPage.css";
+
 const Reviews = () => {
     return (
         <>
-            <p>
-                Not is an island in the Cyclades group in the Aegean Sea. It
-                is popularly known for its summer party atmosphere. Beaches such
-                as Paradise and Super Paradise have bars that blare thumping
-                music. Massive dance clubs attract world-renowned DJs and
-                typically stay open well past dawn. Iconic landmarks include a
-                row of 16th-century windmills, which sit on a hill above Mykonos
-                town.
-            </p>
+            <div className="Reviewbody">
+                <div className="ReviewsHeader">
+                    <h2>What People Say</h2>
+                </div>
+                <div className="ReviewCommentsSec">
+                    <div className="ReviewComment1">
+                        <div className="ReviewComment1Info">
+                            <div className="ReviewComment1Pfp">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="ReviewComment1Details">
+                                <h5>Carlos Medina</h5>
+                                <p>May 31 2016, 4:42 AM</p>
+                            </div>
+                        </div>
+                        <div className="ReviewComment1Text">
+                            <p>
+                                Beautiful Place to visit, i loved the ocean view
+                                and the hotel resort.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="ReviewComment1">
+                        <div className="ReviewComment1Info">
+                            <div className="ReviewComment1Pfp">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="ReviewComment1Details">
+                                <h5>Carlos Medina</h5>
+                                <p>May 31 2016, 4:42 AM</p>
+                            </div>
+                        </div>
+                        <div className="ReviewComment1Text">
+                            <p>
+                                Beautiful Place to visit, i loved the ocean view
+                                and the hotel resort.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="ReviewComment1">
+                        <div className="ReviewComment1Info">
+                            <div className="ReviewComment1Pfp">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="ReviewComment1Details">
+                                <h5>Carlos Medina</h5>
+                                <p>May 31 2016, 4:42 AM</p>
+                            </div>
+                        </div>
+                        <div className="ReviewComment1Text">
+                            <p>
+                                Beautiful Place to visit, i loved the ocean view
+                                and the hotel resort.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="ReviewComment1">
+                        <div className="ReviewComment1Info">
+                            <div className="ReviewComment1Pfp">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="ReviewComment1Details">
+                                <h5>Carlos Medina</h5>
+                                <p>May 31 2016, 4:42 AM</p>
+                            </div>
+                        </div>
+                        <div className="ReviewComment1Text">
+                            <p>
+                                Beautiful Place to visit, i loved the ocean view
+                                and the hotel resort.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="ReviewComment1">
+                        <div className="ReviewComment1Info">
+                            <div className="ReviewComment1Pfp">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="ReviewComment1Details">
+                                <h5>Carlos Medina</h5>
+                                <p>May 31 2016, 4:42 AM</p>
+                            </div>
+                        </div>
+                        <div className="ReviewComment1Text">
+                            <p>
+                                Beautiful Place to visit, i loved the ocean view
+                                and the hotel resort.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="ReviewComment1">
+                        <div className="ReviewComment1Info">
+                            <div className="ReviewComment1Pfp">
+                                <img src="" alt="" />
+                            </div>
+                            <div className="ReviewComment1Details">
+                                <h5>Carlos Medina</h5>
+                                <p>May 31 2016, 4:42 AM</p>
+                            </div>
+                        </div>
+                        <div className="ReviewComment1Text">
+                            <p>
+                                Beautiful Place to visit, i loved the ocean view
+                                and the hotel resort.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };

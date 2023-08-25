@@ -10,7 +10,10 @@
   box-sizing: border-box;
 }
 
-
+.DescriptionBody{
+  width: 100%;
+  height: max-content;
+}
 
 /* End of Media Query Styling For Desktop Device */
 
