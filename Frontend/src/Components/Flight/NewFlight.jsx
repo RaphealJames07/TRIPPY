@@ -8,12 +8,11 @@ import { useSelector } from "react-redux";
 import { bookingData } from "../Redux/Features";
 import { Link } from "react-router-dom";
 
-
 const NewFlight = () => {
     const [fromFlight, setFromFlight] = useState("");
     const [toFlight, setToFlight] = useState("");
-    // const [froFlight, setFroFlight] = useState("");
-    // const [troFlight, setTroFlight] = useState("");
+    const [froFlight, setFroFlight] = useState("");
+    const [troFlight, setTroFlight] = useState("");
     const [showResult, setShowResult] = useState(false);
     const dispatch = useDispatch();
 
@@ -46,18 +45,23 @@ const NewFlight = () => {
         (state) => state.Trippy.trippyFlightData
     );
 
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const toggleModal = () => {
+        setShowLoginModal(true)
+    }
+
     const handleAddFlight = (selectedFlight) => {
         const selectedFlightData = {
-         
-
             flightData: selectedFlight,
         };
         dispatch(bookingData(selectedFlightData));
+        dispatch(clearFlightData())
         // alert("Flight added successfully");
     };
 
     return (
         <>
+
             <div className="NewFlightBody">
                 <div className="NewFlightHead">
                     <h1>Compare Flights from different airlines</h1>
@@ -124,7 +128,7 @@ const NewFlight = () => {
                         </select>
                         <button onClick={handleShowResult}>Search</button>
                     </div>
-                    {/* <div className="NewFlightContentInput">
+                    <div className="NewFlightContentInput">
                         <h3>Return Flight</h3>
                         <select
                             name="DestinationAirport"
@@ -172,12 +176,9 @@ const NewFlight = () => {
                             </option>
                         </select>
                         <button onClick={handleShowResult}>Search</button>
-                    </div> */}
+                    </div>
                     {showResult && (
-                        <div
-                            className="NewFlightContentResults"
-                            
-                        >
+                        <div className="NewFlightContentResults">
                             {flightDataToMap?.map((item, index) => (
                                 <div
                                     className="NewFlightResultItem1"
@@ -215,18 +216,66 @@ const NewFlight = () => {
                                         </div>
 
                                         <div className="NewFlightResultItem1RightDown">
-                                            <Link to='/BookingCar'>
-                                            <button
-                                                onClick={() =>
-                                                    handleAddFlight(item)
-                                                }
-                                            >
-                                                Add Flight
-                                            </button>
-                                            </Link>
+
+                                        <button onClick={toggleModal}>Add Flight</button>
+
+
                                         </div>
                                     </div>
+                                    {showLoginModal ? (
+                                        <div
+                                            className="modal-overlay"
+                                            style={{
+                                                position: "fixed",
+                                                top: 0,
+                                                left: 0,
+                                                width: "100%",
+                                                height: "100%",
+                                                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <div
+                                                className="modal-content"
+                                                style={{
+                                                    backgroundColor: "white",
+                                                    width: "600px",
+                                                    height: "200px",
+                                                    borderRadius: "8px",
+                                                    boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
+                                                    textAlign: "center",
+                                                    display: "flex",
+                                                    justifyContent: "space-between",
+                                                    alignItems: "center",
+                                                    flexDirection: "column",
+                                                    cursor: "pointer",
+                                                }}
+                                            >
+                                                <h2>
+                                                    Flight Selected are you sure you want to add to booking
+                                                </h2>
+                                                <button
+                                                    onClick={() => setShowLoginModal(false)}
+                                                    style={{ padding: "15px", cursor: "pointer" }}
+                                                >
+                                                    Continue Viewing
+                                                </button>
+                                                <button
+                                                    style={{ padding: "15px", cursor: "pointer" }}
+                                                    onClick={() => {
+                                                        handleAddFlight(item)
+                                                        setShowLoginModal(false);
+                                                    }}
+                                                >
+                                                    Add to Booking
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ) : null}
                                 </div>
+
                             ))}
                         </div>
                     )}
@@ -237,6 +286,11 @@ const NewFlight = () => {
                 >
                     Cancel Search
                 </button>
+                <Link to='/BookingCar'>
+                <button>
+                    Proceed
+                </button>
+                </Link>
             </div>
         </>
     );

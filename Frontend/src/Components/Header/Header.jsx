@@ -106,7 +106,7 @@ const Header = () => {
                             ) : (
                                 <>
                                     <Fade cascade={true}>
-                                        <h2>Good Morning Mr Koko</h2>
+                                        <h2>Good Morning Mr Kok</h2>
                                     </Fade>
                                 </>
                             )}

@@ -25,11 +25,14 @@ import BookingCar from "./Components/Booking/BookingCar";
 import BookingHotel from "./Components/Booking/BookingHotel";
 import BookingFlight from "./Components/Booking/BookingFlight";
 import BookingCartHead from "./Components/BookingCart/BookingCartHead";
+import { CommentsProvider } from '../src/Components/Redux/Context';
 
 
 const App = () => {
   return (
     <>
+       <CommentsProvider>
+            
       <div className="MainBody">
         <HashRouter>
           <Routes>
@@ -63,6 +66,7 @@ const App = () => {
           </Routes>
         </HashRouter>
       </div>
+        </CommentsProvider>
     </>
   );
 }
