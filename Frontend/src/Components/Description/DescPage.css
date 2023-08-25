@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 
-.DescBody{
+/* .DescBody{
   width: 100%;
   height: 130vh;
   font-family: 'Kanit', sans-serif;
@@ -151,7 +151,191 @@
   width: 120px;
   height: 50px;
   cursor: pointer;
+} */
+
+
+.DescBody {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Kanit', sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+.DescTop {
+  width: 100%;
+  height: 45vh;
+  background: #d3d3d3;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.DescTop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arrow {
+  width: 5%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.leftarrow,
+.rightarrow {
+  background-color: transparent;
+}
+
+.icon {
+  width: 20%;
+  height: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.DescDown {
+  width: 100%;
+  height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.DescDownWrap {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.DescDownInitials {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.DescDownHeadText,
+.DescDownHeaderInfo {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.DescDownHeaderInfo span {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.DescDownHeaderInfo span h2 {
+  margin-left: 10px;
+  font-size: 24px;
+}
+
+.DescNav {
+  width: 100%;
+  height: 10%;
+}
+
+.DescNav ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 15px;
+}
+
+.DescNav ul li {
+  width: 15%;
+  height: 100%;
+  list-style-type: none;
+  background: #d4d4d4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.DescNav ul li:hover {
+  background: #f0f0f0;
+}
+
+.DescBoard {
+  width: 100%;
+  height: 60%;
+}
+
+.DescButtonBook {
+  width: 90%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.DescButtonBook button {
+  padding: 10px 20px;
+  background-color: #1d3855;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.DescButtonBook button:hover {
+  background-color: #0056b3;
+}
+
+.BackButton {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.BackButton button {
+  padding: 10px 20px;
+  background-color:  #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.BackButton button:hover {
+  background-color:  #0056b3;
+}
+
+
 
 .ReviewContainer{
   width: 100%;
