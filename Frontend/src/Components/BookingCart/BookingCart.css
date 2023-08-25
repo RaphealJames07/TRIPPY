@@ -6,11 +6,12 @@
 .CocoBody{
   width: 100%;
   height: 230vh;
-  background: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: sans-serif;
+  border:  solid #000;
 }
 
 .CocoBodyWrap{
@@ -22,11 +23,12 @@
 .CocoTop{
   width: 100%;
   height: 50%;
+  border: 1px solid #000;
 }
 
 .CocoTopHeaderText{
   width: 100%;
-  height: 5%;
+  height: 7%;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -159,8 +161,16 @@
 .CocoTourFlightDiv{
   width: 100%;
   height: 33%;
-  border: 1px solid ;
   display: flex;
+  position: relative;
+  border: 1px solid #000;
+}
+
+.CocoTourFlightDivText{
+  position: absolute;
+  bottom: 0;
+  right: 40%;
+  font-size: 20px;
 }
 
 .CocoTourFlightDivLeft{
@@ -171,13 +181,13 @@
 
 .CocoTourFlightDivLeftImgDiv{
   width: 40%;
-  height: 100%;
+  height: 85%;
 }
 
 .CocoTourFlightDivLeft img{
   width: 100%;
   height: 100%;
-  background: blue;
+  
 }
 
 .CocoTourFlightDivLeftDetailsDiv{
@@ -186,6 +196,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-transform: capitalize;
 }
 
 .CocoTourFlightDivRight{
@@ -196,13 +207,13 @@
 
 .CocoTourFlightDivRightImgDiv{
   width: 40%;
-  height: 100%;
+  height: 85%;
 }
 
 .CocoTourFlightDivRight img{
   width: 100%;
   height: 100%;
-  background: blue;
+  
 }
 
 .CocoTourFlightDivRightDetailsDiv{
@@ -216,7 +227,8 @@
 .CocoTourHotelDiv{
   width: 100%;
   height: 33%;
-  background: gold;
+  border: 1px solid #000;
+
   display: flex;
 }
 
@@ -227,28 +239,36 @@
 .CocoTourHotelDivImgDiv img{
   width: 100%;
   height: 100%;
-  background: #000;
+
 }
 
 .CocoTourHotelDivDetailsDiv{
   width: 60%;
-  height: 80%;
+  height: 95%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-transform: capitalize;
 }
 
 .CocoTourCarDiv{
   width: 100%;
   height: 33%;
-  background: hotpink;
+  border: 1px solid #000;
+
   display: flex;
 }
 
 .CocoTourCarDivImgDiv{
   width: 40%;
   height: 100%;
-  background: olive;
+
+}
+
+.CocoTourCarDivImgDiv img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .CocoTourCarDivDetailsDiv{
@@ -257,6 +277,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-transform: capitalize;
 }
 
 .CocoPayment{
@@ -299,6 +320,7 @@
   width: 130px;
   height: 45px;
   border-radius: 7px;
+  cursor: pointer;
 }
 
 .CocoPaymentActionBtnsCancel{

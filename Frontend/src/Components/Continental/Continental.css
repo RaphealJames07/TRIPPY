@@ -191,6 +191,9 @@
   border: 1px solid #000;
   font-size: 16px;
 }
+.ContiCTABtnRev button:active{
+  transform: scale(0.95);
+}
 
 
 /* End of Media Query Styling For Desktop Device */
