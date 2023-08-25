@@ -364,6 +364,9 @@ const DescPage = () => {
                                         Book Now
                                     </button>
                                 </div>
+                                <div className="BackButton">
+                    <button onClick={() => nav(-1)}>Back</button>
+                </div>
                             </div>
                         </div>
                     </div>

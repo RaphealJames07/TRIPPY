@@ -1,6 +1,8 @@
 import "./Continental.css";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { useState } from "react";
+import { FaHeart } from 'react-icons/fa';
+import { IoIosArrowForward } from 'react-icons/io';
+import { useState, useEffect} from "react";
 import Europe from "../Continents/Europe";
 import America from "../Continents/America";
 import AllContinent from "../Continents/All";
@@ -10,14 +12,15 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { findOneTour } from "../Redux/Features";
-// import ContentLoader from "react-content-loader";
 
 const Continental = () => {
     const [africa, setAfrica] = useState(true);
+    const [africaVisibleCount, setAfricaVisibleCount] = useState(4); 
     const [europe, setEurope] = useState(false);
     const [asia, setAsia] = useState(false);
     const [america, setAmerica] = useState(false);
     const [all, setAll] = useState(false);
+    const [showNextIcon, setShowNextIcon] = useState(true);
     const nav = useNavigate();
     const Dispatch = useDispatch()
 
@@ -30,6 +33,16 @@ const Continental = () => {
         .flat();
 
 
+        useEffect(() => {
+            // Check if there are more items to display
+            setShowNextIcon(africaVisibleCount < africaPlaces.length);
+        }, [africaVisibleCount, africaPlaces]);
+
+
+        const loadMoreAfricaItems = () => {
+            setAfricaVisibleCount(africaVisibleCount + 4); // Increase the number of visible items
+          };
+
     const handleViewMore = (tourId) => {
         axios
             .get(
@@ -39,7 +52,7 @@ const Continental = () => {
                 const tourData = res.data.tour;
                 // console.log(tourData);
                 Dispatch(findOneTour(tourData))
-                nav(`/BookingNew/${tourId}`);
+                nav(`/DescPage/${tourId}`);
             })
             .catch((error) => {
                 console.error("Error fetching tour data:", error);
@@ -122,8 +135,8 @@ const Continental = () => {
                     <div className="ContiDown">
                         {africa ? (
                             <>
-                                {africaPlaces?.map((item) => (
-                                    <div className="ContiImgBox" key={item?.id}>
+                                {africaPlaces?.slice(0, africaVisibleCount).map((item) => (
+                                      <div className="ContiImgBox" key={item?.id}>
                                         <div className="ContiImgDiv">
                                             <img
                                                 src={item.images[0]}
@@ -131,7 +144,9 @@ const Continental = () => {
                                                 draggable="false"
                                             />
                                             {/* <ContentLoader/> */}
-                                            <div className="ContiAddToFav"></div>
+                                            <div className="ContiAddToFav">
+                                                <FaHeart className="heartIcon" />
+                                            </div>
                                         </div>
                                         <div className="ContiCTA">
                                             {item?.tourName}
@@ -164,6 +179,11 @@ const Continental = () => {
                                         </div>
                                     </div>
                                 ))}
+                                {africaPlaces?.length > africaVisibleCount && (
+                                <div className="LoadMore">
+                                    <IoIosArrowForward className="nextIcon" onClick={loadMoreAfricaItems} size={50} />
+                                </div>
+                            )}
                             </>
                         ) : europe ? (
                             <Europe />
