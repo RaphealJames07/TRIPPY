@@ -1,13 +1,13 @@
 import "./Login.css";
-import { Link } from "react-router-dom";
-import LoginImg from "../../../assets/LoginImg.jpg";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { trippyUserLogin } from "../../Redux/Features";
+import {Link} from "react-router-dom";
+// import LoginImg from "../../../assets/LoginImg.jpg";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {trippyUserLogin} from "../../Redux/Features";
 import axios from "axios";
 import NetworkError from "../../Functions/NetworkError";
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
 
 const Login = () => {
     const nav = useNavigate();
@@ -25,7 +25,9 @@ const Login = () => {
         msg: "",
     });
     const [inputHasError, setInputHasError] = useState(false);
-    const data = { email, password };
+    const [mailInputError, setMailInputerror] = useState(false);
+    const [incoPwd, setIncoPwd] = useState(false);
+    const data = {email, password};
     const url = "https://trippyapiv1.onrender.com/trippy/signin";
 
     const handleLogin = (e) => {
@@ -38,11 +40,11 @@ const Login = () => {
         } else if (!email) {
             setEmailErrorMessage("Input your email");
             setLoading(false);
-            setInputHasError(true);
+            setMailInputerror(true);
         } else if (!email.includes("@")) {
             setEmailErrorMessage("Email should contain @");
             setLoading(false);
-            setInputHasError(true);
+            setMailInputerror(true);
         } else if (!password) {
             setPasswordErrorMessage("Enter Password");
             setLoading(false);
@@ -55,9 +57,9 @@ const Login = () => {
                 .post(url, data)
                 .then((res) => {
                     console.log(res.data.user);
-                    const { email, firstName, lastName, token } = res.data.user;
+                    const {email, firstName, lastName, token} = res.data.user;
                     Dispatch(
-                        trippyUserLogin({ email, firstName, lastName, token })
+                        trippyUserLogin({email, firstName, lastName, token})
                     );
                     nav("/HeaderNew");
                 })
@@ -68,6 +70,11 @@ const Login = () => {
                     if (Neterror === "Network Error") {
                         console.log(Neterror);
                         setNetworkErr(true);
+                    }
+                    const incorectPwd = err.response.data.message;
+                    console.log("Nah worng pwd", incorectPwd);
+                    if (incorectPwd === "invalid password") {
+                        setIncoPwd(true);
                     }
                     const badError = err.response.data.message;
                     if (badError === "invalid credentials") {
@@ -82,15 +89,15 @@ const Login = () => {
         }
     };
 
-    const [imageLoaded, setImageLoaded] = useState(false);
+    // const [imageLoaded, setImageLoaded] = useState(false);
 
-    const handleImageLoad = () => {
-        setImageLoaded(true);
-    };
+    // const handleImageLoad = () => {
+    //     setImageLoaded(true);
+    // };
 
-    const handleImageError = () => {
-        setImageLoaded(false);
-    };
+    // const handleImageError = () => {
+    //     setImageLoaded(false);
+    // };
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -101,138 +108,146 @@ const Login = () => {
             {/* Elements for Desktop */}
             <div className="LoginBody">
                 <div className="LoginLeft">
-                    {!imageLoaded && (
-                        <div className="placeholder">Loading...</div>
-                    )}
-                    <img
-                        src={LoginImg}
-                        alt=""
-                        onLoad={handleImageLoad}
-                        onError={handleImageError}
-                        style={{ display: imageLoaded ? "block" : "none" }}
-                    />
-                </div>
+                    <div className="LoginRight">
+                        <div className="NetworkBox">
+                            {networkErr ? <NetworkError /> : null}
+                        </div>
+                        <div className="LoginWrapper">
+                            <h1>Login</h1>
+                            <div className="InputDivs">
+                                <div className="EmailDiv">
+                                    <label htmlFor="Email">
+                                        Email{" "}
+                                        <span>
+                                            <p
+                                                style={{
+                                                    color: "red",
+                                                    fontSize: "14px",
+                                                    marginLeft: "5px",
+                                                }}
+                                            >
+                                                {emailErrorMessage}
+                                            </p>
+                                        </span>
+                                    </label>
+                                    <input
+                                        type="email"
+                                        placeholder="Input Your Email"
+                                        value={email}
+                                        onChange={(e) => {
+                                            setEmail(e.target.value);
+                                            setEmailErrorMessage("");
+                                        }}
+                                        onFocus={() => {
+                                            setMailInputerror(false);
+                                        }}
+                                        style={{
+                                            border: `${
+                                                mailInputError
+                                                    ? "2px solid red"
+                                                    : null
+                                            }`,
+                                        }}
+                                    />
+                                </div>
+                                <div className="PasswordDiv">
+                                    <label htmlFor="Password">
+                                        Password{" "}
+                                        <span onFocus={()=>setIncoPwd(false)}>
+                                            <p
+                                                style={{
+                                                    color: "red",
+                                                    fontSize: "14px",
+                                                    marginLeft: "5px",
+                                                }}
+                                            >
+                                                {passwordErrorMessage}
+                                                {incoPwd
+                                                    ? `Incorrect Password`
+                                                    : null}
+                                            </p>
+                                        </span>
+                                    </label>
+                                    <div className="PwdInputDiv">
+                                        <input
+                                            className="PwdInput"
+                                            type={
+                                                showPassword
+                                                    ? "text"
+                                                    : "password"
+                                            }
+                                            placeholder="Input Your Password"
+                                            value={password}
+                                            onChange={(e) => {
+                                                setPassword(e.target.value);
+                                                setPasswordErrorMessage("");
+                                                setInputHasError(false);
+                                            }}
+                                            onFocus={() => {
+                                                setInputHasError(false);
+                                            }}
+                                            style={{
+                                                border: `${
+                                                    inputHasError
+                                                        ? "2px solid red"
+                                                        : null
+                                                }`,
+                                            }}
+                                        />
+                                        <div
+                                            className="TogglePasswordButton"
+                                            onClick={handleTogglePassword}
+                                        >
+                                            {showPassword ? (
+                                                <AiOutlineEyeInvisible className="AiOutlineEyeInvisible" />
+                                            ) : (
+                                                <AiOutlineEye className="AiOutlineEye" />
+                                            )}
+                                        </div>
+                                    </div>
 
-                <div className="LoginRight">
-                    <div className="LoginWrapper">
-                        <h1>Login</h1>
-                        <div className="InputDivs">
-                            <div className="EmailDiv">
-                                <label htmlFor="Email">
-                                    Email{" "}
-                                    <span>
-                                        <p
+                                    <p className="ForgetPwd">
+                                        <Link
                                             style={{
-                                                color: "red",
-                                                fontSize: "14px",
-                                                marginLeft: "5px",
+                                                textDecoration: "none",
+                                                color: "blue",
+                                                cursor: "pointer",
                                             }}
+                                            to="/ForgetPassword"
                                         >
-                                            {emailErrorMessage}
-                                        </p>
-                                    </span>
-                                </label>
-                                <input
-                                    type="email"
-                                    placeholder="Input Your Email"
-                                    value={email}
-                                    onChange={(e) => {
-                                        setEmail(e.target.value);
-                                        setEmailErrorMessage("");
-                                        setInputHasError(false);
-                                    }}
-                                    style={{
-                                        border: `${
-                                            inputHasError
-                                                ? "2px solid red"
-                                                : null
-                                        }`,
-                                    }}
-                                />
-                            </div>
-                            <div className="PasswordDiv">
-                                <label htmlFor="Password">
-                                    Password{" "}
-                                    <span>
-                                        <p
-                                            style={{
-                                                color: "red",
-                                                fontSize: "14px",
-                                                marginLeft: "5px",
-                                            }}
-                                        >
-                                            {passwordErrorMessage}
-                                        </p>
-                                    </span>
-                                </label>
-                                <input className="PwdInput"
-                                    type={showPassword ? "text" : "password"}
-                                    placeholder="Input Your Password"
-                                    value={password}
-                                    onChange={(e) => {
-                                        setPassword(e.target.value);
-                                        setPasswordErrorMessage("");
-                                        setInputHasError(false);
-                                    }}
-                                    style={{
-                                        border: `${
-                                            inputHasError
-                                                ? "2px solid red"
-                                                : null
-                                        }`,
-                                    }}
-                                />
-                                <button
-                                    className="TogglePasswordButton"
-                                    onClick={handleTogglePassword}
-                                >
-                                    {showPassword ? (
-                                        <AiOutlineEyeInvisible />
-                                    ) : (
-                                        <AiOutlineEye />
-                                    )}
-                                </button>
-                            </div>
-                            <p className="ForgetPwd">
-                                <Link
-                                    style={{
-                                        textDecoration: "none",
-                                        color: "blue",
-                                        cursor: "pointer",
-                                    }}
-                                    to="/ForgetPassword"
-                                >
-                                    Forget Password ?
-                                </Link>
-                            </p>
-                            <div className="LoginDiv">
-                                <button
-                                    onClick={(e) => handleLogin(e)}
-                                    disabled={inputHasError || loading}
-                                >
-                                    {loading ? "Loading..." : "Login"}
-                                </button>
-                            </div>
-                            <p className="DontAcc">
-                                Dont Have an account?{" "}
-                                <span
-                                    style={{
-                                        color: "purple",
-                                        cursor: "pointer",
-                                    }}
-                                >
-                                    <Link
-                                        to="/SignUp"
-                                        style={{ textDecoration: "none" }}
+                                            Forget Password ?
+                                        </Link>
+                                    </p>
+                                </div>
+                                <div className="LoginDiv">
+                                    <button
+                                        onClick={(e) => handleLogin(e)}
+                                        disabled={inputHasError || loading}
                                     >
-                                        Sign Up
+                                        {loading ? "Loading..." : "Login"}
+                                    </button>
+                                </div>
+                                <p className="DontAcc">
+                                    Dont Have an account?{" "}
+                                    <span
+                                        style={{
+                                            color: "purple",
+                                            cursor: "pointer",
+                                        }}
+                                    >
+                                        <Link
+                                            to="/SignUp"
+                                            style={{textDecoration: "none"}}
+                                        >
+                                            Sign Up
+                                        </Link>
+                                    </span>
+                                </p>
+                                <div className="ExploreDiv">
+                                    <Link to="/Home">
+                                        <button>Explore</button>
                                     </Link>
-                                </span>
-                            </p>
-                            <div className="ExploreDiv">
-                                <Link to="/Home">
-                                    <button>Explore</button>
-                                </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -301,7 +316,7 @@ const Login = () => {
                                     >
                                         <Link
                                             to="/SignUp"
-                                            style={{ textDecoration: "none" }}
+                                            style={{textDecoration: "none"}}
                                         >
                                             Sign Up
                                         </Link>
@@ -390,7 +405,7 @@ const Login = () => {
                                     >
                                         <Link
                                             to="/SignUp"
-                                            style={{ textDecoration: "none" }}
+                                            style={{textDecoration: "none"}}
                                         >
                                             Sign Up
                                         </Link>
