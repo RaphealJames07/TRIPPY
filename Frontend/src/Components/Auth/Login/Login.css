@@ -2,7 +2,7 @@
 /* TEMPLATE FOR STYLINGS */
 
 /* Media Query Styling For Desktop Device */
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 
 *{
   margin: 0;
@@ -14,7 +14,7 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  font-family: 'Kanit', sans-serif;
+  font-family: sans-serif;
 }
 
 .LoginBodyTablet{
@@ -32,9 +32,28 @@
 }
 
 .LoginLeft{
-  width: 60%;
+  width: 100%;
   height: 100%;
   display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../../assets/LoginImg.jpg);
+  background-size: contain;
+}
+
+
+.placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #f0f0f0; */
+  opacity: 0.8;
 }
 
 .LoginLeft img{
@@ -45,17 +64,19 @@
 
 .LoginRight{
   width: 40%;
-  height: 100%;
-  background: #fff;
+  height: 90%;
+  background: #7dd2e3;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 .LoginWrapper{
-  width: 80%;
+  width: 60%;
   height: 80%;
-  background: #00B4D8;
+  background: #ffffff;
+  border-radius: 5px;
 }
 
 .LoginWrapper h1{
@@ -64,17 +85,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 45px;
-  font-weight: 600;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 .InputDivs{
   width: 100%;
-  height: 65%;
+  height: 75%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  /* background: #000; */
 }
 
 .EmailDiv{
@@ -83,10 +105,14 @@
   display: flex;
   flex-direction: column;
   /* background: #000; */
+
 }
 
 .EmailDiv label{
-  font-size: 30px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .EmailDiv input{
   width: 100%;
@@ -94,7 +120,13 @@
   border-radius: 10px;
   outline: none;
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 14px;
+  border: 2px solid #00B4D8;
+  /* outline: 1px solid #00B4D8; */
+}
+.EmailDiv input:focus{
+  border: 2px solid #080808;
+  /* outline: 1px solid #00B4D8; */
 }
 
 .PasswordDiv{
@@ -106,26 +138,70 @@
 }
 
 .PasswordDiv label{
-  font-size: 30px;
+  font-size: 18px;
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.PasswordDiv input{
+.PwdInputDiv{
   width: 100%;
   height: 50%;
-  border-radius: 10px;
+  /* background: #000; */
+  display: flex;
+  align-items: center;
+}
+
+.PasswordDiv input{
+  width: 90%;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
   outline: none;
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 14px;
+  position: relative;
+  border: 2px solid #00B4D8;
+  border-right: none;
+}
+.PasswordDiv input:focus{
+  
+  border: 2px solid #000;
+  border-right: none;
+}
+
+.PasswordDiv .TogglePasswordButton{
+  /* position: absolute; */
+  width: 10%;
+  height: 100%;
+  background: white;
+  border: 2px solid #2e8799;
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.AiOutlineEyeInvisible{
+  width: 80%;
+  height: 80%;
+}
+
+.AiOutlineEye{
+  width: 80%;
+  height: 80%;
 }
 
 .ForgetPwd{
-  width: 90%;
+  width: 100%;
   text-align: end;
-  font-size: 20px;
+  font-size: 16px;
+  color: rgb(7, 7, 83);
 }
 
 .LoginDiv{
   width: 90%;
-  height: 12%;
+  height: 13%;
   /* background: #000; */
 }
 .LoginDiv button{
@@ -134,13 +210,26 @@
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  font-size: 25px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
+  background: #00B4D8;
+  color: #fff;
+}
+.LoginDiv button:hover{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  background: #09c8ee;
+  color: #fff;
 }
 
 .ExploreDiv{
   width: 90%;
-  height: 12%;
+  height: 13%;
   margin-top: 20px;
 }
 
@@ -148,15 +237,25 @@
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  border: 2px solid #fff;
+  border: 2px solid #00B4D8;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   background: none;
 }
+.ExploreDiv button:hover{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 2px solid #000c;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  background: #2ecbeb;
+}
 
 .DontAcc{
-  font-size: 20px;
+  font-size: 16px;
 }
 
 

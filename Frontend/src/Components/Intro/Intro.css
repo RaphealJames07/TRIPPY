@@ -58,6 +58,10 @@ flex-direction: column;
   cursor: pointer;
   width: 150px;
 }
+.CenterDiv button:hover{
+  background: #2cd6f8;
+ 
+}
 
 /* End of Media Query Styling For Desktop Device */
 
@@ -155,7 +159,7 @@ padding: 10% 0;
 
 .CenterDiv{
   width: 70%;
-  height: 60%;
+  height: 70%;
   border-radius: 30px;
 background: rgba(255, 255, 255, 0.53);
 display: flex;
@@ -178,7 +182,7 @@ padding: 15% 0;
   text-align: center;
 }
 .CenterDiv button{
-  padding: 25px;
+  padding: 20px;
   letter-spacing: 3px;
   font-size: 20px;
   color: white;
