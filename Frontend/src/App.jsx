@@ -26,6 +26,9 @@ import BookingHotel from "./Components/Booking/BookingHotel";
 import BookingFlight from "./Components/Booking/BookingFlight";
 import BookingCartHead from "./Components/BookingCart/BookingCartHead";
 import { CommentsProvider } from '../src/Components/Redux/Context';
+import NewExplore from "./Components/Explore/NewExplore";
+import HeaderLone from "./Components/Header/HeaderLone";
+import NewAbout from "./Components/About/NewAbout";
 
 
 const App = () => {
@@ -61,6 +64,11 @@ const App = () => {
             <Route path="/BookingHotel" element={<BookingHotel/>} />
             <Route path="/BookingFlight" element={<BookingFlight/>} />
             <Route path="/BookingCart" element={<BookingCartHead/>} />
+            <Route path="/Explore" element={<NewExplore/>} />
+            <Route path="/HeaderLone" element={<HeaderLone/>} />
+            <Route path="/About" element={<NewAbout/>} />
+            
+            
             
             
           </Routes>

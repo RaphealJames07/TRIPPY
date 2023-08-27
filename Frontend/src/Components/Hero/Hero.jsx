@@ -1,14 +1,35 @@
-import React from 'react';
-import { Fade } from 'react-reveal';
+
+import {Fade} from "react-reveal";
 import "./Hero.css";
+import {useState, useEffect} from "react";
 
 const Hero = () => {
+    const words = [
+        "together",
+        "forever",
+        "unforgettable",
+        "joyfully",
+        "always",
+    ];
+    const [currentWordIndex, setCurrentWordIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <div className="HeroBody">
             <div className="HeroWrapper">
                 <div className="HeroTexth1">
                     <Fade left cascade>
-                        <h1>Let's make memories together</h1>
+                        <h1>
+                            Let us make memories{" "}
+                            <span>{words[currentWordIndex]}</span>
+                        </h1>
                     </Fade>
                 </div>
                 <div className="HeroSearchDiv">
@@ -18,18 +39,16 @@ const Hero = () => {
                         </div>
                         <div className="HeroSearchDivInputs">
                             <nav className="HeroSearchDivInputsNav">
-                                <input
-                                    type="search"
-                                    placeholder="City"
-                                />
-                                <input
-                                    type="search"
-                                    placeholder="Departure"
-                                />
-                                <input
-                                    type="search"
-                                    placeholder="Arrival"
-                                />
+                                
+                                <input type="text" className="SelectTag" placeholder="Enter City"/>
+                                <input type="text" className="SelectTag" placeholder="Enter Country"/>
+                                <select name="continent" id="" className="SelectTag">
+                                    <option value="">Select Continent</option>
+                                    <option value="africa">Africa</option>
+                                    <option value="europe">Europe</option>
+                                    <option value="asia">Asia</option>
+                                    <option value="americans">Americans</option>
+                                </select>
                             </nav>
                             <div className="HeroSearchDivInputsBtnDiv">
                                 <button>Search</button>
@@ -41,10 +60,19 @@ const Hero = () => {
             <div className="HeroSearchDivMobile">
                 <h3>Search For your Trip</h3>
                 <div className="HeroSearchDivInputsMobile">
-                    <input type="text" placeholder="City"/>
-                    <input type="text" placeholder="Departure"/>
-                    <input type="text" placeholder="Arrival"/>
-                    <input type="text" placeholder="Budget"/>
+                <nav className="HeroSearchDivInputsNav">
+                                
+                                    <input type="text" placeholder="Enter City" className="SelectTag"/>
+                                    <input type="text" placeholder="Enter Country" className="SelectTag"/>
+                               
+                                <select name="continent" id="" className="SelectTag">
+                                    <option value="">Select Continent</option>
+                                    <option value="africa">Africa</option>
+                                    <option value="europe">Europe</option>
+                                    <option value="asia">Asia</option>
+                                    <option value="americans">Americans</option>
+                                </select>
+                            </nav>
                     <button>Search</button>
                 </div>
             </div>
@@ -53,5 +81,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-

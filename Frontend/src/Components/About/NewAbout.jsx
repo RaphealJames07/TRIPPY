@@ -1,29 +1,73 @@
+import {useState} from "react";
+import Footer from "../Footer/Footer";
+import HeaderLone from "../Header/HeaderLone";
 import "./NewAbout.css";
+import Faq from "./AboutColl";
 
 const NewAbout = () => {
     return (
         <>
             <div className="NewAboutBody">
-              <div className="NewAboutBodyHeader">
-                <h1 className="aboutUsText">About Us</h1>
-              </div>
-              <div className="aboutusdiv">
-                <div className="firstabout">
-                  <h1>Welcome to Trippy, where your travel dreams take flight.</h1>
-                  <h2> We're not just another booking platform; we're your travel companion, your adventure architect. Our mission is simple: to make your travel experience as seamless as the journeys you embark upon.</h2>
+                <HeaderLone />
+                <div className="NewAboutBodyDiv">
+                    <div className="NewABoutContent">
+                        <div className="NewABoutContentHeaderText">
+                            <h1>About Trippy</h1>
+                        </div>
+                        <div className="NewABoutContentBoxes">
+                            <div className="NewABoutContent1">
+                                <p>
+                                    "Trippy transcends being a mere travel app;
+                                    it's an open door to transformative
+                                    journeys. With an unwavering passion for
+                                    exploration, we're committed to turning your
+                                    travel dreams into tangible memories. At
+                                    Trippy, each adventure is meticulously
+                                    curated to ensure a seamless, unforgettable
+                                    experience that takes you beyond the
+                                    ordinary and into the extraordinary realms
+                                    of the world."
+                                </p>
+                            </div>
+                            <div className="NewABoutContent1">
+                                <p>
+                                    "Welcome to the heart of Trippy's offerings,
+                                    a realm where more than deals await. Our
+                                    offers are pathways to a world of
+                                    personalized flights, accommodations, and
+                                    moments. They're meticulously crafted to
+                                    grant you not just a place to stay or a
+                                    flight to catch, but the chance to immerse
+                                    yourself in unique experiences that define
+                                    your journey. At Trippy, every offer is an
+                                    opportunity to create memories that linger
+                                    long after the journey ends."
+                                </p>
+                            </div>
+                            <div className="NewABoutContent1">
+                                <p>
+                                    Trippy's inception sprang from a shared love
+                                    of exploration. Envisioned by fellow
+                                    travelers, our commitment is woven into each
+                                    aspect of our service. From effortless
+                                    booking to exceptional support, we endeavor
+                                    to make your journey seamless. We believe in
+                                    the magic of travel, in its ability to
+                                    reshape perspectives and broaden horizons.
+                                    As we chart paths across the world, our goal
+                                    remains unwavering: to craft a community of
+                                    explorers who find solace in the vast
+                                    landscapes of the unknown.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="NewAboutFaqs">
+                        <h1>Frequently Asked Questions</h1>
+                        <Faq />
+                    </div>
                 </div>
-                <div className="secondabout">
-                  <h1>What We Do: All Your Travel Needs, One Click Away</h1>
-                  <h2>From flights that defy gravity to cozy nests in every corner of the world, and wheels that ignite the road beneath you – we've got it all. Trippy brings flight booking, hotel reservations, and car rentals to your fingertips, all in one place. No more bouncing between tabs, just smooth sailing from start to finish.</h2>
-                </div>
-              </div>
-              <div className="NewAboutBodyContent">
-                   <div className="anotherpicdiv"></div>
-                   <div className="thetextaboutdiv">
-                    <h1>Join the Trippy Community</h1>
-                    <h2>Experience travel like never before. Dive into the beauty of the unknown, and let us be your guide. Your next adventure starts here at Trippy. Let's make memories together.  You'll be glad you did.</h2>
-                   </div>
-              </div>
+                <Footer />
             </div>
         </>
     );
