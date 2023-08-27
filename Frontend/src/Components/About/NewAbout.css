@@ -6,153 +6,91 @@
 
 .NewAboutBody{
   width: 100%;
-  height: 200vh;
-  /* background-color: green; */
+  height: max-content;
+  font-family: sans-serif;
+}
+
+.NewAboutBodyDiv{
+  width: 100%;
+  height: 150vh;
+  background: lightblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.NewABoutContent{
+  width: 85%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.NewABoutContentHeaderText{
+  width: 100%;
+  height: 10%;
+  background: lightgoldenrodyellow;
+}
+
+.NewABoutContentBoxes{
+  width: 100%;
+  height: 90%;
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
 }
-.aboutusdiv{
+
+.NewABoutContent1{
+  width: 25%;
+  height: 100%;
+  background: lightseagreen;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.NewABoutContent1 p{
+  font-size: 18px;
+}
+
+.NewAboutFaqs{
+  width: 85%;
+  height: 45%;
+  background: lightcyan;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* Styles for the accordion */
+
+.panel {
+  width: 100%;
+  border: 1px solid #ccc;
+  /* margin: 10px; */
+  border-radius: 5px;
+  height: 20%;
+}
+
+.panel-header {
   width: 100%;
   height: 50%;
-  /* background-color: purple; */
-  display: flex;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
 }
-.firstabout {
-  width: 50%;
+
+.panel-content {
+  padding: 10px 0px;
+  display: none;
   height: auto;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-.firstabout h1 {
-  font-size: 30px;
-  color: black;
-  font-weight: 400;
-  margin-bottom: 10px;
-  text-align: center;
-}
-.firstabout h2 {
-  font-size: 20px;
-  line-height: 1.4;
-  color: black;
-  margin-top: 5%;
-  font-weight: 400;
-  text-align: center;
-}
-.secondabout {
-  width: 50%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  /* margin-top: 30px; */
-}
-.secondabout h1 {
-  font-size: 30px;
-  color: black;
-  font-weight: 400;
-  margin-bottom: 10px;
-  text-align: center;
 }
 
-.secondabout h2 {
-  font-size: 20px;
-  margin-top: 5%;
-  line-height: 1.4;
-  color: black;
-  font-weight: 400;
-  text-align: center;
+/* Show content when panel-header is active */
+.panel .panel-content {
+  display: block;
 }
-.NewAboutBodyHeader {
-  width: 100%;
-  height: 80%;
-  background-color: blue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url(../../assets//aboutuspics.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  overflow: hidden;
-}
-
-.aboutUsText {
-  font-size: 40px;
-  color: black;
-  font-style: normal;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInUp 1s forwards 0.5s ease;
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.NewAboutBodyHeader:hover .aboutUsText {
-  opacity: 1;
-  transform: translateY(0);
-}
-.aboutimage{
-  width: 50%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.NewAboutBodyContent{
-  width: 100%;
-  height: 100%;
-  /* background: red; */
-  display: flex;
-}
-.anotherpicdiv{
-  width: 100%;
-  height: 100%;
-  background-color: orange;
-  background: url(../../assets//thesecondabout.jpg);
-  background-repeat: no-repeat;
-  /* background-size: contain; */
-}
-.thetextaboutdiv{
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-.thetextaboutdiv h1{
-  font-size: 30px;
-  color: black;
-  font-weight: 400;
-  margin-bottom: 10px;
-  text-align: center;
-}
-.thetextaboutdiv h2 {
-  font-size: 20px;
-  margin-top: 5%;
-  line-height: 1.4;
-  color: black;
-  font-weight: 400;
-  text-align: center;
-}
-
-

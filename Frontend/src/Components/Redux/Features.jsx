@@ -56,6 +56,7 @@ const initialState = {
     trippyFlightData: [],
     trippyCarData: [],
     trippyBookingCart: [],
+    newCommentData: [],
 };
 
 const features = createSlice({
@@ -73,15 +74,22 @@ const features = createSlice({
         },
         trippyApiCategories: (state, { payload }) => {
             state.allApiData = payload;
-            // console.log('All Category Now working', payload)
+            console.log('All Category Now working', payload)
         },
         trippyApiTours: (state, { payload }) => {
             state.allToursData = payload;
             // console.log('All Tours Now working', payload)
         },
+        newCommentRating: (state, { payload }) => {
+            state.newCommentData = payload;
+            console.log('New Comment In Redux', payload)
+        },
+        clearNewCommentRating: (state) => {
+            state.newCommentData = []
+        },
         findOneTour: (state, { payload }) => {
             state.findOneTourData = payload;
-            // console.log('FindOne Tours data Now working', payload)
+            console.log('Maybe New', payload)
         },
         updateOneTourData: (state, { payload }) => {
             // Update the findOneTourData state with the new data
@@ -129,6 +137,8 @@ const features = createSlice({
 export const {
     clearBookingData,
     trippyUserLogin,
+    newCommentRating,
+    clearNewCommentRating,
     trippyUserLogOut,
     trippyApiCategories,
     trippyApiTours,

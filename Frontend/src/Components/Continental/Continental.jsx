@@ -192,26 +192,26 @@
 // export default Continental;
 
 import "./Continental.css";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { FaHeart } from 'react-icons/fa';
-import { IoIosArrowForward } from 'react-icons/io';
-import { useState, useEffect} from "react";
+import {AiFillStar, AiOutlineStar} from "react-icons/ai";
+import {FaHeart} from "react-icons/fa";
+import {IoIosArrowForward} from "react-icons/io";
+import {useState, useEffect} from "react";
 import Europe from "../Continents/Europe";
 import America from "../Continents/America";
 import AllContinent from "../Continents/All";
 import Asia from "../Continents/Asia";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import {useSelector} from "react-redux/es/hooks/useSelector";
 import axios from "axios";
-import { useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
-import { findOneTour } from "../Redux/Features";
+import {useNavigate} from "react-router";
+import {useDispatch} from "react-redux";
+import {findOneTour} from "../Redux/Features";
 
-import { PulseLoader } from "react-spinners";
-
+import {PulseLoader} from "react-spinners";
+import { Link } from "react-router-dom";
 
 const Continental = () => {
     const [africa, setAfrica] = useState(true);
-    const [africaVisibleCount, setAfricaVisibleCount] = useState(4); 
+    const [africaVisibleCount, setAfricaVisibleCount] = useState(4);
     const [europe, setEurope] = useState(false);
     const [asia, setAsia] = useState(false);
     const [america, setAmerica] = useState(false);
@@ -229,15 +229,14 @@ const Continental = () => {
 
     const [loadingStates, setLoadingStates] = useState({});
 
-        useEffect(() => {
-            // Check if there are more items to display
-            setShowNextIcon(africaVisibleCount < africaPlaces.length);
-        }, [africaVisibleCount, africaPlaces]);
+    useEffect(() => {
+        // Check if there are more items to display
+        setShowNextIcon(africaVisibleCount < africaPlaces.length);
+    }, [africaVisibleCount, africaPlaces]);
 
-
-        const loadMoreAfricaItems = () => {
-            setAfricaVisibleCount(africaVisibleCount + 4); // Increase the number of visible items
-          };
+    const loadMoreAfricaItems = () => {
+        setAfricaVisibleCount(africaVisibleCount + 4); // Increase the number of visible items
+    };
 
     const handleViewMore = (tourId) => {
         setLoadingStates((prevLoadingStates) => ({
@@ -258,7 +257,6 @@ const Continental = () => {
                     [tourId]: false,
                 }));
                 nav(`/BookingNew/${tourId}`);
-
             })
             .catch((error) => {
                 console.error("Error fetching tour data:", error);
@@ -343,12 +341,13 @@ const Continental = () => {
                         </div>
                     </div>
                     <div className="ContiDown">
+                        <div className="ContiMore">
+                            
+                        </div>
                         {africa ? (
                             <>
-
                                 {africaPlaces?.map((item, index) => (
                                     <div className="ContiImgBox" key={index}>
-
                                         <div className="ContiImgDiv">
                                             <img
                                                 src={item.images[0]}
@@ -394,10 +393,14 @@ const Continental = () => {
                                     </div>
                                 ))}
                                 {africaPlaces?.length > africaVisibleCount && (
-                                <div className="LoadMore">
-                                    <IoIosArrowForward className="nextIcon" onClick={loadMoreAfricaItems} size={50} />
-                                </div>
-                            )}
+                                    <div className="LoadMore">
+                                        <IoIosArrowForward
+                                            className="nextIcon"
+                                            onClick={loadMoreAfricaItems}
+                                            size={50}
+                                        />
+                                    </div>
+                                )}
                             </>
                         ) : europe ? (
                             <Europe />
@@ -408,6 +411,13 @@ const Continental = () => {
                         ) : all ? (
                             <AllContinent />
                         ) : null}
+                        <div className="ContiMore">
+                            
+                        </div>
+                    </div>
+                    <div className="ContiMore">
+                        <p>Want so see more Tours? click the button below to explore more</p>
+                        <Link to='/Explore' className="button"><button>Explore</button></Link>
                     </div>
                 </div>
             </div>

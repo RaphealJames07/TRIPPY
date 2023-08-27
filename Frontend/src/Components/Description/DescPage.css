@@ -2,7 +2,7 @@
 /* TEMPLATE FOR STYLINGS */
 
 /* Media Query Styling For Desktop Device */
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 
 *{
   margin: 0;
@@ -156,8 +156,8 @@
 
 .DescBody {
   width: 100%;
-  min-height: 100vh;
-  font-family: 'Kanit', sans-serif;
+  height: 100vh;
+  font-family: sans-serif;
   background-color: #f2f2f2;
   display: flex;
   flex-direction: column;
@@ -165,9 +165,14 @@
   justify-content: center;
 }
 
+.DescBodyWrap{
+  width: 85%;
+  height: 100%;
+}
+
 .DescTop {
   width: 100%;
-  height: 45vh;
+  height: 50%;
   background: #d3d3d3;
   position: relative;
   display: flex;
@@ -212,262 +217,187 @@
 
 .DescDown {
   width: 100%;
-  height: 55vh;
+  height: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .DescDownWrap {
-  width: 90%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.DescDownInitials {
+.DescDown .DescDownDetails{
   width: 100%;
-  height: 20%;
+  height: 80%;
+  background: lightblue;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
 }
 
-.DescDownHeadText,
-.DescDownHeaderInfo {
-  width: 30%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.DescDownHeaderInfo span {
+.DescDownDetailsInitials{
   width: 50%;
   height: 100%;
+}
+
+.DescDownDetailsInitialsTop{
+  width: 100%;
+  height: 15%;
   display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+.DescDownDetailsInitialsTop p{
+  width: 40%;
+  height: 90%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-end;
+  font-size: 18px;
 }
 
-.DescDownHeaderInfo span h2 {
-  margin-left: 10px;
-  font-size: 24px;
-}
-
-.DescNav {
+.DescDownDetailsInitialsMid{
   width: 100%;
-  height: 10%;
+  height: 15%;
 }
 
-.DescNav ul {
+.DescDownDetailsInitialsMid2{
   width: 100%;
-  height: 100%;
-  display: flex;
-  gap: 15px;
+  height: 40%;
+  overflow-y: auto;
+  margin-bottom: 10px;
 }
-
-.DescNav ul li {
-  width: 15%;
-  height: 100%;
-  list-style-type: none;
-  background: #d4d4d4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  border-radius: 5px;
-  font-weight: bold;
+.DescDownDetailsInitialsMid2::-webkit-scrollbar{
+  display: none;
 }
-
-.DescNav ul li:hover {
-  background: #f0f0f0;
-}
-
-.DescBoard {
-  width: 100%;
-  height: 60%;
-}
-
-.DescButtonBook {
-  width: 90%;
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.DescButtonBook button {
-  padding: 10px 20px;
-  background-color: #1d3855;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-.DescButtonBook button:hover {
-  background-color: #0056b3;
-}
-
-.BackButton {
-  width: 100%;
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.BackButton button {
-  padding: 10px 20px;
-  background-color:  #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-.BackButton button:hover {
-  background-color:  #0056b3;
-}
-
-
-
-.ReviewContainer{
+.DescDownDetailsInitialsMid2 p{
   width: 100%;
   height: 100%;
-  display: flex;
+  flex: 0 0 auto;
 }
 
-.ReviewBody{
-  width: 65%;
-  height: 100%;
-}
-
-.CommentBody{
-  width: 45%;
-  height: 100%;
-  border: 1px solid #000;
+.DescDownDetailsInitialsDown{
+  width: 100%;
+  height: 30%;
   display: flex;
   flex-direction: column;
+}
+.DescDownDetailsInitialsDownBox{
+  width: 100%;
+  height: 70%;
+  display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.CommentFields{
-  width: 80%;
-  height: 50%;
-}
-.CommentFields label{
-  width: 50%;
-  height: 40%;
-}
-
-.CommentFields input{
-  width: 50%;
-  height: 40%;
-}
-
-.CommentFields .CommentFieldText{
-  width: 100%;
-  height: 50px;
+.DescDownDetailsInitialsDown input{
+  width: 10%;
+  height: 70%;
+  font-size: 16px;
   padding-left: 10px;
 }
-
-.CommentFields .CommentFieldStar{
-  width: 50px;
-  height: 30px;
+.DescDownDetailsInitialsDown .DescDownDetailsInitialsDownCmt{
+  width: 60%;
+  height: 70%;
 }
-.CommentFields button{
-  width: 70px;
-  height: 40px;
-  margin-top: 10px;
+.DescDownDetailsInitialsDown button{
+  width: 15%;
+  height: 70%;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  background: lightgreen;
+}
+.DescDownDetailsInitialsDown button:hover{
+  width: 15.5%;
+  height: 71%;
+  background: rgb(159, 242, 159);
+}
+
+
+.DescDownDetailsCommentSec{
+  width: 50%;
+  height: 100%;
+  background: lightsteelblue;
+}
+
+.ReviewContainer{
+  width: 100%;
+  height: 100%;
 }
 
 .ReviewsHeader{
   width: 100%;
-  height: 20%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
 }
 
-.ReviewCommentsSec{
+.ReviewDetOver{
   width: 100%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  height: 85%;
   overflow-y: auto;
+  padding: 10px;
 }
-.ReviewCommentsSec::-webkit-scrollbar{
+.ReviewDetOver::-webkit-scrollbar{
   display: none;
 }
 
 .ReviewComment1{
-  width: 100%;
-  height: 100px;
   flex: 0 0 auto;
+  width: 100%;
+  height: 150px;
+  border:1px solid #000;
+  margin-bottom: 5px;
+  border-radius: 5px;
 }
 
 .ReviewComment1Info{
   width: 100%;
-  height: 50%;
+  height: 55%;
   display: flex;
+  padding: 10px;
+  align-items: center;
 }
 
 .ReviewComment1Pfp{
-  width: 10%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.ReviewComment1Pfp img{
   width: 50px;
   height: 50px;
-  background: purple;
-  border-radius: 50%;
+  background: #000;
+  border-radius: 50px;
+  margin-right: 10px;
 }
-
-.ReviewComment1Details{
-  width: 60%;
+.ReviewComment1Pfp img{
+  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  border-radius: 50%;
 }
 
 .ReviewComment1Text{
   width: 100%;
-  height: 50%;
+  height: 45%;
+  padding: 10px;
+}
+
+.DescButtonBook{
+  width: 100%;
+  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 30px;
 }
-.ReviewComment1Text p{
-  width: 95%;
+.DescButtonBook button{
+  width: 100px;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* End of Media Query Styling For Desktop Device */
 
