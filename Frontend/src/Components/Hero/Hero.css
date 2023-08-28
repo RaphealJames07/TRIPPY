@@ -112,7 +112,7 @@
   border: 2px solid #00B4D8;
   font-size: 16px;
   background: rgb(218, 218, 218);
-  cursor: pointer;
+  /* cursor: pointer; */
   color: #000;
 }
 
@@ -142,6 +142,161 @@
   color: #fff;
   font-size: 18px;
 }
+
+.HeroPlayBody {
+  width: 100%;
+  height: 70vh;
+  border: 2px solid #00B4D8;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+.HeroPlayCard{
+  width: 90%;
+  height: 90%;
+  /* background: lightgoldenrodyellow; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.HeroPlayCardHead{
+  width: 100%;
+  height: 10%;
+  background: #00B4D8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.HeroPlayCardResults{
+  width: 100%;
+  height: 88%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 9px;
+  background: #00B4D8;
+  border-radius: 5px;
+}
+
+.HeroPlayCardResults::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #00B4D8;
+}
+
+.HeroPlayCardResults::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #00B4D8;
+  border: 1px solid #000;
+
+}
+
+.HeroPlayCardResults::-webkit-scrollbar-thumb
+{
+	background-color: #fff;
+  border: 1px solid #000;
+
+}
+
+.HeroPlayCardItem1{
+  width: 99%;
+  height: 150px;
+  background: #fff;
+  flex: 0 0 auto;
+  display: flex;
+  padding: 5px;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 5px;
+  border: 2px solid #00B4D8;
+}
+.HeroPlayCardItem1:hover{
+  width: 100%;
+  height: 152px;
+  background: #d8d8d8;
+  flex: 0 0 auto;
+  display: flex;
+  padding: 5px;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.HeroPlayCardImgDiv{
+  width: 40%;
+  height: 100%;
+  background: #e65d5d;
+  border-radius: 5px;
+}
+.HeroPlayCardImgDiv img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.HeroPlayCardDetailsDiv{
+  width: 55%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.HeroPlayCardDetails1{
+  width: 100%;
+  height: 20%;
+  background: #00B4D8;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding-left: 5px;
+  color: #fff;
+}
+.HeroPlayCardDetails2{
+  width: 100%;
+  height: 20%;
+  background: #00B4D8;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding-left: 5px;
+  justify-content: space-between;
+  color: #fff;
+
+}
+.HeroPlayCardDetails3{
+  width: 100%;
+  height: 20%;
+  background: #00B4D8;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding-left: 5px;
+  color: #fff;
+
+}
+.HeroPlayCardDetails4{
+  width: 100%;
+  height: 30%;
+  background: #00B4D8;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
 
 
 

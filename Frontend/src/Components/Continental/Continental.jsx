@@ -341,9 +341,7 @@ const Continental = () => {
                         </div>
                     </div>
                     <div className="ContiDown">
-                        <div className="ContiMore">
-                            
-                        </div>
+                        <div className="ContiMore"></div>
                         {africa ? (
                             <>
                                 {africaPlaces?.map((item, index) => (
@@ -361,10 +359,11 @@ const Continental = () => {
                                         </div>
                                         <div className="ContiCTA">
                                             {item?.tourName}
-                                            <span>
-                                                <h4>{item?.country}</h4>
-                                            </span>
-                                            <h4>{item.city}</h4>
+
+                                            <h4>
+                                                {item.city}{" "}
+                                                <span>{item?.country}</span>
+                                            </h4>
                                             <div className="ContiCTABtnRev">
                                                 <div className="ContiCTAREV">
                                                     <AiFillStar />
@@ -411,13 +410,16 @@ const Continental = () => {
                         ) : all ? (
                             <AllContinent />
                         ) : null}
-                        <div className="ContiMore">
-                            
-                        </div>
+                   
                     </div>
                     <div className="ContiMore">
-                        <p>Want so see more Tours? click the button below to explore more</p>
-                        <Link to='/Explore' className="button"><button>Explore</button></Link>
+                        <p>
+                            Want so see more Tours? click the button below to
+                            explore more
+                        </p>
+                        <Link to="/Explore" className="button">
+                            <button>Explore</button>
+                        </Link>
                     </div>
                 </div>
             </div>

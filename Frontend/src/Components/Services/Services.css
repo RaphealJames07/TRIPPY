@@ -33,6 +33,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #00B4D8;
 }
 
 .ServicesBox{
@@ -60,15 +61,32 @@
 
 .ServiceItem1Box{
   width: 22%;
+  height: 98%;
+  /* background: #ffffff; */
+  display: flex;
+  align-items: start;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+.ServiceItem1Box:hover{
+  width: 22.5%;
   height: 100%;
   /* background: #ffffff; */
   display: flex;
   align-items: start;
   border-radius: 10px;
-
 }
+
 .ServiceItem2Box{
   width: 22%;
+  height: 98%;
+  /* background: #ffffff; */
+  display: flex;
+  align-items: end;
+  transition: all 0.5s;
+}
+.ServiceItem2Box:hover{
+  width: 22.5%;
   height: 100%;
   /* background: #ffffff; */
   display: flex;
@@ -76,6 +94,14 @@
 }
 .ServiceItem3Box{
   width: 22%;
+  height: 98%;
+  /* background: #ffffff; */
+  display: flex;
+  align-items: start;
+  transition: all 0.5s;
+}
+.ServiceItem3Box:hover{
+  width: 22.5%;
   height: 100%;
   /* background: #ffffff; */
   display: flex;
@@ -83,10 +109,20 @@
 }
 .ServiceItem4Box{
   width: 22%;
+  height: 98%;
+  /* background: #ffffff; */
+  display: flex;
+  align-items: end;
+  transition: all 0.5s;
+
+}
+.ServiceItem4Box:hover{
+  width: 22.5%;
   height: 100%;
   /* background: #ffffff; */
   display: flex;
   align-items: end;
+
 }
 
 .ServiceItem1BoxWrap{
@@ -97,6 +133,7 @@
   /* align-items: end; */
   background: #fff;
   border-radius: 10px;
+  border: 1px solid #000;
   box-shadow: rgba(0, 0, 0, 0.298) 0px 5px 15px;
 }
 .ServiceItem2BoxWrap{
@@ -107,6 +144,7 @@
   align-items: start;
   background: #fff;
   border-radius: 10px;
+  border: 1px solid #000;
   box-shadow: rgba(0, 0, 0, 0.298) 0px 5px 15px;
 }
 .ServiceItem3BoxWrap{
@@ -117,6 +155,7 @@
   align-items: end;
   border-radius: 10px;
   background: #fff;
+  border: 1px solid #000;
   box-shadow: rgba(0, 0, 0, 0.298) 0px 5px 15px;
 }
 .ServiceItem4BoxWrap{
@@ -128,18 +167,19 @@
   background: #fff;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.298) 0px 5px 15px;
+  border: 1px solid #000;
 }
 
 .ServiceImgHeaderText{
   width: 100%;
   height: 30%;
-  background: #ffffff;
+  background: #00B4D8;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   border-radius: 10px 10px 0px 0px;
-
+  color: #fff;
 }
 .ServiceImgHeaderText h2{
   font-size: 24px;
@@ -169,6 +209,12 @@
 
 .ServicesDetails ul li{
   list-style: none;
+  /* background: #00B4D8; */
+  border-radius: 5px;
+  padding: 5px;
+  color: #000;
+  border: 1px solid #00B4D8;
+
 }
 
 
