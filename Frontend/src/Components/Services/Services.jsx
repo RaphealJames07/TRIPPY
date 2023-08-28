@@ -41,18 +41,19 @@ const Services = () => {
                                 <div className="ServiceItem2BoxWrap">
                                     <div className="ServiceImgHeaderText">
                                         <MdFlightTakeoff className="MdFlightTakeoff" />
-                                        <h2>Flight</h2>
+                                        <h2>Hotels</h2>
                                     </div>
                                     <div className="ServicesDetails">
                                         <ul>
                                             <li>
-                                                Find and book flights to your
-                                                desired destinations worldwide.
+                                                Discover a range of hotels from
+                                                luxury resorts to
+                                                budget-friendly accommodations.
                                             </li>
                                             <li>
-                                                Choose from a wide selection of
-                                                airlines, flight classes, and
-                                                flexible travel dates.
+                                                Access to amenities like free
+                                                Wi-Fi, swimming pools, and
+                                                24-hour room service.
                                             </li>
                                             <li>
                                                 Get the best deals and
@@ -67,23 +68,23 @@ const Services = () => {
                                 <div className="ServiceItem3BoxWrap">
                                     <div className="ServiceImgHeaderText">
                                         <MdFlightTakeoff className="MdFlightTakeoff" />
-                                        <h2>Flight</h2>
+                                        <h2>Cars</h2>
                                     </div>
                                     <div className="ServicesDetails">
                                         <ul>
                                             <li>
-                                                Find and book flights to your
-                                                desired destinations worldwide.
+                                                Rent cars for exploring
+                                                destinations at your own pace.
                                             </li>
                                             <li>
-                                                Choose from a wide selection of
-                                                airlines, flight classes, and
-                                                flexible travel dates.
+                                                Select from various car types,
+                                                including sedans, SUVs, and
+                                                luxury vehicles.
                                             </li>
                                             <li>
-                                                Get the best deals and
-                                                flexibility that suites your
-                                                budget plan
+                                                Enjoy features like GPS
+                                                navigation, child seats, and
+                                                roadside assistance.
                                             </li>
                                         </ul>
                                     </div>
@@ -93,23 +94,25 @@ const Services = () => {
                                 <div className="ServiceItem4BoxWrap">
                                     <div className="ServiceImgHeaderText">
                                         <MdFlightTakeoff className="MdFlightTakeoff" />
-                                        <h2>Flight</h2>
+                                        <h2>Other</h2>
                                     </div>
                                     <div className="ServicesDetails">
                                         <ul>
                                             <li>
-                                                Find and book flights to your
-                                                desired destinations worldwide.
+                                                Customizable itineraries with
+                                                accommodation, flights, and
+                                                activities included.
                                             </li>
                                             <li>
-                                                Choose from a wide selection of
-                                                airlines, flight classes, and
-                                                flexible travel dates.
+                                                Read
+                                                genuine reviews and ratings for
+                                                hotels, flights, and car
+                                                rentals.
                                             </li>
                                             <li>
-                                                Get the best deals and
-                                                flexibility that suites your
-                                                budget plan
+                                                Reach out to our dedicated
+                                                customer support team for
+                                                assistance.
                                             </li>
                                         </ul>
                                     </div>

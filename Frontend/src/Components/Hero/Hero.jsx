@@ -4,7 +4,14 @@ import "./Hero.css";
 import {useState, useEffect} from "react";
 import axios from "axios";
 import {SpinnerDotted} from "spinners-react";
-import {Modal} from "antd";
+import {Button, Modal} from "antd";
+import { useDispatch } from "react-redux";
+import { heroSearchRes } from "../Redux/Features";
+import { useSelector } from "react-redux";
+import {useNavigate} from "react-router";
+import {findOneTour} from "../Redux/Features";
+
+import {PulseLoader} from "react-spinners";
 
 const Hero = () => {
     const words = [
@@ -35,6 +42,7 @@ const Hero = () => {
     const url = "https://trippyapiv1.onrender.com/trippy/find-tours";
     const [modalVisible, setModalVisible] = useState(false);
     const [searchResultStatus, setSearchResultStatus] = useState(null); 
+    const dispatch = useDispatch()
 
     const handleHeroSearch = (e) => {
         e.preventDefault();
@@ -51,7 +59,7 @@ const Hero = () => {
                 .then((res) => {
                     console.log("response: ", res.data);
                     setSearchResultStatus("success");
-                    
+                    dispatch(heroSearchRes(res.data))
                 })
                 .catch((err) => {
                     console.log(err);
@@ -63,14 +71,94 @@ const Hero = () => {
         }
     };
 
+    const heroData = useSelector((state) => state.Trippy.heroSearchData.tours);
+    // console.log('Hero Data is Here',heroData);
+
+    const [loadingStates, setLoadingStates] = useState({});
+    const nav = useNavigate();
+    const Dispatch = useDispatch();
+
+    const handleViewMore = (tourId) => {
+        setLoadingStates((prevLoadingStates) => ({
+            ...prevLoadingStates,
+            [tourId]: true,
+        }));
+
+        axios
+            .get(
+                `https://trippyapiv1.onrender.com/trippy/findone-tour/${tourId}`
+            )
+            .then((res) => {
+                const tourData = res.data.tour;
+
+                Dispatch(findOneTour(tourData));
+                setLoadingStates((prevLoadingStates) => ({
+                    ...prevLoadingStates,
+                    [tourId]: false,
+                }));
+                nav(`/BookingNew/${tourId}`);
+            })
+            .catch((error) => {
+                console.error("Error fetching tour data:", error);
+                setLoadingStates((prevLoadingStates) => ({
+                    ...prevLoadingStates,
+                    [tourId]: false,
+                }));
+            });
+    };
+
     return (
         <>
             <Modal
                 visible={modalVisible}
                 onCancel={() => setModalVisible(false)}
+                className="HeroModalBody"
             >
                 {searchResultStatus === "success" ? (
-                    <p>Search successful</p>
+                    <>
+                        <div className="HeroPlayBody">
+                            <div className="HeroPlayCard">
+                                <div className="HeroPlayCardHead">
+                                    Search Results
+                                </div>
+                                <div className="HeroPlayCardResults">
+                                   {
+                                    heroData?.map((item, index)=>(
+                                        <div className="HeroPlayCardItem1" key={index}>
+                                        <div className="HeroPlayCardImgDiv">
+                                            <img src={item?.images[0]} alt="" />
+                                        </div>
+                                        <div className="HeroPlayCardDetailsDiv">
+                                            <div className="HeroPlayCardDetails1">
+                                                {item?.tourName}
+                                            </div>
+                                            <div className="HeroPlayCardDetails2">
+                                               {item?.city}{" "}
+                                                <span>{item?.country}</span>
+                                            </div>
+                                            <div className="HeroPlayCardDetails3">
+                                                Tour Price: {item?.pricePerPerson}{" "}
+                                                <span>Rating: {item?.starRating}</span>
+                                            </div>
+                                            <div className="HeroPlayCardDetails4">
+                                                <Button onClick={() =>
+                                                        handleViewMore(item._id)
+                                                    }
+                                                >
+                                                    {loadingStates[item._id] ? (
+                                                        <PulseLoader color="#36d7b7" />
+                                                    ) : (
+                                                        "View More"
+                                                    )}</Button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ))
+                                   }
+                                </div>
+                            </div>
+                        </div>
+                    </>
                 ) : searchResultStatus === "failed" ? (
                     <p>Search failed</p>
                 ) : (

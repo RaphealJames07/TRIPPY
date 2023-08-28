@@ -57,7 +57,7 @@
 }
 .FooterAddy p{
   width: 75%;
-  font-size: 20px;
+  font-size: 16px;
   color: white;
 }
 
@@ -67,7 +67,7 @@
 }
 .FooterRights p{
   width: 75%;
-  font-size: 20px;
+  font-size: 16px;
   color: white;
 }
 
@@ -112,7 +112,7 @@
 }
 .FooterCompanyNav ul li{
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16x;
   color: white;
 }
 .FooterCompanyNav ul li:hover{
@@ -159,7 +159,7 @@
 .TagSocialIcon{
   width: 30px;
   height: 30px;
-  background: #000;
+  background: #00B4D8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,7 +172,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
   color: white;
 }

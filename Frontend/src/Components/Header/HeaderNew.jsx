@@ -4,6 +4,7 @@ import HeaderLone from "./HeaderLone";
 import Hero from "../Hero/Hero";
 import Continental from "../Continental/Continental";
 import Footer from "../Footer/Footer";
+import Services from "../Services/Services";
 // import HeaderNewTop from "./HeaderNewTop";
 
 const HeaderNew = () => {
@@ -17,6 +18,7 @@ const HeaderNew = () => {
                     <div className="HeaderNewNavdivWrap">
                         <Hero />
                         <Continental/>
+                        <Services/>
                         <Footer />
                     </div>
                 </div>
