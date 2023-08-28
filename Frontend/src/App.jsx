@@ -29,6 +29,7 @@ import { CommentsProvider } from '../src/Components/Redux/Context';
 import NewExplore from "./Components/Explore/NewExplore";
 import HeaderLone from "./Components/Header/HeaderLone";
 import NewAbout from "./Components/About/NewAbout";
+import ThreeSum from "./Components/Booking/ThreeSum";
 
 
 const App = () => {
@@ -67,6 +68,7 @@ const App = () => {
             <Route path="/Explore" element={<NewExplore/>} />
             <Route path="/HeaderLone" element={<HeaderLone/>} />
             <Route path="/About" element={<NewAbout/>} />
+            <Route path="/Booking3" element={<ThreeSum/>} />
             
             
             
