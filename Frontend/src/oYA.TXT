@@ -352,3 +352,29 @@ const TheThreeAD = () => {
 };
 
 export default TheThreeAD;
+
+ {
+                                    heroData?.map((item, index)=>(
+                                        <div className="PlayCardItem1" key={index}>
+                                        <div className="PlayCardImgDiv">
+                                            <img src={item?.images[0]} alt="" />
+                                        </div>
+                                        <div className="PlayCardDetailsDiv">
+                                            <div className="PlayCardDetails1">
+                                                {item?.tourName}
+                                            </div>
+                                            <div className="PlayCardDetails2">
+                                               {item?.city}{" "}
+                                                <span>{item?.country}</span>
+                                            </div>
+                                            <div className="PlayCardDetails3">
+                                                Tour Price: {item?.pricePerPerson}{" "}
+                                                <span>Rating: {item?.starRating}</span>
+                                            </div>
+                                            <div className="PlayCardDetails4">
+                                                <Button>View More</Button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ))
+                                   }

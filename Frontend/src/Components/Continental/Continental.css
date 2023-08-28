@@ -11,7 +11,7 @@
 
 .ContiBody{
   width: 100%;
-  height: 90vh;
+  height: 95vh;
   background: #f0f0f0;
   display: flex;
   justify-content: center;
@@ -36,6 +36,7 @@
   height: 50%;
   display: flex;
   align-items: center;
+  color: #00B4D8;
 }
 
 .ContiNav{
@@ -53,9 +54,21 @@
 }
 .ContiNav ul li{
   width: 20%;
+  height: 99%;
+  cursor: pointer;
+  background: #00B4D8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  transition: all 0.5s;
+  color: #fff;
+}
+.ContiNav ul li:hover{
+  width: 20.5%;
   height: 100%;
   cursor: pointer;
-  background: #ffffff42;
+  background: #2eceee;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,13 +77,15 @@
 
 .ContiNav ul li.active{
   width: 20%;
-  height: 100%;
+  height: 99%;
   cursor: pointer;
-  background: #00000042;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  transition: all 0.5s;
+  color: #000;
 }
 
 .ContiMore{
@@ -80,6 +95,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 }
 .ContiMore p{
   width: 40%;
@@ -90,28 +106,44 @@
   font-size: 18px;
 }
 .ContiMore .button{
-  width: 10%;
-  height:50%;
+  width: 12%;
+  height: 45%;
 }
 .ContiMore button{
+  width: 99%;
+  height:99%;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 18px;
+  background: #00B4D8;
+  border: 1px solid #000;
+  transition: all 0.5s;
+  color: #fff;
+}
+.ContiMore button:hover{
   width: 100%;
   height:100%;
   border-radius: 50px;
   cursor: pointer;
+  font-size: 18px;
+  background: #14caee;
+  border: 1px solid #fff;
+  color: #000;
 }
 
 
 .ContiDown{
   position: relative;
   width: 95%;
-  height: 55%;
+  height: 70%;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; 
   scroll-behavior: smooth;
-  gap: 20px;
+  gap: 40px;
   /* background: #000; */
+  padding: 17px 0;
 }
 
 
@@ -127,6 +159,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .ContiImgDiv{
@@ -149,7 +182,7 @@
 }
 
 .heartIcon {
-  color: black;
+  color: #00B4D8;
   font-size: 18px;
   cursor: pointer;
 }
@@ -173,6 +206,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-transform: capitalize;
 }
 .ContiCTA h3{
   font-size: 22px;

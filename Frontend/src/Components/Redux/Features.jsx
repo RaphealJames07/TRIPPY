@@ -48,7 +48,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    trippyUser: { token: "", firstName: "", lastName: "", email: "" },
+    trippyUser: {token: "", firstName: "", lastName: "", email: ""},
     allApiData: [],
     allToursData: [],
     findOneTourData: [],
@@ -57,60 +57,61 @@ const initialState = {
     trippyCarData: [],
     trippyBookingCart: [],
     newCommentData: [],
+    heroSearchData: [],
 };
 
 const features = createSlice({
     name: "e-store",
     initialState,
     reducers: {
-        trippyUserLogin: (state, { payload }) => {
-            const { firstName, lastName, email, token } = payload;
-            state.trippyUser = { token, firstName, lastName, email };
+        trippyUserLogin: (state, {payload}) => {
+            const {firstName, lastName, email, token} = payload;
+            state.trippyUser = {token, firstName, lastName, email};
             console.log("User Data:", payload);
         },
         trippyUserLogOut: (state) => {
             // state.trippyUser = { id: "", token: "", name: "", email: "" };
             state.trippyUser = null;
         },
-        trippyApiCategories: (state, { payload }) => {
+        trippyApiCategories: (state, {payload}) => {
             state.allApiData = payload;
-            console.log('All Category Now working', payload)
+            console.log("All Category Now working", payload);
         },
-        trippyApiTours: (state, { payload }) => {
+        trippyApiTours: (state, {payload}) => {
             state.allToursData = payload;
             // console.log('All Tours Now working', payload)
         },
-        newCommentRating: (state, { payload }) => {
+        newCommentRating: (state, {payload}) => {
             state.newCommentData = payload;
-            console.log('New Comment In Redux', payload)
+            console.log("New Comment In Redux", payload);
         },
         clearNewCommentRating: (state) => {
-            state.newCommentData = []
+            state.newCommentData = [];
         },
-        findOneTour: (state, { payload }) => {
+        findOneTour: (state, {payload}) => {
             state.findOneTourData = payload;
-            console.log('Maybe New', payload)
+            console.log("Maybe New", payload);
         },
-        updateOneTourData: (state, { payload }) => {
+        updateOneTourData: (state, {payload}) => {
             // Update the findOneTourData state with the new data
             return {
                 ...state,
                 findOneTourData: payload,
             };
         },
-        hotelData: (state, { payload }) => {
+        hotelData: (state, {payload}) => {
             state.trippyHotelData = payload;
             // console.log('Hotel data is available in redux', payload);
         },
-        flightData: (state, { payload }) => {
+        flightData: (state, {payload}) => {
             state.trippyFlightData = payload;
             // console.log('flight data is available in redux', payload);
         },
-        carData: (state, { payload }) => {
+        carData: (state, {payload}) => {
             state.trippyCarData = payload;
             // console.log('Car data is available in redux', payload);
         },
-        bookingData: (state, { payload }) => {
+        bookingData: (state, {payload}) => {
             state.trippyBookingCart.push(payload); // Append the payload to the array
             console.log("Added to cart:", payload);
         },
@@ -129,7 +130,15 @@ const features = createSlice({
         },
         clearCarData: (state) => {
             state.trippyCarData = [];
-            console.log('cleared');
+            console.log("cleared");
+        },
+        heroSearchRes: (state, {payload}) => {
+            state.heroSearchData = payload;
+            console.log("Hero Data is Available", payload);
+        },
+        clearHeroSearch: (state ) => {
+            state.heroSearchData = []
+            console.log("Hero Data is Cleared");
         },
     },
 });
@@ -151,6 +160,7 @@ export const {
     flightData,
     carData,
     bookingData,
+    heroSearchRes,
 } = features.actions;
 
 export default features.reducer;
