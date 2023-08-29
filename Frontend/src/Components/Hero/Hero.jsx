@@ -6,8 +6,8 @@ import axios from "axios";
 import {SpinnerDotted} from "spinners-react";
 import {Button, Modal} from "antd";
 import { useDispatch } from "react-redux";
-import { heroSearchRes } from "../Redux/Features";
-import { useSelector } from "react-redux";
+import { clearHeroSearch, heroSearchRes } from "../Redux/Features";
+// import { useSelector } from "react-redux";
 import {useNavigate} from "react-router";
 import {findOneTour} from "../Redux/Features";
 
@@ -43,6 +43,7 @@ const Hero = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [searchResultStatus, setSearchResultStatus] = useState(null); 
     const dispatch = useDispatch()
+    const [heroDataresult, setHeroDataresult] = useState([])
 
     const handleHeroSearch = (e) => {
         e.preventDefault();
@@ -60,6 +61,7 @@ const Hero = () => {
                     console.log("response: ", res.data);
                     setSearchResultStatus("success");
                     dispatch(heroSearchRes(res.data))
+                    setHeroDataresult(res.data.tours)
                 })
                 .catch((err) => {
                     console.log(err);
@@ -71,7 +73,7 @@ const Hero = () => {
         }
     };
 
-    const heroData = useSelector((state) => state.Trippy.heroSearchData.tours);
+    // const heroData = useSelector((state) => state.Trippy.heroSearchData.tours);
     // console.log('Hero Data is Here',heroData);
 
     const [loadingStates, setLoadingStates] = useState({});
@@ -83,6 +85,7 @@ const Hero = () => {
             ...prevLoadingStates,
             [tourId]: true,
         }));
+        dispatch(clearHeroSearch())
 
         axios
             .get(
@@ -110,7 +113,7 @@ const Hero = () => {
     return (
         <>
             <Modal
-                visible={modalVisible}
+                open={modalVisible}
                 onCancel={() => setModalVisible(false)}
                 className="HeroModalBody"
             >
@@ -123,7 +126,7 @@ const Hero = () => {
                                 </div>
                                 <div className="HeroPlayCardResults">
                                    {
-                                    heroData?.map((item, index)=>(
+                                    heroDataresult?.map((item, index)=>(
                                         <div className="HeroPlayCardItem1" key={index}>
                                         <div className="HeroPlayCardImgDiv">
                                             <img src={item?.images[0]} alt="" />

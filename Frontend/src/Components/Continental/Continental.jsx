@@ -208,6 +208,7 @@ import {findOneTour} from "../Redux/Features";
 
 import {PulseLoader} from "react-spinners";
 import { Link } from "react-router-dom";
+import {Modal} from "antd";
 
 const Continental = () => {
     const [africa, setAfrica] = useState(true);
@@ -266,9 +267,68 @@ const Continental = () => {
                 }));
             });
     };
+    const [addWishList, setAddWishList] = useState([]);
+    // const [heartColor, setHeartColor] = useState(false);
+    const [addSuccess, setAddSuccess] = useState(false);
+    const [addingWish, setAddingWish] = useState(false);
+    const userToken = useSelector((state) => state.Trippy.trippyUser.token);
+    const data = {};
+
+    const handleAddToWishList = (tourId) => {
+        setModalVisible(true);
+        setAddingWish(true);
+
+        const token = userToken;
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+
+        axios
+            .put(
+                `https://trippyapiv1.onrender.com/trippy/wishlist/${tourId}`,
+                data,
+                {headers}
+            )
+            .then((res) => {
+                console.log(res);
+                setAddWishList([...addWishList, tourId]); // Add tourId to addWishList
+                setAddingWish(false)
+                setAddSuccess(true);
+            })
+            .catch((err) => {
+                console.log(err);
+                setAddSuccess(false);
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    setAddingWish(false);
+                    setModalVisible(false);
+                    setAddSuccess(false);
+                }, 3000); // Close modal after 3 seconds
+            });
+    };
+
+    console.log(addWishList);
+    const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <>
+            <Modal
+                open={modalVisible}
+                onCancel={() => setModalVisible(false)}
+                className="HeroModalBody"
+            >
+                {addingWish ? (
+                    <p>Adding to Wishlist...</p>
+                ) : (
+                    <p>
+                        {addSuccess
+                            ? "Tour Added Successfully"
+                            : "Failed To Add Tour"}
+                    </p>
+                )}
+            </Modal>
+
             <div className="ContiBody">
                 <div className="ContiWrapper">
                     <div className="ContiTop">
@@ -354,7 +414,23 @@ const Continental = () => {
                                             />
                                             {/* <ContentLoader/> */}
                                             <div className="ContiAddToFav">
-                                                <FaHeart className="heartIcon" />
+                                                <FaHeart
+                                                    style={{
+                                                        color: `${
+                                                            addWishList.includes(
+                                                                item._id
+                                                            )
+                                                                ? "red"
+                                                                : "#00B4D8"
+                                                        }`,
+                                                    }}
+                                                    className="heartIcon"
+                                                    onClick={() =>
+                                                        handleAddToWishList(
+                                                            item._id
+                                                        )
+                                                    }
+                                                />
                                             </div>
                                         </div>
                                         <div className="ContiCTA">
@@ -410,7 +486,6 @@ const Continental = () => {
                         ) : all ? (
                             <AllContinent />
                         ) : null}
-                   
                     </div>
                     <div className="ContiMore">
                         <p>

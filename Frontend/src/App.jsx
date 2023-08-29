@@ -30,6 +30,8 @@ import NewExplore from "./Components/Explore/NewExplore";
 import HeaderLone from "./Components/Header/HeaderLone";
 import NewAbout from "./Components/About/NewAbout";
 import ThreeSum from "./Components/Booking/ThreeSum";
+import MyBookings from "./Components/Booking/MyBookings";
+import WishList from "./Components/Wishlist/WhisList";
 
 
 const App = () => {
@@ -69,6 +71,8 @@ const App = () => {
             <Route path="/HeaderLone" element={<HeaderLone/>} />
             <Route path="/About" element={<NewAbout/>} />
             <Route path="/Booking3" element={<ThreeSum/>} />
+            <Route path="/MyBookings" element={<MyBookings/>} />
+            <Route path="/WishList" element={<WishList/>} />
             
             
             
