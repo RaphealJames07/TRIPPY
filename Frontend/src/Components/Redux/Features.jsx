@@ -161,6 +161,7 @@ export const {
     carData,
     bookingData,
     heroSearchRes,
+    clearHeroSearch,
 } = features.actions;
 
 export default features.reducer;

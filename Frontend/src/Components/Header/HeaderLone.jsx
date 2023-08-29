@@ -1,82 +1,154 @@
 import Logo from "../../assets/Logo.png";
 // import {Fade} from "react-awesome-reveal";
 import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {trippyUserLogOut} from "../Redux/Features";
 import {useDispatch} from "react-redux";
 import { BiUser } from "react-icons/bi";
 import {useState} from "react";
 import './HeaderNew.css'
-
+import {GiHamburgerMenu} from "react-icons/gi";
+import {TbLetterX} from 'react-icons/tb'
 
 const HeaderLone = () => {
-  const dispatch = useDispatch();
-  
-  const [popUp, setPopUp] = useState(false);
+    const dispatch = useDispatch();
+
+    const [popUp, setPopUp] = useState(false);
     const [hoverUp, setHoverUp] = useState(false);
 
-  const toggleHoverNav = () => {
-    setHoverUp(!hoverUp);
-};
+    const toggleHoverNav = () => {
+        setHoverUp(!hoverUp);
+    };
 
-const togglePopUp = () => {
-    setPopUp(!popUp);
-};
+    const togglePopUp = () => {
+        setPopUp(!popUp);
+    };
 
+    const [showNav, setShowNav] = useState(false);
 
-const user = useSelector((state) => state.Trippy.trippyUser);
+    const toggleNav = () => {
+        setShowNav(true);
+    };
+    const toggleNavRemove = () => {
+        setShowNav(false);
+    };
 
+    const user = useSelector((state) => state.Trippy.trippyUser);
 
-  return (
-    <>
-      <div className="HeaderNewTopDiv">
-                    <div className="HeaderNewTopDivWrap">
-                        <div className="HeaderNewTopDivLeft">
-                            <Link><img src={Logo} alt="" /></Link>
-                        </div>
-                        <nav>
-                            <ul>
-                                <Link to='/HeaderNew' className="NavLink">
-                                    <li>Home</li>
-                                </Link>
-                                <Link to='/Explore' className="NavLink">
-                                    <li>Explore</li>
-                                </Link>
-                                <Link className="NavLink">
-                                    {" "}
-                                    <li>My Bookings</li>
-                                </Link>
-                                <Link
-                                    className="NavLink Itinerary"
-                                    onClick={() => toggleHoverNav(true)}
-                                    
+    return (
+        <>
+            <div className="HeaderNewTopDiv">
+                <div className="HeaderNewTopDivWrap">
+                    <div className="HeaderNewTopDivLeft">
+                        <Link>
+                            <img src={Logo} alt="" />
+                        </Link>
+                    </div>
+                    <nav>
+                        <ul>
+                            <Link to="/HeaderNew" className="NavLink">
+                                <li>Home</li>
+                            </Link>
+                            <Link to="/Explore" className="NavLink">
+                                <li>Explore</li>
+                            </Link>
+                            <Link to='/MyBookings' className="NavLink">
+                                {" "}
+                                <li>My Bookings</li>
+                            </Link>
+                            <Link
+                                className="NavLink Itinerary"
+                                onClick={() => toggleHoverNav(true)}
+                            >
+                                <li>
+                                    Itinerary <span> &#9660;</span>
+                                </li>
+                            </Link>
+                            <Link className="NavLink" to="/About">
+                                <li>About Us</li>
+                            </Link>
+                        </ul>
+                        {hoverUp ? (
+                            <>
+                                <div
+                                    className="ItineraryPopUp"
+                                    onMouseLeave={() => toggleHoverNav(false)}
                                 >
-                                    <li>Itinerary <span> &#9660;</span></li>
-                                </Link>
-                                <Link className="NavLink" to='/About'>
-                                    <li>About Us</li>
-                                </Link>
-                            </ul>
-                            {hoverUp ? (
-                                <>
-                                    <div className="ItineraryPopUp" onMouseLeave={()=>toggleHoverNav(false)}>
+                                    <ul>
+                                        <Link
+                                            to="/NewFlight"
+                                            className="NavLink"
+                                        >
+                                            <li>Flights</li>
+                                        </Link>
+                                        <Link
+                                            to="/NewHotel"
+                                            className="NavLink"
+                                        >
+                                            <li>Hotels</li>
+                                        </Link>
+                                        <Link to="/NewCar" className="NavLink">
+                                            <li>Cars</li>
+                                        </Link>
+                                    </ul>
+                                </div>
+                            </>
+                        ) : null}
+                    </nav>
+
+                    <div className="HeaderNewTopNavs">
+                        <div className="HeaderNewTopHamBurger">
+                            <GiHamburgerMenu
+                                className="GiHamburgerMenu"
+                                onClick={toggleNav}
+                            />
+                        </div>
+
+                        {showNav ? (
+                            <>
+                                <div className="HeaderLoneNavBody">
+                                    <div className="HeaderLoneNavTop">
+                                        <img src={Logo} alt="" />
+                                        <TbLetterX className="TbLetterX" onClick={toggleNavRemove}/>
+                                    </div>
+                                    <div className="HeaderLoneNavDown">
                                         <ul>
-                                            <Link to='/NewFlight' className="NavLink">
-                                                <li>Flights</li>
+                                            <Link
+                                                to="/HeaderNew"
+                                                className="HeaderLoneNavDownLinks"
+                                            >
+                                                <li>Home</li>
                                             </Link>
-                                            <Link to='/NewHotel' className="NavLink">
+                                            <Link
+                                                to="/Explore"
+                                                className="HeaderLoneNavDownLinks"
+                                            >
+                                                <li>Explore</li>
+                                            </Link>
+                                            <Link className="HeaderLoneNavDownLinks">
+                                                <li>My Bookings</li>
+                                            </Link>
+                                            <Link className="HeaderLoneNavDownLinks">
                                                 <li>Hotels</li>
                                             </Link>
-                                            <Link to='/NewCar' className="NavLink">
+                                            <Link className="HeaderLoneNavDownLinks">
                                                 <li>Cars</li>
+                                            </Link>
+                                            <Link className="HeaderLoneNavDownLinks">
+                                                <li>Flights</li>
+                                            </Link>
+                                            <Link
+                                                to="/About"
+                                                className="HeaderLoneNavDownLinks"
+                                            >
+                                                <li>About Us</li>
                                             </Link>
                                         </ul>
                                     </div>
-                                </>
-                            ) : null}
-                        </nav>
+                                </div>
+                            </>
+                        ) : null}
 
-                       
                         <div className="HeaderNewTopDivRight">
                             <div
                                 className="HeaderNewTopDivRightCircle"
@@ -101,82 +173,85 @@ const user = useSelector((state) => state.Trippy.trippyUser);
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    {popUp ? (
-                        <>
-                            <div className="HeaderAccPopUp" onMouseLeave={() => togglePopUp(!popUp)}>
-                                <div className="HeaderAccPopUpTop">
-                                    <div
-                                        className="HeaderAccPopUpTopIcon"
-                                        style={{textTransform: "capitalize"}}
+                {popUp ? (
+                    <>
+                        <div
+                            className="HeaderAccPopUp"
+                            onMouseLeave={() => togglePopUp(!popUp)}
+                        >
+                            <div className="HeaderAccPopUpTop">
+                                <div
+                                    className="HeaderAccPopUpTopIcon"
+                                    style={{textTransform: "capitalize"}}
+                                >
+                                    {user ? (
+                                        <>
+                                            {user.firstName.charAt(0)}{" "}
+                                            {user.lastName.charAt(0)}
+                                        </>
+                                    ) : (
+                                        "No"
+                                    )}
+                                </div>
+                                <div className="HeaderAccPopUpTopText">
+                                    <h3
+                                        style={{
+                                            textTransform: "capitalize",
+                                        }}
                                     >
                                         {user ? (
                                             <>
-                                                {user.firstName.charAt(0)}{" "}
-                                                {user.lastName.charAt(0)}
+                                                {user.firstName} {user.lastName}
                                             </>
                                         ) : (
-                                            "No"
+                                            "Sign Up Please"
                                         )}
-                                    </div>
-                                    <div className="HeaderAccPopUpTopText">
-                                        <h3
-                                            style={{
-                                                textTransform: "capitalize",
-                                            }}
-                                        >
-                                            {user ? (
-                                                <>
-                                                    {user.firstName}{" "}
-                                                    {user.lastName}
-                                                </>
-                                            ) : (
-                                                "Sign Up Please"
-                                            )}
-                                        </h3>
-                                        <p>{user ? <>{user.email}</> : null}</p>
-                                    </div>
-                                </div>
-                                <div className="HeaderAccPopUpDown">
-                                    <ul>
-                                        <li>WishList</li>
-                                        <li>Profile</li>
-                                        <li>Help/FAQ</li>
-                                    </ul>
-                                    <div className="HeaderAccPopUpDownBtns">
-                                        {user ? (
-                                            <>
-                                                <div className="HeaderAccPopUpDownBtns1">
-                                                    <button
-                                                        onClick={() => {
-                                                            dispatch(
-                                                                trippyUserLogOut()
-                                                            );
-                                                            // alert("User LogOut Successfully");
-                                                        }}
-                                                    >
-                                                        SignOut
-                                                    </button>
-                                                </div>
-                                            </>
-                                        ) : (
-                                            <div className="HeaderAccPopUpDownBtns2">
-                                                <Link to="/Login">
-                                                    <button>Log In</button>
-                                                </Link>
-                                                <Link to="/SignUp">
-                                                    <button>Sign Up</button>
-                                                </Link>
-                                            </div>
-                                        )}
-                                    </div>
+                                    </h3>
+                                    <p>{user ? <>{user.email}</> : null}</p>
                                 </div>
                             </div>
-                        </>
-                    ) : null}
-                </div>
-    </>
-  )
-}
+                            <div className="HeaderAccPopUpDown">
+                                <ul>
+                                    <NavLink className='li' style={{textDecoration:'none', color:'#000'}} to='/WishList'><li>WishList</li></NavLink>
+                                    <li>Profile</li>
+                                    <li>Help/FAQ</li>
+                                </ul>
+                                <div className="HeaderAccPopUpDownBtns">
+                                    {user ? (
+                                        <>
+                                            <div className="HeaderAccPopUpDownBtns1">
+                                                <button
+                                                    onClick={() => {
+                                                        dispatch(
+                                                            trippyUserLogOut()
+                                                        );
+                                                        // alert("User LogOut Successfully");
+                                                    }}
+                                                >
+                                                    SignOut
+                                                </button>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div className="HeaderAccPopUpDownBtns2">
+                                            <Link to="/Login">
+                                                <button>Log In</button>
+                                            </Link>
+                                            <Link to="/SignUp">
+                                                <button>Sign Up</button>
+                                            </Link>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                ) : null}
+            </div>
+        </>
+    );
+};
 
 export default HeaderLone

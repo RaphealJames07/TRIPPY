@@ -4,225 +4,318 @@ import axios from "axios";
 import { useState } from "react";
 import { flightData } from "../Redux/Features";
 import { clearFlightData } from "../Redux/Features";
-import { useSelector } from "react-redux";
 import { bookingData } from "../Redux/Features";
 import { Link } from "react-router-dom";
+import HeaderLone from "../Header/HeaderLone";
+import Footer from "../Footer/Footer";
+import { Button, Modal, Select } from "antd";
+
+const {Option} = Select;
+
+const FlightDetailsModal = ({ flight, isVisible, onClose, onAddBooking }) => (
+    <Modal
+      visible={isVisible}
+      onCancel={onClose}
+      footer={null}
+      width={600}
+      centered
+      destroyOnClose
+    >
+      <div className="modal-content">
+        <h2>Flight Selected: {flight.airlineName}</h2>
+        <p>From: {flight.from}</p>
+        <p>To: {flight.to}</p>
+        <p>Price Flex: {flight.priceFlex}</p>
+        <p>Price Standard: {flight.priceStandard}</p>
+        <Button onClick={onClose}>Continue Viewing</Button>
+        <Button onClick={onAddBooking}>Add to Booking</Button>
+      </div>
+    </Modal>
+  );
 
 const NewFlight = () => {
     const [fromFlight, setFromFlight] = useState("");
-    const [toFlight, setToFlight] = useState("");
-    const [froFlight, setFroFlight] = useState("");
-    const [troFlight, setTroFlight] = useState("");
-    const [showResult, setShowResult] = useState(false);
-    const dispatch = useDispatch();
+  const [toFlight, setToFlight] = useState("");
+  const dispatch = useDispatch();
+  const [showFlightResult, setShowFlightResult] = useState(false);
+  const [selectedFlight, setSelectedFlight] = useState(null);
+  const [showFlightModal, setShowFlightModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+
+
 
     const handleFlightSearch = () => {
-        // const url = `https://trippyapiv1.onrender.com/trippy/find-flights/?from=${encodeURIComponent(
-        //     fromFlight
-        // )}&to=${encodeURIComponent(toFlight)}backFrom=${encodeURIComponent(
-        //     froFlight
-        // )}&backTo=${encodeURIComponent(troFlight)}`;
         const url = `https://trippyapiv1.onrender.com/trippy/find-flights/?from=${encodeURIComponent(
             fromFlight
         )}&to=${encodeURIComponent(toFlight)}`;
-
+    
         axios
             .get(url)
             .then((res) => {
-                console.log(res.data);
                 dispatch(flightData(res.data.flights));
+                setSearchResults(res.data.flights);
             })
             .catch((err) => {
                 console.log(err);
+            })
+            .finally(() => {
+                setIsLoading(false);
             });
     };
+    
 
     const handleShowResult = () => {
-        setShowResult(true);
-        handleFlightSearch();
+        setIsLoading(true);
+    setShowFlightResult(true);
+    handleFlightSearch();
     };
-    const flightDataToMap = useSelector(
-        (state) => state.Trippy.trippyFlightData
-    );
 
-    const [showLoginModal, setShowLoginModal] = useState(false);
-    const toggleModal = () => {
-        setShowLoginModal(true)
-    }
+    console.log(searchResults);
+   
+    const handleAddFlight = (flight) => {
+    setSelectedFlight(flight);
+    setShowFlightModal(true);
+  };
 
-    const handleAddFlight = (selectedFlight) => {
-        const selectedFlightData = {
-            flightData: selectedFlight,
-        };
-        dispatch(bookingData(selectedFlightData));
-        dispatch(clearFlightData())
-        // alert("Flight added successfully");
-    };
+  const handleConfirmBooking = () => {
+    dispatch(bookingData({ flightData: selectedFlight }));
+    setShowFlightModal(false);
+  };
 
     return (
         <>
+       
 
             <div className="NewFlightBody">
+                <HeaderLone />
                 <div className="NewFlightHead">
                     <h1>Compare Flights from different airlines</h1>
                 </div>
-                <div className="NewFlightContent">
-                    <div className="NewFlightContentInput">
-                        <h3>Go Flight</h3>
-                        <select
-                            name="OriginAirport"
-                            id="OriginAirport"
-                            onChange={(e) => setFromFlight(e.target.value)}
-                            value={fromFlight}
-                        >
-                            <option value="" onChange={(e) => e.target.value}>
-                                Select Origin Airport
-                            </option>
-
-                            <option
-                                value="lagos"
-                                onChange={(e) => e.target.value}
-                            >
-                                Lagos
-                            </option>
-                            <option
-                                value="accra"
-                                onChange={(e) => e.target.value}
-                            >
-                                Accra
-                            </option>
-                            <option
-                                value="nairobi"
-                                onChange={(e) => e.target.value}
-                            >
-                                Nairobi
-                            </option>
-                        </select>
-                        <select
-                            name="DestinationAirport"
-                            id="DestinationAirport"
-                            onChange={(e) => setToFlight(e.target.value)}
-                            value={toFlight}
-                        >
-                            <option value="" onChange={(e) => e.target.value}>
-                                Select Destination Airport
-                            </option>
-                            <option
-                                value="nairobi"
-                                onChange={(e) => e.target.value}
-                            >
-                                Nairobi
-                            </option>
-                            <option
-                                value="cairo"
-                                onChange={(e) => e.target.value}
-                            >
-                                Cairo
-                            </option>
-                            <option
-                                value="lagos"
-                                onChange={(e) => e.target.value}
-                            >
-                                Lagos
-                            </option>
-                        </select>
-                        <button onClick={handleShowResult}>Search</button>
-                    </div>
-                    <div className="NewFlightContentInput">
-                        <h3>Return Flight</h3>
-                        <select
-                            name="DestinationAirport"
-                            id="DestinationAirport"
-                            onChange={(e) => setFroFlight(e.target.value)}
-                            value={froFlight}
-                        >
-                            <option value="" onChange={(e) => e.target.value}>
-                                Select Destination Airport
-                            </option>
-                            <option
-                                value="nairobi"
-                                onChange={(e) => e.target.value}
-                            >
-                                Nairobi
-                            </option>
-                            <option
-                                value="cairo"
-                                onChange={(e) => e.target.value}
-                            >
-                                Cairo
-                            </option>
-                        </select>
-                        <select
-                            name="OriginAirport"
-                            id="OriginAirport"
-                            onChange={(e) => setTroFlight(e.target.value)}
-                            value={troFlight}
-                        >
-                            <option value="" onChange={(e) => e.target.value}>
-                                Select Origin Airport
-                            </option>
-
-                            <option
-                                value="lagos"
-                                onChange={(e) => e.target.value}
-                            >
-                                Lagos
-                            </option>
-                            <option
-                                value="accra"
-                                onChange={(e) => e.target.value}
-                            >
-                                Accra
-                            </option>
-                        </select>
-                        <button onClick={handleShowResult}>Search</button>
-                    </div>
-                    {showResult && (
-                        <div className="NewFlightContentResults">
-                            {flightDataToMap?.map((item, index) => (
-                                <div
-                                    className="NewFlightResultItem1"
-                                    key={index}
-                                >
-                                    <div className="NewFlightResultItem1Left">
-                                        <div className="NewFlightResultItem1ImgDiv">
-                                            <img
-                                                src={item?.airlineLogo}
-                                                alt=""
-                                            />
-                                        </div>
-                                        <p>
-                                            {item?.depatureTime} PM -{" "}
-                                            {item?.arrivalTime} <br />{" "}
-                                            <span>{item?.airlineName}</span>
-                                        </p>
-                                        <p>NonStop</p>
-                                        <p>
-                                            5h 20min <br />
-                                            <span>LOs-NBO</span>
-                                        </p>
+                
+                <div className="NewFlightContent2">
+                <div className="NewFlightContent2Select">
+                                <div className="NewFlightContent2SelectDiv1">
+                                    <div className="NewFlightSearchSelectsDiv">
+                                        <label htmlFor="">Travel Ticket</label>
+                                        <Select
+                                            placeholder="Select Origin Airport"
+                                            onChange={(value) =>
+                                                setFromFlight(value)
+                                            }
+                                            value={fromFlight}
+                                            className="Tuface"
+                                        >
+                                            <Option
+                                                value=""
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                From
+                                            </Option>
+                                            <Option
+                                                value="lagos"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Lagos
+                                            </Option>
+                                            <Option
+                                                value="accra"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Accra
+                                            </Option>
+                                            <Option
+                                                value="nairobi"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Nairobi
+                                            </Option>
+                                        </Select>
+                                        <label htmlFor="">
+                                            Flight destination
+                                        </label>
+                                        <Select
+                                            placeholder="Select Destination Airport"
+                                            onChange={(value) =>
+                                                setToFlight(value)
+                                            }
+                                            value={toFlight}
+                                            className="Tuface"
+                                        >
+                                            <Option
+                                                value=""
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                To
+                                            </Option>
+                                            <Option
+                                                value="nairobi"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Nairobi
+                                            </Option>
+                                            <Option
+                                                value="cairo"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Cairo
+                                            </Option>
+                                            <Option
+                                                value="lagos"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Lagos
+                                            </Option>
+                                        </Select>
                                     </div>
-                                    <div className="NewFlightResultItem1Right">
-                                        <div className="NewFlightResultItem1RightTop">
-                                            <h3>
-                                                ${item?.priceFlex} / per person
-                                                (Flex)
-                                            </h3>
-                                            <p>${item?.priceStandard}</p>
-                                            <p>
-                                                {item?.from} to{" "}
-                                                <span>{item?.to}</span>
-                                            </p>
-                                        </div>
-
-                                        <div className="NewFlightResultItem1RightDown">
-
-                                        <button onClick={toggleModal}>Add Flight</button>
-
-
-                                        </div>
+                                    <div className="ThreeSearchSelectsBtn">
+                                        <Button
+                                            type="primary"
+                                            onClick={handleShowResult}
+                                        >
+                                            Search
+                                        </Button>
                                     </div>
-                                    {showLoginModal ? (
+                                </div>
+                                <div className="NewFlightContent2SelectDiv1">
+                                    <div className="NewFlightSearchSelectsDiv">
+                                        <label htmlFor="">Return Ticket</label>
+                                        <Select
+                                            placeholder="Select Origin Airport"
+                                            onChange={(value) =>
+                                                setFromFlight(value)
+                                            }
+                                            value={fromFlight}
+                                            className="Tuface"
+                                        >
+                                            <Option value="">From</Option>
+                                            <Option
+                                                value="lagos"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Lagos
+                                            </Option>
+                                            <Option
+                                                value="accra"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Accra
+                                            </Option>
+                                            <Option
+                                                value="nairobi"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Nairobi
+                                            </Option>
+                                        </Select>
+                                        <label htmlFor="">
+                                            Flight destination
+                                        </label>
+                                        <Select
+                                            placeholder="Select Destination Airport"
+                                            onChange={(value) =>
+                                                setToFlight(value)
+                                            }
+                                            value={toFlight}
+                                            className="Tuface"
+                                        >
+                                            <Option value="">To</Option>
+                                            <Option
+                                                value="nairobi"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Nairobi
+                                            </Option>
+                                            <Option
+                                                value="cairo"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Cairo
+                                            </Option>
+                                            <Option
+                                                value="lagos"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Lagos
+                                            </Option>
+                                        </Select>
+                                    </div>
+                                    <div className="ThreeSearchSelectsBtn">
+                                        <Button
+                                            type="primary"
+                                            onClick={handleShowResult}
+                                        >
+                                            Search
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="ThreeSearchFlightResults">
+                                {showFlightResult && (
+                                    <>
+                                        {searchResults.map((item, index) => (
+                                            <div
+                                                className="ThreeSearchFlightResultsItem1"
+                                                key={index}
+                                            >
+                                                <div className="ThreeSearchFlightResultsItem1ImgDiv">
+                                                    <img
+                                                        src={item?.airlineLogo}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <div className="ThreeSearchFlightResultsItem1Details">
+                                                    <p>
+                                                        Airline Name:{" "}
+                                                        {item?.airlineName}
+                                                    </p>
+                                                    <p
+                                                        style={{
+                                                            display: "flex",
+                                                            justifyContent:
+                                                                "space-between",
+                                                        }}
+                                                    >
+                                                        From: {item?.from}
+                                                        <span>
+                                                            To: {item?.to}
+                                                        </span>
+                                                    </p>
+                                                    <p
+                                                        style={{
+                                                            display: "flex",
+                                                            justifyContent:
+                                                                "space-between",
+                                                        }}
+                                                    >
+                                                        Price Flex:{" "}
+                                                        {item?.priceFlex}
+                                                        <span>
+                                                            Price Standard:{" "}
+                                                            {
+                                                                item?.priceStandard
+                                                            }
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                                <div className="ThreeSearchFlightResultsItem1Btn">
+                                                    <Button
+                                                        type="primary"
+                                                        onClick={() =>
+                                                            handleAddFlight(
+                                                                selectedFlight
+                                                            )
+                                                        }
+                                                    >{`Add Flight`}</Button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
+                            </div>
+                            
+                            {/* {showLoginModal ? (
                                         <div
                                             className="modal-overlay"
                                             style={{
@@ -231,7 +324,8 @@ const NewFlight = () => {
                                                 left: 0,
                                                 width: "100%",
                                                 height: "100%",
-                                                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                                                backgroundColor:
+                                                    "rgba(0, 0, 0, 0.5)",
                                                 display: "flex",
                                                 justifyContent: "center",
                                                 alignItems: "center",
@@ -244,53 +338,62 @@ const NewFlight = () => {
                                                     width: "600px",
                                                     height: "200px",
                                                     borderRadius: "8px",
-                                                    boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
+                                                    boxShadow:
+                                                        "0 0 10px rgba(0, 0, 0, 0.3)",
                                                     textAlign: "center",
                                                     display: "flex",
-                                                    justifyContent: "space-between",
+                                                    justifyContent:
+                                                        "space-between",
                                                     alignItems: "center",
                                                     flexDirection: "column",
                                                     cursor: "pointer",
                                                 }}
                                             >
                                                 <h2>
-                                                    Flight Selected are you sure you want to add to booking
+                                                    Flight Selected are you sure
+                                                    you want to add to booking
                                                 </h2>
                                                 <button
-                                                    onClick={() => setShowLoginModal(false)}
-                                                    style={{ padding: "15px", cursor: "pointer" }}
+                                                    onClick={() =>
+                                                        setShowLoginModal(false)
+                                                    }
+                                                    style={{
+                                                        padding: "15px",
+                                                        cursor: "pointer",
+                                                    }}
                                                 >
                                                     Continue Viewing
                                                 </button>
                                                 <button
-                                                    style={{ padding: "15px", cursor: "pointer" }}
+                                                    style={{
+                                                        padding: "15px",
+                                                        cursor: "pointer",
+                                                    }}
                                                     onClick={() => {
-                                                        handleAddFlight(item)
-                                                        setShowLoginModal(false);
+                                                        handleAddFlight(selectedFlight);
+                                                        setShowLoginModal(
+                                                            false
+                                                        );
                                                     }}
                                                 >
                                                     Add to Booking
                                                 </button>
                                             </div>
                                         </div>
-                                    ) : null}
-                                </div>
-
-                            ))}
-                        </div>
-                    )}
+                                    ) : null} */}
                 </div>
-                <button
-                    className="CancelSearchBtn"
-                    onClick={() => dispatch(clearFlightData())}
-                >
-                    Cancel Search
-                </button>
-                <Link to='/BookingCar'>
-                <button>
-                    Proceed
-                </button>
-                </Link>
+                <div className="NewFlightDownBtns">
+                    <button
+                        className="CancelSearchBtn"
+                        onClick={() => dispatch(clearFlightData())}
+                    >
+                        Cancel Search
+                    </button>
+                    <Link to="/BookingCar" className="NewFlightBtnProceed">
+                        <button>Proceed</button>
+                    </Link>
+                </div>
+                <Footer />
             </div>
         </>
     );
