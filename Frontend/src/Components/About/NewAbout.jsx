@@ -1,4 +1,4 @@
-import {useState} from "react";
+
 import Footer from "../Footer/Footer";
 import HeaderLone from "../Header/HeaderLone";
 import "./NewAbout.css";
@@ -17,36 +17,36 @@ const NewAbout = () => {
                         <div className="NewABoutContentBoxes">
                             <div className="NewABoutContent1">
                                 <p>
-                                    "Trippy transcends being a mere travel app;
-                                    it's an open door to transformative
+                                    Trippy transcends being a mere travel app;
+                                    its an open door to transformative
                                     journeys. With an unwavering passion for
-                                    exploration, we're committed to turning your
+                                    exploration, were committed to turning your
                                     travel dreams into tangible memories. At
                                     Trippy, each adventure is meticulously
                                     curated to ensure a seamless, unforgettable
                                     experience that takes you beyond the
                                     ordinary and into the extraordinary realms
-                                    of the world."
+                                    of the world.
                                 </p>
                             </div>
                             <div className="NewABoutContent1">
                                 <p>
-                                    "Welcome to the heart of Trippy's offerings,
+                                    Welcome to the heart of Trippys offerings,
                                     a realm where more than deals await. Our
                                     offers are pathways to a world of
                                     personalized flights, accommodations, and
-                                    moments. They're meticulously crafted to
+                                    moments. Theyre meticulously crafted to
                                     grant you not just a place to stay or a
                                     flight to catch, but the chance to immerse
                                     yourself in unique experiences that define
                                     your journey. At Trippy, every offer is an
                                     opportunity to create memories that linger
-                                    long after the journey ends."
+                                    long after the journey ends.
                                 </p>
                             </div>
                             <div className="NewABoutContent1">
                                 <p>
-                                    Trippy's inception sprang from a shared love
+                                    Trippys inception sprang from a shared love
                                     of exploration. Envisioned by fellow
                                     travelers, our commitment is woven into each
                                     aspect of our service. From effortless
