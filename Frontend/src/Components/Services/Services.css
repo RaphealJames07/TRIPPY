@@ -1,4 +1,3 @@
-
 /* TEMPLATE FOR STYLINGS */
 
 /* Media Query Styling For Desktop Device */
@@ -301,14 +300,33 @@
 
 .ServiceItem1Box{
   width: 300px;
+  height: 99%;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  flex: 0 0 auto;
+  transition: all 0.5s;
+}
+.ServiceItem1Box:hover{
+  width: 305px;
   height: 100%;
   display: flex;
   align-items: center;
   border-radius: 10px;
   flex: 0 0 auto;
 }
+
 .ServiceItem2Box{
   width: 300px;
+  height: 99%;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  transition: all 0.5s;
+
+}
+.ServiceItem2Box:hover{
+  width: 305px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -317,17 +335,38 @@
 }
 .ServiceItem3Box{
   width: 300px;
+  height: 99%;
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  transition: all 0.5s;
+
+}
+.ServiceItem3Box:hover{
+  width: 305px;
   height: 100%;
   align-items: center;
   display: flex;
   flex: 0 0 auto;
+ 
+
 }
 .ServiceItem4Box{
   width: 300px;
+  height: 99%;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  transition: all 0.5s;
+
+}
+.ServiceItem4Box:hover{
+  width: 305px;
   height: 100%;
   display: flex;
   align-items: center;
   flex: 0 0 auto;
+
 }
 
 .ServiceItem1BoxWrap{
@@ -379,7 +418,7 @@
   justify-content: space-around;
   align-items: center;
   border-radius: 10px 10px 0px 0px;
-
+  background: #00B4D8;
 }
 .ServiceImgHeaderText h2{
   font-size: 24px;

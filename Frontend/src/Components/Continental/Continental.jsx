@@ -414,9 +414,10 @@ const Continental = () => {
                     </div>
                     <div className="ContiMore">
                         <p>
-                            Want so see more Tours? click the button below to
+                            Want to see more Tours? click the button below to
                             explore more
                         </p>
+            
                         <Link to="/Explore" className="button">
                             <button>Explore</button>
                         </Link>
