@@ -7,6 +7,7 @@ import axios from "axios";
 import {bookingData} from "../Redux/Features";
 const {Option} = Select;
 import './NewCar.css'
+import { useNavigate } from "react-router";
 
 const NewCar = () => {
     const dispatch = useDispatch()
@@ -56,6 +57,14 @@ const NewCar = () => {
         };
         dispatch(bookingData(selectedCarData));
     };
+
+    const nav = useNavigate();
+
+    const handleNavToBooking = () => {
+        nav("/BookingCart");
+    };
+
+
     return (
         <>
             <div className="NewCarBody">
@@ -76,6 +85,7 @@ const NewCar = () => {
                                             }
                                             value={carCountry}
                                             className="Tuface"
+                                            size="large"
                                         >
                                             <Option value="">Select</Option>
                                             <Option
@@ -105,6 +115,7 @@ const NewCar = () => {
                                             }
                                             value={carCity}
                                             className="Tuface"
+                                            size="large"
                                         >
                                             <Option value="">Select</Option>
                                             <Option
@@ -131,12 +142,14 @@ const NewCar = () => {
                                         <Button
                                             type="primary"
                                             onClick={handleShowHotelResult}
+                                            size="large"
                                         >
                                             Search
                                         </Button>
                                     </div>
                                 </div>
                             </div>
+                                
 
                     <Modal
                         title="Car Search Results"
@@ -227,6 +240,21 @@ const NewCar = () => {
                         An error occurred while searching for flights. Please
                         try again later.
                     </Modal>
+                </div>
+                <div className="NewCarBtns">
+                    <Button
+                        type="default"
+                        size="large"
+                    >
+                        Back to Previous
+                    </Button>
+                    <Button
+                        type="primary"
+                       onClick={handleNavToBooking}
+                        size="large"
+                    >
+                        Proceed To Booking
+                    </Button>
                 </div>
                 <Footer />
             </div>

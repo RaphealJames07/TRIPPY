@@ -80,7 +80,7 @@ const DescPage = () => {
             };
 
             dispatch(bookingData(selectedTourData));
-            nav("/Booking3");
+            nav("/NewFlight");
             dispatch(clearNewCommentRating());
             console.log("new comment reset to []");
         }

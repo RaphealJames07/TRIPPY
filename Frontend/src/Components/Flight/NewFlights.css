@@ -34,13 +34,13 @@
 
 .NewFlightContent2{
   width: 85%;
-  height: 30%;
+  height: 50%;
   background: lightgrey;
 }
 
 .NewFlightSelectDiv {
   width: 100%;
-  height: 100%;
+  height: 70%;
 }
 
 .NewFlightSelects {
@@ -86,7 +86,6 @@
 .NewFlightResultsItem1 {
   width: 100%;
   height: 150px;
-  background: lightcoral;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -95,7 +94,7 @@
 }
 
 .NewFlightResultsItem1ImgDiv {
-  width: 20%;
+  width: 30%;
   height: 100%;
   background: lightyellow;
 }
@@ -113,6 +112,15 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.NewFlightResultDetailsFLexed{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .NewFlightResultsItem1Btn {
@@ -130,6 +138,14 @@
   justify-content: center;
 }
 
+.NewFlightBtns{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
 
 
 @media only screen and (max-width: 428px){
