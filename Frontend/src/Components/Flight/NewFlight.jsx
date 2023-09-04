@@ -6,7 +6,9 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import axios from "axios";
 import {bookingData} from "../Redux/Features";
+import {useNavigate} from "react-router";
 const {Option} = Select;
+
 
 const NewFlight = () => {
     const [fromFlightOneWay, setFromFlightOneWay] = useState("");
@@ -19,6 +21,11 @@ const NewFlight = () => {
     const [errorVisible, setErrorVisible] = useState(false);
 
     const dispatch = useDispatch();
+    const nav = useNavigate();
+
+    const handleNavToHotel = () => {
+        nav("/NewHotel");
+    };
 
     const handleFlightSearch = (from, to) => {
         console.log("Search clicked");
@@ -83,6 +90,7 @@ const NewFlight = () => {
                                     }
                                     value={fromFlightOneWay}
                                     className="Tuface"
+                                    size="large"
                                 >
                                     <Option value="">From</Option>
                                     <Option value="lagos">Lagos</Option>
@@ -97,6 +105,7 @@ const NewFlight = () => {
                                     }
                                     value={toFlightOneWay}
                                     className="Tuface"
+                                    size="large"
                                 >
                                     <Option value="">To</Option>
                                     <Option value="nairobi">Nairobi</Option>
@@ -123,6 +132,7 @@ const NewFlight = () => {
                                     }
                                     value={fromFlightReturn}
                                     className="Tuface"
+                                    size="large"
                                 >
                                     <Option value="">From</Option>
                                     <Option value="lagos">Lagos</Option>
@@ -137,6 +147,7 @@ const NewFlight = () => {
                                     }
                                     value={toFlightReturn}
                                     className="Tuface"
+                                    size="large"
                                 >
                                     <Option value="">To</Option>
                                     <Option value="nairobi">Nairobi</Option>
@@ -155,6 +166,19 @@ const NewFlight = () => {
                         </div>
                     </div>
 
+                    <div className="NewFlightBtns">
+                        <Button type="default" size="large">
+                            Skip to Booking
+                        </Button>
+                        <Button
+                            type="primary"
+                            size="large"
+                            onClick={handleNavToHotel}
+                        >
+                            Book A Hotel
+                        </Button>
+                    </div>
+
                     <Modal
                         title="Flight Search Results"
                         visible={searchResultVisible}
@@ -162,51 +186,62 @@ const NewFlight = () => {
                         footer={null}
                     >
                         <>
-                        <div className="ThreeSearchFlightResults">
+                            <div className="ThreeSearchFlightResults">
+                                {flightDataRes.map((item, index) => (
+                                    <div
+                                        className="NewFlightResultsItem1"
+                                        key={index}
+                                    >
+                                        <div className="NewFlightResultsItem1ImgDiv">
+                                            <img
+                                                src={item?.airlineLogo}
+                                                alt=""
+                                            />
+                                        </div>
+                                        <div className="NewFlightResultsItem1Details">
+                                            <div
+                                                style={{display: "flex"}}
+                                                className="NewFlightResultDetailsFLexed"
+                                            >
+                                                <p>Airline Name:</p>
+                                                <span>{item?.airlineName}</span>
+                                            </div>
+                                            <div
+                                                style={{display: "flex"}}
+                                                className="NewFlightResultDetailsFLexed"
+                                            >
+                                                <p>From: {item?.from}</p>
+                                                <span>To: {item?.to}</span>
+                                            </div>
 
-                            {flightDataRes.map((item, index) => (
-                                <div
-                                    className="NewFlightResultsItem1"
-                                    key={index}
-                                >
-                                    <div className="NewFlightResultsItem1ImgDiv">
-                                        <img src={item?.airlineLogo} alt="" />
+                                            <div
+                                                style={{display: "flex"}}
+                                                className="NewFlightResultDetailsFLexed"
+                                            >
+                                                <p>Price Flex:</p>
+                                                <span>{item?.priceFlex}</span>
+                                            </div>
+                                            <div
+                                                style={{display: "flex"}}
+                                                className="NewFlightResultDetailsFLexed"
+                                            >
+                                                <p>Price Standard:</p>
+                                                <span>
+                                                    {item?.priceStandard}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="NewFlightResultsItem1Btn">
+                                            <Button
+                                                type="primary"
+                                                onClick={() =>
+                                                    handleAddFlight(item)
+                                                }
+                                            >{`Add`}</Button>
+                                        </div>
                                     </div>
-                                    <div className="NewFlightResultsItem1Details">
-                                        <p>Airline Name: {item?.airlineName}</p>
-                                        <p
-                                            style={{
-                                                display: "flex",
-                                                justifyContent: "space-between",
-                                            }}
-                                        >
-                                            From: {item?.from}
-                                            <span>To: {item?.to}</span>
-                                        </p>
-                                        <p
-                                            style={{
-                                                display: "flex",
-                                                justifyContent: "space-between",
-                                            }}
-                                        >
-                                            Price Flex: {item?.priceFlex}
-                                            <span>
-                                                Price Standard:{" "}
-                                                {item?.priceStandard}
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <div className="NewFlightResultsItem1Btn">
-                                        <Button
-                                            type="primary"
-                                            onClick={() =>
-                                                handleAddFlight(item)
-                                            }
-                                        >{`Add`}</Button>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
                         </>
                     </Modal>
 
