@@ -57,9 +57,9 @@ const Login = () => {
                 .post(url, data)
                 .then((res) => {
                     console.log(res.data.user);
-                    const {email, firstName, lastName, token} = res.data.user;
+                    const userData = res.data.user;
                     Dispatch(
-                        trippyUserLogin({email, firstName, lastName, token})
+                        trippyUserLogin(userData)
                     );
                     nav("/HeaderNew");
                 })

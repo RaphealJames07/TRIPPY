@@ -218,6 +218,7 @@ const Continental = () => {
     const [america, setAmerica] = useState(false);
     const [all, setAll] = useState(false);
     const [showNextIcon, setShowNextIcon] = useState(true);
+    console.log(showNextIcon);
     const nav = useNavigate();
     const Dispatch = useDispatch();
 

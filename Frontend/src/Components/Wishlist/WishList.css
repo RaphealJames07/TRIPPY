@@ -12,6 +12,104 @@
 
 .WishListContents{
   width: 100%;
-  height: 80vh;
+  height: 60vh;
   margin-top: 100px;
+}
+
+.WishListTop{
+  width: 100%;
+  height: 10%;
+  margin-top: 100px;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.WishListDown{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.WishListDownWrap{
+  width: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: lightblue;
+  gap: 30px;
+  overflow-x: auto;
+  padding-left: 25%;
+}
+.WishListDownWrap::-webkit-scrollbar{
+  display: none;
+}
+
+.WishListItem1{
+  width: 300px;
+  height: 85%;
+  background: #d6d6d6;
+  flex: 0 0 auto;
+}
+
+.WishListItem1ImgTop{
+  width: 100%;
+  height: 50%;
+}
+.WishListItem1ImgTop img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.WishListItem1ItemDetails{
+  width: 100%;
+  height: 50%;
+}
+.WishListItem1ItemDetails p{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.WishListItem1ItemDetails .WishListItem1StarBox{
+  width: 100%;
+  height: 60%;
+}
+.WishListItem1ItemDetails .WishListItem1StarBox .WishListItem1StarRate{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+.WishListItem1ItemDetails .WishListItem1StarBox .WishListItem1StarRate span{
+  width: 50%;
+  height: 100%;
+  margin-left: 10px;
+}
+.WishListItem1ItemDetails .WishListItem1StarBox .WishListItem1ButtonViewMore{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+.WishListItem1ItemDetails .WishListItem1StarBox .WishListItem1ButtonViewMore button{
+  width: 40%;
+  height: 80%;
+  background: none;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.WishListItem1ItemDetails .WishListItem1StarBox .WishListItem1ButtonViewMore button:last-child{
+  border: none;
+  background: #00B4D8;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
 }

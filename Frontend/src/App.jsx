@@ -32,6 +32,8 @@ import NewAbout from "./Components/About/NewAbout";
 import ThreeSum from "./Components/Booking/ThreeSum";
 import MyBookings from "./Components/Booking/MyBookings";
 import WishList from "./Components/Wishlist/WhisList";
+import NewCar from "./Components/Car/NewCar";
+import Account from "./Components/AcountProfile/Account";
 
 
 const App = () => {
@@ -61,6 +63,7 @@ const App = () => {
             <Route path="/HeaderNew" element={<HeaderNew/>} />
             <Route path="/NewHotel" element={<NewHotel/>} />
             <Route path="/NewFlight" element={<NewFlight/>} />
+            <Route path="/NewCar" element={<NewCar/>} />
             <Route path="/HeaderTwo" element={<Header/>} />
             <Route path="/BookingNew/:tourId" element={<BookingNew/>} />
             <Route path="/BookingCar" element={<BookingCar/>} />
@@ -73,6 +76,7 @@ const App = () => {
             <Route path="/Booking3" element={<ThreeSum/>} />
             <Route path="/MyBookings" element={<MyBookings/>} />
             <Route path="/WishList" element={<WishList/>} />
+            <Route path="/Account" element={<Account/>} />
             
             
             
