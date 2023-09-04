@@ -1,18 +1,23 @@
-import "./NewHotel.css";
-import { useSelector } from "react-redux/es/hooks/useSelector";
-import { useDispatch } from "react-redux";
-import { bookingData } from "../Redux/Features";
-import { useState } from "react";
+import {Button, Select, Modal} from "antd";
+import Footer from "../Footer/Footer";
+import HeaderLone from "../Header/HeaderLone";
+import {useState} from "react";
+import {useDispatch} from "react-redux";
 import axios from "axios";
-import { hotelData, clearHotelData } from "../Redux/Features";
-import { useNavigate } from "react-router";
+import {bookingData} from "../Redux/Features";
+const {Option} = Select;
 
-
-const NewHotel = () => {
+const NewFlight = () => {
+    const dispatch = useDispatch()
     const [hotelCity, setHotelCity] = useState("");
-    const dispatch = useDispatch();
-    const nav = useNavigate()
+    const [hotelCountry, setHotelCountry] = useState("");
+    const [searchResultVisible, setSearchResultVisible] = useState(false);
+    const [errorVisible, setErrorVisible] = useState(false);
+    const [hotelDataRes, setHotelDataRes] = useState([]);
+
+
     const handleHotelSearch = () => {
+        console.log("Searching Hotel");
         const url = `https://trippyapiv1.onrender.com/trippy//find-hotels/?city=${encodeURIComponent(
             hotelCity
         )}`;
@@ -21,133 +26,208 @@ const NewHotel = () => {
             .get(url)
             .then((res) => {
                 console.log(res.data);
-                dispatch(hotelData(res.data.hotels));
+                setHotelDataRes(res.data.hotels);
+                showSearchResult();
             })
             .catch((err) => {
                 console.log(err);
+                showError()
             });
     };
 
-    const hotelDataToMap = useSelector((state) => state.Trippy.trippyHotelData);
-    // console.log("Hotel data is ready to be mapped", hotelDataToMap);
+    const handleShowHotelResult = () => {
+        handleHotelSearch()
+    };
+
+    const showSearchResult = () => {
+        setSearchResultVisible(true);
+    };
+
+    const showError = () => {
+        setErrorVisible(true);
+    };
+    
 
     const handleAddHotel = (selectedHotel) => {
         const selectedHotelData = {
-            
             hotelData: selectedHotel,
         };
         dispatch(bookingData(selectedHotelData));
-        nav('/BookingCart')
         // alert("Flight added successfully");
     };
 
     return (
         <>
-            <div className="NewHotelBody">
-                <div className="NewHotelHead">
-                    <h1>Compare Hotels from all around the world</h1>
+            <div className="NewFlightBody">
+                <HeaderLone />
+                <div className="NewFlightHead">
+                    <h1>Search For Hotels On the Go</h1>
                 </div>
-                <div className="NewHotelContent">
-                    <div className="NewHotelContentInput">
-                        <select
-                            name="Location"
-                            id="Location"
-                            onChange={(e) => setHotelCity(e.target.value)}
-                            value={hotelCity}
-                        >
-                            <option value="" onChange={(e) => e.target.value}>
-                                Location
-                            </option>
 
-                            <option
-                                value="lagos"
-                                onChange={(e) => e.target.value}
-                            >
-                                Lagos
-                            </option>
-                            <option
-                                value="nairobi"
-                                onChange={(e) => e.target.value}
-                            >
-                                Nairobi
-                            </option>
-                            <option
-                                value="accra"
-                                onChange={(e) => e.target.value}
-                            >
-                                Accra
-                            </option>
-                        </select>
-
-                        <button onClick={handleHotelSearch}>Search</button>
-                    </div>
-                    <div className="NewHotelContentResults">
-                        {hotelDataToMap?.map((item, index) => (
-                            <div className="NewHotelResultItem1" key={index}>
-                                <div className="NewHotelResultItem1Left">
-                                    <div className="NewHotelResultItem1ImgDiv">
-                                        <img src={item?.images[1]} alt="" />
-                                    </div>
-                                    <div className="NewHotelResultItem1Desc">
-                                        <div className="NewHotelResultItem1DescTop">
-                                            <h1>{item?.hotelName}</h1>
-                                            <p>
-                                                star rating {item?.starRating}{" "}
-                                                <span>{item?.city}</span>
-                                            </p>
-
-                                            <span>
-                                                <span>
-                                                    {item?.ratings.length}{" "}
-                                                    reviews
-                                                </span>
-                                                <span>
-                                                    {" "}
-                                                    ( {item?.maxPerRoom} ) max
-                                                    per room
-                                                </span>
-                                            </span>
-                                        </div>
-                                        <div className="NewHotelResultItem1DescDown">
-                                            <p>
-                                                <span>{item?.features[0]}</span>
-                                                <span>{item?.features[1]}</span>
-                                                <span>{item?.features[2]}</span>
-                                                <span>{item?.features[3]}</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="NewHotelResultItem1Right">
-                                    <div className="NewHotelResultItem1RightTop">
-                                        <h3>
-                                            ${item?.pricePerNight} / Per Night
-                                        </h3>
-                                        <p>Chek In: {item?.checkIn}</p>
-                                        <p>Check Out: {item?.checkOut}</p>
-                                    </div>
-
-                                    <div className="NewHotelResultItem1RightDown">
-                                        <button
-                                            onClick={() => handleAddHotel(item)}
+                <div className="NewFlightContent2">
+                <div className="ThreeSearchFlightSelectDiv">
+                                <div className="ThreeSearchSelects">
+                                    <div className="ThreeSearchSelectsDiv">
+                                        <label htmlFor="">Hotel Country</label>
+                                        <Select
+                                            placeholder="Select Origin Airport"
+                                            onChange={(value) =>
+                                                setHotelCountry(value)
+                                            }
+                                            value={hotelCountry}
+                                            className="Tuface"
                                         >
-                                            Add Hotel
-                                        </button>
+                                            <Option value="">Select</Option>
+                                            <Option
+                                                value="nigeria"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Nigeria
+                                            </Option>
+                                            <Option
+                                                value="ghana"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Ghana
+                                            </Option>
+                                            <Option
+                                                value="kenya"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Kenya
+                                            </Option>
+                                        </Select>
+                                        <label htmlFor="">Hotel City</label>
+                                        <Select
+                                            placeholder="Select Hotel Country"
+                                            onChange={(value) =>
+                                                setHotelCity(value)
+                                            }
+                                            value={hotelCity}
+                                            className="Tuface"
+                                        >
+                                            <Option value="">Select</Option>
+                                            <Option
+                                                value="nairobi"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Nairobi
+                                            </Option>
+                                            <Option
+                                                value="cairo"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Cairo
+                                            </Option>
+                                            <Option
+                                                value="lagos"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Lagos
+                                            </Option>
+                                        </Select>
+                                    </div>
+                                    <div className="ThreeSearchSelectsBtn">
+                                        <Button
+                                            type="primary"
+                                            onClick={handleShowHotelResult}
+                                        >
+                                            Search
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+
+                    <Modal
+                        title="Flight Search Results"
+                        visible={searchResultVisible}
+                        onCancel={() => setSearchResultVisible(false)}
+                        footer={null}
+                    >
+                        <>
+                        <div className="ThreeSearchFlightResults">
+                               
+                                        {hotelDataRes.map((item, index) => (
+                                            <div
+                                                className="ThreeSearchFlightResultsItem1"
+                                                key={index}
+                                            >
+                                                <div className="ThreeSearchFlightResultsItem1ImgDiv">
+                                                    <img
+                                                        src={item?.images[0]}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <div className="ThreeSearchFlightResultsItem1Details">
+                                                    <p>
+                                                        Airline Name:{" "}
+                                                        {item?.hotelName}
+                                                    </p>
+                                                    <p
+                                                        style={{
+                                                            display: "flex",
+                                                            justifyContent:
+                                                                "space-between",
+                                                        }}
+                                                    >
+                                                        City {item?.city}
+                                                        <span>
+                                                            Country:{" "}
+                                                            {item?.country}
+                                                        </span>
+                                                    </p>
+                                                    <p
+                                                        style={{
+                                                            display: "flex",
+                                                            justifyContent:
+                                                                "space-between",
+                                                        }}
+                                                    >
+                                                        Price Per Night:{" "}
+                                                        {item?.pricePerNight}
+                                                        <span>
+                                                            Max Per Room:{" "}
+                                                            {item?.maxPerRoom}
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                                <div className="ThreeSearchFlightResultsItem1Btn">
+                                                    <Button
+                                                        type="primary"
+                                                        onClick={() =>
+                                                            handleAddHotel(item)
+                                                        }
+                                                    >{`Add`}</Button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                  
+                            </div>
+                        </>
+                    </Modal>
+
+                    <Modal
+                        title="Error"
+                        visible={errorVisible}
+                        onCancel={() => setErrorVisible(false)}
+                        footer={[
+                            <Button
+                                key="ok"
+                                type="primary"
+                                onClick={() => setErrorVisible(false)}
+                            >
+                                OK
+                            </Button>,
+                        ]}
+                    >
+                        An error occurred while searching for flights. Please
+                        try again later.
+                    </Modal>
                 </div>
-                <button
-                    className="CancelSearchBtn"
-                    onClick={() => dispatch(clearHotelData())}
-                >
-                    Clear Search
-                </button>
+                <Footer />
             </div>
         </>
     );
 };
 
-export default NewHotel;
+export default NewFlight;

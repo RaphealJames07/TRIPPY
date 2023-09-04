@@ -23,9 +23,7 @@ const DescPage = () => {
     const [comment, setComment] = useState("");
     const nav = useNavigate();
 
-    const findOneTourData = useSelector(
-        (state) => state.Trippy.findOneTourData
-    );
+    const findOneTourData = useSelector((state) => state.Trippy.findOneTourData);
     console.log(findOneTourData);
 
     // const updatedFindOne = useSelector((state) => state.Trippy.findOneTourData);
@@ -40,8 +38,6 @@ const DescPage = () => {
     const handleCommentUpload = () => {
         setLoadingComment(true);
         console.log("Waiting comment");
-
-        console.log("object");
         const token = userToken;
         const requestData = {star: rating, comment: comment};
         const headers = {

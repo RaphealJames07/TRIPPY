@@ -48,7 +48,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    trippyUser: {token: "", firstName: "", lastName: "", email: ""},
+    trippyUser: {},
     allApiData: [],
     allToursData: [],
     findOneTourData: [],
@@ -65,8 +65,8 @@ const features = createSlice({
     initialState,
     reducers: {
         trippyUserLogin: (state, {payload}) => {
-            const {firstName, lastName, email, token} = payload;
-            state.trippyUser = {token, firstName, lastName, email};
+            
+            state.trippyUser = payload
             console.log("User Data:", payload);
         },
         trippyUserLogOut: (state) => {

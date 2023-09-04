@@ -215,7 +215,7 @@ const HeaderLone = () => {
                             <div className="HeaderAccPopUpDown">
                                 <ul>
                                     <NavLink className='li' style={{textDecoration:'none', color:'#000'}} to='/WishList'><li>WishList</li></NavLink>
-                                    <li>Profile</li>
+                                    <NavLink className='li' style={{textDecoration:'none', color:'#000'}} to='/Account'><li>Account</li></NavLink>
                                     <li>Help/FAQ</li>
                                 </ul>
                                 <div className="HeaderAccPopUpDownBtns">

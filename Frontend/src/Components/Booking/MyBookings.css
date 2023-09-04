@@ -14,4 +14,136 @@
   width: 100%;
   height: 80vh;
   margin-top: 100px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .MyBookingDown {
+    width: 80%;
+    height: 400px;
+    border: 2px solid grey;
+  }
+  
+  .MyBookingDownWrap {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    gap: 30px;
+  }
+  .MyBookingDownWrap::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .MyBookingItem1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 15px;
+    justify-content: space-around;
+    flex: 0 0 auto;
+    border: 1px solid #000;
+  }
+  
+  .MyBookingItem1Left {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .MyBookingItem1Right {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .MyBookingItem1Tour {
+    width: 100%;
+    height: 45%;
+    background: lightblue;
+  }
+  
+  .MyBookingItem1Tour div {
+    width: 100%;
+    height: 20%;
+    background: grey;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .MyBookingItem1Tour .MyBookingItem1SplitOdd {
+    width: 100%;
+    height: 20%;
+    background: #dedede;
+
+  }
+  
+  
+  .MyBookingItem1Flight {
+    width: 100%;
+    height: 45%;
+    background: lightcoral;
+  }
+
+  .MyBookingItem1Flight div {
+    width: 100%;
+    height: 17%;
+    background: grey;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .MyBookingItem1Flight .MyBookingItem1SplitOdd {
+    width: 100%;
+    height: 17%;
+    background: #dedede;
+
+  }
+  
+  
+  
+  .MyBookingItem1Hotel {
+    width: 100%;
+    height: 45%;
+    background: lightcyan;
+  }
+  
+  .MyBookingItem1Hotel div {
+    width: 100%;
+    height: 17%;
+    background: grey;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .MyBookingItem1Hotel .MyBookingItem1SplitOdd {
+    width: 100%;
+    height: 17%;
+    background: #dedede;
+
+  }
+  
+  .MyBookingItem1Car {
+    width: 100%;
+    height: 45%;
+    background: lightgoldenrodyellow;
+}
+
+.MyBookingItem1Car div {
+  width: 100%;
+  height: 20%;
+  background: grey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.MyBookingItem1Car .MyBookingItem1SplitOdd {
+  width: 100%;
+  height: 20%;
+  background: #dedede;
 }

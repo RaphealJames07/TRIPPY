@@ -1,16 +1,24 @@
-import { useSelector } from "react-redux/es/hooks/useSelector";
-import { useDispatch } from "react-redux";
-import { bookingData } from "../Redux/Features";
-import { useState } from "react";
+import {Button, Select, Modal} from "antd";
+import Footer from "../Footer/Footer";
+import HeaderLone from "../Header/HeaderLone";
+import {useState} from "react";
+import {useDispatch} from "react-redux";
 import axios from "axios";
-import { carData, clearCarData } from "../Redux/Features";
-import { Link } from "react-router-dom";
+import {bookingData} from "../Redux/Features";
+const {Option} = Select;
+import './NewCar.css'
 
 const NewCar = () => {
-    const [carCity, setCarCity] = useState("");
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const [ carCity, setCarCity] = useState("");
+    const [carCountry, setCarCountry] = useState("");
+    const [searchResultVisible, setSearchResultVisible] = useState(false);
+    const [errorVisible, setErrorVisible] = useState(false);
+    const [carDataRes, setCarDataRes] = useState([]);
 
-    const handleCarSearch = () => {
+
+    const handleHotelSearch = () => {
+        console.log("Searching Hotel");
         const url = `https://trippyapiv1.onrender.com/trippy//find-car-rentals/?location=${encodeURIComponent(
             carCity
         )}`;
@@ -19,121 +27,208 @@ const NewCar = () => {
             .get(url)
             .then((res) => {
                 console.log(res.data);
-                dispatch(carData(res.data.carRentals));
+                setCarDataRes(res.data.carRentals);
+                showSearchResult();
             })
             .catch((err) => {
                 console.log(err);
+                showError()
             });
     };
-    const carDataToMap = useSelector((state) => state.Trippy.trippyCarData);
+
+    const handleShowHotelResult = () => {
+        handleHotelSearch()
+    };
+
+    const showSearchResult = () => {
+        setSearchResultVisible(true);
+    };
+
+    const showError = () => {
+        setErrorVisible(true);
+    };
+    
+
     const handleAddCar = (selectedCar) => {
         const selectedCarData = {
-           
+            type: "car",
             carData: selectedCar,
         };
         dispatch(bookingData(selectedCarData));
     };
-
     return (
         <>
-            <div className="NewHotelBody">
-                <div className="NewHotelHead">
-                    <h1>Get Car Rentals Deals for your ease</h1>
+            <div className="NewCarBody">
+                <HeaderLone />
+                <div className="NewCarHead">
+                    <h1>Search For Cars On the Go</h1> 
                 </div>
-                <div className="NewHotelContent">
-                    <div className="NewHotelContentInput">
-                        <select
-                            name="Location"
-                            id="Location"
-                            onChange={(e) => setCarCity(e.target.value)}
-                            value={carCity}
-                        >
-                            <option value="" onChange={(e) => e.target.value}>
-                                Location
-                            </option>
 
-                            <option
-                                value="lagos"
-                                onChange={(e) => e.target.value}
-                            >
-                                Lagos
-                            </option>
-                            <option
-                                value="nairobi"
-                                onChange={(e) => e.target.value}
-                            >
-                                Nairobi
-                            </option>
-                            <option
-                                value="accra"
-                                onChange={(e) => e.target.value}
-                            >
-                                Accra
-                            </option>
-                        </select>
-
-                        <button onClick={handleCarSearch}>Search</button>
-                    </div>
-                    <div className="NewHotelContentResults">
-                        {carDataToMap?.map((item, index) => (
-                            <div className="NewHotelResultItem1" key={index}>
-                                <div className="NewHotelResultItem1Left">
-                                    <div className="NewHotelResultItem1ImgDiv">
-                                        <img src={item?.image} alt="" />
-                                    </div>
-                                    <div className="NewHotelResultItem1Desc">
-                                        <div className="NewHotelResultItem1DescTop">
-                                            <h1>
-                                                {item?.brand} (
-                                                <span>{item?.type}</span>)
-                                            </h1>
-                                            <p>{item?.model}</p>
-
-                                            <span>
-                                                <span>
-                                                    max passenger{" "}
-                                                    {item?.maxPassengers}
-                                                </span>{" "}
-                                                <br />
-                                                <span>Manual</span>
-                                                <span>AC</span>
-                                            </span>
-                                        </div>
-                                        <div className="NewHotelResultItem1DescDown">
-                                            <span>
-                                                {item?.registrationNumber}
-                                            </span>
-                                            <span>{item?.location}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="NewHotelResultItem1Right">
-                                    <div className="NewHotelResultItem1RightTop">
-                                        <h3>$ {item?.pricePerDay} per day</h3>
-                                    </div>
-
-                                    <div className="NewHotelResultItem1RightDown">
-                                        <Link to="/BookingHotel">
-                                            <button
-                                                onClick={() =>
-                                                    handleAddCar(item)
-                                                }
+                <div className="NewCarContent2">
+                <div className="NewCarSelectDiv">
+                                <div className="NewCarSelects">
+                                    <div className="NewCarSelectsDiv">
+                                        <label htmlFor="">Car Rental Country</label>
+                                        <Select
+                                            placeholder="Select"
+                                            onChange={(value) =>
+                                                setCarCountry(value)
+                                            }
+                                            value={carCountry}
+                                            className="Tuface"
+                                        >
+                                            <Option value="">Select</Option>
+                                            <Option
+                                                value="nigeria"
+                                                onChange={(e) => e.target.value}
                                             >
-                                                Add Car
-                                            </button>
-                                        </Link>
+                                                Nigeria
+                                            </Option>
+                                            <Option
+                                                value="ghana"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Ghana
+                                            </Option>
+                                            <Option
+                                                value="kenya"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Kenya
+                                            </Option>
+                                        </Select>
+                                        <label htmlFor="">Car Rental City</label>
+                                        <Select
+                                            placeholder="Select"
+                                            onChange={(value) =>
+                                                setCarCity(value)
+                                            }
+                                            value={carCity}
+                                            className="Tuface"
+                                        >
+                                            <Option value="">Select</Option>
+                                            <Option
+                                                value="nairobi"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Nairobi
+                                            </Option>
+                                            <Option
+                                                value="cairo"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Cairo
+                                            </Option>
+                                            <Option
+                                                value="lagos"
+                                                onChange={(e) => e.target.value}
+                                            >
+                                                Lagos
+                                            </Option>
+                                        </Select>
+                                    </div>
+                                    <div className="NewCarSelectsBtn">
+                                        <Button
+                                            type="primary"
+                                            onClick={handleShowHotelResult}
+                                        >
+                                            Search
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+
+                    <Modal
+                        title="Car Search Results"
+                        visible={searchResultVisible}
+                        onCancel={() => setSearchResultVisible(false)}
+                        footer={null}
+                    >
+                        <>
+                        <div className="NewCarResults">
+                               
+                                        {carDataRes.map((item, index) => (
+                                            <div
+                                                className="NewCarResultsItem1"
+                                                key={index}
+                                            >
+                                                <div className="NewCarResultsItem1ImgDiv">
+                                                    <img
+                                                        src={item?.image}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                                <div className="NewCarResultsItem1Details">
+                                                    <p>
+                                                        Airline Name:{" "}
+                                                        {item?.brand}
+                                                        <span>{item?.model}</span>
+                                                    </p>
+                                                    <p
+                                                        style={{
+                                                            display: "flex",
+                                                            justifyContent:
+                                                                "space-between",
+                                                        }}
+                                                    >
+                                                        City: {item?.location}
+                                                        <span>
+                                                            Reg No: {item?.registrationNumber}
+                                                        </span>
+                                                    </p>
+                                                    <p
+                                                        style={{
+                                                            display: "flex",
+                                                            justifyContent:
+                                                                "space-between",
+                                                        }}
+                                                    >
+                                                        Price Per Day:{" "}
+                                                        {item?.pricePerDay}
+                                                        <span>
+                                                            Max Passenger:{" "}
+                                                            {
+                                                                item?.maxPassengers
+                                                            }
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                                <div className="NewCarResultsItem1Btn">
+                                                    <Button
+                                                        type="primary"
+                                                        onClick={() =>
+                                                            handleAddCar(
+                                                                item
+                                                            )
+                                                        }
+                                                    >{`Add`}</Button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                  
+                            </div>
+                        </>
+                    </Modal>
+
+                    <Modal
+                        title="Error"
+                        visible={errorVisible}
+                        onCancel={() => setErrorVisible(false)}
+                        footer={[
+                            <Button
+                                key="ok"
+                                type="primary"
+                                onClick={() => setErrorVisible(false)}
+                            >
+                                OK
+                            </Button>,
+                        ]}
+                    >
+                        An error occurred while searching for flights. Please
+                        try again later.
+                    </Modal>
                 </div>
-                <button
-                    className="CancelSearchBtn"
-                    onClick={() => dispatch(clearCarData())}
-                >
-                    Clear Search
-                </button>
+                <Footer />
             </div>
         </>
     );
