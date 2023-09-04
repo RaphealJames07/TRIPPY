@@ -13,6 +13,8 @@ import "./BookingCart.css";
 import ConfirmationModal from "./ConfirmModal";
 import { useNavigate } from "react-router";
 import { ScaleLoader } from "react-spinners";
+import {InputNumber, Form, Button, Input, DatePicker, Select} from "antd";
+const {Option} = Select;
 
 const BookingCart = () => {
     const dispatch = useDispatch();
@@ -63,8 +65,8 @@ const BookingCart = () => {
     const [flyOutDate, setFlyOutDate] = useState("");
     const [flyBackDate, setFlyBackDate] = useState("");
 
-    const [noOfNights, setNoOfNights] = useState(0);
-    const [noOfRooms, setNoOfRooms] = useState(0);
+    const [noOfNights, setNoOfNights] = useState(1);
+    const [noOfRooms, setNoOfRooms] = useState(1);
     const hotelPricePerNight = parseFloat(
         NewCartData[0].hotelData[0].pricePerNight
     );
@@ -76,7 +78,7 @@ const BookingCart = () => {
     const [checkOut, setCheckOut] = useState("");
 
     const [carDays, setCarDays] = useState(0);
-    const [carDate, setCarDate] = useState("");
+    const [carDate, setCarDate] = useState(null);
 
     const flightId = `${NewCartData[0].flightData[0]._id}`;
     const returnFlightId = `${NewCartData[0].flightData[1]._id}`;
@@ -108,7 +110,8 @@ const BookingCart = () => {
 
     const serviceCharge = 1500;
 
-    const totalCharge = subTotalPrice + serviceCharge;
+    const totalPrice = subTotalPrice + serviceCharge;
+    console.log(totalPrice);
 
     const data = {
         flightId,
@@ -129,7 +132,7 @@ const BookingCart = () => {
         numberOfGuests,
         numberOfRooms,
         hotelPrice,
-        totalCharge,
+        totalPrice,
     };
 
     const [bookingProcessing, setBookingProcessing] = useState(false);
@@ -145,7 +148,7 @@ const BookingCart = () => {
             .post(
                 `https://trippyapiv1.onrender.com/trippy/new-booking`,
                 requestedData,
-                { headers }
+                {headers}
             )
             .then((res) => {
                 console.log(res);
@@ -165,7 +168,7 @@ const BookingCart = () => {
         window.Korapay.initialize({
             key: "pk_test_g6zBHAZmHopS6Tyyvwn7iz5ucLqrDP6kqWwvKr66",
             reference: `${refVal}`,
-            amount: totalCharge,
+            amount: totalPrice,
             currency: "NGN",
             customer: {
                 name: userFirstName,
@@ -212,12 +215,15 @@ const BookingCart = () => {
                                             style={{
                                                 marginLeft: "30px",
                                                 fontSize: "19px",
+                                                textTransform: "capitalize",
                                             }}
                                         >
                                             {item?.tourData[0].city}
                                         </span>
                                     </h2>
-                                    <h3>{item?.tourData[0].country}</h3>
+                                    <h3>
+                                        Country: {item?.tourData[0].country}
+                                    </h3>
                                     <div className="CocoTopTourDetailsDivStar">
                                         <AiFillStar />
                                         <AiFillStar />
@@ -253,27 +259,23 @@ const BookingCart = () => {
                                             </span>
                                         </h3>
                                         <div className="CocoTopTourDetailsDivInputsNum">
-                                            <label htmlFor="Name">
-                                                No Of Tickets
-                                            </label>
-                                            <input
-                                                type="number"
-                                                min={0}
-                                                value={tourTickets}
-                                                onChange={(e) =>
-                                                    setTourTickets(
-                                                        e.target.value
-                                                    )
-                                                }
-                                            />
+                                            <Form.Item label="No Of Tickets">
+                                                <InputNumber
+                                                    min={0}
+                                                    defaultValue={0}
+                                                    value={tourTickets}
+                                                    onChange={(value) =>
+                                                        setTourTickets(value)
+                                                    }
+                                                />
+                                            </Form.Item>
                                         </div>
                                         <div className="CocoTopTourDetailsDivInputsName">
                                             <label htmlFor="Name">
                                                 Name of Tourist
                                             </label>
-                                            <input
+                                            <Input
                                                 required
-                                                type="text"
                                                 placeholder="Input Name"
                                                 value={touristName}
                                                 onChange={(e) =>
@@ -282,15 +284,18 @@ const BookingCart = () => {
                                                     )
                                                 }
                                             />
-                                            <button onClick={handleAddName}>
+                                            <Button
+                                                onClick={handleAddName}
+                                                style={{width: "100px"}}
+                                            >
                                                 Add Name
-                                            </button>
-                                            <button
+                                            </Button>
+                                            <Button
                                                 onClick={handleClearAllNames}
+                                                style={{width: "100px"}}
                                             >
                                                 Clear Names
-                                            </button>
-                                            <p></p>
+                                            </Button>
                                         </div>
                                     </div>
                                     <div className="CocoTopTourDetailsDivTouristName">
@@ -325,9 +330,11 @@ const BookingCart = () => {
                                                 }
                                             </p>
                                             <p>
-                                                Fron {item?.flightData[0].from}{" "}
+                                                Fron {item?.flightData[0].from}
+                                                {"   "}
                                                 to
                                                 <span>
+                                                    {"  "}
                                                     {item?.flightData[0].to}
                                                 </span>{" "}
                                             </p>
@@ -346,53 +353,48 @@ const BookingCart = () => {
                                                 }
                                             </p>
                                             <p>
-                                                date{" "}
-                                                <input
-                                                    type="date"
-                                                    value={flyOutDate}
-                                                    onChange={(e) =>
-                                                        setFlyOutDate(
-                                                            e.target.value
-                                                        )
-                                                    }
-                                                />
+                                                <Form.Item label="Date">
+                                                    <DatePicker
+                                                        value={flyOutDate}
+                                                        onChange={(date) => {
+                                                            setFlyOutDate(date);
+                                                        }}
+                                                    />
+                                                </Form.Item>
                                             </p>
-                                            <select
-                                                name=""
-                                                id=""
-                                                value={flyOut}
-                                                onChange={(e) =>
-                                                    setFlyOut(e.target.value)
-                                                }
-                                            >
-                                                <option value="0">
-                                                    Select Price
-                                                </option>
-                                                <option
-                                                    value={
-                                                        item?.flightData[0]
-                                                            .priceFlex
-                                                    }
+                                            <Form.Item label="Select Price">
+                                                <Select
+                                                    value={flyOut}
+                                                    onChange={(value) => {
+                                                        setFlyOut(value); // Update the selected value
+                                                    }}
                                                 >
-                                                    PriceFlex{" "}
-                                                    {
-                                                        item?.flightData[0]
-                                                            .priceFlex
-                                                    }
-                                                </option>
-                                                <option
-                                                    value={
-                                                        item?.flightData[0]
-                                                            .priceStandard
-                                                    }
-                                                >
-                                                    PriceStandard{" "}
-                                                    {
-                                                        item?.flightData[0]
-                                                            .priceStandard
-                                                    }
-                                                </option>
-                                            </select>
+                                                    <Option
+                                                        value={
+                                                            item?.flightData[0]
+                                                                .priceFlex
+                                                        }
+                                                    >
+                                                        PriceFlex{" "}
+                                                        {
+                                                            item?.flightData[0]
+                                                                .priceFlex
+                                                        }
+                                                    </Option>
+                                                    <Option
+                                                        value={
+                                                            item?.flightData[0]
+                                                                .priceStandard
+                                                        }
+                                                    >
+                                                        PriceStandard{" "}
+                                                        {
+                                                            item?.flightData[0]
+                                                                .priceStandard
+                                                        }
+                                                    </Option>
+                                                </Select>
+                                            </Form.Item>
                                         </div>
                                     </div>
                                     <div className="CocoTourFlightDivRight">
@@ -436,53 +438,50 @@ const BookingCart = () => {
                                                 }
                                             </p>
                                             <p>
-                                                date{" "}
-                                                <input
-                                                    type="date"
-                                                    value={flyBackDate}
-                                                    onChange={(e) =>
-                                                        setFlyBackDate(
-                                                            e.target.value
-                                                        )
-                                                    }
-                                                />
+                                                <Form.Item label="Date">
+                                                    <DatePicker
+                                                        value={flyBackDate}
+                                                        onChange={(date) => {
+                                                            setFlyBackDate(
+                                                                date
+                                                            );
+                                                        }}
+                                                    />
+                                                </Form.Item>
                                             </p>
-                                            <select
-                                                name=""
-                                                id=""
-                                                value={flyBack}
-                                                onChange={(e) =>
-                                                    setFlyBack(e.target.value)
-                                                }
-                                            >
-                                                <option value="0">
-                                                    Select Price
-                                                </option>
-                                                <option
-                                                    value={
-                                                        item?.flightData[1]
-                                                            .priceFlex
-                                                    }
+                                            <Form.Item label="Select Price">
+                                                <Select
+                                                    value={flyBack}
+                                                    onChange={(value) => {
+                                                        setFlyBack(value); // Update the selected value
+                                                    }}
                                                 >
-                                                    PriceFlex{" "}
-                                                    {
-                                                        item?.flightData[1]
-                                                            .priceFlex
-                                                    }
-                                                </option>
-                                                <option
-                                                    value={
-                                                        item?.flightData[1]
-                                                            .priceStandard
-                                                    }
-                                                >
-                                                    PriceStandard{" "}
-                                                    {
-                                                        item?.flightData[1]
-                                                            .priceStandard
-                                                    }
-                                                </option>
-                                            </select>
+                                                    <Option
+                                                        value={
+                                                            item?.flightData[1]
+                                                                .priceFlex
+                                                        }
+                                                    >
+                                                        PriceFlex{" "}
+                                                        {
+                                                            item?.flightData[1]
+                                                                .priceFlex
+                                                        }
+                                                    </Option>
+                                                    <Option
+                                                        value={
+                                                            item?.flightData[1]
+                                                                .priceStandard
+                                                        }
+                                                    >
+                                                        PriceStandard{" "}
+                                                        {
+                                                            item?.flightData[1]
+                                                                .priceStandard
+                                                        }
+                                                    </Option>
+                                                </Select>
+                                            </Form.Item>
                                         </div>
                                     </div>
                                     <p className="CocoTourFlightDivText">
@@ -526,52 +525,44 @@ const BookingCart = () => {
                                                 {item?.hotelData[0].maxPerRoom}
                                             </span>
                                         </p>
-                                        <p>
-                                            CheckIn Date:{" "}
-                                            <input
-                                                type="date"
-                                                value={checkIn}
-                                                onChange={(e) =>
-                                                    setCheckIn(e.target.value)
-                                                }
-                                            />
-                                        </p>
-                                        <p>
-                                            CheckOut Date:{" "}
-                                            <input
-                                                type="date"
-                                                value={checkOut}
-                                                onChange={(e) =>
-                                                    setCheckOut(e.target.value)
-                                                }
-                                            />
-                                        </p>
-                                        <p>
-                                            Nights
-                                            <input
-                                                type="number"
-                                                name=""
-                                                id=""
-                                                min={1}
-                                                value={noOfNights}
-                                                onChange={(e) =>
-                                                    setNoOfNights(
-                                                        e.target.value
-                                                    )
-                                                }
-                                            />
-                                        </p>
-                                        <p>
-                                            No of rooms{" "}
-                                            <input
-                                                type="number"
-                                                value={noOfRooms}
-                                                onChange={(e) =>
-                                                    setNoOfRooms(e.target.value)
-                                                }
-                                                min={1}
-                                            />
-                                        </p>
+                                        <div className="CocoHotelTourNights2">
+                                            <Form.Item label="CheckIn Date">
+                                                <DatePicker
+                                                    value={checkIn}
+                                                    onChange={(date) => {
+                                                        setCheckIn(date); // Update the selected date
+                                                    }}
+                                                />
+                                            </Form.Item>
+                                            <Form.Item label="CheckOut Date">
+                                                <DatePicker
+                                                    value={checkOut}
+                                                    onChange={(date) => {
+                                                        setCheckOut(date); // Update the selected date
+                                                    }}
+                                                />
+                                            </Form.Item>
+                                        </div>
+                                        <div className="CocoHotelTourNights">
+                                            <Form.Item label="Nights">
+                                                <InputNumber
+                                                    min={1}
+                                                    value={noOfNights}
+                                                    onChange={(value) => {
+                                                        setNoOfNights(value); // Update the selected value
+                                                    }}
+                                                />
+                                            </Form.Item>
+                                            <Form.Item label="No of rooms">
+                                                <InputNumber
+                                                    min={1}
+                                                    value={noOfRooms}
+                                                    onChange={(value) => {
+                                                        setNoOfRooms(value); // Update the selected value
+                                                    }}
+                                                />
+                                            </Form.Item>
+                                        </div>
                                         <p>Total Hotel Price {hotelPrice}</p>
                                     </div>
                                 </div>
@@ -595,9 +586,7 @@ const BookingCart = () => {
                                             {
                                                 item?.carData[0].maxPassengers
                                             }{" "}
-                                            <span
-                                                style={{ marginLeft: "20px" }}
-                                            >
+                                            <span style={{marginLeft: "20px"}}>
                                                 {" "}
                                                 Color:
                                                 {item?.carData[0].color}
@@ -608,27 +597,23 @@ const BookingCart = () => {
                                             Location:{" "}
                                             {item?.carData[0].location}
                                         </p>
+                                        <div className="CocoCarNoOfDays">
                                         <p>
                                             Price Per Day{" "}
                                             {item?.carData[0].pricePerDay}
-                                            <span
-                                                style={{ marginLeft: "20px" }}
-                                            >
-                                                {" "}
-                                                No of days
-                                            </span>
-                                            <input
-                                                type="number"
-                                                name=""
-                                                id=""
-                                                value={carDays}
-                                                min={0}
-                                                onChange={(e) =>
-                                                    setCarDays(e.target.value)
-                                                }
-                                            />
                                             {}
                                         </p>
+                                        <Form.Item label="No of days">
+                                            <InputNumber
+                                                min={0}
+                                                value={carDays}
+                                                onChange={(value) => {
+                                                    setCarDays(value); // Update the selected value
+                                                }}
+                                            />
+                                        </Form.Item>
+                                        </div>
+                                        <div className="CocoCarNoOfDays">
                                         <p>
                                             Reg No:
                                             {
@@ -636,16 +621,17 @@ const BookingCart = () => {
                                                     .registrationNumber
                                             }
                                         </p>
-                                        <p>
-                                            rentalDate{" "}
-                                            <input
-                                                type="date"
-                                                value={carDate}
-                                                onChange={(e) =>
-                                                    setCarDate(e.target.value)
-                                                }
-                                            />
-                                        </p>
+                                        
+                                            <Form.Item label='Rental Date'>
+                                                <DatePicker
+                                                    value={carDate}
+                                                    onChange={(date) => {
+                                                        setCarDate(date); // Update the selected date
+                                                    }}
+                                                />
+                                            </Form.Item>
+                                        
+                                        </div>
                                         <p>Total Price {rentalPrice}</p>
                                     </div>
                                 </div>
@@ -679,7 +665,7 @@ const BookingCart = () => {
                                         </p>
                                         <h3>
                                             Total Booking Fee{" "}
-                                            <span>{totalCharge}</span>
+                                            <span>{totalPrice}</span>
                                         </h3>
                                     </div>
                                     <div className="CocoPaymentActionBtns">
