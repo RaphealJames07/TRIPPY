@@ -40,6 +40,10 @@ const WishList = () => {
         handleGetWishList();
     }, []);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+     }, []);
+
     const [loadingStates, setLoadingStates] = useState({});
 
     const handleViewMore = (tourId) => {

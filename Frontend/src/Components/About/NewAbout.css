@@ -13,7 +13,7 @@
 .NewAboutBodyDiv{
   width: 100%;
   height: 150vh;
-  background: lightblue;
+  /* background: lightblue; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,18 +41,23 @@
 .NewABoutContentBoxes{
   width: 100%;
   height: 90%;
+  /* background-color: brown; */
   display: flex;
+  align-items: center;
+  border-radius: 10px;
   justify-content: space-between;
 }
 
 .NewABoutContent1{
   width: 25%;
   height: 100%;
-  /* background: lightseagreen; */
+  background: #80DDF0;
   padding: 20px;
   display: flex;
   align-items: center;
+  border-radius: 10px;
   justify-content: center;
+  
 }
 .NewABoutContent1 p{
   font-size: 18px;
@@ -61,7 +66,7 @@
 .NewAboutFaqs{
   width: 85%;
   height: 45%;
-  background: lightcyan;
+  /* background: lightcyan; */
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -127,16 +132,33 @@
   flex: 0 0 auto;
   width: calc(80% - 30px);
   height: 100%;
-  background: lightseagreen;
+  background: #80DDF0;
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .NewABoutContent1 p{
-  font-size: 14px;
+  font-size: 13px;
 }
-
+.NewAboutFaqs{
+  width: 85%;
+  height: 55%;
+  /* background: lightcyan; */
+  margin-top: 80px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.panel-header {
+  width: 100%;
+  height: 50%;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
 
 
 

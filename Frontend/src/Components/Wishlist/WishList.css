@@ -34,14 +34,14 @@
 }
 
 .WishListDownWrap{
-  width: 85%;
+  width: 80%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: lightblue;
   gap: 30px;
-  overflow-x: auto;
+  overflow-x: scroll;
   padding-left: 25%;
 }
 .WishListDownWrap::-webkit-scrollbar{

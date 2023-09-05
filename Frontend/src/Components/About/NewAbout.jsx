@@ -27,6 +27,7 @@ const NewAbout = () => {
                                     experience that takes you beyond the
                                     ordinary and into the extraordinary realms
                                     of the world.
+                                    At Trippy, we're not just building a website; we're building a community of adventurers.
                                 </p>
                             </div>
                             <div className="NewABoutContent1">
