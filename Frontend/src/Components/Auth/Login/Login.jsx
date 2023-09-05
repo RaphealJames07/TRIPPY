@@ -1,93 +1,94 @@
-import "./Login.css";
-import {Link} from "react-router-dom";
-// import LoginImg from "../../../assets/LoginImg.jpg";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {trippyUserLogin} from "../../Redux/Features";
-import axios from "axios";
-import NetworkError from "../../Functions/NetworkError";
-import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
+    import "./Login.css";
+    import {Link} from "react-router-dom";
+    // import LoginImg from "../../../assets/LoginImg.jpg";
+    import {useState} from "react";
+    import {useNavigate} from "react-router-dom";
+    import {useDispatch} from "react-redux";
+    import {trippyUserLogin} from "../../Redux/Features";
+    import axios from "axios";
+    import NetworkError from "../../Functions/NetworkError";
+    import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
 
-const Login = () => {
-    const nav = useNavigate();
-    const Dispatch = useDispatch();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [networkErr, setNetworkErr] = useState(false);
-    const [emailErrorMessage, setEmailErrorMessage] = useState("");
-    const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const [message, setMessage] = useState({
-        error: false,
-        value: "",
-        msg: "",
-    });
-    const [inputHasError, setInputHasError] = useState(false);
-    const [mailInputError, setMailInputerror] = useState(false);
-    const [incoPwd, setIncoPwd] = useState(false);
-    const data = {email, password};
-    const url = "https://trippyapiv1.onrender.com/trippy/signin";
+    const Login = () => {
+        const nav = useNavigate();
+        const Dispatch = useDispatch();
+        const [email, setEmail] = useState("");
+        const [password, setPassword] = useState("");
+        const [loading, setLoading] = useState(false);
+        const [networkErr, setNetworkErr] = useState(false);
+        const [emailErrorMessage, setEmailErrorMessage] = useState("");
+        const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+        const [showPassword, setShowPassword] = useState(false);
+        const [message, setMessage] = useState({
+            error: false,
+            value: "",
+            msg: "",
+        });
+        const [inputHasError, setInputHasError] = useState(false);
+        const [mailInputError, setMailInputerror] = useState(false);
+        const [incoPwd, setIncoPwd] = useState(false);
+        const data = {email, password};
+        const url = "https://trippyapiv1.onrender.com/trippy/signin";
 
-    const handleLogin = (e) => {
-        e.preventDefault();
 
-        if (networkErr) {
-            setNetworkErr(false); // Reset networkErr to false
-            setLoading(false);
-            setInputHasError(true);
-        } else if (!email) {
-            setEmailErrorMessage("Input your email");
-            setLoading(false);
-            setMailInputerror(true);
-        } else if (!email.includes("@")) {
-            setEmailErrorMessage("Email should contain @");
-            setLoading(false);
-            setMailInputerror(true);
-        } else if (!password) {
-            setPasswordErrorMessage("Enter Password");
-            setLoading(false);
-            setInputHasError(true);
-        } else {
-            setMessage("");
-            setInputHasError(false);
-            setLoading(true);
-            axios
-                .post(url, data)
-                .then((res) => {
-                    console.log(res.data.user);
-                    const {email, firstName, lastName, token} = res.data.user;
-                    Dispatch(
-                        trippyUserLogin({email, firstName, lastName, token})
-                    );
-                    nav("/HeaderNew");
-                })
-                .catch((err) => {
-                    setLoading(false);
-                    console.log(err);
-                    const Neterror = err.message;
-                    if (Neterror === "Network Error") {
-                        console.log(Neterror);
-                        setNetworkErr(true);
-                    }
-                    const incorectPwd = err.response.data.message;
-                    console.log("Nah worng pwd", incorectPwd);
-                    if (incorectPwd === "invalid password") {
-                        setIncoPwd(true);
-                    }
-                    const badError = err.response.data.message;
-                    if (badError === "invalid credentials") {
-                        setInputHasError(true); // Set input error state to true
-                    }
-                    setMessage({
-                        error: true,
-                        value: "email",
-                        msg: err.response.data.error,
+        const handleLogin = (e) => {
+            e.preventDefault();
+
+            if (networkErr) {
+                setNetworkErr(false); // Reset networkErr to false
+                setLoading(false);
+                setInputHasError(true);
+            } else if (!email) {
+                setEmailErrorMessage("Input your email");
+                setLoading(false);
+                setMailInputerror(true);
+            } else if (!email.includes("@")) {
+                setEmailErrorMessage("Email should contain @");
+                setLoading(false);
+                setMailInputerror(true);
+            } else if (!password) {
+                setPasswordErrorMessage("Enter Password");
+                setLoading(false);
+                setInputHasError(true);
+            } else {
+                setMessage("");
+                setInputHasError(false);
+                setLoading(true);
+                axios
+                    .post(url, data)
+                    .then((res) => {
+                        console.log(res.data.user);
+                        const userData = res.data.user;
+                        Dispatch(trippyUserLogin(userData));
+                        localStorage.setItem('loginSuccess', 'true');
+                        nav("/HeaderNew");
+                        
+                    })
+                    .catch((err) => {
+                        setLoading(false);
+                        console.log(err);
+                        const Neterror = err.message;
+                        if (Neterror === "Network Error") {
+                            console.log(Neterror);
+                            setNetworkErr(true);
+                        }
+                        const incorectPwd = err.response.data.message;
+                        console.log("Nah worng pwd", incorectPwd);
+                        if (incorectPwd === "invalid password") {
+                            setIncoPwd(true);
+                        }
+                        const badError = err.response.data.message;
+                        if (badError === "invalid credentials") {
+                            setInputHasError(true); // Set input error state to true
+                        }
+                        setMessage({
+                            error: true,
+                            value: "email",
+                            msg: err.response.data.error,
+                        });
                     });
-                });
-        }
-    };
+            }
+        };
 
     // const [imageLoaded, setImageLoaded] = useState(false);
 

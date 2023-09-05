@@ -1,12 +1,11 @@
-
 import {Fade} from "react-reveal";
 import "./Hero.css";
 import {useState, useEffect} from "react";
 import axios from "axios";
 import {SpinnerDotted} from "spinners-react";
 import {Button, Modal} from "antd";
-import { useDispatch } from "react-redux";
-import { clearHeroSearch, heroSearchRes } from "../Redux/Features";
+import {useDispatch} from "react-redux";
+import {clearHeroSearch, heroSearchRes} from "../Redux/Features";
 // import { useSelector } from "react-redux";
 import {useNavigate} from "react-router";
 import {findOneTour} from "../Redux/Features";
@@ -38,14 +37,20 @@ const Hero = () => {
     const [continent, setContinent] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const data = { country, city};
+    const data = {country, city};
     const url = "https://trippyapiv1.onrender.com/trippy/find-tours";
     const [modalVisible, setModalVisible] = useState(false);
-    const [searchResultStatus, setSearchResultStatus] = useState(null); 
-    const dispatch = useDispatch()
-    const [heroDataresult, setHeroDataresult] = useState([])
+    const [searchResultStatus, setSearchResultStatus] = useState(null);
+    const dispatch = useDispatch();
+    const [heroDataresult, setHeroDataresult] = useState([]);
+    const [modalTwoVisible, setModalTwoVisible] = useState(false);
+    const [emptyResult, setSetEmptyResult] = useState(false);
 
     const handleHeroSearch = (e) => {
+        if (!city && !country) {
+            setModalTwoVisible(true);
+            return
+        }
         e.preventDefault();
 
         if (error === "Maybe") {
@@ -53,15 +58,21 @@ const Hero = () => {
         } else {
             setError("");
             setModalVisible(true);
-            setSearchResultStatus(null); 
+            setSearchResultStatus(null);
 
             axios
                 .get(url, {params: data})
                 .then((res) => {
                     console.log("response: ", res.data);
+                    const empty = res.data.tours 
+                    if(empty.length === 0){
+                        setSetEmptyResult(true)
+                        setModalVisible(false)
+                        return
+                    }
                     setSearchResultStatus("success");
-                    dispatch(heroSearchRes(res.data))
-                    setHeroDataresult(res.data.tours)
+                    dispatch(heroSearchRes(res.data));
+                    setHeroDataresult(res.data.tours);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -85,7 +96,7 @@ const Hero = () => {
             ...prevLoadingStates,
             [tourId]: true,
         }));
-        dispatch(clearHeroSearch())
+        dispatch(clearHeroSearch());
 
         axios
             .get(
@@ -113,9 +124,32 @@ const Hero = () => {
     return (
         <>
             <Modal
+                open={emptyResult}
+                onCancel={() => setSetEmptyResult(false)}
+                onOk={() => setSetEmptyResult(false)}
+            >
+                <div>
+                    <p>
+                        No Results Found, try searching again
+                    </p>
+                </div>
+            </Modal>
+            <Modal
+                open={modalTwoVisible}
+                onCancel={() => setModalTwoVisible(false)}
+                onOk={() => setModalTwoVisible(false)}
+            >
+                <div>
+                    <p>
+                        Please Input Country And City
+                    </p>
+                </div>
+            </Modal>
+            <Modal
                 open={modalVisible}
                 onCancel={() => setModalVisible(false)}
                 className="HeroModalBody"
+                onOk={() => setModalVisible(false)}
             >
                 {searchResultStatus === "success" ? (
                     <>
@@ -125,39 +159,53 @@ const Hero = () => {
                                     Search Results
                                 </div>
                                 <div className="HeroPlayCardResults">
-                                   {
-                                    heroDataresult?.map((item, index)=>(
-                                        <div className="HeroPlayCardItem1" key={index}>
-                                        <div className="HeroPlayCardImgDiv">
-                                            <img src={item?.images[0]} alt="" />
+                                    {heroDataresult?.map((item, index) => (
+                                        <div
+                                            className="HeroPlayCardItem1"
+                                            key={index}
+                                        >
+                                            <div className="HeroPlayCardImgDiv">
+                                                <img
+                                                    src={item?.images[0]}
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div className="HeroPlayCardDetailsDiv">
+                                                <div className="HeroPlayCardDetails1">
+                                                    {item?.tourName}
+                                                </div>
+                                                <div className="HeroPlayCardDetails2">
+                                                    {item?.city}{" "}
+                                                    <span>{item?.country}</span>
+                                                </div>
+                                                <div className="HeroPlayCardDetails3">
+                                                    Tour Price:{" "}
+                                                    {item?.pricePerPerson}{" "}
+                                                    <span>
+                                                        Rating:{" "}
+                                                        {item?.starRating}
+                                                    </span>
+                                                </div>
+                                                <div className="HeroPlayCardDetails4">
+                                                    <Button
+                                                        onClick={() =>
+                                                            handleViewMore(
+                                                                item._id
+                                                            )
+                                                        }
+                                                    >
+                                                        {loadingStates[
+                                                            item._id
+                                                        ] ? (
+                                                            <PulseLoader color="#36d7b7" />
+                                                        ) : (
+                                                            "View More"
+                                                        )}
+                                                    </Button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="HeroPlayCardDetailsDiv">
-                                            <div className="HeroPlayCardDetails1">
-                                                {item?.tourName}
-                                            </div>
-                                            <div className="HeroPlayCardDetails2">
-                                               {item?.city}{" "}
-                                                <span>{item?.country}</span>
-                                            </div>
-                                            <div className="HeroPlayCardDetails3">
-                                                Tour Price: {item?.pricePerPerson}{" "}
-                                                <span>Rating: {item?.starRating}</span>
-                                            </div>
-                                            <div className="HeroPlayCardDetails4">
-                                                <Button onClick={() =>
-                                                        handleViewMore(item._id)
-                                                    }
-                                                >
-                                                    {loadingStates[item._id] ? (
-                                                        <PulseLoader color="#36d7b7" />
-                                                    ) : (
-                                                        "View More"
-                                                    )}</Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    ))
-                                   }
+                                    ))}
                                 </div>
                             </div>
                         </div>

@@ -9,12 +9,22 @@ import {useState} from "react";
 import './HeaderNew.css'
 import {GiHamburgerMenu} from "react-icons/gi";
 import {TbLetterX} from 'react-icons/tb'
+import { Button, Modal } from 'antd';
 
 const HeaderLone = () => {
     const dispatch = useDispatch();
 
     const [popUp, setPopUp] = useState(false);
     const [hoverUp, setHoverUp] = useState(false);
+    const [logoutModalVisible, setLogoutModalVisible] = useState(false);
+    const toggleLogoutModal = () => {
+        setLogoutModalVisible(!logoutModalVisible);
+    };
+
+    const handleLogout = () => {
+        dispatch(trippyUserLogOut());
+        toggleLogoutModal();
+    };
 
     const toggleHoverNav = () => {
         setHoverUp(!hoverUp);
@@ -157,7 +167,7 @@ const HeaderLone = () => {
                                     textTransform: "capitalize",
                                     border: user
                                         ? "2px solid green"
-                                        : "2px solid red",
+                                        : "2px solid grey",
                                 }}
                             >
                                 {user ? (
@@ -192,7 +202,7 @@ const HeaderLone = () => {
                                             {user.lastName.charAt(0)}
                                         </>
                                     ) : (
-                                        "No"
+                                        ""
                                     )}
                                 </div>
                                 <div className="HeaderAccPopUpTopText">
@@ -215,23 +225,14 @@ const HeaderLone = () => {
                             <div className="HeaderAccPopUpDown">
                                 <ul>
                                     <NavLink className='li' style={{textDecoration:'none', color:'#000'}} to='/WishList'><li>WishList</li></NavLink>
-                                    <li>Profile</li>
+                                    <NavLink className='li' style={{textDecoration:'none', color:'#000'}} to='/Account'><li>Account</li></NavLink>
                                     <li>Help/FAQ</li>
                                 </ul>
                                 <div className="HeaderAccPopUpDownBtns">
                                     {user ? (
                                         <>
                                             <div className="HeaderAccPopUpDownBtns1">
-                                                <button
-                                                    onClick={() => {
-                                                        dispatch(
-                                                            trippyUserLogOut()
-                                                        );
-                                                        // alert("User LogOut Successfully");
-                                                    }}
-                                                >
-                                                    SignOut
-                                                </button>
+                                            <button onClick={toggleLogoutModal}>Logout</button>
                                             </div>
                                         </>
                                     ) : (
@@ -250,6 +251,20 @@ const HeaderLone = () => {
                     </>
                 ) : null}
             </div>
+            <Modal
+                visible={logoutModalVisible}
+                onCancel={toggleLogoutModal}
+                footer={null}
+            >
+                <div>
+                    <h2>Confirm Logout</h2>
+                    <p>Are you sure you want to logout?</p>
+                    <div>
+                        <Button type="default" onClick={toggleLogoutModal} size="large" style={{margin:'10px', width:'80px'}}>No</Button>
+                        <Button type="primary"  onClick={handleLogout} size="large" style={{margin:'10px', width:'80px'}}>Yes</Button>
+                    </div>
+                </div>
+            </Modal>
         </>
     );
 };

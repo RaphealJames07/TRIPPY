@@ -218,6 +218,7 @@ const Continental = () => {
     const [america, setAmerica] = useState(false);
     const [all, setAll] = useState(false);
     const [showNextIcon, setShowNextIcon] = useState(true);
+    console.log(showNextIcon);
     const nav = useNavigate();
     const Dispatch = useDispatch();
 
@@ -271,7 +272,8 @@ const Continental = () => {
     // const [heartColor, setHeartColor] = useState(false);
     const [addSuccess, setAddSuccess] = useState(false);
     const [addingWish, setAddingWish] = useState(false);
-    const userToken = useSelector((state) => state.Trippy.trippyUser.token);
+    const user = useSelector((state) => state.Trippy.trippyUser);
+    const userToken  = user ? user.token : null;
     const data = {};
 
     const handleAddToWishList = (tourId) => {
