@@ -2,7 +2,7 @@ import {Button, Select, Modal} from "antd";
 import Footer from "../Footer/Footer";
 import HeaderLone from "../Header/HeaderLone";
 import "./NewFlights.css";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
 import axios from "axios";
 import {bookingData} from "../Redux/Features";
@@ -26,6 +26,10 @@ const NewFlight = () => {
     const handleNavToHotel = () => {
         nav("/NewHotel");
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const handleFlightSearch = (from, to) => {
         console.log("Search clicked");

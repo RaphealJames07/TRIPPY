@@ -342,9 +342,6 @@
   overflow-y: auto;
   padding: 10px;
 }
-.ReviewDetOver::-webkit-scrollbar{
-  display: none;
-}
 
 .ReviewComment1{
   flex: 0 0 auto;

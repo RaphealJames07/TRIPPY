@@ -2,7 +2,7 @@ import "./DescPage.css";
 // import {GrLocation} from "react-icons/gr";
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
 import {SpinnerCircular} from "spinners-react";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 // import Header from "../Header/Header";
 // import Footer from "../Footer/Footer";
 import {useSelector} from "react-redux";
@@ -22,9 +22,15 @@ const DescPage = () => {
     const [rating, setRating] = useState();
     const [comment, setComment] = useState("");
     const nav = useNavigate();
+    const [isLoading, setLoading] = useState(false);
+
 
     const findOneTourData = useSelector((state) => state.Trippy.findOneTourData);
     console.log(findOneTourData);
+
+    useEffect(() => {
+       window.scrollTo(0, 0);
+    }, []);
 
     // const updatedFindOne = useSelector((state) => state.Trippy.findOneTourData);
     // console.log("new data", updatedFindOne);
@@ -71,6 +77,15 @@ const DescPage = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
 
     const HandleBookNow = () => {
+        // setLoading(true);
+        
+        // setTimeout(() => {
+        //     // After loading is complete, navigate to the desired page
+        //     setLoading(false);
+        //     // Perform the navigation logic here
+        //   }, 2000);
+
+
         if (userToken === undefined) {
             setShowLoginModal(true);
             console.log("Modal clicked");
@@ -543,8 +558,9 @@ const DescPage = () => {
 
                                         <div className="DescButtonBook">
                                             <button>Back</button>
-                                            <button onClick={HandleBookNow}>
-                                                Book Now
+                                            <button onClick={HandleBookNow} disabled={isLoading}>
+                                            {isLoading ? 'Loading...' : 'Book Now'}
+                                                {/* Book Now */}
                                             </button>
                                         </div>
                                     </div>
