@@ -61,11 +61,15 @@ const NewFlight = () => {
         handleFlightSearch(fromFlightReturn, toFlightReturn);
     };
 
+    const [addSucc, setAddSucc] = useState(false)
+
     const handleAddFlight = (selectedFlight) => {
         const selectedFlightData = {
             flightData: selectedFlight,
         };
         dispatch(bookingData(selectedFlightData));
+        setAddSucc(true)
+        setSearchResultVisible(false)
     };
 
     console.log(flightDataRes);
@@ -273,7 +277,7 @@ const NewFlight = () => {
                             size="large"
                             onClick={handleNavToHotel}
                         >
-                            Book A Hotel
+                            Book Hotel
                         </Button>
                     </div>
 
@@ -357,8 +361,24 @@ const NewFlight = () => {
                             </Button>,
                         ]}
                     >
-                        An error occurred while searching for flights. Please
+                        No Results for flights. Please
                         try again later.
+                    </Modal>
+                    <Modal
+                        title="Successful!"
+                        visible={addSucc}
+                        onCancel={() => setAddSucc(false)}
+                        footer={[
+                            <Button
+                                key="ok"
+                                type="primary"
+                                onClick={() => setAddSucc(false)}
+                            >
+                                OK
+                            </Button>,
+                        ]}
+                    >
+                        Flight Added Successfully
                     </Modal>
                 </div>
                 <Footer />

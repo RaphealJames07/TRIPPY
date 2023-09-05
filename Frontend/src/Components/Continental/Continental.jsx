@@ -313,6 +313,28 @@ const Continental = () => {
     console.log(addWishList);
     const [modalVisible, setModalVisible] = useState(false);
 
+    const StarRating = ({ rating }) => {
+        const filledStars = Array.from({ length: rating }).fill(null);
+        const emptyStars = Array.from({ length: 5 - rating }).fill(null);
+
+        return (
+            <div className="Rating">
+                {filledStars.map((_, index) => (
+                    <AiFillStar
+                        style={{ width: "15%", height: "100%" }}
+                        key={`filled-${index}`}
+                    />
+                ))}
+                {emptyStars.map((_, index) => (
+                    <AiOutlineStar
+                        style={{ width: "15%", height: "100%" }}
+                        key={`empty-${index}`}
+                    />
+                ))}
+            </div>
+        );
+    };
+
     return (
         <>
             <Modal
@@ -444,7 +466,9 @@ const Continental = () => {
                                             </h4>
                                             <div className="ContiCTABtnRev">
                                                 <div className="ContiCTAREV">
-                                                    <AiFillStar />
+                                        <StarRating rating={item?.starRating} />
+
+                                                    {/* <AiFillStar />
                                                     <AiFillStar />
                                                     <AiFillStar />
                                                     <AiOutlineStar />
@@ -452,7 +476,7 @@ const Continental = () => {
                                                     <span>
                                                         {item.ratings.length}{" "}
                                                         Review
-                                                    </span>
+                                                    </span> */}
                                                 </div>
                                                 <Button
                                                     type="primary"

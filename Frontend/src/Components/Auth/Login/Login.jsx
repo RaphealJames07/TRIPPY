@@ -29,6 +29,7 @@
         const [incoPwd, setIncoPwd] = useState(false);
         const data = {email, password};
         const url = "https://trippyapiv1.onrender.com/trippy/signin";
+        // const [popErr, setPopErr] = useState('')
 
 
         const handleLogin = (e) => {
@@ -346,7 +347,19 @@
                             <h1>Login</h1>
                             <div className="InputDivsMobile">
                                 <div className="EmailDivMobile">
-                                    <label htmlFor="Email">Email</label>
+                                    <label htmlFor="Email">Email
+                                    <span>
+                                            <p
+                                                style={{
+                                                    color: "red",
+                                                    fontSize: "14px",
+                                                    marginLeft: "5px",
+                                                }}
+                                            >
+                                                {emailErrorMessage}
+                                            </p>
+                                        </span>
+                                    </label>
                                     <input
                                         type="email"
                                         placeholder="Input Your Email"
@@ -360,21 +373,59 @@
                                     <p>{message.msg}</p>
                                 </div>
                                 <div className="PasswordDivMobile">
-                                    <label htmlFor="Password">Password</label>
-                                    <input
-                                        type="password"
-                                        placeholder="Input Your Password"
-                                        value={password}
-                                        onChange={(e) => {
-                                            setPassword(e.target.value);
-                                            setPasswordErrorMessage("");
-                                            setInputHasError(false); // Reset input error state
-                                        }}
-                                        className={`EmailDiv ${
-                                            inputHasError ? "error" : ""
-                                        }`}
-                                    />
-                                    <p>{message.msg}</p>
+                                    <label htmlFor="Password">Password
+                                    <span onFocus={()=>setIncoPwd(false)}>
+                                            <p
+                                                style={{
+                                                    color: "red",
+                                                    fontSize: "14px",
+                                                    marginLeft: "5px",
+                                                }}
+                                            >
+                                                {passwordErrorMessage}
+                                                {incoPwd
+                                                    ? `Incorrect Password`
+                                                    : null}
+                                            </p>
+                                        </span>
+                                    </label>
+                                    <div className="PwdInputDiv">
+                                        <input
+                                            className="PwdInput"
+                                            type={
+                                                showPassword
+                                                    ? "text"
+                                                    : "password"
+                                            }
+                                            placeholder="Input Your Password"
+                                            value={password}
+                                            onChange={(e) => {
+                                                setPassword(e.target.value);
+                                                setPasswordErrorMessage("");
+                                                setInputHasError(false);
+                                            }}
+                                            onFocus={() => {
+                                                setInputHasError(false);
+                                            }}
+                                            style={{
+                                                border: `${
+                                                    inputHasError
+                                                        ? "2px solid red"
+                                                        : null
+                                                }`,
+                                            }}
+                                        />
+                                        <div
+                                            className="TogglePasswordButtonM"
+                                            onClick={handleTogglePassword}
+                                        >
+                                            {showPassword ? (
+                                                <AiOutlineEyeInvisible className="AiOutlineEyeInvisible" />
+                                            ) : (
+                                                <AiOutlineEye className="AiOutlineEye" />
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
                                 <p className="ForgetPwdMobile">
                                     <Link

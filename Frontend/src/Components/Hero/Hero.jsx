@@ -49,7 +49,7 @@ const Hero = () => {
     const handleHeroSearch = (e) => {
         if (!city || !country) {
             setModalTwoVisible(true);
-            
+            return
         }
         e.preventDefault();
 

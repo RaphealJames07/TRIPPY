@@ -49,6 +49,7 @@ const NewCar = () => {
         setErrorVisible(true);
     };
     
+    const [addSucc, setAddSucc] = useState(false)
 
     const handleAddCar = (selectedCar) => {
         const selectedCarData = {
@@ -56,6 +57,8 @@ const NewCar = () => {
             carData: selectedCar,
         };
         dispatch(bookingData(selectedCarData));
+        setAddSucc(true)
+        setSearchResultVisible(false)
     };
 
     const nav = useNavigate();
@@ -243,18 +246,18 @@ const NewCar = () => {
                         footer={null}
                     >
                         <>
-                            <div className="NewHotelHotelResults">
+                            <div className="NewHotelResults">
                                 {carDataRes.map((item, index) => (
                                     <div
-                                        className="NewHotelHotelResultsItem1"
+                                        className="NewHotelResultsItem1"
                                         key={index}
                                     >
-                                        <div className="NewHotelHotelResultsItem1ImgDiv">
-                                            <img src={item?.images[0]} alt="" />
+                                        <div className="NewHotelResultsItem1ImgDiv">
+                                            <img src={item?.image} alt="" />
                                         </div>
-                                        <div className="NewHotelHotelResultsItem1Details">
+                                        <div className="NewHotelResultsItem1Details">
                                             <div className="NewHotelResultDetailsFLexed">
-                                                <span>{item?.hotelName}</span>
+                                                <span>{item?.brand}</span>
                                             </div>
                                             <div className="NewHotelResultDetailsFLexed">
                                                 <span>{item?.city}</span>
@@ -264,19 +267,19 @@ const NewCar = () => {
                                             <div className="NewHotelResultDetailsFLexed">
                                                 <p>Price Per Night:</p>
                                                 <span>
-                                                    {item?.pricePerNight}
+                                                    {item?.pricePerDay}
                                                 </span>
                                             </div>
                                             <div className="NewHotelResultDetailsFLexed">
                                                 <p>
-                                                    Max Per Room:
+                                                    Max Perssenger:
                                                     <span>
-                                                        {item?.maxPerRoom}
+                                                        {item?.maxPassengers}
                                                     </span>
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className="NewHotelHotelResultsItem1Btn">
+                                        <div className="NewHotelResultsItem1Btn">
                                             <Button
                                                 type="primary"
                                                 onClick={() =>
@@ -306,6 +309,22 @@ const NewCar = () => {
                     >
                         An error occurred while searching for Hotels. Please try
                         again later.
+                    </Modal>
+                    <Modal
+                        title="Successful!"
+                        visible={addSucc}
+                        onCancel={() => setAddSucc(false)}
+                        footer={[
+                            <Button
+                                key="ok"
+                                type="primary"
+                                onClick={() => setAddSucc(false)}
+                            >
+                                OK
+                            </Button>,
+                        ]}
+                    >
+                        Car Added Successfully
                     </Modal>
                 </div>
                 <div className="NewCarBtns">

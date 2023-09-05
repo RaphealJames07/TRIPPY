@@ -48,11 +48,15 @@ const NewHotel = () => {
         setErrorVisible(true);
     };
 
+    const [addSucc, setAddSucc] = useState(false)
+
     const handleAddHotel = (selectedHotel) => {
         const selectedHotelData = {
             hotelData: selectedHotel,
         };
         dispatch(bookingData(selectedHotelData));
+        setAddSucc(true)
+        setSearchResultVisible(false)
         // alert("Flight added successfully");
     };
 
@@ -237,16 +241,16 @@ const NewHotel = () => {
                         footer={null}
                     >
                         <>
-                            <div className="NewHotelHotelResults">
+                            <div className="NewHotelResults">
                                 {hotelDataRes.map((item, index) => (
                                     <div
-                                        className="NewHotelHotelResultsItem1"
+                                        className="NewHotelResultsItem1"
                                         key={index}
                                     >
-                                        <div className="NewHotelHotelResultsItem1ImgDiv">
+                                        <div className="NewHotelResultsItem1ImgDiv">
                                             <img src={item?.images[0]} alt="" />
                                         </div>
-                                        <div className="NewHotelHotelResultsItem1Details">
+                                        <div className="NewHotelResultsItem1Details">
                                             <div className="NewHotelResultDetailsFLexed">
                                                 <span>{item?.hotelName}</span>
                                             </div>
@@ -302,6 +306,23 @@ const NewHotel = () => {
                         An error occurred while searching for Hotels. Please
                         try again later.
                     </Modal>
+                    <Modal
+                        title="Successful!"
+                        visible={addSucc}
+                        onCancel={() => setAddSucc(false)}
+                        footer={[
+                            <Button
+                                key="ok"
+                                type="primary"
+                                onClick={() => setAddSucc(false)}
+                            >
+                                OK
+                            </Button>,
+                        ]}
+                    >
+                        Hotel Added Successfully
+                    </Modal>
+                    
                 </div>
                 <div className="NewHotelBtns">
                     <Button type="default" size="large" onClick={handleBack}>
