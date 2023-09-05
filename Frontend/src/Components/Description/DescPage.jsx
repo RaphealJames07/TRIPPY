@@ -22,7 +22,7 @@ import {Input, InputNumber} from "antd";
 const DescPage = () => {
     const {tourId} = useParams();
     const [loadingComment, setLoadingComment] = useState(false);
-    const [rating, setRating] = useState();
+    const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
     const nav = useNavigate();
     const navigate = useNavigate();
@@ -44,6 +44,14 @@ const DescPage = () => {
     // const [comments, setComments] = useState([]);
 
     const handleCommentUpload = () => {
+        if (rating === 0){
+            alert('Please select a rating');
+            return
+        }
+        if (!comment){
+            alert('Please Write a comment')
+            return
+        }
         setLoadingComment(true);
         console.log("Waiting comment");
         const token = userToken;
@@ -96,6 +104,28 @@ const DescPage = () => {
 
     const handleBackToTour = () => {
         navigate(-1);
+    };
+
+    const StarRating = ({ rating }) => {
+        const filledStars = Array.from({ length: rating }).fill(null);
+        const emptyStars = Array.from({ length: 5 - rating }).fill(null);
+
+        return (
+            <div className="Rating">
+                {filledStars.map((_, index) => (
+                    <AiFillStar
+                        style={{ width: "15%", height: "100%" }}
+                        key={`filled-${index}`}
+                    />
+                ))}
+                {emptyStars.map((_, index) => (
+                    <AiOutlineStar
+                        style={{ width: "15%", height: "100%" }}
+                        key={`empty-${index}`}
+                    />
+                ))}
+            </div>
+        );
     };
     
 
@@ -301,11 +331,13 @@ const DescPage = () => {
                                                                                             "80px",
                                                                                     }}
                                                                                 >
-                                                                                    <AiFillStar />
+                                                                                    {/* <AiFillStar />
                                                                                     <AiFillStar />
                                                                                     <AiFillStar />
                                                                                     <AiOutlineStar />
-                                                                                    <AiOutlineStar />
+                                                                                    <AiOutlineStar /> */}
+                                        <StarRating rating={item?.star} />
+
                                                                                 </span>
                                                                             </p>
                                                                         </div>
@@ -434,9 +466,7 @@ const DescPage = () => {
                                                                     onClick={
                                                                         handleCommentUpload
                                                                     }
-                                                                    loading={
-                                                                        loadingComment
-                                                                    }
+                                                                    
                                                                 >
                                                                     {loadingComment ? (
                                                                         <SpinnerCircular
@@ -529,11 +559,12 @@ const DescPage = () => {
                                                                                 }
                                                                             </p>
                                                                             <span>
-                                                                                <AiFillStar />
+                                                                                {/* <AiFillStar />
                                                                                 <AiFillStar />
                                                                                 <AiFillStar />
                                                                                 <AiOutlineStar />
-                                                                                <AiOutlineStar />
+                                                                                <AiOutlineStar /> */}
+                                                                                <StarRating rating={item?.star} />
                                                                             </span>
                                                                         </div>
                                                                     </div>

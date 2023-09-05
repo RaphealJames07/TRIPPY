@@ -34,7 +34,9 @@ import MyBookings from "./Components/Booking/MyBookings";
 import WishList from "./Components/Wishlist/WhisList";
 import NewCar from "./Components/Car/NewCar";
 import Account from "./Components/AcountProfile/Account";
-
+import Api from "../src/Components/Redux/Api";
+import Api2 from "../src/Components/Redux/Api2";
+import ToTop from "./Components/ToTop";
 
 
 const App = () => {
@@ -43,7 +45,10 @@ const App = () => {
        <CommentsProvider>
             
       <div className="MainBody">
+      <Api/>
+        <Api2/>
         <HashRouter>
+        <ToTop/>
           <Routes>
             <Route path="/" element={<Intro />} />
             <Route path="/Login" element={<Login />} />

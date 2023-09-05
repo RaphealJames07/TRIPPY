@@ -111,6 +111,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-left: 10px;
   justify-content: center;
   font-size: 15px;
   text-transform: capitalize;
@@ -206,6 +207,7 @@
 .NewFlightSelectDivMobile {
   width: 100%;
   height: 70%;
+  display: block;
 }
 
 .NewFlightSelectsMobile {
@@ -286,6 +288,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding-left: 10px;
   justify-content: center;
   font-size: 15px;
   text-transform: capitalize;

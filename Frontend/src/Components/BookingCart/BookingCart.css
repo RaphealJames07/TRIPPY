@@ -5,7 +5,7 @@
 }
 .CocoBody{
   width: 100%;
-  height: 230vh;
+  height: 200vh;
   background: rgb(255, 255, 255);
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@
 
 .CocoTop{
   width: 100%;
-  height: 50%;
+  height: 40%;
   border: 1px solid #000;
 }
 
@@ -48,96 +48,11 @@
 .CocoTopTourDetailsDiv{
   height: 50%;
   width: 100%;
-
   padding: 0 25px;
-}
-
-
-.CocoTopTourDetailsDivOne{
-  width: 100%;
-  height: 20%;
-  
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-transform: capitalize;
-}
-.CocoTopTourDetailsDivOne h2{
-  text-transform: capitalize;
-}
-.CocoTopTourDetailsDivOne h2 span{
-  text-transform: capitalize;
-}
-
-.CocoTopTourDetailsDivTwo{
-  width: 100%;
-  height: 80%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.CocoTopTourDetailsDivTwoSpan1{
-  width: 100%;
-  height: 30%;
- 
-}
-
-.CocoTopTourDetailsDivTwoSpan2{
-  width: 100%;
-  height: 30%;
-}
-
-.CocoTopTourDetailsDivInputs{
-  width: 100%;
-  height: 30%;
-  display: flex;
-}
-.CocoTopTourDetailsDivInputs h3{
-  width: 30%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.CocoTopTourDetailsDivInputsNum{
-  width: 10%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   
 }
-.CocoTopTourDetailsDivInputsNum input{
-  width: 60px;
-  height: 40px;
-  padding-left: 5px;
-  font-size: 16px;
-}
 
-.CocoTopTourDetailsDivInputsName{
-  width: 65%;
-  height: 100%;
-  display: flex;
-  padding-left: 20px;
-}
 
-.CocoTopTourDetailsDivInputsName button{
-  width: 50px;
-  height: 40px;
-  margin: 5px;
-}
-.CocoTopTourDetailsDivInputsName input{
-  width: 200px;
-  height: 50%;
-  padding-left: 10px;margin-left: 10px;
-}
-
-.CocoTopTourDetailsDivTouristName{
-  width: 100%;
-  height: 5%;
-}
 
 .CocoDown{
   width: 100%;
@@ -168,10 +83,8 @@
 }
 
 .CocoTourFlightDivText{
-  position: absolute;
-  bottom: 0;
-  right: 40%;
-  font-size: 20px;
+  width: 100%;
+  font-size: 16px;
 }
 
 .CocoTourFlightDivLeft{
@@ -236,6 +149,8 @@
   height: 33%;
   border: 1px solid #000;
   display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .CocoTourHotelDivImgDiv{
@@ -257,6 +172,12 @@
   text-transform: capitalize;
   margin-left: 10px;
 }
+.CocoTourHotelDivDetailsDiv p{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
 
 .CocoHotelTourNights{
   display: flex;
@@ -265,7 +186,7 @@
 }
 .CocoHotelTourNights2{
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: space-between;
 }
 
@@ -380,7 +301,7 @@
 
 .CocoBody{
   width: 100%;
-  height: 350vh;
+  height: 290vh;
   background: rgb(255, 255, 255);
   display: flex;
   align-items: center;
@@ -398,7 +319,7 @@
 
 .CocoTop{
   width: 100%;
-  height: 35%;
+  height: 20%;
   border: 1px solid #000;
 }
 
@@ -421,102 +342,69 @@
 }
 
 .CocoTopTourDetailsDiv{
-  height: 50%;
+  height: 60%;
   width: 100%;
-
   padding: 0 25px;
 }
 
-
-.CocoTopTourDetailsDivOne{
+.CocoTopTourDetailsDiv1{
+  display: flex;
+  width: 100%;
+  height: 15%;
+  align-items: center;
+  justify-content: space-between;
+}
+.CocoTopTourDetailsDiv2{
+  display: flex;
+  width: 100%;
+  height: 15%;
+  align-items: center;
+  justify-content: space-between;
+}
+.CocoTopTourDetailsDiv3{
+  display: flex;
+  width: 100%;
+  height: 15%;
+  align-items: center;
+  justify-content: space-between;
+}
+.CocoTopTourDetailsDiv4{
+  display: flex;
   width: 100%;
   height: 20%;
-  
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  text-transform: capitalize;
-}
-.CocoTopTourDetailsDivOne h2{
-  text-transform: capitalize;
-}
-.CocoTopTourDetailsDivOne h2 span{
-  text-transform: capitalize;
-}
-
-.CocoTopTourDetailsDivTwo{
-  width: 100%;
-  height: 80%;
-
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
 
-.CocoTopTourDetailsDivTwoSpan1{
-  width: 100%;
-  height: 30%;
- 
-}
-
-.CocoTopTourDetailsDivTwoSpan2{
-  width: 100%;
-  height: 30%;
-}
-
-.CocoTopTourDetailsDivInputs{
-  width: 100%;
-  height: 30%;
-  display: flex;
-}
-.CocoTopTourDetailsDivInputs h3{
-  width: 30%;
+.CocoTopTourDetailsDiv4Left{
+  width: 60%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+.CocoTopTourDetailsDiv4Right{
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 
-.CocoTopTourDetailsDivInputsNum{
-  width: 10%;
-  height: 100%;
+.CocoTopTourDetailsDiv5{
   display: flex;
-  flex-direction: column;
-  
-}
-.CocoTopTourDetailsDivInputsNum input{
-  width: 60px;
-  height: 40px;
-  padding-left: 5px;
-  font-size: 16px;
-}
-
-.CocoTopTourDetailsDivInputsName{
-  width: 65%;
-  height: 100%;
-  display: flex;
-  padding-left: 20px;
-}
-
-.CocoTopTourDetailsDivInputsName button{
-  width: 50px;
-  height: 40px;
-  margin: 5px;
-}
-.CocoTopTourDetailsDivInputsName input{
-  width: 200px;
-  height: 50%;
-  padding-left: 10px;margin-left: 10px;
-}
-
-.CocoTopTourDetailsDivTouristName{
   width: 100%;
-  height: 5%;
+  height: 15%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .CocoDown{
   width: 100%;
-  height: 65%;
+  height: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -575,6 +463,7 @@
   justify-content: space-between;
   text-transform: capitalize;
   margin: 10px;
+  gap: 10px;
 }
 
 .CocoTourFlightDivRight{
@@ -602,6 +491,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 10px;
+  gap: 10px;
 
 }
 
@@ -677,8 +567,14 @@
 
 .CocoCarNoOfDays{
   display: flex;
-  width: 70%;
-  align-items: center;
+  width: 90%;
+  height: auto;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.CocoCarNoOfDays p{
+  width: 90%;
+  display: flex;
   justify-content: space-between;
 }
 

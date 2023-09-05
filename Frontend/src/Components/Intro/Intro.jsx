@@ -7,10 +7,12 @@ import { trippyUserLogOut } from "../Redux/Features";
 
 import { Link } from "react-router-dom";
 
+
 const Intro = () => {
     const dispatch = useDispatch();
     return (
         <div className="IntroBody">
+       
             <div className="IntroWrapper">
                 <div className="CenterDiv">
                     <Zoom>
