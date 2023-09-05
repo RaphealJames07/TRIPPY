@@ -8,8 +8,11 @@ import { BiUser } from "react-icons/bi";
 import {useState} from "react";
 import './HeaderNew.css'
 import {GiHamburgerMenu} from "react-icons/gi";
-import {TbLetterX} from 'react-icons/tb'
+// import {TbLetterX} from 'react-icons/tb'
 import { Button, Modal } from 'antd';
+import { Menu, Drawer } from 'antd';
+
+
 
 const HeaderLone = () => {
     const dispatch = useDispatch();
@@ -34,16 +37,59 @@ const HeaderLone = () => {
         setPopUp(!popUp);
     };
 
-    const [showNav, setShowNav] = useState(false);
-
-    const toggleNav = () => {
-        setShowNav(true);
-    };
-    const toggleNavRemove = () => {
-        setShowNav(false);
-    };
+   
 
     const user = useSelector((state) => state.Trippy.trippyUser);
+
+     // State to control the visibility of the mobile menu
+     const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+
+     // Handle opening and closing the mobile menu
+     const toggleMobileMenu = () => {
+         setMobileMenuVisible(!mobileMenuVisible);
+     };
+ 
+     // Mobile menu content
+     const mobileMenu = (
+         <Menu>
+             <Menu.Item key="1">
+                 <Link to="/HeaderNew" className="HeaderLoneNavDownLinks">
+                     Home
+                 </Link>
+             </Menu.Item>
+             <Menu.Item key="2">
+                 <Link to="/Explore" className="HeaderLoneNavDownLinks">
+                     Explore
+                 </Link>
+             </Menu.Item>
+             <Menu.Item key="3">
+                 <Link to='/MyBookings' className="HeaderLoneNavDownLinks">
+                     My Bookings
+                 </Link>
+             </Menu.Item>
+             <Menu.Item key="4">
+                 <Link to='/NewHotel' className="HeaderLoneNavDownLinks">
+                     Hotels
+                 </Link>
+             </Menu.Item>
+             <Menu.Item key="5">
+                 <Link to='/NewCar' className="HeaderLoneNavDownLinks">
+                     Cars
+                 </Link>
+             </Menu.Item>
+             <Menu.Item key="6">
+                 <Link to='/NewFlight' className="HeaderLoneNavDownLinks">
+                     Flights
+                 </Link>
+             </Menu.Item>
+             <Menu.Item key="7">
+                 <Link to="/About" className="HeaderLoneNavDownLinks">
+                     About Us
+                 </Link>
+             </Menu.Item>
+         </Menu>
+     );
+ 
 
     return (
         <>
@@ -107,57 +153,21 @@ const HeaderLone = () => {
                     </nav>
 
                     <div className="HeaderNewTopNavs">
-                        <div className="HeaderNewTopHamBurger">
-                            <GiHamburgerMenu
-                                className="GiHamburgerMenu"
-                                onClick={toggleNav}
-                            />
-                        </div>
+                    <div className="HeaderNewTopHamBurgerMobile">
+                <GiHamburgerMenu className="GiHamburgerMenu" onClick={toggleMobileMenu} />
+            </div>
 
-                        {showNav ? (
-                            <>
-                                <div className="HeaderLoneNavBody">
-                                    <div className="HeaderLoneNavTop">
-                                        <img src={Logo} alt="" />
-                                        <TbLetterX className="TbLetterX" onClick={toggleNavRemove}/>
-                                    </div>
-                                    <div className="HeaderLoneNavDown">
-                                        <ul>
-                                            <Link
-                                                to="/HeaderNew"
-                                                className="HeaderLoneNavDownLinks"
-                                            >
-                                                <li>Home</li>
-                                            </Link>
-                                            <Link
-                                                to="/Explore"
-                                                className="HeaderLoneNavDownLinks"
-                                            >
-                                                <li>Explore</li>
-                                            </Link>
-                                            <Link className="HeaderLoneNavDownLinks">
-                                                <li>My Bookings</li>
-                                            </Link>
-                                            <Link className="HeaderLoneNavDownLinks">
-                                                <li>Hotels</li>
-                                            </Link>
-                                            <Link className="HeaderLoneNavDownLinks">
-                                                <li>Cars</li>
-                                            </Link>
-                                            <Link className="HeaderLoneNavDownLinks">
-                                                <li>Flights</li>
-                                            </Link>
-                                            <Link
-                                                to="/About"
-                                                className="HeaderLoneNavDownLinks"
-                                            >
-                                                <li>About Us</li>
-                                            </Link>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </>
-                        ) : null}
+
+            <Drawer
+                title="Menu"
+                placement="left"
+                closable={true}
+                onClose={toggleMobileMenu}
+                visible={mobileMenuVisible}
+                width={200}
+            >
+                {mobileMenu}
+            </Drawer>
 
                         <div className="HeaderNewTopDivRight">
                             <div

@@ -147,6 +147,14 @@
   gap: 20px;
 }
 
+.NewFlightSelectDivMobile {
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: space-around;
+}
+
 
 @media only screen and (max-width: 428px){
  *{
@@ -154,6 +162,165 @@
   padding: 0;
  }
 
+ .NewFlightBody{
+  width: 100%;
+  height: 125vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  gap: 20px;
+  font-family: sans-serif;
+}
+
+.NewFlightHead{
+  width: 80%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  text-align: center;
+}
+
+.NewFlightContent{
+  width: 60%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.NewFlightContent2{
+  width: 85%;
+  height: 60%;
+  background: lightgrey;
+}
+
+.NewFlightSelectDiv {
+  width: 100%;
+  height: 70%;
+  display: none;
+}
+.NewFlightSelectDivMobile {
+  width: 100%;
+  height: 70%;
+}
+
+.NewFlightSelectsMobile {
+  width: 100%;
+  height: 50%;
+  background: lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.NewFlightSelectsDivMobile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.NewFlightSelectsDivMobile1{
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.NewFlightSelectsBtnMobile {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.NewFlightFlightResults {
+  width: 100%;
+  height: 60%;
+  background: lightskyblue;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.NewFlightResults::-webkit-scrollbar {
+  display: none;
+}
+
+.NewFlightResultsItem1 {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  border-radius: 5px;
+}
+
+.NewFlightResultsItem1ImgDiv {
+  width: 30%;
+  height: 100%;
+  background: lightyellow;
+}
+
+.NewFlightResultsItem1ImgDiv img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.NewFlightResultsItem1Details {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.NewFlightResultDetailsFLexed{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.NewFlightResultsItem1Btn {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.InitialNoresult {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.NewFlightBtns{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
 
 
 

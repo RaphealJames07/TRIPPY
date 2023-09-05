@@ -70,12 +70,16 @@ const NewFlight = () => {
 
     console.log(flightDataRes);
 
+    const handleBack = () => {
+        nav(-1);
+    };
+
     return (
         <>
             <div className="NewFlightBody">
                 <HeaderLone />
                 <div className="NewFlightHead">
-                    <h1>Search For Flights On the Go</h1>
+                    <h1>Search For Flights</h1>
                 </div>
 
                 <div className="NewFlightContent2">
@@ -165,10 +169,104 @@ const NewFlight = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="NewFlightSelectDivMobile">
+                        <div className="NewFlightSelectsMobile">
+                            <div className="NewFlightSelectsDivMobile">
+                                <div className="NewFlightSelectsDivMobile1">
+                                <label htmlFor="">One-Way Ticket</label>
+                                <Select
+                                    placeholder="Select Origin Airport"
+                                    onChange={(value) =>
+                                        setFromFlightOneWay(value)
+                                    }
+                                    value={fromFlightOneWay}
+                                    className="TufaceMobile"
+                                    size="large"
+                                >
+                                    <Option value="">From</Option>
+                                    <Option value="lagos">Lagos</Option>
+                                    <Option value="accra">Accra</Option>
+                                    <Option value="nairobi">Nairobi</Option>
+                                </Select>
+                                </div>
+                                <div className="NewFlightSelectsDivMobile1">
+                                <label htmlFor="">Flight destination</label>
+                                <Select
+                                    placeholder="Select Destination Airport"
+                                    onChange={(value) =>
+                                        setToFlightOneWay(value)
+                                    }
+                                    value={toFlightOneWay}
+                                    className="TufaceMobile"
+                                    size="large"
+                                >
+                                    <Option value="">To</Option>
+                                    <Option value="nairobi">Nairobi</Option>
+                                    <Option value="cairo">Cairo</Option>
+                                    <Option value="lagos">Lagos</Option>
+                                </Select>
+                                </div>
+                            </div>
+                            <div className="NewFlightSelectsBtnMobile">
+                                <Button
+                                    type="primary"
+                                    onClick={handleShowResult}
+                                >
+                                    Search
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="NewFlightSelectsMobile">
+                            <div className="NewFlightSelectsDivMobile">
+                                <div className="NewFlightSelectsDivMobile1">
+                                <label htmlFor="">Return Ticket</label>
+                                <Select
+                                    placeholder="Select Origin Airport"
+                                    onChange={(value) =>
+                                        setFromFlightReturn(value)
+                                    }
+                                    value={fromFlightReturn}
+                                    className="TufaceMobile"
+                                    size="large"
+                                >
+                                    <Option value="">From</Option>
+                                    <Option value="lagos">Lagos</Option>
+                                    <Option value="accra">Accra</Option>
+                                    <Option value="nairobi">Nairobi</Option>
+                                </Select>
+                                </div>
+                                <div className="NewFlightSelectsDivMobile1">
+                                <label htmlFor="">Flight destination</label>
+                                <Select
+                                    placeholder="Select Destination Airport"
+                                    onChange={(value) =>
+                                        setToFlightReturn(value)
+                                    }
+                                    value={toFlightReturn}
+                                    className="TufaceMobile"
+                                    size="large"
+                                >
+                                    <Option value="">To</Option>
+                                    <Option value="nairobi">Nairobi</Option>
+                                    <Option value="cairo">Cairo</Option>
+                                    <Option value="lagos">Lagos</Option>
+                                </Select>
+                                </div>
+                            </div>
+                            <div className="NewFlightSelectsBtnMobile">
+                                <Button
+                                    type="primary"
+                                    onClick={handleShowResultReturn}
+                                >
+                                    Search
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
 
                     <div className="NewFlightBtns">
-                        <Button type="default" size="large">
-                            Skip to Booking
+                        <Button type="default" size="large" onClick={handleBack}>
+                            Back
                         </Button>
                         <Button
                             type="primary"

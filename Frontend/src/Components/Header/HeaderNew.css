@@ -98,6 +98,10 @@
   align-items: center;
 }
 
+.HeaderNewTopHamBurgerMobile{
+  display: none;
+}
+
 .HeaderNewTopHamBurger{
   display: none;
 }
@@ -304,6 +308,7 @@
     height: 100vh;
     /* background: red; */
     font-family: sans-serif;
+    margin-top: 0;
   }
   
   .HeaderNewTopDiv{
@@ -336,7 +341,7 @@
     align-items: center;
   }
   .HeaderNewTopDivLeft img{
-    width: 60px;
+    width: 50px;
   }
   
   .HeaderNewTopDiv nav {
@@ -362,65 +367,71 @@
     justify-content: center;
   }
 
+  .HeaderNewTopHamBurgerMobile{
+    display: block;
+  }
+
   .GiHamburgerMenu{
-    width: 100%;
+    display: block;
+    width: 38px;
     height: 100%;
     transition: all 0.5s;
+    cursor: pointer;
   }
 
-  .HeaderLoneNavBody{
-    width: 100%;
-    height: 100vh;
-    background: lightcoral;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    transition: all 0.5s;
-  }
+    .HeaderLoneNavBody{
+      width: 100%;
+      height: 60vh;
+      background: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      transition: all 0.5s;
+    }
 
-  .HeaderLoneNavTop{
-    width: 100%;
-    height: 10%;
-    background: lightblue;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 40px;
-  }
-  .HeaderLoneNavTop img{
-    width: 18%;
-  }
-  .HeaderLoneNavTop .TbLetterX{
-    width: 40px;
-    height: 50px;
-  }
+    .HeaderLoneNavTop{
+      width: 100%;
+      height: 15%;
+      background: rgb(255, 255, 255);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+    }
+    .HeaderLoneNavTop img{
+      width: 18%;
+    }
+    .HeaderLoneNavTop .TbLetterX{
+      width: 30px;
+      height: 30px;
+    }
 
-  .HeaderLoneNavDown{
-    width: 100%;
-    height: 90%;
-  }
-  
-  .HeaderLoneNavDown ul{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .HeaderLoneNavDown ul .HeaderLoneNavDownLinks{
-    width: 100%;
-    height: 13%;
-    background: lightgray;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-  }
-  .HeaderLoneNavDown ul .HeaderLoneNavDownLinks li{
-    list-style: none;
-    font-size: 20px;
-  }
+    .HeaderLoneNavDown{
+      width: 100%;
+      height: 75%;
+    }
+    
+    .HeaderLoneNavDown ul{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .HeaderLoneNavDown ul .HeaderLoneNavDownLinks{
+      width: 100%;
+      height: 13%;
+      background: lightblue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+    .HeaderLoneNavDown ul .HeaderLoneNavDownLinks li{
+      list-style: none;
+      font-size: 20px;
+    }
   
   .HeaderNewTopDiv nav ul {
     width: 100%;

@@ -64,161 +64,228 @@ const NewCar = () => {
         nav("/BookingCart");
     };
 
+    const handleBack = () => {
+        nav(-1);
+    };
 
     return (
         <>
             <div className="NewCarBody">
                 <HeaderLone />
                 <div className="NewCarHead">
-                    <h1>Search For Cars On the Go</h1> 
+                    <h1>Search For Cars</h1>
                 </div>
 
-                <div className="NewCarContent2">
-                <div className="NewCarSelectDiv">
-                                <div className="NewCarSelects">
-                                    <div className="NewCarSelectsDiv">
-                                        <label htmlFor="">Car Rental Country</label>
-                                        <Select
-                                            placeholder="Select"
-                                            onChange={(value) =>
-                                                setCarCountry(value)
-                                            }
-                                            value={carCountry}
-                                            className="Tuface"
-                                            size="large"
+                <div className="NewHotelContent">
+                    <div className="NewHotelSelectDiv Hotel">
+                        <div className="NewHotelSelectsHotel">
+                            <div className="NewHotelSelectsDiv">
+                                <div className="NewFlightSelectsDivMobile1">
+                                    <label htmlFor="">Car Country</label>
+                                    <Select
+                                        placeholder="Select Origin Airport"
+                                        onChange={(value) =>
+                                            setCarCountry(value)
+                                        }
+                                        value={carCountry}
+                                        className="Tuface"
+                                        size="large"
+                                        style={{width: "80%"}}
+                                    >
+                                        <Option value="">Select</Option>
+                                        <Option
+                                            value="nigeria"
+                                            onChange={(e) => e.target.value}
                                         >
-                                            <Option value="">Select</Option>
-                                            <Option
-                                                value="nigeria"
-                                                onChange={(e) => e.target.value}
-                                            >
-                                                Nigeria
-                                            </Option>
-                                            <Option
-                                                value="ghana"
-                                                onChange={(e) => e.target.value}
-                                            >
-                                                Ghana
-                                            </Option>
-                                            <Option
-                                                value="kenya"
-                                                onChange={(e) => e.target.value}
-                                            >
-                                                Kenya
-                                            </Option>
-                                        </Select>
-                                        <label htmlFor="">Car Rental City</label>
-                                        <Select
-                                            placeholder="Select"
-                                            onChange={(value) =>
-                                                setCarCity(value)
-                                            }
-                                            value={carCity}
-                                            className="Tuface"
-                                            size="large"
+                                            Nigeria
+                                        </Option>
+                                        <Option
+                                            value="ghana"
+                                            onChange={(e) => e.target.value}
                                         >
-                                            <Option value="">Select</Option>
-                                            <Option
-                                                value="nairobi"
-                                                onChange={(e) => e.target.value}
-                                            >
-                                                Nairobi
-                                            </Option>
-                                            <Option
-                                                value="cairo"
-                                                onChange={(e) => e.target.value}
-                                            >
-                                                Cairo
-                                            </Option>
-                                            <Option
-                                                value="lagos"
-                                                onChange={(e) => e.target.value}
-                                            >
-                                                Lagos
-                                            </Option>
-                                        </Select>
-                                    </div>
-                                    <div className="NewCarSelectsBtn">
-                                        <Button
-                                            type="primary"
-                                            onClick={handleShowHotelResult}
-                                            size="large"
+                                            Ghana
+                                        </Option>
+                                        <Option
+                                            value="kenya"
+                                            onChange={(e) => e.target.value}
                                         >
-                                            Search
-                                        </Button>
-                                    </div>
+                                            Kenya
+                                        </Option>
+                                    </Select>
+                                </div>
+                                <div className="NewFlightSelectsDivMobile1">
+                                    <label htmlFor="">Car City</label>
+                                    <Select
+                                        placeholder="Select Hotel Country"
+                                        onChange={(value) => setCarCity(value)}
+                                        value={carCity}
+                                        className="Tuface"
+                                        size="large"
+                                        style={{width: "80%"}}
+                                    >
+                                        <Option value="">Select</Option>
+                                        <Option
+                                            value="nairobi"
+                                            onChange={(e) => e.target.value}
+                                        >
+                                            Nairobi
+                                        </Option>
+                                        <Option
+                                            value="cairo"
+                                            onChange={(e) => e.target.value}
+                                        >
+                                            Cairo
+                                        </Option>
+                                        <Option
+                                            value="lagos"
+                                            onChange={(e) => e.target.value}
+                                        >
+                                            Lagos
+                                        </Option>
+                                    </Select>
                                 </div>
                             </div>
-                                
+                            <div className="NewHotelSelectsBtn">
+                                <Button
+                                    type="primary"
+                                    onClick={handleShowHotelResult}
+                                    size="large"
+                                >
+                                    Search
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="NewHotelSelectDiv Big Hotel">
+                        <div className="NewHotelSelectsHotel Big">
+                            <div className="NewHotelSelectsDiv Big">
+                                <div className="NewFlightSelectsDivMobile1 Big">
+                                    <label htmlFor="">Car Country</label>
+                                    <Select
+                                        placeholder="Select Origin Airport"
+                                        onChange={(value) =>
+                                            setCarCountry(value)
+                                        }
+                                        value={carCountry}
+                                        className="Tuface"
+                                        size="large"
+                                        style={{width: "80%"}}
+                                    >
+                                        <Option value="">Select</Option>
+                                        <Option
+                                            value="nigeria"
+                                            onChange={(e) => e.target.value}
+                                        >
+                                            Nigeria
+                                        </Option>
+                                        <Option
+                                            value="ghana"
+                                            onChange={(e) => e.target.value}
+                                        >
+                                            Ghana
+                                        </Option>
+                                        <Option
+                                            value="kenya"
+                                            onChange={(e) => e.target.value}
+                                        >
+                                            Kenya
+                                        </Option>
+                                    </Select>
+                                </div>
+                                <div className="NewFlightSelectsDivMobile1 Big">
+                                    <label htmlFor="">Car City</label>
+                                    <Select
+                                        placeholder="Select Hotel Country"
+                                        onChange={(value) => setCarCity(value)}
+                                        value={carCity}
+                                        className="Tuface Big"
+                                        size="large"
+                                        style={{width: "80%"}}
+                                    >
+                                        <Option value="">Select</Option>
+                                        <Option
+                                            value="nairobi"
+                                            onChange={(e) => e.target.value}
+                                        >
+                                            Nairobi
+                                        </Option>
+                                        <Option
+                                            value="cairo"
+                                            onChange={(e) => e.target.value}
+                                        >
+                                            Cairo
+                                        </Option>
+                                        <Option
+                                            value="lagos"
+                                            onChange={(e) => e.target.value}
+                                        >
+                                            Lagos
+                                        </Option>
+                                    </Select>
+                                </div>
+                            </div>
+                            <div className="NewHotelSelectsBtn">
+                                <Button
+                                    type="primary"
+                                    onClick={handleShowHotelResult}
+                                    size="large"
+                                >
+                                    Search
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
 
                     <Modal
-                        title="Car Search Results"
+                        title="Hotel Search Results"
                         visible={searchResultVisible}
                         onCancel={() => setSearchResultVisible(false)}
                         footer={null}
                     >
                         <>
-                        <div className="NewCarResults">
-                               
-                                        {carDataRes.map((item, index) => (
-                                            <div
-                                                className="NewCarResultsItem1"
-                                                key={index}
-                                            >
-                                                <div className="NewCarResultsItem1ImgDiv">
-                                                    <img
-                                                        src={item?.image}
-                                                        alt=""
-                                                    />
-                                                </div>
-                                                <div className="NewCarResultsItem1Details">
-                                                    <p>
-                                                        Airline Name:{" "}
-                                                        {item?.brand}
-                                                        <span>{item?.model}</span>
-                                                    </p>
-                                                    <p
-                                                        style={{
-                                                            display: "flex",
-                                                            justifyContent:
-                                                                "space-between",
-                                                        }}
-                                                    >
-                                                        City: {item?.location}
-                                                        <span>
-                                                            Reg No: {item?.registrationNumber}
-                                                        </span>
-                                                    </p>
-                                                    <p
-                                                        style={{
-                                                            display: "flex",
-                                                            justifyContent:
-                                                                "space-between",
-                                                        }}
-                                                    >
-                                                        Price Per Day:{" "}
-                                                        {item?.pricePerDay}
-                                                        <span>
-                                                            Max Passenger:{" "}
-                                                            {
-                                                                item?.maxPassengers
-                                                            }
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                                <div className="NewCarResultsItem1Btn">
-                                                    <Button
-                                                        type="primary"
-                                                        onClick={() =>
-                                                            handleAddCar(
-                                                                item
-                                                            )
-                                                        }
-                                                    >{`Add`}</Button>
-                                                </div>
+                            <div className="NewHotelHotelResults">
+                                {carDataRes.map((item, index) => (
+                                    <div
+                                        className="NewHotelHotelResultsItem1"
+                                        key={index}
+                                    >
+                                        <div className="NewHotelHotelResultsItem1ImgDiv">
+                                            <img src={item?.images[0]} alt="" />
+                                        </div>
+                                        <div className="NewHotelHotelResultsItem1Details">
+                                            <div className="NewHotelResultDetailsFLexed">
+                                                <span>{item?.hotelName}</span>
                                             </div>
-                                        ))}
-                                  
+                                            <div className="NewHotelResultDetailsFLexed">
+                                                <span>{item?.city}</span>
+                                                <span>{item?.country}</span>
+                                            </div>
+
+                                            <div className="NewHotelResultDetailsFLexed">
+                                                <p>Price Per Night:</p>
+                                                <span>
+                                                    {item?.pricePerNight}
+                                                </span>
+                                            </div>
+                                            <div className="NewHotelResultDetailsFLexed">
+                                                <p>
+                                                    Max Per Room:
+                                                    <span>
+                                                        {item?.maxPerRoom}
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="NewHotelHotelResultsItem1Btn">
+                                            <Button
+                                                type="primary"
+                                                onClick={() =>
+                                                    handleAddCar(item)
+                                                }
+                                            >{`Add`}</Button>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </>
                     </Modal>
@@ -237,20 +304,17 @@ const NewCar = () => {
                             </Button>,
                         ]}
                     >
-                        An error occurred while searching for flights. Please
-                        try again later.
+                        An error occurred while searching for Hotels. Please try
+                        again later.
                     </Modal>
                 </div>
                 <div className="NewCarBtns">
-                    <Button
-                        type="default"
-                        size="large"
-                    >
+                    <Button type="default" size="large" onClick={handleBack}>
                         Back to Previous
                     </Button>
                     <Button
                         type="primary"
-                       onClick={handleNavToBooking}
+                        onClick={handleNavToBooking}
                         size="large"
                     >
                         Proceed To Booking

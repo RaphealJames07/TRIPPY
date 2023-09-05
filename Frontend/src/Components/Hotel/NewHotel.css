@@ -18,7 +18,6 @@
 .NewHotelHead{
   width: 80%;
   height: 70px;
-  background: green;
   display: flex;
   align-items: center;
 }
@@ -236,6 +235,167 @@
   gap: 20px;
 }
 
+.NewHotelBody{
+  width: 100%;
+  height: 125vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  gap: 20px;
+  font-family: sans-serif;
+}
+
+.NewHotelHead{
+  width: 80%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  text-align: center;
+}
+
+.NewHotelContent{
+  width: 60%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.NewHotelContent2{
+  width: 85%;
+  height: 60%;
+  background: lightgrey;
+}
+
+.NewHotelSelectDiv.Big {
+  width: 100%;
+  height: 70%;
+  display: none;
+}
+.NewHotelSelectDiv {
+  width: 100%;
+  height: 70%;
+  display: block;
+}
+
+.NewHotelSelectsHotel {
+  width: 100%;
+  height: 200px;
+  background: lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.NewHotelSelectsDiv {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.NewHotelSelectsDivMobile1{
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.NewHotelSelectsBtnMobile {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.NewHotelFlightResults {
+  width: 100%;
+  height: 60%;
+  background: lightskyblue;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.NewHotelResults::-webkit-scrollbar {
+  display: none;
+}
+
+.NewHotelResultsItem1 {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  border-radius: 5px;
+}
+
+.NewHotelResultsItem1ImgDiv {
+  width: 30%;
+  height: 100%;
+  background: lightyellow;
+}
+
+.NewHotelResultsItem1ImgDiv img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.NewHotelResultsItem1Details {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.NewHotelResultDetailsFLexed{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.NewHotelResultsItem1Btn {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.InitialNoresult {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.NewHotelBtns{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 @media only screen and (max-width: 428px){
   *{
     margin: 0;
@@ -257,7 +417,6 @@
   .NewHotelHead{
     width: 80%;
     height: 10%;
-    background: green;
     display: flex;
     align-items: center;
     border-radius: 5px;
@@ -265,7 +424,7 @@
   
   .NewHotelContent{
     width: 80%;
-    height: max-content;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -452,5 +611,166 @@
   }
   .NewHotelBody .CancelSearchBtn:hover{
     background-color: red;
+  }
+
+  .NewHotelBody{
+    width: 100%;
+    height: 125vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    gap: 20px;
+    font-family: sans-serif;
+  }
+  
+  .NewHotelHead{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .NewHotelContent{
+    width: 60%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .NewHotelContent2{
+    width: 85%;
+    height: 60%;
+    background: lightgrey;
+  }
+  
+  .NewHotelSelectDiv.Big {
+    width: 100%;
+    height: 70%;
+    display: none;
+  }
+  .NewHotelSelectDiv {
+    width: 100%;
+    height: 70%;
+    display: block;
+  }
+  
+  .NewHotelSelectsHotel {
+    width: 100%;
+    height: 200px;
+    background: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .NewHotelSelectsDiv {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .NewHotelSelectsDivMobile1{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+  }
+  
+  .NewHotelSelectsBtnMobile {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .NewHotelFlightResults {
+    width: 100%;
+    height: 60%;
+    background: lightskyblue;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    padding: 5px;
+  }
+  
+  .NewHotelResults::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .NewHotelResultsItem1 {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 auto;
+    border-radius: 5px;
+  }
+  
+  .NewHotelResultsItem1ImgDiv {
+    width: 30%;
+    height: 100%;
+    background: lightyellow;
+  }
+  
+  .NewHotelResultsItem1ImgDiv img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  
+  .NewHotelResultsItem1Details {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 15px;
+    text-transform: capitalize;
+  }
+  
+  .NewHotelResultDetailsFLexed{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .NewHotelResultsItem1Btn {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .InitialNoresult {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .NewHotelBtns{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
   }
 }
