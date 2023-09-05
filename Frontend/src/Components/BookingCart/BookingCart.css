@@ -12,6 +12,7 @@
   justify-content: center;
   font-family: sans-serif;
   border:  solid #000;
+  margin-top: 100px;
 }
 
 .CocoBodyWrap{
@@ -177,11 +178,13 @@
   width: 50%;
   height: 100%;
   display: flex;
+  margin: 5px;
 }
 
 .CocoTourFlightDivLeftImgDiv{
   width: 40%;
   height: 85%;
+  border: 2px solid #94edff;
 }
 
 .CocoTourFlightDivLeft img{
@@ -192,11 +195,12 @@
 
 .CocoTourFlightDivLeftDetailsDiv{
   width: 60%;
-  height: 80%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-transform: capitalize;
+  margin: 10px;
 }
 
 .CocoTourFlightDivRight{
@@ -208,6 +212,7 @@
 .CocoTourFlightDivRightImgDiv{
   width: 40%;
   height: 85%;
+  border: 2px solid #94edff;
 }
 
 .CocoTourFlightDivRight img{
@@ -218,17 +223,18 @@
 
 .CocoTourFlightDivRightDetailsDiv{
   width: 60%;
-  height: 80%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 10px;
+
 }
 
 .CocoTourHotelDiv{
   width: 100%;
   height: 33%;
   border: 1px solid #000;
-
   display: flex;
 }
 
@@ -247,8 +253,20 @@
   height: 95%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   text-transform: capitalize;
+  margin-left: 10px;
+}
+
+.CocoHotelTourNights{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+.CocoHotelTourNights2{
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
 }
 
 .CocoTourCarDiv{
@@ -273,11 +291,19 @@
 
 .CocoTourCarDivDetailsDiv{
   width: 60%;
-  height: 80%;
+  height: 95%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   text-transform: capitalize;
+  margin-left: 10px;
+}
+
+.CocoCarNoOfDays{
+  display: flex;
+  width: 70%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .CocoPayment{
@@ -335,4 +361,10 @@
   border: 1px solid #fff;
   color: #fff;
   font-size: 16px;
+}
+
+.BookingCartBody{
+  width: 100%;
+  height: max-content;
+  font-family: sans-serif;
 }
