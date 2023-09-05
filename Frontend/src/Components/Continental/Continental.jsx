@@ -208,7 +208,7 @@ import {findOneTour} from "../Redux/Features";
 
 import {PulseLoader} from "react-spinners";
 import { Link } from "react-router-dom";
-import {Modal} from "antd";
+import {Button, Modal} from "antd";
 
 const Continental = () => {
     const [africa, setAfrica] = useState(true);
@@ -454,7 +454,8 @@ const Continental = () => {
                                                         Review
                                                     </span>
                                                 </div>
-                                                <button
+                                                <Button
+                                                    type="primary"
                                                     onClick={() =>
                                                         handleViewMore(item._id)
                                                     }
@@ -464,7 +465,7 @@ const Continental = () => {
                                                     ) : (
                                                         "View More"
                                                     )}
-                                                </button>
+                                                </Button>
                                             </div>
                                         </div>
                                     </div>

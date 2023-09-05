@@ -163,7 +163,6 @@
   .NewHotelHead{
     width: 80%;
     height: 10%;
-    background: green;
     display: flex;
     align-items: center;
     border-radius: 5px;
