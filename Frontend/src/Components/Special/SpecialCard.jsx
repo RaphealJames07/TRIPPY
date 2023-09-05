@@ -2,6 +2,13 @@ import "./SpecialCard.css";
 // import Beach from "../../assets/beachpics.jpg";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import {useNavigate} from "react-router";
+import {useDispatch} from "react-redux";
+import {findOneTour} from "../Redux/Features";
+import axios from "axios";
+import {PulseLoader} from "react-spinners";
+// import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const SpecialCard = () => {
     const toursApiData = useSelector((state) => state.Trippy.allApiData);
@@ -37,6 +44,41 @@ const SpecialCard = () => {
         );
     };
 
+    const [loadingStates, setLoadingStates] = useState({});
+
+
+    const nav = useNavigate();
+    const Dispatch = useDispatch();
+
+    const handleViewMore = (tourId) => {
+        setLoadingStates((prevLoadingStates) => ({
+            ...prevLoadingStates,
+            [tourId]: true,
+        }));
+
+        axios
+            .get(
+                `https://trippyapiv1.onrender.com/trippy/findone-tour/${tourId}`
+            )
+            .then((res) => {
+                const tourData = res.data.tour;
+
+                Dispatch(findOneTour(tourData));
+                setLoadingStates((prevLoadingStates) => ({
+                    ...prevLoadingStates,
+                    [tourId]: false,
+                }));
+                nav(`/BookingNew/${tourId}`);
+            })
+            .catch((error) => {
+                console.error("Error fetching tour data:", error);
+                setLoadingStates((prevLoadingStates) => ({
+                    ...prevLoadingStates,
+                    [tourId]: false,
+                }));
+            });
+    };
+
     return (
         <>
             {SpecialPlaces?.map((item) => (
@@ -62,11 +104,18 @@ const SpecialCard = () => {
                                         <StarRating rating={item?.starRating} />
 
                                         <div className="ViewMoreBtnDiv">
-                                            <button
+                                        <button
                                                 className="read_more_btn"
                                                 type="button"
+                                                style={{cursor:'pointer'}}
+                                                onClick={() =>
+                                                        handleViewMore(item._id)}
                                             >
-                                                View More
+                                               {loadingStates[item._id] ? (
+                                                        <PulseLoader color="#36d7b7" />
+                                                    ) : (
+                                                        "View More"
+                                                    )}
                                             </button>
                                         </div>
                                     </div>

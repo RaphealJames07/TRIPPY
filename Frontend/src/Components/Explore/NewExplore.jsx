@@ -9,7 +9,7 @@ import "./NewExplore.css";
 const NewExplore = () => {
     return (
         <>
-            <div className="HeaderNewBody">
+            <div className="NewExploreBody">
                 <HeaderLone />
                 <div className="HeaderNewNavdiv">
                     <div className="HeaderNewNavdivWrap">

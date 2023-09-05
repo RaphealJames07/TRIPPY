@@ -36,6 +36,7 @@ import NewCar from "./Components/Car/NewCar";
 import Account from "./Components/AcountProfile/Account";
 
 
+
 const App = () => {
   return (
     <>
@@ -77,6 +78,7 @@ const App = () => {
             <Route path="/MyBookings" element={<MyBookings/>} />
             <Route path="/WishList" element={<WishList/>} />
             <Route path="/Account" element={<Account/>} />
+        
             
             
             
