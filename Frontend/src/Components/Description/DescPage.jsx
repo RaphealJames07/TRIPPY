@@ -13,19 +13,30 @@ import {Link, useParams} from "react-router-dom";
 // import { Link } from "react-router-dom";
 import {bookingData} from "../Redux/Features";
 import {useNavigate} from "react-router-dom";
+import {Button} from "antd";
+import {Input, InputNumber} from "antd";
 // import ClearBookingModal from "../ExitModal/Modal";
 // import { useComments } from '../Redux/Context';
+// import { useNavigate } from 'react-router-dom';
 
 const DescPage = () => {
     const {tourId} = useParams();
     const [loadingComment, setLoadingComment] = useState(false);
-    const [rating, setRating] = useState();
+    const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
     const nav = useNavigate();
+
+    const navigate = useNavigate();
+
     const [isLoading, setLoading] = useState(false);
 
 
-    const findOneTourData = useSelector((state) => state.Trippy.findOneTourData);
+
+
+
+    const findOneTourData = useSelector(
+        (state) => state.Trippy.findOneTourData
+    );
     console.log(findOneTourData);
 
     useEffect(() => {
@@ -42,6 +53,14 @@ const DescPage = () => {
     // const [comments, setComments] = useState([]);
 
     const handleCommentUpload = () => {
+        if (rating === 0){
+            alert('Please select a rating');
+            return
+        }
+        if (!comment){
+            alert('Please Write a comment')
+            return
+        }
         setLoadingComment(true);
         console.log("Waiting comment");
         const token = userToken;
@@ -100,6 +119,33 @@ const DescPage = () => {
             console.log("new comment reset to []");
         }
     };
+
+    const handleBackToTour = () => {
+        navigate(-1);
+    };
+
+    const StarRating = ({ rating }) => {
+        const filledStars = Array.from({ length: rating }).fill(null);
+        const emptyStars = Array.from({ length: 5 - rating }).fill(null);
+
+        return (
+            <div className="Rating">
+                {filledStars.map((_, index) => (
+                    <AiFillStar
+                        style={{ width: "15%", height: "100%" }}
+                        key={`filled-${index}`}
+                    />
+                ))}
+                {emptyStars.map((_, index) => (
+                    <AiOutlineStar
+                        style={{ width: "15%", height: "100%" }}
+                        key={`empty-${index}`}
+                    />
+                ))}
+            </div>
+        );
+    };
+    
 
     if (userToken === undefined) {
         return (
@@ -303,11 +349,13 @@ const DescPage = () => {
                                                                                             "80px",
                                                                                     }}
                                                                                 >
-                                                                                    <AiFillStar />
+                                                                                    {/* <AiFillStar />
                                                                                     <AiFillStar />
                                                                                     <AiFillStar />
                                                                                     <AiOutlineStar />
-                                                                                    <AiOutlineStar />
+                                                                                    <AiOutlineStar /> */}
+                                        <StarRating rating={item?.star} />
+
                                                                                 </span>
                                                                             </p>
                                                                         </div>
@@ -396,8 +444,7 @@ const DescPage = () => {
                                                     {userToken ? (
                                                         <>
                                                             <div className="DescDownDetailsInitialsDownBox">
-                                                                <input
-                                                                    type="number"
+                                                                <InputNumber
                                                                     min={0}
                                                                     max={5}
                                                                     placeholder="0"
@@ -405,17 +452,18 @@ const DescPage = () => {
                                                                         rating
                                                                     }
                                                                     onChange={(
-                                                                        e
+                                                                        value
                                                                     ) =>
                                                                         setRating(
-                                                                            e
-                                                                                .target
-                                                                                .value
+                                                                            value
                                                                         )
                                                                     }
+                                                                    size="large"
+                                                                    style={{
+                                                                        width: "70px",
+                                                                    }}
                                                                 />
-                                                                <input
-                                                                    type="text"
+                                                                <Input
                                                                     placeholder="Your Comment"
                                                                     className="DescDownDetailsInitialsDownCmt"
                                                                     value={
@@ -431,10 +479,12 @@ const DescPage = () => {
                                                                         )
                                                                     }
                                                                 />
-                                                                <button
+                                                                <Button
+                                                                    type="primary"
                                                                     onClick={
                                                                         handleCommentUpload
                                                                     }
+                                                                    
                                                                 >
                                                                     {loadingComment ? (
                                                                         <SpinnerCircular
@@ -445,7 +495,7 @@ const DescPage = () => {
                                                                     ) : (
                                                                         "Post"
                                                                     )}
-                                                                </button>
+                                                                </Button>
                                                             </div>
                                                         </>
                                                     ) : (
@@ -525,19 +575,15 @@ const DescPage = () => {
                                                                                 {
                                                                                     item?.postedTime
                                                                                 }
-                                                                                <span
-                                                                                    style={{
-                                                                                        marginLeft:
-                                                                                            "80px",
-                                                                                    }}
-                                                                                >
-                                                                                    <AiFillStar />
-                                                                                    <AiFillStar />
-                                                                                    <AiFillStar />
-                                                                                    <AiOutlineStar />
-                                                                                    <AiOutlineStar />
-                                                                                </span>
                                                                             </p>
+                                                                            <span>
+                                                                                {/* <AiFillStar />
+                                                                                <AiFillStar />
+                                                                                <AiFillStar />
+                                                                                <AiOutlineStar />
+                                                                                <AiOutlineStar /> */}
+                                                                                <StarRating rating={item?.star} />
+                                                                            </span>
                                                                         </div>
                                                                     </div>
                                                                     <div className="ReviewComment1Text">
@@ -557,11 +603,13 @@ const DescPage = () => {
                                         </div>
 
                                         <div className="DescButtonBook">
+
                                             <button>Back</button>
                                             <button onClick={HandleBookNow} disabled={isLoading}>
                                             {isLoading ? 'Loading...' : 'Book Now'}
                                                 {/* Book Now */}
                                             </button>
+
                                         </div>
                                     </div>
                                 </div>

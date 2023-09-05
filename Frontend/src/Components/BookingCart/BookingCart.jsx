@@ -43,7 +43,13 @@ const BookingCart = () => {
 
     // console.log('GPT', mergedObject);
     const NewCartData = [mergedObject];
-    console.log("My Final", NewCartData);
+    const newCarData = NewCartData[0].carData;
+    const newHotelData = NewCartData[0].hotelData;
+    const newFlightData = NewCartData[0].flightData;
+    console.log("New Car", newCarData);
+    console.log("New Hotel", newHotelData);
+    console.log("New Flight", newFlightData);
+    // console.log("My Final", NewCartData);
 
     const [tourTickets, setTourTickets] = useState(0);
 
@@ -208,102 +214,67 @@ const BookingCart = () => {
                                 <img src={item?.tourData[0].images[0]} alt="" />
                             </div>
                             <div className="CocoTopTourDetailsDiv">
-                                <div className="CocoTopTourDetailsDivOne">
-                                    <h2>
-                                        {item?.tourData[0].tourName}
-                                        <span
-                                            style={{
-                                                marginLeft: "30px",
-                                                fontSize: "19px",
-                                                textTransform: "capitalize",
-                                            }}
+                                <div className="CocoTopTourDetailsDiv1">
+                                    <h3> Nairobi Safari</h3>
+                                    <span>
+                                        <AiFillStar />
+                                        <AiFillStar />
+                                        <AiFillStar />
+                                        <AiOutlineStar />
+                                        <AiOutlineStar />
+                                    </span>
+                                </div>
+                                <div className="CocoTopTourDetailsDiv2">
+                                    <p>Price Per Person: 1500</p>
+                                    <p>Total Tour Price</p>
+                                </div>
+                                <div className="CocoTopTourDetailsDiv3">
+                                    <Form.Item label="No Of Tickets">
+                                        <InputNumber
+                                            min={0}
+                                            defaultValue={0}
+                                            value={tourTickets}
+                                            onChange={(value) =>
+                                                setTourTickets(value)
+                                            }
+                                        />
+                                    </Form.Item>
+                                </div>
+                                <div className="CocoTopTourDetailsDiv4">
+                                    <div className="CocoTopTourDetailsDiv4Left">
+                                        <label htmlFor="Name">
+                                            Name of Tourist
+                                        </label>
+                                        <Input
+                                            required
+                                            placeholder="Input Name"
+                                            value={touristName}
+                                            onChange={(e) =>
+                                                setTouristName(e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <div className="CocoTopTourDetailsDiv4Right">
+                                        <Button
+                                            type="primary"
+                                            onClick={handleAddName}
+                                            style={{width: "100px"}}
                                         >
-                                            {item?.tourData[0].city}
-                                        </span>
-                                    </h2>
-                                    <h3>
-                                        Country: {item?.tourData[0].country}
-                                    </h3>
-                                    <div className="CocoTopTourDetailsDivStar">
-                                        <AiFillStar />
-                                        <AiFillStar />
-                                        <AiFillStar />
-                                        <AiOutlineStar />
-                                        <AiOutlineStar />
+                                            Add Name
+                                        </Button>
+                                        <Button
+                                            onClick={handleClearAllNames}
+                                            style={{width: "100px"}}
+                                        >
+                                            Clear Names
+                                        </Button>
                                     </div>
                                 </div>
-                                <div className="CocoTopTourDetailsDivTwo">
-                                    <div className="CocoTopTourDetailsDivTwoSpan1">
-                                        <h2>Tour Info:</h2>
-                                        <p>
-                                            Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Alias
-                                            adipisci cupiditate earum
-                                            consequatur, dolores aut veniam, in
-                                            nobis nostrum quos omnis iure ad
-                                            fugiat culpa placeat, sequi facilis
-                                            ipsam eos!
-                                        </p>
-                                    </div>
-                                    <div className="CocoTopTourDetailsDivTwoSpan2">
-                                        <h2>Amenities</h2>
-                                        <p>{item?.tourData[0].amenities}</p>
-                                    </div>
-                                    <div className="CocoTopTourDetailsDivInputs">
-                                        <h3>
-                                            Price Per Person:
-                                            {item?.tourData[0].pricePerPerson}
-                                            <span>
-                                                Total Tour Price{" "}
-                                                {totalTourPrice}
-                                            </span>
-                                        </h3>
-                                        <div className="CocoTopTourDetailsDivInputsNum">
-                                            <Form.Item label="No Of Tickets">
-                                                <InputNumber
-                                                    min={0}
-                                                    defaultValue={0}
-                                                    value={tourTickets}
-                                                    onChange={(value) =>
-                                                        setTourTickets(value)
-                                                    }
-                                                />
-                                            </Form.Item>
-                                        </div>
-                                        <div className="CocoTopTourDetailsDivInputsName">
-                                            <label htmlFor="Name">
-                                                Name of Tourist
-                                            </label>
-                                            <Input
-                                                required
-                                                placeholder="Input Name"
-                                                value={touristName}
-                                                onChange={(e) =>
-                                                    setTouristName(
-                                                        e.target.value
-                                                    )
-                                                }
-                                            />
-                                            <Button
-                                                onClick={handleAddName}
-                                                style={{width: "100px"}}
-                                            >
-                                                Add Name
-                                            </Button>
-                                            <Button
-                                                onClick={handleClearAllNames}
-                                                style={{width: "100px"}}
-                                            >
-                                                Clear Names
-                                            </Button>
-                                        </div>
-                                    </div>
-                                    <div className="CocoTopTourDetailsDivTouristName">
-                                        <p>
-                                            All Names:
-                                            {allTouristNames.join(", ")}
-                                        </p>
-                                    </div>
+                                <div className="CocoTopTourDetailsDiv5">
+                                    <p>
+                                        All Names:
+                                        {allTouristNames.join(", ")}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -353,16 +324,23 @@ const BookingCart = () => {
                                                 }
                                             </p>
                                             <p>
-                                                <Form.Item label="Date">
+                                                <Form.Item
+                                                    label="Date"
+                                                    style={{marginBottom: "0"}}
+                                                >
                                                     <DatePicker
                                                         value={flyOutDate}
                                                         onChange={(date) => {
                                                             setFlyOutDate(date);
                                                         }}
+                                                        className="juana"
                                                     />
                                                 </Form.Item>
                                             </p>
-                                            <Form.Item label="Select Price">
+                                            <Form.Item
+                                                label="Select Price"
+                                                style={{marginBottom: "0"}}
+                                            >
                                                 <Select
                                                     value={flyOut}
                                                     onChange={(value) => {
@@ -406,6 +384,9 @@ const BookingCart = () => {
                                                 }
                                                 alt=""
                                             />
+                                            <p className="CocoTourFlightDivText">
+                                                Total Price: {flightPrice}
+                                            </p>
                                         </div>
                                         <div className="CocoTourFlightDivRightDetailsDiv">
                                             <h3>Fly Back Detail</h3>
@@ -438,7 +419,10 @@ const BookingCart = () => {
                                                 }
                                             </p>
                                             <p>
-                                                <Form.Item label="Date">
+                                                <Form.Item
+                                                    label="Date"
+                                                    style={{marginBottom: "0"}}
+                                                >
                                                     <DatePicker
                                                         value={flyBackDate}
                                                         onChange={(date) => {
@@ -449,7 +433,10 @@ const BookingCart = () => {
                                                     />
                                                 </Form.Item>
                                             </p>
-                                            <Form.Item label="Select Price">
+                                            <Form.Item
+                                                label="Select Price"
+                                                style={{marginBottom: "0"}}
+                                            >
                                                 <Select
                                                     value={flyBack}
                                                     onChange={(value) => {
@@ -484,9 +471,6 @@ const BookingCart = () => {
                                             </Form.Item>
                                         </div>
                                     </div>
-                                    <p className="CocoTourFlightDivText">
-                                        Total Flight Price: {flightPrice}
-                                    </p>
                                 </div>
                                 <div className="CocoTourHotelDiv">
                                     <div className="CocoTourHotelDivImgDiv">
@@ -502,12 +486,7 @@ const BookingCart = () => {
                                                 {item?.hotelData[0].city}
                                             </span>
                                         </h3>
-                                        <p>
-                                            {item?.hotelData[0].address}{" "}
-                                            <span>
-                                                {item?.hotelData[0].country}
-                                            </span>
-                                        </p>
+                                        <p>{item?.hotelData[0].address} </p>
                                         <p>
                                             Check In:{" "}
                                             {item?.hotelData[0].checkIn}{" "}
@@ -526,7 +505,10 @@ const BookingCart = () => {
                                             </span>
                                         </p>
                                         <div className="CocoHotelTourNights2">
-                                            <Form.Item label="CheckIn Date">
+                                            <Form.Item
+                                                label="CheckIn Date"
+                                                style={{marginBottom: "0"}}
+                                            >
                                                 <DatePicker
                                                     value={checkIn}
                                                     onChange={(date) => {
@@ -534,7 +516,10 @@ const BookingCart = () => {
                                                     }}
                                                 />
                                             </Form.Item>
-                                            <Form.Item label="CheckOut Date">
+                                            <Form.Item
+                                                label="CheckOut Date"
+                                                style={{marginBottom: "0"}}
+                                            >
                                                 <DatePicker
                                                     value={checkOut}
                                                     onChange={(date) => {
@@ -544,7 +529,10 @@ const BookingCart = () => {
                                             </Form.Item>
                                         </div>
                                         <div className="CocoHotelTourNights">
-                                            <Form.Item label="Nights">
+                                            <Form.Item
+                                                label="Nights"
+                                                style={{marginBottom: "0"}}
+                                            >
                                                 <InputNumber
                                                     min={1}
                                                     value={noOfNights}
@@ -553,7 +541,10 @@ const BookingCart = () => {
                                                     }}
                                                 />
                                             </Form.Item>
-                                            <Form.Item label="No of rooms">
+                                            <Form.Item
+                                                label="No of rooms"
+                                                style={{marginBottom: "0"}}
+                                            >
                                                 <InputNumber
                                                     min={1}
                                                     value={noOfRooms}
@@ -566,75 +557,87 @@ const BookingCart = () => {
                                         <p>Total Hotel Price {hotelPrice}</p>
                                     </div>
                                 </div>
-                                <div className="CocoTourCarDiv">
-                                    <div className="CocoTourCarDivImgDiv">
-                                        <img
-                                            src={item?.carData[0].image}
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="CocoTourCarDivDetailsDiv">
-                                        <h3>
-                                            {item?.carData[0].brand}{" "}
-                                            <span>
-                                                {item?.carData[0].model}
-                                            </span>
-                                        </h3>
-                                        <p>
-                                            {" "}
-                                            Max No Of Passengers
-                                            {
-                                                item?.carData[0].maxPassengers
-                                            }{" "}
-                                            <span style={{marginLeft: "20px"}}>
-                                                {" "}
-                                                Color:
-                                                {item?.carData[0].color}
-                                            </span>
-                                        </p>
 
-                                        <p>
-                                            Location:{" "}
-                                            {item?.carData[0].location}
-                                        </p>
-                                        <div className="CocoCarNoOfDays">
-                                        <p>
-                                            Price Per Day{" "}
-                                            {item?.carData[0].pricePerDay}
-                                            {}
-                                        </p>
-                                        <Form.Item label="No of days">
-                                            <InputNumber
-                                                min={0}
-                                                value={carDays}
-                                                onChange={(value) => {
-                                                    setCarDays(value); // Update the selected value
-                                                }}
-                                            />
-                                        </Form.Item>
-                                        </div>
-                                        <div className="CocoCarNoOfDays">
-                                        <p>
-                                            Reg No:
-                                            {
-                                                item?.carData[0]
-                                                    .registrationNumber
-                                            }
-                                        </p>
-                                        
-                                            <Form.Item label='Rental Date'>
-                                                <DatePicker
-                                                    value={carDate}
-                                                    onChange={(date) => {
-                                                        setCarDate(date); // Update the selected date
-                                                    }}
-                                                />
-                                            </Form.Item>
-                                        
-                                        </div>
-                                        <p>Total Price {rentalPrice}</p>
+                                {newCarData.map((item, index) => (
+                                    <div className="CocoTourCarDiv" key={index}>
+                                        <>
+                                            <div className="CocoTourCarDivImgDiv">
+                                                <img src={item?.image} alt="" />
+                                            </div>
+                                            <div className="CocoTourCarDivDetailsDiv">
+                                                <h3>
+                                                    {item?.brand}{" "}
+                                                    <span>{item?.model}</span>
+                                                </h3>
+                                                <p>
+                                                    {" "}
+                                                    Max No Of Passengers
+                                                    {item?.maxPassengers}{" "}
+                                                    <span
+                                                        style={{
+                                                            marginLeft: "20px",
+                                                        }}
+                                                    >
+                                                        {" "}
+                                                        Color:
+                                                        {item?.color}
+                                                    </span>
+                                                </p>
+
+                                                <p>
+                                                    Location: {item?.location}
+                                                </p>
+                                                <div className="CocoCarNoOfDays">
+                                                    <p>
+                                                        Price Per Day{" "}
+                                                        {item?.pricePerDay}
+                                                        {}
+                                                    </p>
+                                                    <Form.Item label="No of days">
+                                                        <InputNumber
+                                                            min={0}
+                                                            value={carDays}
+                                                            onChange={(
+                                                                value
+                                                            ) => {
+                                                                setCarDays(
+                                                                    value
+                                                                ); // Update the selected value
+                                                            }}
+                                                        />
+                                                    </Form.Item>
+                                                </div>
+                                                <div className="CocoCarNoOfDays">
+                                                    <p>
+                                                        Reg No:
+                                                        {
+                                                            item?.registrationNumber
+                                                        }
+                                                    </p>
+
+                                                    <Form.Item
+                                                        label="Rental Date"
+                                                        style={{
+                                                            display: "flex",
+                                                        }}
+                                                    >
+                                                        <DatePicker
+                                                            value={carDate}
+                                                            onChange={(
+                                                                date
+                                                            ) => {
+                                                                setCarDate(
+                                                                    date
+                                                                ); // Update the selected date
+                                                            }}
+                                                        />
+                                                    </Form.Item>
+                                                </div>
+                                                <p>Total Price {rentalPrice}</p>
+                                            </div>
+                                        </>
                                     </div>
-                                </div>
+                                ))}
                             </div>
                             <div className="CocoRight">
                                 <div className="CocoPayment">

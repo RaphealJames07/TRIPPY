@@ -240,6 +240,7 @@
   border-radius: 5px;
   border: 1px solid #000;
   font-size: 16px;
+  background: #00B4D8;
 }
 .ContiCTABtnRev button:active{
   transform: scale(0.95);
@@ -327,26 +328,42 @@
     width: max-content;
     height: 100%;
     cursor: pointer;
-    background: #ffffff42;
+    background: #00B4D8;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    background: rgb(255, 255, 255);
     flex: 0 0 auto;
     user-select: none;
     padding: 0 10%;
+    color: #fff;
+  transition: all 0.5s;
+  }
+  .ContiNav ul li:hover{
+    width: max-content;
+    height: 100%;
+    cursor: pointer;
+    background: #2eceee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    flex: 0 0 auto;
+    user-select: none;
+    padding: 0 10%;
+    color: #fff;
   }
   
   .ContiNav ul li.active{
     width: max-content;
     height: 100%;
     cursor: pointer;
-    background: #00000042;
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
+    color: #000;
   }
   
   

@@ -47,7 +47,7 @@ const Hero = () => {
     const [emptyResult, setSetEmptyResult] = useState(false);
 
     const handleHeroSearch = (e) => {
-        if (!city && !country) {
+        if (!city || !country) {
             setModalTwoVisible(true);
             return
         }

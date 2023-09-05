@@ -1,380 +1,272 @@
-import {useState} from "react";
-import "./ThreeSum.css";
-import {Button, Collapse, Modal, Select} from "antd";
-const {Option} = Select;
-import {useDispatch} from "react-redux";
-import axios from "axios";
-import {flightData} from "../Redux/Features";
+import Logo from "../../assets/Logo.png";
+// import {Fade} from "react-awesome-reveal";
 import {useSelector} from "react-redux";
-import {clearFlightData} from "../Redux/Features";
-import {bookingData} from "../Redux/Features";
+import {Link, NavLink} from "react-router-dom";
+import {trippyUserLogOut} from "../Redux/Features";
+import {useDispatch} from "react-redux";
+import { BiUser } from "react-icons/bi";
+import {useState} from "react";
+import './HeaderNew.css'
+import {GiHamburgerMenu} from "react-icons/gi";
+import {TbLetterX} from 'react-icons/tb'
+import { Button, Modal } from 'antd';
 
-const TheThreeAD = () => {
-    const [popupVisible, setPopupVisible] = useState(false);
-    const [popupContent, setPopupContent] = useState("");
-
-    const {Panel} = Collapse;
-
-    const items = [
-        {
-            key: "1",
-            label: (
-                <h4 style={{display: "flex", justifyContent: "space-between"}}>
-                    Flights{" "}
-                    <span>
-                        <Button
-                            type="primary"
-                            onClick={(event) => openPopup(event, "Flight")}
-                        >
-                            Click To Add Flight
-                        </Button>
-                    </span>
-                </h4>
-            ),
-            items: (
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Itaque distinctio voluptatibus suscipit ea quidem eum
-                    consequuntur quisquam, id impedit quam delectus fugit
-                    aliquid temporibus alias incidunt quo beatae maxime eaque
-                    totam omnis dolores atque, voluptates vitae? Repellat,
-                    officia earum. Magni esse quidem nulla doloribus tempora.
-                    Exercitationem ratione dolorum illo soluta?
-                </p>
-            ),
-        },
-        {
-            key: "2",
-            label: (
-                <h4 style={{display: "flex", justifyContent: "space-between"}}>
-                    Hotel{" "}
-                    <span>
-                        <Button
-                            type="primary"
-                            onClick={(event) => openPopup(event, "Hotel")}
-                        >
-                            Click To Add Hotel
-                        </Button>
-                    </span>
-                </h4>
-            ),
-            items: (
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aspernatur expedita nulla temporibus quasi cupiditate
-                    pariatur sed id fugiat rem voluptas excepturi laboriosam
-                    totam sit dolorum aperiam dolor illum dolores, placeat nihil
-                    voluptatibus! Cupiditate voluptatum atque distinctio est
-                    harum doloremque quibusdam animi placeat alias, accusamus,
-                    vitae, nam beatae quo? Adipisci, cumque.
-                </p>
-            ),
-            className: "ant-collapse-header ThreeHeader2",
-        },
-        {
-            key: "3",
-            label: (
-                <h4 style={{display: "flex", justifyContent: "space-between"}}>
-                    Car{" "}
-                    <span>
-                        <Button
-                            type="primary"
-                            onClick={(event) => openPopup(event, "Car")}
-                        >
-                            Click To Add Car
-                        </Button>
-                    </span>
-                </h4>
-            ),
-            items: (
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Atque, praesentium quis neque beatae recusandae
-                    reprehenderit dolores quia repellendus architecto nisi
-                    aperiam molestias ipsum harum labore sequi aliquam et
-                    exercitationem ducimus cumque autem facere! Aliquam aliquid
-                    iure sequi eaque, obcaecati illo, natus atque soluta
-                    deleniti deserunt unde quam. Blanditiis, excepturi ad.
-                </p>
-            ),
-        },
-    ];
-
-    const openPopup = (event, content) => {
-        event.stopPropagation();
-        setPopupVisible(true);
-        setPopupContent(content);
-    };
-
-    const closePopup = () => {
-        setPopupVisible(false);
-        setPopupContent("");
-    };
-
-    const [fromFlight, setFromFlight] = useState("");
-    const [toFlight, setToFlight] = useState("");
-    const [froFlight, setFroFlight] = useState("");
-    const [troFlight, setTroFlight] = useState("");
-    const [showResult, setShowResult] = useState(false);
-
+const HeaderLone = () => {
     const dispatch = useDispatch();
 
-    const handleFlightSearch = () => {
-        console.log("Search clicked");
-        const url = `https://trippyapiv1.onrender.com/trippy/find-flights/?from=${encodeURIComponent(
-            fromFlight
-        )}&to=${encodeURIComponent(toFlight)}`;
-
-        axios
-            .get(url)
-            .then((res) => {
-                console.log(res.data);
-                dispatch(flightData(res.data.flights));
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+    const [popUp, setPopUp] = useState(false);
+    const [hoverUp, setHoverUp] = useState(false);
+    const [logoutModalVisible, setLogoutModalVisible] = useState(false);
+    const toggleLogoutModal = () => {
+        setLogoutModalVisible(!logoutModalVisible);
     };
 
-    const handleShowResult = () => {
-        setShowResult(true);
-        handleFlightSearch();
-    };
-    const flightDataToMap = useSelector(
-        (state) => state.Trippy.trippyFlightData
-    );
-
-    const handleAddFlight = (selectedFlight) => {
-        const selectedFlightData = {
-            flightData: selectedFlight,
-        };
-        dispatch(bookingData(selectedFlightData));
-        dispatch(clearFlightData());
-        // alert("Flight added successfully");
+    const handleLogout = () => {
+        dispatch(trippyUserLogOut());
+        toggleLogoutModal();
     };
 
-    console.log(flightDataToMap);
+    const toggleHoverNav = () => {
+        setHoverUp(!hoverUp);
+    };
+
+    const togglePopUp = () => {
+        setPopUp(!popUp);
+    };
+
+    const [showNav, setShowNav] = useState(false);
+
+    const toggleNav = () => {
+        setShowNav(true);
+    };
+    const toggleNavRemove = () => {
+        setShowNav(false);
+    };
+
+    const user = useSelector((state) => state.Trippy.trippyUser);
+
     return (
-        <div>
-            <Collapse accordion defaultActiveKey={[""]} size="large">
-                {items.map((item) => (
-                    <Panel key={item.key} header={item.label}>
-                        {item.items}
-                    </Panel>
-                ))}
-            </Collapse>
-
-            <Modal
-                open={popupVisible}
-                onCancel={closePopup}
-                footer={null}
-                className="ThreeSearchPopUpBody"
-            >
-                <div className="ThreeSearchPopUpBodyWrap">
-                    <div className="ThreeSearchHead">
-                        <p>{`This is the ${popupContent} popup.`}</p>
+        <>
+            <div className="HeaderNewTopDiv">
+                <div className="HeaderNewTopDivWrap">
+                    <div className="HeaderNewTopDivLeft">
+                        <Link>
+                            <img src={Logo} alt="" />
+                        </Link>
                     </div>
-
-                    <div className="ThreeSearchSelects">
-                        <div className="ThreeSearchSelectsDiv">
-                            <label htmlFor="">Travel Ticket</label>
-                            <Select
-                                placeholder="Select Origin Airport"
-                                onChange={(value) => setFromFlight(value)}
-                                value={fromFlight}
-                                className="Tuface"
+                    <nav>
+                        <ul>
+                            <Link to="/HeaderNew" className="NavLink">
+                                <li>Home</li>
+                            </Link>
+                            <Link to="/Explore" className="NavLink">
+                                <li>Explore</li>
+                            </Link>
+                            <Link to='/MyBookings' className="NavLink">
+                                {" "}
+                                <li>My Bookings</li>
+                            </Link>
+                            <Link
+                                className="NavLink Itinerary"
+                                onClick={() => toggleHoverNav(true)}
                             >
-                                <Option
-                                    value=""
-                                    onChange={(e) => e.target.value}
-                                >
-                                    From
-                                </Option>
-                                <Option
-                                    value="lagos"
-                                    onChange={(e) => e.target.value}
-                                >
-                                    Lagos
-                                </Option>
-                                <Option
-                                    value="accra"
-                                    onChange={(e) => e.target.value}
-                                >
-                                    Accra
-                                </Option>
-                                <Option
-                                    value="nairobi"
-                                    onChange={(e) => e.target.value}
-                                >
-                                    Nairobi
-                                </Option>
-                            </Select>
-                            <label htmlFor="">Flight destination</label>
-                            <Select
-                                placeholder="Select Destination Airport"
-                                onChange={(value) => setToFlight(value)}
-                                value={toFlight}
-                                className="Tuface"
-                            >
-                                <Option
-                                    value=""
-                                    onChange={(e) => e.target.value}
-                                >
-                                    To
-                                </Option>
-                                <Option
-                                    value="nairobi"
-                                    onChange={(e) => e.target.value}
-                                >
-                                    Nairobi
-                                </Option>
-                                <Option
-                                    value="cairo"
-                                    onChange={(e) => e.target.value}
-                                >
-                                    Cairo
-                                </Option>
-                                <Option
-                                    value="lagos"
-                                    onChange={(e) => e.target.value}
-                                >
-                                    Lagos
-                                </Option>
-                            </Select>
-                        </div>
-                        <div className="ThreeSearchSelectsBtn">
-                            <Button type="primary" onClick={handleShowResult}>
-                                Search
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="ThreeSearchSelects">
-                        <div className="ThreeSearchSelectsDiv">
-                            <label htmlFor="">Return Ticket</label>
-                            <Select
-                                placeholder="Select Origin Airport"
-                                onChange={(value) => setFroFlight(value)}
-                                value={froFlight}
-                                className="Tuface"
-                            >
-                                <Option value="">From</Option>
-                                <Option value="lagos">Lagos</Option>
-                                <Option value="accra">Accra</Option>
-                                <Option value="nairobi">Nairobi</Option>
-                            </Select>
-                            <label htmlFor="">Flight destination</label>
-                            <Select
-                                placeholder="Select Destination Airport"
-                                onChange={(value) => setTroFlight(value)}
-                                value={troFlight}
-                                className="Tuface"
-                            >
-                                <Option value="">To</Option>
-                                <Option value="nairobi">Nairobi</Option>
-                                <Option value="cairo">Cairo</Option>
-                                <Option value="lagos">Lagos</Option>
-                            </Select>
-                        </div>
-                        <div className="ThreeSearchSelectsBtn">
-                            <Button type="primary" onClick={handleShowResult}>
-                                Search
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="ThreeSearchResults">
-                        {showResult && (
+                                <li>
+                                    Itinerary <span> &#9660;</span>
+                                </li>
+                            </Link>
+                            <Link className="NavLink" to="/About">
+                                <li>About Us</li>
+                            </Link>
+                        </ul>
+                        {hoverUp ? (
                             <>
-                                {flightDataToMap.map((item, index) => (
-                                    <div
-                                        className="ThreeSearchResultsItem1"
-                                        key={index}
-                                    >
-                                        <div
-                                            className="ThreeSearchResultsItem1"
-                                            key={index}
+                                <div
+                                    className="ItineraryPopUp"
+                                    onMouseLeave={() => toggleHoverNav(false)}
+                                >
+                                    <ul>
+                                        <Link
+                                            to="/NewFlight"
+                                            className="NavLink"
                                         >
-                                            <div className="ThreeSearchResultsItem1ImgDiv">
-                                                <img
-                                                    src={item?.airlineLogo}
-                                                    alt=""
-                                                />
-                                            </div>
-                                            <div className="ThreeSearchResultsItem1Details">
-                                                <p>
-                                                    Airline Name:{" "}
-                                                    {item?.airlineName}
-                                                </p>
-                                                <p
-                                                    style={{
-                                                        display: "flex",
-                                                        justifyContent:
-                                                            "space-between",
-                                                    }}
-                                                >
-                                                    From: {item?.from}
-                                                    <span>To: {item?.to}</span>
-                                                </p>
-                                                <p
-                                                    style={{
-                                                        display: "flex",
-                                                        justifyContent:
-                                                            "space-between",
-                                                    }}
-                                                >
-                                                    Price Flex:{" "}
-                                                    {item?.priceFlex}
-                                                    <span>
-                                                        Price Standard:{" "}
-                                                        {item?.priceStandard}
-                                                    </span>
-                                                </p>
-                                            </div>
-                                            <div className="ThreeSearchResultsItem1Btn">
-                                                <Button
-                                                    type="primary"
-                                                    onClick={()=>handleAddFlight(
-                                                        item
-                                                    )}
-                                                >{`Add ${popupContent}`}</Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
+                                            <li>Flights</li>
+                                        </Link>
+                                        <Link
+                                            to="/NewHotel"
+                                            className="NavLink"
+                                        >
+                                            <li>Hotels</li>
+                                        </Link>
+                                        <Link to="/NewCar" className="NavLink">
+                                            <li>Cars</li>
+                                        </Link>
+                                    </ul>
+                                </div>
                             </>
-                        ) 
-                            
-                        }
+                        ) : null}
+                    </nav>
+
+                    <div className="HeaderNewTopNavs">
+                        <div className="HeaderNewTopHamBurger">
+                            <GiHamburgerMenu
+                                className="GiHamburgerMenu"
+                                onClick={toggleNav}
+                            />
+                        </div>
+
+                        {showNav ? (
+                            <>
+                                <div className="HeaderLoneNavBody">
+                                    <div className="HeaderLoneNavTop">
+                                        <img src={Logo} alt="" />
+                                        <TbLetterX className="TbLetterX" onClick={toggleNavRemove}/>
+                                    </div>
+                                    <div className="HeaderLoneNavDown">
+                                        <ul>
+                                            <Link
+                                                to="/HeaderNew"
+                                                className="HeaderLoneNavDownLinks"
+                                            >
+                                                <li>Home</li>
+                                            </Link>
+                                            <Link
+                                                to="/Explore"
+                                                className="HeaderLoneNavDownLinks"
+                                            >
+                                                <li>Explore</li>
+                                            </Link>
+                                            <Link to='/MyBookings' className="HeaderLoneNavDownLinks">
+                                                <li>My Bookings</li>
+                                            </Link>
+                                            <Link to='/NewHotel' className="HeaderLoneNavDownLinks">
+                                                <li>Hotels</li>
+                                            </Link>
+                                            <Link to='/NewCar' className="HeaderLoneNavDownLinks">
+                                                <li>Cars</li>
+                                            </Link>
+                                            <Link to='/NewFlight' className="HeaderLoneNavDownLinks">
+                                                <li>Flights</li>
+                                            </Link>
+                                            <Link
+                                                to="/About"
+                                                className="HeaderLoneNavDownLinks"
+                                            >
+                                                <li>About Us</li>
+                                            </Link>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </>
+                        ) : null}
+
+                        <div className="HeaderNewTopDivRight">
+                            <div
+                                className="HeaderNewTopDivRightCircle"
+                                onClick={() => togglePopUp(!popUp)}
+                                style={{
+                                    textTransform: "capitalize",
+                                    border: user
+                                        ? "2px solid green"
+                                        : "2px solid grey",
+                                }}
+                            >
+                                {user ? (
+                                    <>
+                                        {user.firstName.charAt(0)}{" "}
+                                        {user.lastName.charAt(0)}
+                                    </>
+                                ) : (
+                                    <>
+                                        <BiUser className="BiUserCircle" />
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {popUp ? (
+                    <>
+                        <div
+                            className="HeaderAccPopUp"
+                            onMouseLeave={() => togglePopUp(!popUp)}
+                        >
+                            <div className="HeaderAccPopUpTop">
+                                <div
+                                    className="HeaderAccPopUpTopIcon"
+                                    style={{textTransform: "capitalize"}}
+                                >
+                                    {user ? (
+                                        <>
+                                            {user.firstName.charAt(0)}{" "}
+                                            {user.lastName.charAt(0)}
+                                        </>
+                                    ) : (
+                                        ""
+                                    )}
+                                </div>
+                                <div className="HeaderAccPopUpTopText">
+                                    <h3
+                                        style={{
+                                            textTransform: "capitalize",
+                                        }}
+                                    >
+                                        {user ? (
+                                            <>
+                                                {user.firstName} {user.lastName}
+                                            </>
+                                        ) : (
+                                            "Sign Up Please"
+                                        )}
+                                    </h3>
+                                    <p>{user ? <>{user.email}</> : null}</p>
+                                </div>
+                            </div>
+                            <div className="HeaderAccPopUpDown">
+                                <ul>
+                                    <NavLink className='li' style={{textDecoration:'none', color:'#000'}} to='/WishList'><li>WishList</li></NavLink>
+                                    <NavLink className='li' style={{textDecoration:'none', color:'#000'}} to='/Account'><li>Account</li></NavLink>
+                                    <li>Help/FAQ</li>
+                                </ul>
+                                <div className="HeaderAccPopUpDownBtns">
+                                    {user ? (
+                                        <>
+                                            <div className="HeaderAccPopUpDownBtns1">
+                                            <button onClick={toggleLogoutModal}>Logout</button>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div className="HeaderAccPopUpDownBtns2">
+                                            <Link to="/Login">
+                                                <button>Log In</button>
+                                            </Link>
+                                            <Link to="/SignUp">
+                                                <button>Sign Up</button>
+                                            </Link>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                ) : null}
+            </div>
+            <Modal
+                visible={logoutModalVisible}
+                onCancel={toggleLogoutModal}
+                footer={null}
+            >
+                <div>
+                    <h2>Confirm Logout</h2>
+                    <p>Are you sure you want to logout?</p>
+                    <div>
+                        <Button type="default" onClick={toggleLogoutModal} size="large" style={{margin:'10px', width:'80px'}}>No</Button>
+                        <Button type="primary"  onClick={handleLogout} size="large" style={{margin:'10px', width:'80px'}}>Yes</Button>
                     </div>
                 </div>
             </Modal>
-        </div>
+        </>
     );
 };
 
-export default TheThreeAD;
-
- {
-                                    heroData?.map((item, index)=>(
-                                        <div className="PlayCardItem1" key={index}>
-                                        <div className="PlayCardImgDiv">
-                                            <img src={item?.images[0]} alt="" />
-                                        </div>
-                                        <div className="PlayCardDetailsDiv">
-                                            <div className="PlayCardDetails1">
-                                                {item?.tourName}
-                                            </div>
-                                            <div className="PlayCardDetails2">
-                                               {item?.city}{" "}
-                                                <span>{item?.country}</span>
-                                            </div>
-                                            <div className="PlayCardDetails3">
-                                                Tour Price: {item?.pricePerPerson}{" "}
-                                                <span>Rating: {item?.starRating}</span>
-                                            </div>
-                                            <div className="PlayCardDetails4">
-                                                <Button>View More</Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    ))
-                                   }
+export default HeaderLone
