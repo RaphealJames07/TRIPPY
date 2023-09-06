@@ -224,9 +224,7 @@ const DescPage = () => {
                                                         }
                                                     </h1>
                                                     <p>
-                                                        {
-                                                            findOneTourData?.country
-                                                        }
+                                                        
                                                         <span>
                                                             <AiFillStar />
                                                             <AiFillStar />
@@ -418,9 +416,7 @@ const DescPage = () => {
                                                         }
                                                     </h1>
                                                     <p>
-                                                        {
-                                                            findOneTourData?.country
-                                                        }
+                                                        
                                                         <span>
                                                             <AiFillStar />
                                                             <AiFillStar />
