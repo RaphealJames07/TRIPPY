@@ -148,3 +148,63 @@
   height: 20%;
   background: #dedede;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media QueryStyling for smaller phone sizes */
+@media only screen and (max-width: 360px){
+  .MyBookingContents {
+    width: 100%;
+    height: auto; 
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    max-height: calc(100vh - 150px); /* Adjust the value as needed */
+    overflow-y: auto; 
+  }
+  
+
+  .MyBookingDown {
+    width: 90%; 
+    height: auto; 
+  }
+
+  .MyBookingDownWrap {
+    gap: 20px; 
+  }
+
+  .MyBookingItem1 {
+    flex-direction: column; /
+  }
+  .MyBookingItem1Left,
+  .MyBookingItem1Right {
+    width: 100%; 
+  }
+
+  .MyBookingItem1Tour,
+  .MyBookingItem1Flight,
+  .MyBookingItem1Hotel,
+  .MyBookingItem1Car {
+    height: auto; 
+  }
+
+  .MyBookingItem1Tour div,
+  .MyBookingItem1Flight div,
+  .MyBookingItem1Hotel div,
+  .MyBookingItem1Car div {
+    flex-direction: column; /
+  }
+}
+  
