@@ -62,8 +62,11 @@
                         const userData = res.data.user;
                         Dispatch(trippyUserLogin(userData));
                         localStorage.setItem('loginSuccess', 'true');
-                        nav("/HeaderNew");
-                        
+                        if (res.data.user.isAdmin === true) {
+                            nav("/AdminPage");
+                        } else {
+                            nav("/HeaderNew");
+                          }
                     })
                     .catch((err) => {
                         setLoading(false);
