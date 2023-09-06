@@ -600,7 +600,7 @@ const DescPage = () => {
 
                                         <div className="DescButtonBook">
 
-                                            <button>Back</button>
+                                            <button onClick={handleBackToTour}>Back</button>
                                             <button onClick={HandleBookNow} disabled={isLoading}>
                                             {isLoading ? 'Loading...' : 'Book Now'}
                                                 {/* Book Now */}
