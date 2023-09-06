@@ -233,11 +233,13 @@ const HeaderLone = () => {
                                 </div>
                             </div>
                             <div className="HeaderAccPopUpDown">
-                                <ul>
+                                {
+                                    user? <ul>
                                     <NavLink className='li' style={{textDecoration:'none', color:'#000'}} to='/WishList'><li>WishList</li></NavLink>
                                     <NavLink className='li' style={{textDecoration:'none', color:'#000'}} to='/Account'><li>Account</li></NavLink>
                                     <li>Help/FAQ</li>
-                                </ul>
+                                </ul> : null
+                                }
                                 <div className="HeaderAccPopUpDownBtns">
                                     {user ? (
                                         <>

@@ -8,6 +8,7 @@
     import axios from "axios";
     import NetworkError from "../../Functions/NetworkError";
     import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
+import { Button, Modal } from "antd";
 
     const Login = () => {
         const nav = useNavigate();
@@ -29,7 +30,7 @@
         const [incoPwd, setIncoPwd] = useState(false);
         const data = {email, password};
         const url = "https://trippyapiv1.onrender.com/trippy/signin";
-        // const [popErr, setPopErr] = useState('')
+        const [popErr, setPopErr] = useState(false)
 
 
         const handleLogin = (e) => {
@@ -71,6 +72,11 @@
                     .catch((err) => {
                         setLoading(false);
                         console.log(err);
+                        const noUser = err.response.data.message
+                        if (noUser === 'invalid email, please enter a registered email.'){
+                            setPopErr(true)
+                        }
+                        console.log('No User', noUser);
                         const Neterror = err.message;
                         if (Neterror === "Network Error") {
                             console.log(Neterror);
@@ -110,6 +116,22 @@
 
     return (
         <>
+        <Modal
+                        title="Successful!"
+                        visible={popErr}
+                        onCancel={() => setPopErr(false)}
+                        footer={[
+                            <Button
+                                key="ok"
+                                type="primary"
+                                onClick={() => setPopErr(false)}
+                            >
+                                OK
+                            </Button>,
+                        ]}
+                    >
+                        Invalid email, please enter a registered email.
+                    </Modal>
             {/* Elements for Desktop */}
             <div className="LoginBody">
                 <div className="LoginLeft">

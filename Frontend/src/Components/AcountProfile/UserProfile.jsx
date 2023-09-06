@@ -274,14 +274,15 @@ const UserProfile = () => {
                     </div>
                     <div className="UserProfilePwdDiv">
                         <div className="UserProfilePwdDivBox">
-                            <Form.Item label="Password" className="FormPwdDiv">
+                            <Form.Item label="Password" className="FormPwdDiv" >
                                 <Input
                                     value={password}
                                     onChange={handlePasswordChange}
                                     className="YouMf"
                                     type="password"
                                     disabled={true}
-                                    style={{color: "#000"}}
+                                    style={{color: "#000", width:'100px', }}
+
                                 />
                             </Form.Item>
                         </div>
