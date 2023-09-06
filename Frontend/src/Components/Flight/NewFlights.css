@@ -329,3 +329,70 @@
 
 
 }
+
+
+
+/* Media QueryStyling for smaller phone sizes */
+@media only screen and (max-width: 360px){
+  .NewFlightContent2{
+    width: 85%;
+    height: 80%;
+    /* background-color: brown; */
+    background: lightgrey;
+  }
+  .NewFlightSelectsMobile {
+    width: 100%;
+    height: 50%;
+    /* background-color: green; */
+    margin-top: 20px;
+    background: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .NewFlightBtns{
+    width: 100%;
+    height: 30%;
+    margin-top: 2px;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .NewFlightResultsItem1 {
+    height: auto; 
+    flex-direction: column; 
+  }
+
+  .NewFlightResultsItem1ImgDiv {
+    width: 100%; 
+  }
+
+  .NewFlightResultsItem1ImgDiv img {
+    width: 100%;
+    height: auto; 
+  }
+  .NewFlightResultsItem1Details {
+    width: 100%; 
+    text-align: center; 
+    margin-left: 0; 
+  }
+
+  .NewFlightResultDetailsFLexed {
+    flex-direction: column; 
+    align-items: center; 
+  }
+  .NewFlightBtns {
+    height: auto; 
+    flex-direction: row; 
+    margin-top: 18px;
+    gap: 19px; 
+  }
+
+  .NewFlightSelectDivMobile {
+    display: block; 
+  }
+
+}

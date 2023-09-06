@@ -775,3 +775,27 @@
     gap: 20px;
   }
 }
+
+
+
+/* Media QueryStyling for smaller phone sizes */
+@media only screen and (max-width: 360px){
+  .NewHotelBody {
+    height: auto; 
+    margin-top: 20px; 
+    gap: 10px; 
+  }
+
+  .NewHotelContent {
+    width: 100%; 
+  }
+
+  .NewHotelResults {
+    height: auto; 
+  }
+
+  .NewHotelResultsItem1 {
+    height: auto; 
+    flex-direction: column; 
+  }
+}
