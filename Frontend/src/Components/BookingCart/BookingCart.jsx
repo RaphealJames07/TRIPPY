@@ -102,6 +102,8 @@ const BookingCart = () => {
     const hotelPrice = newHotelTotalPRIce;
 
     const totalTourPrice = tourPrice * tourTickets;
+    const nav = useNavigate();
+
 
     // const totalPrice = flightPrice + rentalPrice + hotelPrice + totalTourPrice;
 
@@ -154,6 +156,7 @@ const BookingCart = () => {
                 console.log(res);
                 payment();
                 console.log("Payment Successful");
+                nav('/PaymentSucc')
             })
             .catch((err) => {
                 console.log(err);
@@ -178,7 +181,6 @@ const BookingCart = () => {
         });
     };
 
-    const nav = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleOpenModal = () => {

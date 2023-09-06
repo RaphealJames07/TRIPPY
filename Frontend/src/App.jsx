@@ -38,7 +38,8 @@ import Api from "../src/Components/Redux/Api";
 import Api2 from "../src/Components/Redux/Api2";
 import ToTop from "./Components/ToTop";
 import AdminPage from "./Components/Admin/AdminPage";
-import PrivateRoute from "./Components/PrivateRoute";
+import PaymentSucc from "./Components/BookingCart/PaymentSucc";
+
 
 
 const App = () => {
@@ -86,6 +87,7 @@ const App = () => {
             <Route path="/WishList" element={<WishList/>} />
             <Route path="/Account" element={<Account/>} />
             <Route path="/AdminPage" element={<AdminPage/>} />
+            <Route path="/PaymentSucc" element={<PaymentSucc/>} />
             {/* <PrivateRoute path="/AdminPage" element={<AdminPage />} /> */}
             
             
