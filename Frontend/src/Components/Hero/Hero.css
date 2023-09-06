@@ -769,3 +769,21 @@
 }
 
 /* End of Media Query Styling for Mobile Device */
+
+
+
+
+/* Media QueryStyling for smaller phone sizes */
+
+@media only screen and (max-width: 360px){
+  .HeroSearchDivInputsMobile button{
+    width: 100%;
+    height: 15%;
+    border-radius: 30px;
+    margin-top: -13px;
+    /* background-color: green; */
+    background: #000;
+    color: #fff;
+    font-size: 22px;
+  }
+}
