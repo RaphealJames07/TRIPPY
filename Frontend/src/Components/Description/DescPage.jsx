@@ -24,12 +24,14 @@ const DescPage = () => {
     const [loadingComment, setLoadingComment] = useState(false);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
+    const [executeIt, setExecuteIt] = useState(true);
     const nav = useNavigate();
+    const [addCount, setAddCount] = useState(0);
+    console.log(addCount);
 
     const navigate = useNavigate();
 
     const [isLoading, setLoading] = useState(false);
-
 
     const findOneTourData = useSelector(
         (state) => state.Trippy.findOneTourData
@@ -38,10 +40,10 @@ const DescPage = () => {
     const imageArr = findOneTourData.images;
     console.log("Image Array", imageArr);
 
-
+    
 
     useEffect(() => {
-       window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
     }, []);
 
     // const updatedFindOne = useSelector((state) => state.Trippy.findOneTourData);
@@ -54,13 +56,13 @@ const DescPage = () => {
     // const [comments, setComments] = useState([]);
 
     const handleCommentUpload = () => {
-        if (rating === 0){
-            alert('Please select a rating');
-            return
+        if (rating === 0) {
+            alert("Please select a rating");
+            return;
         }
-        if (!comment){
-            alert('Please Write a comment')
-            return
+        if (!comment) {
+            alert("Please Write a comment");
+            return;
         }
         setLoadingComment(true);
         console.log("Waiting comment");
@@ -98,13 +100,12 @@ const DescPage = () => {
 
     const HandleBookNow = () => {
         // setLoading(true);
-        
+
         // setTimeout(() => {
         //     // After loading is complete, navigate to the desired page
         //     setLoading(false);
         //     // Perform the navigation logic here
         //   }, 2000);
-
 
         if (userToken === undefined) {
             setShowLoginModal(true);
@@ -125,28 +126,27 @@ const DescPage = () => {
         navigate(-1);
     };
 
-    const StarRating = ({ rating }) => {
-        const filledStars = Array.from({ length: rating }).fill(null);
-        const emptyStars = Array.from({ length: 5 - rating }).fill(null);
+    const StarRating = ({rating}) => {
+        const filledStars = Array.from({length: rating}).fill(null);
+        const emptyStars = Array.from({length: 5 - rating}).fill(null);
 
         return (
             <div className="Rating">
                 {filledStars.map((_, index) => (
                     <AiFillStar
-                        style={{ width: "15%", height: "100%" }}
+                        style={{width: "15%", height: "100%"}}
                         key={`filled-${index}`}
                     />
                 ))}
                 {emptyStars.map((_, index) => (
                     <AiOutlineStar
-                        style={{ width: "15%", height: "100%" }}
+                        style={{width: "15%", height: "100%"}}
                         key={`empty-${index}`}
                     />
                 ))}
             </div>
         );
     };
-    
 
     if (userToken === undefined) {
         return (
@@ -209,10 +209,7 @@ const DescPage = () => {
                         <div className="DescBody">
                             <div className="DescBodyWrap">
                                 <div className="DescTop">
-                                    <img
-                                        src={findOneTourData?.images[0]}
-                                        alt=""
-                                    />
+                                    <img src={findOneTourData?.images[0]} alt="" />
                                 </div>
                                 <div className="DescDown">
                                     <div className="DescDownWrap">
@@ -225,7 +222,6 @@ const DescPage = () => {
                                                         }
                                                     </h1>
                                                     <p>
-                                                        
                                                         <span>
                                                             <AiFillStar />
                                                             <AiFillStar />
@@ -353,8 +349,11 @@ const DescPage = () => {
                                                                                     <AiFillStar />
                                                                                     <AiOutlineStar />
                                                                                     <AiOutlineStar /> */}
-                                        <StarRating rating={item?.star} />
-
+                                                                                    <StarRating
+                                                                                        rating={
+                                                                                            item?.star
+                                                                                        }
+                                                                                    />
                                                                                 </span>
                                                                             </p>
                                                                         </div>
@@ -402,7 +401,9 @@ const DescPage = () => {
                             <div className="DescBodyWrap">
                                 <div className="DescTop">
                                     <img
-                                        src={findOneTourData?.images[0]}
+                                        src={
+                                            findOneTourData?.images[0]
+                                        }
                                         alt=""
                                     />
                                 </div>
@@ -417,7 +418,6 @@ const DescPage = () => {
                                                         }
                                                     </h1>
                                                     <p>
-                                                        
                                                         <span>
                                                             <AiFillStar />
                                                             <AiFillStar />
@@ -481,7 +481,6 @@ const DescPage = () => {
                                                                     onClick={
                                                                         handleCommentUpload
                                                                     }
-                                                                    
                                                                 >
                                                                     {loadingComment ? (
                                                                         <SpinnerCircular
@@ -579,7 +578,11 @@ const DescPage = () => {
                                                                                 <AiFillStar />
                                                                                 <AiOutlineStar />
                                                                                 <AiOutlineStar /> */}
-                                                                                <StarRating rating={item?.star} />
+                                                                                <StarRating
+                                                                                    rating={
+                                                                                        item?.star
+                                                                                    }
+                                                                                />
                                                                             </span>
                                                                         </div>
                                                                     </div>
@@ -600,13 +603,18 @@ const DescPage = () => {
                                         </div>
 
                                         <div className="DescButtonBook">
-
-                                            <button onClick={handleBackToTour}>Back</button>
-                                            <button onClick={HandleBookNow} disabled={isLoading}>
-                                            {isLoading ? 'Loading...' : 'Book Now'}
+                                            <button onClick={handleBackToTour}>
+                                                Back
+                                            </button>
+                                            <button
+                                                onClick={HandleBookNow}
+                                                disabled={isLoading}
+                                            >
+                                                {isLoading
+                                                    ? "Loading..."
+                                                    : "Book Now"}
                                                 {/* Book Now */}
                                             </button>
-
                                         </div>
                                     </div>
                                 </div>
