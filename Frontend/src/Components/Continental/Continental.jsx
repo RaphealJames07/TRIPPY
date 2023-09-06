@@ -205,6 +205,8 @@ import axios from "axios";
 import {useNavigate} from "react-router";
 import {useDispatch} from "react-redux";
 import {findOneTour} from "../Redux/Features";
+import { Carousel } from "antd";
+
 
 import {PulseLoader} from "react-spinners";
 import { Link } from "react-router-dom";
@@ -312,6 +314,7 @@ const Continental = () => {
 
     console.log(addWishList);
     const [modalVisible, setModalVisible] = useState(false);
+    
 
     const StarRating = ({ rating }) => {
         const filledStars = Array.from({ length: rating }).fill(null);

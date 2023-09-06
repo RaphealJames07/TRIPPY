@@ -4,6 +4,7 @@ import Footer from "../Footer/Footer";
 import "./MyBookings.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Button } from "antd";
 
 const MyBookings = () => {
 
@@ -11,9 +12,13 @@ const MyBookings = () => {
 
   const userToken = useSelector((state) => state.Trippy.trippyUser.token);
   const [bookingRes, setBookingRes] = useState([])
+  const [bookingSearch, setBookingSearch] = useState(false)
+  const [bookingStat, setBookingStat] = useState(false)
+  
 
 
     const handleGetBooking = () => {
+        setBookingStat(true)
       const token = userToken
       const headers = {
         Authorization: `Bearer ${token}`,
@@ -25,6 +30,8 @@ const MyBookings = () => {
             .then((res) => {
                 console.log("response", res);
                 setBookingRes(res.data)
+                setBookingStat(true)
+                setBookingSearch(true)
             })
             .catch((err) => {
                 console.error("Error:", err);
@@ -41,7 +48,7 @@ const MyBookings = () => {
                     <div className="MyBookingTop">
                         <h1>My Bookings</h1>
                     </div>
-                    <div className="MyBookingDown">
+                    {/* <div className="MyBookingDown">
                         <div className="MyBookingDownWrap">
                             <div className="MyBookingItem1">
                                 <div className="MyBookingItem1Left">
@@ -148,8 +155,15 @@ const MyBookings = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <button onClick={handleGetBooking}>Search</button>
+                    </div> */}
+                    {
+                        bookingStat? <><h1>Searching...</h1></> : null
+                    }
+                    {
+                        bookingSearch? <><h1>No Booking Found</h1></> : <><h1>No Booking</h1></>
+                    }
+                    {/* <button onClick={handleGetBooking}>Search</button> */}
+                    <Button type="primary" size="large" onClick={handleGetBooking}>Search</Button>
                 </div>
                 <Footer />
             </div>

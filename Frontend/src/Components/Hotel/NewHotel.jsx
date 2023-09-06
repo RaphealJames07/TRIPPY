@@ -111,6 +111,12 @@ const NewHotel = () => {
                                     >
                                         Kenya
                                     </Option>
+                                    <Option
+                                        value="egypt"
+                                        onChange={(e) => e.target.value}
+                                    >
+                                        Egypt
+                                    </Option>
                                 </Select>
                                 </div>
                                 <div className="NewFlightSelectsDivMobile1">
@@ -141,6 +147,12 @@ const NewHotel = () => {
                                         onChange={(e) => e.target.value}
                                     >
                                         Lagos
+                                    </Option>
+                                    <Option
+                                        value="Accra"
+                                        onChange={(e) => e.target.value}
+                                    >
+                                        Accra
                                     </Option>
                                 </Select>
                                 </div>

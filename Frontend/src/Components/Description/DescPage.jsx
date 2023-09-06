@@ -31,13 +31,14 @@ const DescPage = () => {
     const [isLoading, setLoading] = useState(false);
 
 
-
-
-
     const findOneTourData = useSelector(
         (state) => state.Trippy.findOneTourData
     );
     console.log(findOneTourData);
+    const imageArr = findOneTourData.images;
+    console.log("Image Array", imageArr);
+
+
 
     useEffect(() => {
        window.scrollTo(0, 0);

@@ -150,6 +150,8 @@ const NewFlight = () => {
                                     <Option value="lagos">Lagos</Option>
                                     <Option value="accra">Accra</Option>
                                     <Option value="nairobi">Nairobi</Option>
+                                    <Option value="limpopo">Limpopo</Option>
+                                    <Option value="cairo">Cairo</Option>
                                 </Select>
                                 <label htmlFor="">Flight destination</label>
                                 <Select
@@ -162,9 +164,11 @@ const NewFlight = () => {
                                     size="large"
                                 >
                                     <Option value="">To</Option>
+                                    <Option value="lagos">Lagos</Option>
+                                    <Option value="accra">Accra</Option>
                                     <Option value="nairobi">Nairobi</Option>
                                     <Option value="cairo">Cairo</Option>
-                                    <Option value="lagos">Lagos</Option>
+                                    <Option value="limpopo">Limpopo</Option>
                                 </Select>
                             </div>
                             <div className="NewFlightSelectsBtn">
@@ -195,6 +199,8 @@ const NewFlight = () => {
                                     <Option value="lagos">Lagos</Option>
                                     <Option value="accra">Accra</Option>
                                     <Option value="nairobi">Nairobi</Option>
+                                    <Option value="cairo">Cairo</Option>
+                                    <Option value="limpopo">Limpopo</Option>
                                 </Select>
                                 </div>
                                 <div className="NewFlightSelectsDivMobile1">
@@ -209,9 +215,11 @@ const NewFlight = () => {
                                     size="large"
                                 >
                                     <Option value="">To</Option>
-                                    <Option value="nairobi">Nairobi</Option>
-                                    <Option value="cairo">Cairo</Option>
                                     <Option value="lagos">Lagos</Option>
+                                    <Option value="accra">Accra</Option>
+                                    <Option value="nairobi">Nairobi</Option>
+                                    <Option value="limpopo">Limpopo</Option>
+                                    <Option value="cairo">Cairo</Option>
                                 </Select>
                                 </div>
                             </div>

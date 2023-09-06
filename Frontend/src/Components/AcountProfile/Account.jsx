@@ -4,7 +4,7 @@ import {MdAccountCircle} from "react-icons/md";
 import {HiInformationCircle} from "react-icons/hi";
 import {useState} from "react";
 import Personal from "./Personal";
-import Settings from "./Settings";
+// import Settings from "./Settings";
 import Inquiry from "./Inquiry";
 import ProfilePfp from "./UserProfile";
 import {useDispatch, useSelector} from "react-redux";
@@ -13,7 +13,7 @@ import { trippyUserLogOut } from "../Redux/Features";
 
 const Account = () => {
     const [personal, setPersonal] = useState(true);
-    const [settings, setSettings] = useState(false);
+    // const [settings, setSettings] = useState(false);
     const [inquiry, setInquiry] = useState(false);
     const [profilePfp, setProfilePfp] = useState(false);
 
@@ -24,19 +24,19 @@ const Account = () => {
 
     const TogglePersonal = () => {
         setPersonal(true);
-        setSettings(false);
+        // setSettings(false);
         setInquiry(false);
         setProfilePfp(false);
     };
     const ToggleSettings = () => {
         setPersonal(false);
-        setSettings(true);
+        // setSettings(true);
         setInquiry(false);
         setProfilePfp(false);
     };
     const ToggleInquiry = () => {
         setPersonal(false);
-        setSettings(false);
+        // setSettings(false);
         setInquiry(true);
         setProfilePfp(false);
     };
@@ -125,11 +125,7 @@ const Account = () => {
                             <>
                                 <Personal />
                             </>
-                        ) : settings ? (
-                            <>
-                                <Settings />
-                            </>
-                        ) : inquiry ? (
+                        ) :  inquiry ? (
                             <>
                                 <Inquiry />
                             </>
