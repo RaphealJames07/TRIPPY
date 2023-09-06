@@ -1,0 +1,55 @@
+.PaymentSuccBody{
+  width: 100%;
+  height: 100vh;
+  background: #76e9f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+.PaymenySuccBodyWrap{
+  width: 40%;
+  height: 60%;
+  background: whitesmoke;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.PaymenySuccBodyWrap p{
+  width: 70%;
+  text-align: center;
+  font-size: 18px;
+}
+.PaymenySuccBodyWrap h1{
+  width: 70%;
+  text-align: center;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 428px){
+  .PaymenySuccBodyWrap{
+    width: 80%;
+    height: 60%;
+    background: whitesmoke;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+  .PaymenySuccBodyWrap p{
+    width: 70%;
+    text-align: center;
+    font-size: 18px;
+  }
+  .PaymenySuccBodyWrap h1{
+    width: 70%;
+    text-align: center;
+    font-size: 18px;
+  }
+}
